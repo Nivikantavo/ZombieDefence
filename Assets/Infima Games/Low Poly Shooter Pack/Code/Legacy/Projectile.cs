@@ -70,16 +70,13 @@ namespace InfimaGames.LowPolyShooterPack.Legacy
 			//coroutine with random destroy timer
 			if (!destroyOnImpact)
 			{
-                Debug.Log("Destroyed coroutine started");
                 StartCoroutine(DestroyTimer());
 			}
 			//Otherwise, destroy bullet on impact
 			else
 			{
-                Debug.Log("Destroyed");
                 Destroy(gameObject);
 			}
-			Debug.Log("dontDestroyed");
 			var rigidbody = collision.rigidbody;
 			if(rigidbody != null)
 			{
@@ -88,7 +85,6 @@ namespace InfimaGames.LowPolyShooterPack.Legacy
 
 			if(collision.gameObject.TryGetComponent<HitBox>(out HitBox hitBox))
 			{
-                Debug.Log("Hit");
                 hitBox.OnHit(_damage);
 			}
 
