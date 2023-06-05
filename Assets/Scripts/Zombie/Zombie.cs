@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class Zombie : MonoBehaviour
+public class Zombie : MonoBehaviour, Idamageable
 {
-    [SerializeField] private Player _target;
+    [SerializeField] private Target _target;
     [SerializeField] private float _maxHealth;
     [SerializeField] private float _damage;
     [SerializeField] private float _attackDistance;
@@ -54,6 +54,11 @@ public class Zombie : MonoBehaviour
         {
             Die();
         }
+    }
+
+    public void Initialize(Target target)
+    {
+        _target = target;
     }
 
     private void Die()
