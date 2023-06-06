@@ -11,7 +11,7 @@ namespace InfimaGames.LowPolyShooterPack.Legacy
 	{
 		public float Damage => _damage;
 
-		[SerializeField] private float _damage;
+		private float _damage;
 
 		[Range(5, 100)]
 		[Tooltip("After how long time should the bullet prefab be destroyed?")]
@@ -161,6 +161,11 @@ namespace InfimaGames.LowPolyShooterPack.Legacy
 				//Destroy bullet object
 				Destroy(gameObject);
 			}
+		}
+
+		public void SetDamage(float damage)
+		{
+			_damage = damage;
 		}
 
 		private IEnumerator DestroyTimer()

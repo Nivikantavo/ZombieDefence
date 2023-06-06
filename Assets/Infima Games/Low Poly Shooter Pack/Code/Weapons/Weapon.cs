@@ -1,5 +1,6 @@
 ﻿//Copyright 2022, Infima Games. All Rights Reserved.
 
+using InfimaGames.LowPolyShooterPack.Legacy;
 using UnityEngine;
 
 namespace InfimaGames.LowPolyShooterPack
@@ -34,7 +35,10 @@ namespace InfimaGames.LowPolyShooterPack
         [Tooltip("Amount of shots fired at once. Helpful for things like shotguns, where there are multiple projectiles fired at once.")]
         [SerializeField]
         private int shotCount = 1;
-        
+
+        [SerializeField]
+        private float damage = 5f;
+
         [Tooltip("How far the weapon can fire from the center of the screen.")]
         [SerializeField]
         private float spread = 0.25f;
@@ -373,6 +377,10 @@ namespace InfimaGames.LowPolyShooterPack
 
                 //Spawn projectile from the projectile spawn point.
                 GameObject projectile = Instantiate(prefabProjectile, playerCamera.position, Quaternion.Euler(playerCamera.eulerAngles + spreadValue));
+
+                if(projectile.TryGetComponent<Projectile>(out Projectile projectileScript))
+                    projectileScript.SetDamage(damage);
+
                 //Add velocity to the projectile.
                 projectile.GetComponent<Rigidbody>().velocity = projectile.transform.forward * projectileImpulse;
             }

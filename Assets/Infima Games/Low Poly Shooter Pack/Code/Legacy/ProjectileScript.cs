@@ -10,6 +10,8 @@ namespace InfimaGames.LowPolyShooterPack.Legacy
 
 		private bool explodeSelf;
 
+		[SerializeField]private float damage;
+
 		[Tooltip("Enable to use constant force, instead of force at launch only")]
 		public bool useConstantForce;
 
@@ -92,9 +94,9 @@ namespace InfimaGames.LowPolyShooterPack.Legacy
 			}
 		}
 
-		//Used for when the rocket is flying into the sky for example, 
-		//it should blow up after some time
-		private IEnumerator ExplodeSelf()
+        //Used for when the rocket is flying into the sky for example, 
+        //it should blow up after some time
+        private IEnumerator ExplodeSelf()
 		{
 			//Wait set amount of time
 			yield return new WaitForSeconds(explodeAfter);
@@ -206,6 +208,12 @@ namespace InfimaGames.LowPolyShooterPack.Legacy
 
 					//Toggle the isHit bool on the target object
 					hit.gameObject.GetComponent<TargetScript>().isHit = true;
+				}
+
+				if(hit.TryGetComponent<HitBox>(out HitBox hitBox))
+				{
+                    hitBox.OnHit(damage);
+					Debug.Log("hit zombie");
 				}
 
 				//If the projectile explosion hits barrels with the tag "ExplosiveBarrel"

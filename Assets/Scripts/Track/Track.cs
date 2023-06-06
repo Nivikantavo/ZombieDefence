@@ -4,15 +4,10 @@ using UnityEngine;
 
 public class Track : Target
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField] private BoxCollider _collider;
 
-    // Update is called once per frame
-    void Update()
+    public override Vector3 GetClosesetPositin(Vector3 position)
     {
-        
+        return _collider.ClosestPointOnBounds(position);
     }
 }

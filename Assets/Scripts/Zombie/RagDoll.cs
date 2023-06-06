@@ -11,7 +11,6 @@ public class RagDoll : MonoBehaviour
     private void Start()
     {
         _rigidbodies = GetComponentsInChildren<Rigidbody>();
-        AddHitBox();
         DeactivateRagDoll();
     }
 
@@ -43,14 +42,5 @@ public class RagDoll : MonoBehaviour
         }
 
         _animator.enabled = false;
-    }
-
-    private void AddHitBox()
-    {
-        foreach(var rigidbody in _rigidbodies)
-        {
-            HitBox hitBox = rigidbody.gameObject.AddComponent<HitBox>();
-            hitBox.SetZombie(_zombie);
-        }
     }
 }

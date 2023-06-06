@@ -17,7 +17,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5633919890731990331, guid: 756cf7b1f633c254680d06a4315aa5c8, type: 3}
       propertyPath: m_Name
-      value: Zombie
+      value: Zombie Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 5633919890731990331, guid: 756cf7b1f633c254680d06a4315aa5c8, type: 3}
+      propertyPath: m_TagString
+      value: Blood
       objectReference: {fileID: 0}
     - target: {fileID: 5633919890731990338, guid: 756cf7b1f633c254680d06a4315aa5c8, type: 3}
       propertyPath: m_RootOrder
@@ -62,6 +66,18 @@ PrefabInstance:
     - target: {fileID: 5633919890731990338, guid: 756cf7b1f633c254680d06a4315aa5c8, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5633919890731990342, guid: 756cf7b1f633c254680d06a4315aa5c8, type: 3}
+      propertyPath: _running
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5633919890731990342, guid: 756cf7b1f633c254680d06a4315aa5c8, type: 3}
+      propertyPath: _runSpeed
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5633919890731990342, guid: 756cf7b1f633c254680d06a4315aa5c8, type: 3}
+      propertyPath: _walkSpeed
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5633919890731990343, guid: 756cf7b1f633c254680d06a4315aa5c8, type: 3}
       propertyPath: _target

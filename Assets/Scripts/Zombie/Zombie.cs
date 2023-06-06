@@ -29,7 +29,8 @@ public class Zombie : MonoBehaviour, Idamageable
 
     private void Update()
     {
-        _canAttack = _elapsedTime > _attackDelay && Vector3.Distance(transform.position, _target.transform.position) < _attackDistance;
+        Vector3 attackPosition = _target.GetClosesetPositin(transform.position);
+        _canAttack = _elapsedTime > _attackDelay && Vector3.Distance(transform.position, attackPosition) < _attackDistance;
 
         if (_elapsedTime < _attackDelay)
         {
@@ -42,7 +43,7 @@ public class Zombie : MonoBehaviour, Idamageable
         }
         else
         {
-            _movment.MoveToTarget(_target.transform.position);
+            _movment.MoveToTarget(attackPosition);
         }
     }
 
@@ -72,7 +73,14 @@ public class Zombie : MonoBehaviour, Idamageable
     private void Attack()
     {
         _animation.SetAttack();
-        _target.TakeDamage(_damage);
         _elapsedTime = 0;
+    }
+
+    public void AnimationHit()
+    {
+        if(Vector3.Distance(transform.position, _target.transform.position) <= _attackDistance)
+        {
+            _target.TakeDamage(_damage);
+        }
     }
 }
