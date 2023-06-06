@@ -6,17 +6,10 @@ using UnityEngine;
 public class HitBox : MonoBehaviour
 {
     [SerializeField] private Zombie _zombie;
+    [SerializeField] private float _damageRatio;
 
     public void OnHit(float damage)
     {
-        _zombie.TakeDamage(damage);
-    }
-
-    public void SetZombie(Zombie zombie)
-    {
-        if(zombie != null)
-        {
-            _zombie = zombie;
-        }
+        _zombie.TakeDamage(damage * _damageRatio);
     }
 }

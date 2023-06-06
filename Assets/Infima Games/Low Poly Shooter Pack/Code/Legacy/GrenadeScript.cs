@@ -7,6 +7,7 @@ namespace InfimaGames.LowPolyShooterPack.Legacy
 {
 	public class GrenadeScript : MonoBehaviour
 	{
+		[SerializeField] private float _damage;
 
 		[Header("Timer")]
 		//Time before the grenade explodes
@@ -97,6 +98,11 @@ namespace InfimaGames.LowPolyShooterPack.Legacy
 				//Add force to nearby rigidbodies
 				if (rb != null)
 					rb.AddExplosionForce(power * 5, explosionPos, radius, 3.0F);
+
+				if(hit.TryGetComponent<HitBox>(out HitBox hitBox))
+				{
+					hitBox.OnHit(_damage);
+				}
 
 				//If the explosion hits "Target" tag and isHit is false
 				if (hit.GetComponent<Collider>().tag == "Target"

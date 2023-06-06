@@ -30,6 +30,7 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 224386290808019794}
   - {fileID: 224362045057695630}
@@ -142,6 +143,7 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.005, y: 0.005, z: 0.005}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 224503326973851126}
   m_RootOrder: 1
@@ -217,6 +219,7 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.001, y: 0.001, z: 0.001}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 224503326973851126}
   m_RootOrder: 0
@@ -299,6 +302,7 @@ Transform:
   m_LocalRotation: {x: 0.0000018099952, y: 0, z: -0, w: 1}
   m_LocalPosition: {x: -0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 224503326973851126}
   m_Father: {fileID: 0}
@@ -323,6 +327,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -365,11 +370,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c253d321ee0ea6438f2fe995cd4d43f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damage: 50
   useConstantForce: 0
   constantForceSpeed: 0
   explodeAfter: 0
-  explosionPrefab: {fileID: 4811645123968692, guid: 301583a5af63a494298d60cd9f296909,
-    type: 3}
+  explosionPrefab: {fileID: 4811645123968692, guid: 301583a5af63a494298d60cd9f296909, type: 3}
   force: 2500
   despawnTime: 30
   radius: 4

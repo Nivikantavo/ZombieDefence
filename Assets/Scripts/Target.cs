@@ -36,6 +36,11 @@ public class Target : MonoBehaviour, Idamageable
         }
     }
 
+    public virtual Vector3 GetClosesetPositin(Vector3 position)
+    {
+        return transform.position;
+    }
+
     private void Die()
     {
         Debug.Log(transform.name + " Died");
