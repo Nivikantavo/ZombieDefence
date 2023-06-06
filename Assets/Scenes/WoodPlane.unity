@@ -3883,7 +3883,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 997457790}
-  m_RootOrder: 5
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!23 &467830636
 MeshRenderer:
@@ -8491,14 +8491,15 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 1315471619}
+  - {fileID: 971498474}
+  - {fileID: 1678989238}
   - {fileID: 513620484}
   - {fileID: 351787279}
   - {fileID: 1102545433}
   - {fileID: 878218451}
-  - {fileID: 1315471619}
   - {fileID: 1980954628}
   - {fileID: 1886172493}
-  - {fileID: 971498474}
   - {fileID: 1694476699}
   - {fileID: 1401057197}
   - {fileID: 562137479}
@@ -8512,7 +8513,6 @@ Transform:
   - {fileID: 1663902531}
   - {fileID: 1205533772}
   - {fileID: 1008471278}
-  - {fileID: 1678989238}
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -9182,17 +9182,17 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 467830635}
   - {fileID: 1311049979}
   - {fileID: 1781040850}
   - {fileID: 13626066}
   - {fileID: 1484753605}
   - {fileID: 1753742622}
-  - {fileID: 467830635}
+  - {fileID: 352020822}
   - {fileID: 1731005162}
   - {fileID: 747878485}
-  - {fileID: 352020822}
-  - {fileID: 1739216545}
   - {fileID: 70306968}
+  - {fileID: 1739216545}
   - {fileID: 1513587490}
   - {fileID: 422772385}
   - {fileID: 1647685980}
@@ -13637,18 +13637,18 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 1169560376}
+  - {fileID: 1980504515}
   - {fileID: 1957366274}
   - {fileID: 923461861}
   - {fileID: 1591819288}
   - {fileID: 1698918419}
   - {fileID: 1101249440}
   - {fileID: 615214281}
-  - {fileID: 1169560376}
   - {fileID: 1030404614}
   - {fileID: 1214648396}
   - {fileID: 775389970}
   - {fileID: 1973369799}
-  - {fileID: 1980504515}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -15274,7 +15274,7 @@ Transform:
   m_GameObject: {fileID: 1636860872}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1032942117}
