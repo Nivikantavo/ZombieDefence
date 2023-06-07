@@ -1029,6 +1029,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39aa384d76844cd45b6f0ef7578c0b60, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _maxAttackersCount: 0
   _maxHealth: 100
 --- !u!1001 &1732831351
 PrefabInstance:
@@ -4411,7 +4412,9 @@ MonoBehaviour:
   _animation: {fileID: 95645710683957708}
   _runDistance: 15
   _agent: {fileID: 95645710683957709}
-  _speed: 2
+  _walkSpeed: 0
+  _runSpeed: 0
+  _running: 0
 --- !u!114 &95645710683957707
 MonoBehaviour:
   m_ObjectHideFlags: 0
