@@ -10,6 +10,7 @@ public class ZombieAnimation : MonoBehaviour
     private const string Run = "Run";
     private const string Crawl = "Crawl";
     private const string Attack = "Attack";
+    private const string StandUp = "StandUp";
 
     [SerializeField] private Animator _animator;
 
@@ -35,6 +36,11 @@ public class ZombieAnimation : MonoBehaviour
     {
         DisableAll();
         _animator.SetTrigger(Attack);
+    }
+    public void SetStandUp()
+    {
+        DisableAll();
+        _animator.SetTrigger(StandUp);
     }
 
     private void DisableAll()

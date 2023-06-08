@@ -10,17 +10,29 @@ public class Zombie : MonoBehaviour, Idamageable
     [SerializeField] private float _damage;
     [SerializeField] private float _attackDistance;
     [SerializeField] private float _attackDelay;
+    [SerializeField] private float _timeToWakeUp;
 
     [SerializeField] private ZombieMovment _movment;
     [SerializeField] private ZombieAnimation _animation;
     [SerializeField] private Animator _animator;
 
+    private Coroutine _standUpCoroutine = null;
 
     private float _currentHealth;
-    private float _elapsedTime = 0;
+    private float _lastAttackTime = 0;
     private bool _canAttack = false;
+    private bool _dead = false;
 
-    public event UnityAction ZombieDie;
+    private enum ZombieState
+    {
+        Active,
+        Ragdoll
+    }
+
+    private ZombieState _currentState = ZombieState.Active;
+
+    public event UnityAction RagdollState;
+    public event UnityAction DesableRagdoll;
 
     private void Awake()
     {
@@ -29,21 +41,14 @@ public class Zombie : MonoBehaviour, Idamageable
 
     private void Update()
     {
-        Vector3 attackPosition = _target.GetClosesetPositin(transform.position);
-        _canAttack = _elapsedTime > _attackDelay && Vector3.Distance(transform.position, attackPosition) < _attackDistance;
-
-        if (_elapsedTime < _attackDelay)
+        switch (_currentState)
         {
-            _elapsedTime += Time.deltaTime;
-        }
-
-        if(_canAttack)
-        {
-            Attack();
-        }
-        else
-        {
-            _movment.MoveToTarget(attackPosition);
+            case ZombieState.Active:
+                ActiveBehaviour();
+                break;
+            case ZombieState.Ragdoll:
+                RagdollBehaviour();
+                break;
         }
     }
 
@@ -57,23 +62,69 @@ public class Zombie : MonoBehaviour, Idamageable
         }
     }
 
+    public void Pushed()
+    {
+        _currentState = ZombieState.Ragdoll;
+        RagdollState?.Invoke();
+    }
+
     public void Initialize(Target target)
     {
         _target = target;
     }
 
+    private void ActiveBehaviour()
+    {
+        Vector3 attackPosition = _target.GetClosesetPositin(transform.position);
+        _canAttack = _lastAttackTime > _attackDelay && Vector3.Distance(transform.position, attackPosition) < _attackDistance;
+
+        if (_lastAttackTime < _attackDelay)
+        {
+            _lastAttackTime += Time.deltaTime;
+        }
+
+        if (_canAttack)
+        {
+            Attack();
+        }
+        else
+        {
+            _movment.MoveToTarget(attackPosition);
+        }
+    }
+
+    private void RagdollBehaviour()
+    {
+        if (_dead == false)
+        {
+            if(_standUpCoroutine == null)
+            {
+                _standUpCoroutine = StartCoroutine(StandUp());
+            }
+        }
+    }
+
+    private IEnumerator StandUp()
+    {
+        WaitForSeconds downTime = new WaitForSeconds(_timeToWakeUp);
+
+        yield return downTime;
+        _currentState = ZombieState.Active;
+        _animation.SetStandUp();
+        DesableRagdoll?.Invoke();
+    }
+
     private void Die()
     {
-        ZombieDie?.Invoke();
-        _movment.MoveToTarget(transform.position);
-        _movment.enabled = false;
-        this.enabled = false;
+        _dead = true;
+        _currentState = ZombieState.Ragdoll;
+        RagdollState?.Invoke();
     }
 
     private void Attack()
     {
         _animation.SetAttack();
-        _elapsedTime = 0;
+        _lastAttackTime = 0;
     }
 
     public void AnimationHit()

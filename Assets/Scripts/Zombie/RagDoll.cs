@@ -6,6 +6,7 @@ public class RagDoll : MonoBehaviour
 {
     [SerializeField] private Animator _animator;
     [SerializeField] private Zombie _zombie;
+    [SerializeField] private ZombieMovment _zombieMovment;
     private Rigidbody[] _rigidbodies;
 
     private void Start()
@@ -16,12 +17,14 @@ public class RagDoll : MonoBehaviour
 
     private void OnEnable()
     {
-        _zombie.ZombieDie += ActivateRagDoll;
+        _zombie.RagdollState += ActivateRagDoll;
+        _zombie.DesableRagdoll += DeactivateRagDoll;
     }
 
     private void OnDisable()
     {
-        _zombie.ZombieDie -= ActivateRagDoll;
+        _zombie.RagdollState -= ActivateRagDoll;
+        _zombie.DesableRagdoll -= DeactivateRagDoll;
     }
 
     private void DeactivateRagDoll()
@@ -31,6 +34,7 @@ public class RagDoll : MonoBehaviour
             rigidbody.isKinematic = true;
         }
 
+        _zombieMovment.enabled = true;
         _animator.enabled = true;
     }
 
@@ -40,7 +44,8 @@ public class RagDoll : MonoBehaviour
         {
             rigidbody.isKinematic = false;
         }
-
+        _zombieMovment.Stop();
+        _zombieMovment.enabled = false;
         _animator.enabled = false;
     }
 }

@@ -12,6 +12,7 @@ namespace InfimaGames.LowPolyShooterPack.Legacy
 		public float Damage => _damage;
 
 		private float _damage;
+		private float _hitForce = 20;
 
 		[Range(5, 100)]
 		[Tooltip("After how long time should the bullet prefab be destroyed?")]
@@ -80,7 +81,7 @@ namespace InfimaGames.LowPolyShooterPack.Legacy
 			var rigidbody = collision.rigidbody;
 			if(rigidbody != null)
 			{
-				rigidbody.AddForceAtPosition(transform.forward * 20, transform.position, ForceMode.Impulse);
+				rigidbody.AddForceAtPosition(transform.forward * _hitForce, transform.position, ForceMode.Impulse);
 			}
 
 			if(collision.gameObject.TryGetComponent<HitBox>(out HitBox hitBox))
@@ -166,7 +167,7 @@ namespace InfimaGames.LowPolyShooterPack.Legacy
 		public void SetDamage(float damage)
 		{
 			_damage = damage;
-		}
+        }
 
 		private IEnumerator DestroyTimer()
 		{
