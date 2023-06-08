@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 5633919890731990342}
   - component: {fileID: 5633919890731990329}
   - component: {fileID: 5633919890731990328}
+  - component: {fileID: 2690244574400276603}
   m_Layer: 0
   m_Name: Zombie
   m_TagString: Untagged
@@ -88,6 +89,7 @@ MonoBehaviour:
   _damage: 5
   _attackDistance: 1.6
   _attackDelay: 2.5
+  _timeToWakeUp: 0
   _movment: {fileID: 5633919890731990342}
   _animation: {fileID: 5633919890731990340}
   _animator: {fileID: 5633919890731990341}
@@ -145,6 +147,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _animator: {fileID: 5633919890731990341}
   _zombie: {fileID: 5633919890731990343}
+  _zombieMovment: {fileID: 5633919890731990342}
+--- !u!65 &2690244574400276603
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5633919890731990331}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.5, y: 1.6, z: 0.5}
+  m_Center: {x: 0, y: 1, z: 0}
 --- !u!1001 &5633919890304081219
 PrefabInstance:
   m_ObjectHideFlags: 0

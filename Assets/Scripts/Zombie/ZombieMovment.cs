@@ -1,4 +1,5 @@
 using System.Collections;
+using TMPro.EditorUtilities;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -18,6 +19,7 @@ public class ZombieMovment : MonoBehaviour
 
     public void MoveToTarget(Vector3 targetPosition)
     {
+        _agent.isStopped = false;
         _agent.SetDestination(targetPosition);
 
         if (_running)
@@ -28,5 +30,10 @@ public class ZombieMovment : MonoBehaviour
         {
             _animation.SetWalk();
         }
+    }
+
+    public void Stop()
+    {
+        _agent.isStopped = true;
     }
 }
