@@ -7,7 +7,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Stand Up
+  m_Name: StandUp
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
@@ -102,7 +102,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 9bd24f3782644af46856adb93ef95dc9, type: 2}
+  m_Motion: {fileID: 7400000, guid: d5e29ddc2c9a0ab4395cb7007315b20d, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -156,7 +156,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: -203655887218126122, guid: ed591653b215c4a4e92e48b1b620492f, type: 3}
+  m_Motion: {fileID: 7400000, guid: 179d36246351f8a4fbd4d6e3b607879a, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -392,7 +392,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: eb9887d301cd8df4195a2d3227ae6369, type: 2}
+  m_Motion: {fileID: 7400000, guid: 53d7e42a0801a574e85b31fb04029408, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -416,7 +416,7 @@ AnimatorStateTransition:
   m_IsExit: 0
   serializedVersion: 3
   m_TransitionDuration: 0
-  m_TransitionOffset: 0
+  m_TransitionOffset: 0.12
   m_ExitTime: 0.000000007924317
   m_HasExitTime: 0
   m_HasFixedDuration: 1
@@ -524,7 +524,7 @@ AnimatorStateMachine:
     m_Position: {x: 200, y: 320, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -8220945296169510853}
-    m_Position: {x: 523.51337, y: 249.44485, z: 0}
+    m_Position: {x: 520, y: 250, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions:
   - {fileID: 4209177856714025728}
@@ -551,9 +551,9 @@ AnimatorStateTransition:
   m_Mute: 0
   m_IsExit: 0
   serializedVersion: 3
-  m_TransitionDuration: 0.25
+  m_TransitionDuration: 1.8795238
   m_TransitionOffset: 0
-  m_ExitTime: 0.9697581
+  m_ExitTime: 0.677636
   m_HasExitTime: 1
   m_HasFixedDuration: 1
   m_InterruptionSource: 0

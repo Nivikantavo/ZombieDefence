@@ -6,6 +6,7 @@ using UnityEngine;
 public class Repulse : Force
 {
     [SerializeField] private float _forsePower;
+    [SerializeField] private float _stunDuration;
 
     private List<Zombie> _zombies = new List<Zombie>();
 
@@ -22,13 +23,10 @@ public class Repulse : Force
 
     private void OnTriggerExit(Collider other)
     {
-        Debug.Log(other.name);
         if (other.TryGetComponent<Zombie>(out Zombie zombie))
         {
-            Debug.Log("Get");
             if (_zombies.Contains(zombie) == true)
             {
-                Debug.Log("Remove");
                 _zombies.Remove(zombie);
             }
         }
@@ -45,7 +43,7 @@ public class Repulse : Force
         foreach(var zombie in _zombies)
         {
             Rigidbody rigidbody = zombie.GetComponentInChildren<Rigidbody>();
-            zombie.Pushed();
+            zombie.Stun(_stunDuration);
             rigidbody.AddForce(Vector3.forward * _forsePower, ForceMode.Force);
         }
     }

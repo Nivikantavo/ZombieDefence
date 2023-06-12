@@ -6,7 +6,6 @@ public class Spawner : MonoBehaviour
 {
     [SerializeField] private Player _player;
     [SerializeField] private Track _track;
-
     [SerializeField] private List<Wave> _waves;
     [SerializeField] private List<Transform> _spawnPoints;
 

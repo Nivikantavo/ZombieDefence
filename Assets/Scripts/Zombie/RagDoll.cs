@@ -5,8 +5,12 @@ using UnityEngine;
 public class RagDoll : MonoBehaviour
 {
     [SerializeField] private Animator _animator;
-    [SerializeField] private Zombie _zombie;
+    [SerializeField] private DieState _dieState;
+    [SerializeField] private StunState _stunState;
+    [SerializeField] private StandUpState _standUpState;
     [SerializeField] private ZombieMovment _zombieMovment;
+    [SerializeField] private Transform _hipsBone;
+
     private Rigidbody[] _rigidbodies;
 
     private void Start()
@@ -17,14 +21,16 @@ public class RagDoll : MonoBehaviour
 
     private void OnEnable()
     {
-        _zombie.RagdollState += ActivateRagDoll;
-        _zombie.DesableRagdoll += DeactivateRagDoll;
+        _stunState.Stunned += ActivateRagDoll;
+        _standUpState.BonesReset += DeactivateRagDoll;
+        _dieState.ZombieDied += ActivateRagDoll;
     }
 
     private void OnDisable()
     {
-        _zombie.RagdollState -= ActivateRagDoll;
-        _zombie.DesableRagdoll -= DeactivateRagDoll;
+        _stunState.Stunned -= ActivateRagDoll;
+        _standUpState.BonesReset -= DeactivateRagDoll;
+        _dieState.ZombieDied -= ActivateRagDoll;
     }
 
     private void DeactivateRagDoll()
@@ -33,7 +39,7 @@ public class RagDoll : MonoBehaviour
         {
             rigidbody.isKinematic = true;
         }
-
+        AlignPositionToHips();
         _zombieMovment.enabled = true;
         _animator.enabled = true;
     }
@@ -47,5 +53,18 @@ public class RagDoll : MonoBehaviour
         _zombieMovment.Stop();
         _zombieMovment.enabled = false;
         _animator.enabled = false;
+    }
+
+    private void AlignPositionToHips()
+    {
+        Vector3 originalHipsPositin = _hipsBone.position;
+        transform.position = _hipsBone.position;
+
+        if (Physics.Raycast(transform.position, Vector3.down, out RaycastHit hit))
+        {
+            transform.position = new Vector3(transform.position.x, hit.point.y, transform.position.z);
+        }
+
+        _hipsBone.position = originalHipsPositin;
     }
 }

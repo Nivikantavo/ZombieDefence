@@ -2228,13 +2228,17 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1526394497}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1001 &1528331145
+--- !u!1001 &1530328939
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5072738580803043615, guid: 756cf7b1f633c254680d06a4315aa5c8, type: 3}
+      propertyPath: _targetState
+      value: 
+      objectReference: {fileID: 1826229442}
     - target: {fileID: 5633919890731990331, guid: 756cf7b1f633c254680d06a4315aa5c8, type: 3}
       propertyPath: m_Name
       value: Zombie
@@ -2451,8 +2455,6 @@ MonoBehaviour:
   _track: {fileID: 113617232}
   _waves:
   - {fileID: 80272333}
-  - {fileID: 1301750229}
-  - {fileID: 1865198132}
   _spawnPoints:
   - {fileID: 290252620}
   - {fileID: 1696719803}
@@ -2907,6 +2909,17 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1805975158}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1826229442 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5975410198490300602, guid: 756cf7b1f633c254680d06a4315aa5c8, type: 3}
+  m_PrefabInstance: {fileID: 1530328939}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 016ddd0f65c26104db2ad88d4f9edaff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1865198131
 GameObject:
   m_ObjectHideFlags: 0
@@ -3306,7 +3319,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17f4cb6d6b0294948ae122c9f980d72a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _cooldown: 1
   _forsePower: 1000
+  _stunDuration: 5
 --- !u!54 &2103672606
 Rigidbody:
   m_ObjectHideFlags: 0

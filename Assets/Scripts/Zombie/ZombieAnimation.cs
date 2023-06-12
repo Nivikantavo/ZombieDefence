@@ -12,6 +12,8 @@ public class ZombieAnimation : MonoBehaviour
     private const string Attack = "Attack";
     private const string StandUp = "StandUp";
 
+    public string StandUpStateName => StandUp;
+
     [SerializeField] private Animator _animator;
 
     public void SetIdle()
