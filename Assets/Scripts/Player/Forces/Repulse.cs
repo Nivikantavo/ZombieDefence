@@ -42,9 +42,11 @@ public class Repulse : Force
     {
         foreach(var zombie in _zombies)
         {
+            Vector3 forceDirection = (zombie.transform.position - transform.position).normalized;
             Rigidbody rigidbody = zombie.GetComponentInChildren<Rigidbody>();
             zombie.Stun(_stunDuration);
-            rigidbody.AddForce(Vector3.forward * _forsePower, ForceMode.Force);
+
+            rigidbody.AddForce(forceDirection * _forsePower, ForceMode.Impulse);
         }
     }
 }

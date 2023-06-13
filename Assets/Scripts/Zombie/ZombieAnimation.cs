@@ -10,15 +10,31 @@ public class ZombieAnimation : MonoBehaviour
     private const string Run = "Run";
     private const string Crawl = "Crawl";
     private const string Attack = "Attack";
-    private const string StandUp = "StandUp";
+    private const string FaceUpStandUp = "FaceUpStandUp";
+    private const string FaceDownStandUp = "FaceDownStandUp";
+    private const string Hit = "Hit";
 
-    public string StandUpStateName => StandUp;
+    public string FaceUpStateName => FaceUpStandUp;
+    public string FaceDownStateName => FaceDownStandUp;
 
     [SerializeField] private Animator _animator;
+    [SerializeField] private ZombieMovment _movment;
+    [SerializeField] private float _hitReactionDelay;
+
+    private float _elapsedHitTime = 0;
+
+    private void Update()
+    {
+        if(_elapsedHitTime < _hitReactionDelay)
+        {
+            _elapsedHitTime += Time.deltaTime;
+        }
+    }
 
     public void SetIdle()
     {
         DisableAll();
+        _movment.Stop();
         _animator.SetBool(Idle, true);
     }
 
@@ -37,12 +53,26 @@ public class ZombieAnimation : MonoBehaviour
     public void SetAttack()
     {
         DisableAll();
+        _movment.Stop();
         _animator.SetTrigger(Attack);
     }
-    public void SetStandUp()
+    public void SetStandUp(bool faceUp)
     {
         DisableAll();
-        _animator.SetTrigger(StandUp);
+        _movment.Stop();
+
+        string clipName = faceUp ? FaceUpStandUp : FaceDownStandUp;
+        _animator.SetTrigger(clipName);
+    }
+
+    public void SetHit()
+    {
+        if(_elapsedHitTime > _hitReactionDelay)
+        {
+            _movment.Stop();
+            _animator.SetTrigger(Hit);
+            _elapsedHitTime = 0;
+        }
     }
 
     private void DisableAll()

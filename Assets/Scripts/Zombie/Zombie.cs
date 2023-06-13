@@ -13,9 +13,12 @@ public class Zombie : MonoBehaviour, Idamageable
     [SerializeField] private Target _target;
     [SerializeField] private float _maxHealth;
     [SerializeField] private StunState _stunState;
+    [SerializeField] private ZombieAnimation _animation;
 
     private float _currentHealth;
     private float _stunDuration;
+
+    public event UnityAction Hit;
 
     private void Awake()
     {
@@ -31,6 +34,8 @@ public class Zombie : MonoBehaviour, Idamageable
     public void TakeDamage(float damage)
     {
         _currentHealth -= damage;
+        _animation.SetHit();
+        Hit?.Invoke();
     }
 
     public void Stun(float duratin)
