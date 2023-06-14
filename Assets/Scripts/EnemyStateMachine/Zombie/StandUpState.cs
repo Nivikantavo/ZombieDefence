@@ -153,7 +153,6 @@ public class StandUpState : State
         Vector3 positionBeforeSampling = transform.position;
         Quaternion rotationBeforeSampling = transform.rotation;
         string clipName = facingUp ? _animation.FaceUpStateName : _animation.FaceDownStateName;
-        Debug.Log(clipName);
         foreach (AnimationClip clip in _animator.runtimeAnimatorController.animationClips)
         {
             if (clip.name == clipName)
