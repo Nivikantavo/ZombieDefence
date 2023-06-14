@@ -1,16 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Target : MonoBehaviour, Idamageable
 {
     public int MaxAttacersCount => _maxAttackersCount;
+    public float MaxHealth => _maxHealth;
 
     [SerializeField] private int _maxAttackersCount;
     [SerializeField] private float _maxHealth;
 
     private float _currentHealth;
     private int _currentAttackersCount = 0;
+
+    public event UnityAction<float> HealthChanged;
 
     private void Awake()
     {
@@ -30,6 +34,7 @@ public class Target : MonoBehaviour, Idamageable
     public void TakeDamage(float damage)
     {
         _currentHealth -= damage;
+        HealthChanged?.Invoke(_currentHealth);
         if (_currentHealth < 0)
         {
             Die();
