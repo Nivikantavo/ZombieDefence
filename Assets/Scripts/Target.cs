@@ -7,6 +7,7 @@ public class Target : MonoBehaviour, Idamageable
 {
     public int MaxAttacersCount => _maxAttackersCount;
     public float MaxHealth => _maxHealth;
+    public float CurrentHealth => _currentHealth;
 
     [SerializeField] private int _maxAttackersCount;
     [SerializeField] private float _maxHealth;
@@ -16,7 +17,7 @@ public class Target : MonoBehaviour, Idamageable
 
     public event UnityAction<float> HealthChanged;
 
-    private void Awake()
+    protected virtual void Awake()
     {
         _currentHealth = _maxHealth;
     }

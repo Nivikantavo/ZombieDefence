@@ -10,7 +10,10 @@ public class Player : Target
     {
         if (Input.GetKey(KeyCode.E))
         {
-            _force.UseForce();
+            if(_force != null)
+            {
+                _force.UseForce();
+            }
         }
     }
 }

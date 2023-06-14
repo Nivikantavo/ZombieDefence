@@ -1,31 +1,34 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class HealthBar : MonoBehaviour
+public class HealthBar : Bar
 {
     [SerializeField] private Target _target;
-    [SerializeField] private Slider _healthBar;
+    [SerializeField] private TMP_Text _valueText;
 
     private void Start()
     {
-        _healthBar.maxValue = _target.MaxHealth;
-        _healthBar.value = _target.MaxHealth;
+        Slider.maxValue = _target.MaxHealth;
+        Slider.value = _target.CurrentHealth;
+        _valueText.text = $"{_target.CurrentHealth} / {_target.MaxHealth}";
     }
 
     private void OnEnable()
     {
-        _target.HealthChanged += OnHealthChanged;
+        _target.HealthChanged += OnTrackingValueChanged;
     }
 
     private void OnDisable()
     {
-        _target.HealthChanged -= OnHealthChanged;
+        _target.HealthChanged -= OnTrackingValueChanged;
     }
 
-    private void OnHealthChanged(float newValue)
+    protected override IEnumerator SetBarValue(float newValue)
     {
-        _healthBar.value = newValue;
+        _valueText.text = $"{newValue} / {_target.MaxHealth}";
+        return base.SetBarValue(newValue);
     }
 }
