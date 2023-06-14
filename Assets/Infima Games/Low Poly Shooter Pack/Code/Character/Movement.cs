@@ -2,6 +2,7 @@
 
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace InfimaGames.LowPolyShooterPack
 {
@@ -158,6 +159,8 @@ namespace InfimaGames.LowPolyShooterPack
         /// If true, the character controller is crouched.
         /// </summary>
         private bool crouching;
+
+        public event UnityAction JumpEnd;
         
         #endregion
 
@@ -191,7 +194,14 @@ namespace InfimaGames.LowPolyShooterPack
             isGrounded = IsGrounded();
             //Check if it has changed from last frame.
             if (isGrounded && !wasGrounded)
+            {
+                if(jumping == true)
+                {
+                    JumpEnd?.Invoke();
+                }
                 jumping = false;
+            }
+                
             
             //Move.
             MoveCharacter();

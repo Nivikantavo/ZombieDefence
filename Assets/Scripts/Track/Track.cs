@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Track : Target
 {
@@ -10,11 +11,15 @@ public class Track : Target
     [SerializeField] private BoxCollider _collider;
     [SerializeField] private float _maxFuel;
     [SerializeField] private float _fillingTime;
+    [SerializeField] private float _fillingStep;
 
     private float _currentFuel;
 
-    private void Awake()
+    public event UnityAction<float> FuelUpdate;
+
+    protected override void Awake()
     {
+        base.Awake();
         _currentFuel = 0;
     }
 
@@ -30,13 +35,12 @@ public class Track : Target
 
     private IEnumerator FillUpTank()
     {
-        WaitForSeconds fillDelay = new WaitForSeconds(_fillingTime / 100);
-
+        WaitForSeconds fillDelay = new WaitForSeconds(_fillingTime / (_maxFuel / _fillingStep));
         while(_currentFuel < _maxFuel)
         {
             _currentFuel++;
+            FuelUpdate?.Invoke(_currentFuel);
             yield return fillDelay;
         }
-        
     }
 }
