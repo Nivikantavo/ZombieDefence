@@ -14,6 +14,7 @@ public class SeekState : State
 
     private float _lastAttackTime = 0;
     private bool _canAttack = false;
+    private Vector3 _attackPosition;
 
     private void Update()
     {
@@ -22,8 +23,8 @@ public class SeekState : State
 
     private void Seek()
     {
-        Vector3 attackPosition = _zombie.Target.GetClosesetPositin(transform.position);
-        _canAttack = _lastAttackTime > _attackDelay && Vector3.Distance(transform.position, attackPosition) < _attackDistance;
+        _attackPosition = _zombie.Target.GetClosesetPositin(transform.position);
+        _canAttack = _lastAttackTime > _attackDelay && Vector3.Distance(transform.position, _attackPosition) < _attackDistance;
 
         if (_lastAttackTime < _attackDelay)
         {
@@ -36,7 +37,7 @@ public class SeekState : State
         }
         else
         {
-            _movment.MoveToTarget(attackPosition);
+            _movment.MoveToTarget(_attackPosition);
         }
     }
 
@@ -49,7 +50,7 @@ public class SeekState : State
 
     public void AnimationHit()
     {
-        if (Vector3.Distance(transform.position, _zombie.Target.transform.position) <= _attackDistance)
+        if (Vector3.Distance(transform.position, _attackPosition) <= _attackDistance)
         {
             _zombie.Target.TakeDamage(_damage);
         }
