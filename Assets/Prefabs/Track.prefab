@@ -131,6 +131,9 @@ MonoBehaviour:
   _maxAttackersCount: 10
   _maxHealth: 1000
   _collider: {fileID: 3457249910588132389}
+  _maxFuel: 0
+  _fillingTime: 0
+  _fillingStep: 0
 --- !u!1 &3457716208718710725
 GameObject:
   m_ObjectHideFlags: 0
@@ -231,7 +234,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 1
   m_StaticEditorFlags: 8
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &3455854328070872739
 Transform:
   m_ObjectHideFlags: 0
@@ -392,6 +395,7 @@ GameObject:
   - component: {fileID: 3426521503140548205}
   - component: {fileID: 3434478426601391619}
   - component: {fileID: 3457249910588132389}
+  - component: {fileID: 1936978274450968729}
   m_Layer: 0
   m_Name: TrackBody
   m_TagString: Untagged
@@ -481,10 +485,24 @@ BoxCollider:
   m_GameObject: {fileID: 3457783176263820155}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 2.4299817, y: 2.4786785, z: 5.6451015}
   m_Center: {x: 0.00000071525574, y: 1.2944576, z: 0.12892628}
+--- !u!64 &1936978274450968729
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3457783176263820155}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4300000, guid: cf2d7742fdc5b394788641965413e325, type: 3}
 --- !u!1 &3457910135396914419
 GameObject:
   m_ObjectHideFlags: 0

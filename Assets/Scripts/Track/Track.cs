@@ -8,7 +8,7 @@ public class Track : Target
     public float MaxFuel => _maxFuel;
     public float CurrentFuel => _currentFuel;
 
-    [SerializeField] private BoxCollider _collider;
+    [SerializeField] private Collider _collider;
     [SerializeField] private float _maxFuel;
     [SerializeField] private float _fillingTime;
     [SerializeField] private float _fillingStep;
