@@ -15,8 +15,9 @@ public class JumpSlam : Force
     private CapsuleCollider _explosionCollider;
     private List<Zombie> _zombies = new List<Zombie>();
 
-    private void Awake()
+    protected override void Awake()
     {
+        base.Awake();
         _explosionCollider = GetComponent<CapsuleCollider>();
         _explosionCollider.radius = _explosionRadius;
     }
@@ -55,19 +56,24 @@ public class JumpSlam : Force
 
     public override void UseForce()
     {
+        StartCoroutine(Slam());
         base.UseForce();
-        Slam();
     }
 
-    private void Slam()
+    private IEnumerator Slam()
     {
-        Debug.Log("Force");
-        foreach (var zombie in _zombies)
+        if(LastUseTime > Cooldown)
         {
-            Rigidbody rigidbody = zombie.GetComponentInChildren<Rigidbody>();
-            zombie.Stun(_stunDuration);
+            foreach (var zombie in _zombies)
+            {
+                Rigidbody rigidbody = zombie.GetComponentInChildren<Rigidbody>();
+                RagDoll ragDoll = zombie.GetComponent<RagDoll>();
+                zombie.Stun(_stunDuration);
 
-            rigidbody.AddExplosionForce(_explosionForce, transform.position, _explosionRadius, _upForce, ForceMode.Impulse);
+                yield return ragDoll.GetActiveStatus();
+
+                rigidbody.AddExplosionForce(_explosionForce, transform.position, _explosionRadius, _upForce, ForceMode.Impulse);
+            }
         }
     }
 }

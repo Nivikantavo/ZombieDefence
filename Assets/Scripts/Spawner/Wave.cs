@@ -5,13 +5,13 @@ using UnityEngine;
 [System.Serializable]
 public class Wave : ObjectPool
 {
-    public int Count;
+    public int ZombieCount;
     public float DelayBetweenSpawn;
     public float DelayAfterWave;
     public GameObject EnemyTemplate;
 
     private void Awake()
     {
-        Initialize(EnemyTemplate, Count);
+        Initialize(EnemyTemplate, ZombieCount);
     }
 }

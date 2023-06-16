@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class RagDoll : MonoBehaviour
 {
+    public bool Active { get; private set; }
+
     [SerializeField] private Animator _animator;
     [SerializeField] private DieState _dieState;
     [SerializeField] private StunState _stunState;
@@ -39,9 +41,9 @@ public class RagDoll : MonoBehaviour
         {
             rigidbody.isKinematic = true;
         }
-        AlignPositionToHips();
         _zombieMovment.enabled = true;
         _animator.enabled = true;
+        Active = false;
     }
 
     private void ActivateRagDoll()
@@ -53,18 +55,14 @@ public class RagDoll : MonoBehaviour
         _zombieMovment.Stop();
         _zombieMovment.enabled = false;
         _animator.enabled = false;
+        Active = true;
     }
 
-    private void AlignPositionToHips()
+    public IEnumerator GetActiveStatus()
     {
-        Vector3 originalHipsPositin = _hipsBone.position;
-        transform.position = _hipsBone.position;
-
-        if (Physics.Raycast(transform.position, Vector3.down, out RaycastHit hit))
+        while(Active == false)
         {
-            transform.position = new Vector3(transform.position.x, hit.point.y, transform.position.z);
+            yield return null;
         }
-
-        _hipsBone.position = originalHipsPositin;
     }
 }
