@@ -699,7 +699,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 2772998879729382802}
   m_FillRect: {fileID: 2772998881317606932}
   m_HandleRect: {fileID: 0}
@@ -958,6 +958,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 547354615876259373, guid: e70d1890897144eca99b04a5b032e432, type: 3}
+      propertyPath: m_Interactable
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 547354616485024005, guid: e70d1890897144eca99b04a5b032e432, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -1057,6 +1061,10 @@ PrefabInstance:
     - target: {fileID: 3407992116871264828, guid: afcbd52fbcba840d6a0220f2aaf698d9, type: 3}
       propertyPath: m_enableAutoSizing
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3407992117320627975, guid: afcbd52fbcba840d6a0220f2aaf698d9, type: 3}
+      propertyPath: m_Interactable
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3407992117320627976, guid: afcbd52fbcba840d6a0220f2aaf698d9, type: 3}
       propertyPath: m_Pivot.x

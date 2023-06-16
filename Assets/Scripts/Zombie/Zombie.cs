@@ -33,9 +33,12 @@ public class Zombie : MonoBehaviour, Idamageable
 
     public void TakeDamage(float damage)
     {
-        _currentHealth -= damage;
-        _animation.SetHit();
-        Hit?.Invoke();
+        if(_currentHealth > 0)
+        {
+            _currentHealth -= damage;
+            _animation.SetHit();
+            Hit?.Invoke();
+        }
     }
 
     public void Stun(float duratin)
@@ -44,7 +47,7 @@ public class Zombie : MonoBehaviour, Idamageable
         Standig = false;
     }
 
-    public void Initialize(Target target)
+    public void SetTarget(Target target)
     {
         _target = target;
     }
