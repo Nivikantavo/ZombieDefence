@@ -4,23 +4,28 @@ using UnityEngine;
 
 public class Force : MonoBehaviour
 {
-    [SerializeField] private float _cooldown;
+    [SerializeField] protected float Cooldown;
 
-    private float _lastUseTime;
+    protected float LastUseTime;
+
+    protected virtual void Awake()
+    {
+        LastUseTime = Cooldown;
+    }
 
     private void Update()
     {
-        if(_lastUseTime <= _cooldown)
+        if(LastUseTime <= Cooldown)
         {
-            _lastUseTime += Time.deltaTime;
+            LastUseTime += Time.deltaTime;
         }
     }
 
     public virtual void UseForce()
     {
-        if(_lastUseTime > _cooldown)
+        if(LastUseTime > Cooldown)
         {
-            return;
+            LastUseTime = 0;
         }
     }
 }

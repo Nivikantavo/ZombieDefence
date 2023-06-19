@@ -5,12 +5,12 @@ using UnityEngine;
 
 public class SeekState : State
 {
-    [SerializeField] private float _attackDistance;
+    [SerializeField] protected float AttackDistance;
     [SerializeField] private float _attackDelay;
     [SerializeField] private float _damage;
-    [SerializeField] private ZombieMovment _movment;
     [SerializeField] private ZombieAnimation _animation;
-    [SerializeField] private Zombie _zombie;
+    [SerializeField] protected ZombieMovment Movment;
+    [SerializeField] protected Zombie Zombie;
 
     private float _lastAttackTime = 0;
     private bool _canAttack = false;
@@ -23,8 +23,10 @@ public class SeekState : State
 
     private void Seek()
     {
-        _attackPosition = _zombie.Target.GetClosesetPositin(transform.position);
-        _canAttack = _lastAttackTime > _attackDelay && Vector3.Distance(transform.position, _attackPosition) < _attackDistance;
+        _attackPosition = Zombie.Target.GetClosesetPositin(transform.position);
+        _canAttack = _lastAttackTime > _attackDelay && Vector3.Distance(transform.position, _attackPosition) < AttackDistance;
+
+        Movment.LookAtTarget(Zombie.Target.transform);
 
         if (_lastAttackTime < _attackDelay)
         {
@@ -35,24 +37,24 @@ public class SeekState : State
         {
             Attack();
         }
-        else
+        else if(Vector3.Distance(transform.position, _attackPosition) > AttackDistance)
         {
-            _movment.MoveToTarget(_attackPosition);
+            Movment.MoveToTarget(_attackPosition);
         }
     }
 
-    private void Attack()
+    protected virtual void Attack()
     {
-        _movment.Stop();
+        Movment.Stop();
         _animation.SetAttack();
         _lastAttackTime = 0;
     }
 
     public void AnimationHit()
     {
-        if (Vector3.Distance(transform.position, _attackPosition) <= _attackDistance)
+        if (Vector3.Distance(transform.position, _attackPosition) <= AttackDistance)
         {
-            _zombie.Target.TakeDamage(_damage);
+            Zombie.Target.TakeDamage(_damage);
         }
     }
 }

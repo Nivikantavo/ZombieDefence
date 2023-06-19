@@ -1,5 +1,4 @@
 using System.Collections;
-using TMPro.EditorUtilities;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -35,5 +34,15 @@ public class ZombieMovment : MonoBehaviour
     public void Stop()
     {
         _agent.isStopped = true;
+    }
+
+    public void SetStoppingDistance(float newDistance)
+    {
+        _agent.stoppingDistance = newDistance;
+    }
+
+    public void LookAtTarget(Transform target)
+    {
+        transform.rotation = Quaternion.LookRotation((target.position - transform.position).normalized);
     }
 }

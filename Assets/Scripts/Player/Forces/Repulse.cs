@@ -34,19 +34,25 @@ public class Repulse : Force
 
     public override void UseForce()
     {
+        StartCoroutine(ReleasePulse());
         base.UseForce();
-        ReleasePulse();
     }
 
-    private void ReleasePulse()
+    private IEnumerator ReleasePulse()
     {
-        foreach(var zombie in _zombies)
+        if(LastUseTime > Cooldown)
         {
-            Vector3 forceDirection = (zombie.transform.position - transform.position).normalized;
-            Rigidbody rigidbody = zombie.GetComponentInChildren<Rigidbody>();
-            zombie.Stun(_stunDuration);
+            foreach (var zombie in _zombies)
+            {
+                Vector3 forceDirection = (zombie.transform.position - transform.position).normalized;
+                Rigidbody rigidbody = zombie.GetComponentInChildren<Rigidbody>();
+                RagDoll ragDoll = zombie.GetComponent<RagDoll>();
+                zombie.Stun(_stunDuration);
 
-            rigidbody.AddForce(forceDirection * _forsePower, ForceMode.Impulse);
+                yield return ragDoll.GetActiveStatus();
+
+                rigidbody.AddForce(forceDirection * _forsePower, ForceMode.Impulse);
+            }
         }
     }
 }

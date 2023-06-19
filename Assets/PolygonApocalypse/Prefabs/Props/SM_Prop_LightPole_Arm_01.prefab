@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 33531299360879146}
   - component: {fileID: 23209629059822404}
   - component: {fileID: 95808703987079526}
-  - component: {fileID: 1146199248076400672}
   m_Layer: 0
   m_Name: SM_Prop_LightPole_Arm_01
   m_TagString: Untagged
@@ -105,16 +104,3 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!65 &1146199248076400672
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1616533898862270}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.21565017, y: 0.66902876, z: 6.219209}
-  m_Center: {x: 0.004206829, y: 4.686343, z: 3.0055454}
