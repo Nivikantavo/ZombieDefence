@@ -26411,10 +26411,6 @@ PrefabInstance:
       propertyPath: _forsePower
       value: 300
       objectReference: {fileID: 0}
-    - target: {fileID: 175169087984674501, guid: be81f15462f628443975a2390ab28d8d, type: 3}
-      propertyPath: _currentVariant
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 2613158985840325698, guid: be81f15462f628443975a2390ab28d8d, type: 3}
       propertyPath: m_Name
       value: Player
