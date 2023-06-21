@@ -26,7 +26,6 @@ public class CoinsPool : ObjectPool
         }
 
         spawned.transform.position = spawnPosition + _spawnOffset;
-        spawned.GetComponent<Coin>().Spawn();
         spawned.SetActive(true);
     }
 }

@@ -35,4 +35,14 @@ public class ZombieMovment : MonoBehaviour
     {
         _agent.isStopped = true;
     }
+
+    public void SetStoppingDistance(float newDistance)
+    {
+        _agent.stoppingDistance = newDistance;
+    }
+
+    public void LookAtTarget(Transform target)
+    {
+        transform.rotation = Quaternion.LookRotation((target.position - transform.position).normalized);
+    }
 }

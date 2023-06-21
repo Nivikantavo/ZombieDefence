@@ -201,12 +201,12 @@ MonoBehaviour:
   _transitions:
   - {fileID: 5427802231856808143}
   - {fileID: 3098829869662515061}
-  _attackDistance: 1.7
+  AttackDistance: 0
   _attackDelay: 2
   _damage: 5
-  _movment: {fileID: 5633919890731990342}
   _animation: {fileID: 5633919890731990340}
-  _zombie: {fileID: 5633919890731990343}
+  Movment: {fileID: 5633919890731990342}
+  Zombie: {fileID: 5633919890731990343}
 --- !u!114 &788321643231296889
 MonoBehaviour:
   m_ObjectHideFlags: 0

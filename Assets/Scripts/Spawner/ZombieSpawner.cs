@@ -17,8 +17,6 @@ public class ZombieSpawner : MonoBehaviour
     private Wave _currentWave;
     private int _currentWaveNumber = 0;
 
-    public event UnityAction<Vector3> NeedSpawnCoin;
-
     private void Awake()
     {
         foreach (var wave in _waves)
