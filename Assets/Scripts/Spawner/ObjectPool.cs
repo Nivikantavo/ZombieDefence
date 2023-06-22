@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class ObjectPool : MonoBehaviour
 {
-    [SerializeField] private GameObject _conteiter;
+    [SerializeField] protected GameObject _conteiter;
 
     private List<GameObject> _pool = new List<GameObject>();
 
-    protected void Initialize(GameObject prefab, int capacity)
+    protected virtual void Initialize(GameObject prefab, int capacity)
     {
         for (int i = 0; i < capacity; i++)
         {

@@ -6,10 +6,12 @@ using UnityEngine.Events;
 public class ZombieSpawner : MonoBehaviour
 {
     public int ZombieCount { get; private set; }
+    public int RangeZombieCount { get; private set; }
 
     [SerializeField] private Player _player;
     [SerializeField] private Track _track;
     [SerializeField] private CoinsPool _coinsPool;
+    [SerializeField] private MissilePool _missilePool;
     [SerializeField] private List<Wave> _waves;
     [SerializeField] private List<Transform> _spawnPoints;
 
@@ -22,6 +24,10 @@ public class ZombieSpawner : MonoBehaviour
         foreach (var wave in _waves)
         {
             ZombieCount += wave.ZombieCount;
+            if(wave.EnemyTemplate.TryGetComponent<RangeSeekState>(out RangeSeekState rangeSeekState))
+            {
+                RangeZombieCount += wave.ZombieCount;
+            }
         }
     }
 
@@ -68,6 +74,12 @@ public class ZombieSpawner : MonoBehaviour
         _currentWave.TryGetObject(out GameObject enemy);
         enemy.transform.position = _spawnPoints[spawnPointNumber].position;
         enemy.GetComponent<TargetSwitcher>().Initialize(_player, _track);
+
+        if(enemy.TryGetComponent<RangeSeekState>(out RangeSeekState rangeSeekState))
+        {
+            rangeSeekState.SetMissilePool(_missilePool);
+        }
+
         enemy.gameObject.SetActive(true);
         AddInList(enemy);
     }

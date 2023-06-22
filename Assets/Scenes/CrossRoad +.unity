@@ -32171,6 +32171,10 @@ PrefabInstance:
       propertyPath: ZombieCount
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 9122517823776272655, guid: f77190f7212485c45a37e06483986b07, type: 3}
+      propertyPath: EnemyTemplate
+      value: 
+      objectReference: {fileID: 6207982866044808240, guid: 1acfa4d44c9f70945b65e5a657b61fd7, type: 3}
     - target: {fileID: 9122517823969463694, guid: f77190f7212485c45a37e06483986b07, type: 3}
       propertyPath: m_LocalPosition.x
       value: -41.7
@@ -32191,6 +32195,10 @@ PrefabInstance:
       propertyPath: _coinsPool
       value: 
       objectReference: {fileID: 944056115}
+    - target: {fileID: 9122517824210635068, guid: f77190f7212485c45a37e06483986b07, type: 3}
+      propertyPath: _missilePool
+      value: 
+      objectReference: {fileID: 2146374027}
     - target: {fileID: 9122517824210635068, guid: f77190f7212485c45a37e06483986b07, type: 3}
       propertyPath: _spawnPoints.Array.size
       value: 4
@@ -32271,10 +32279,18 @@ PrefabInstance:
       propertyPath: ZombieCount
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 9122517824403587318, guid: f77190f7212485c45a37e06483986b07, type: 3}
+      propertyPath: EnemyTemplate
+      value: 
+      objectReference: {fileID: 1950201464240969781, guid: 2984b4e26c11be84ebf98bf967b6381a, type: 3}
     - target: {fileID: 9122517824961858327, guid: f77190f7212485c45a37e06483986b07, type: 3}
       propertyPath: ZombieCount
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 9122517824961858327, guid: f77190f7212485c45a37e06483986b07, type: 3}
+      propertyPath: EnemyTemplate
+      value: 
+      objectReference: {fileID: 6207982866044808240, guid: 1acfa4d44c9f70945b65e5a657b61fd7, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f77190f7212485c45a37e06483986b07, type: 3}
 --- !u!114 &1279349235 stripped
@@ -54195,3 +54211,51 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4234942047651768, guid: a2483fbde120a8c4a86e0e53b2f21afc, type: 3}
   m_PrefabInstance: {fileID: 2144238896}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &2146374026
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2146374028}
+  - component: {fileID: 2146374027}
+  m_Layer: 0
+  m_Name: MissilePool
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &2146374027
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2146374026}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cdee3d1b7d2353543bf345b52c132d08, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _conteiter: {fileID: 2146374026}
+  _missileTemplate: {fileID: 1948591290861370, guid: dac2c445d8eb2c54dbfedcf8b149d3ed, type: 3}
+  _zombieSpawner: {fileID: 1279349235}
+  _missilsPerZombie: 3
+--- !u!4 &2146374028
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2146374026}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -7.199959, y: -2.1532083, z: 38.895767}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

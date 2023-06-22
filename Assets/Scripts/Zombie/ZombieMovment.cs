@@ -43,6 +43,8 @@ public class ZombieMovment : MonoBehaviour
 
     public void LookAtTarget(Transform target)
     {
-        transform.rotation = Quaternion.LookRotation((target.position - transform.position).normalized);
+        Vector3 targetDirection = target.position - transform.position;
+        Vector3 forward = new Vector3(targetDirection.x, transform.position.y, targetDirection.z);
+        transform.rotation = Quaternion.LookRotation(forward, Vector3.up);
     }
 }
