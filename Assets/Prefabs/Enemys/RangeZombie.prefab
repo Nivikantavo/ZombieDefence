@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6088762224073907400}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0.108, y: 0.099, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -8164,7 +8164,7 @@ GameObject:
   - component: {fileID: 6211429000256134756}
   - component: {fileID: 6211429000256134757}
   m_Layer: 0
-  m_Name: ZombieVariant
+  m_Name: RangeZombie
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8386,7 +8386,7 @@ MonoBehaviour:
   _transitions:
   - {fileID: 6211429000256134776}
   - {fileID: 6211429000256134778}
-  AttackDistance: 8
+  AttackDistance: 10
   _attackDelay: 5
   _damage: 0
   _animation: {fileID: 6211429000256134772}
@@ -8395,7 +8395,7 @@ MonoBehaviour:
   _missile: {fileID: 180543300370531999, guid: 5b458db675b6c7349bc204fae4bf7612, type: 3}
   _shotPoint: {fileID: 1399639809640593611}
   _throwingAngle: 45
-  _yOffset: 1.3
+  _yOffset: 1.6
 --- !u!114 &6211429000256134780
 MonoBehaviour:
   m_ObjectHideFlags: 0

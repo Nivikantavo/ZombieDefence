@@ -13,10 +13,9 @@ public class SeekState : State
     [SerializeField] protected Zombie Zombie;
 
     private float _lastAttackTime = 0;
-    private bool _canAttack = false;
     private Vector3 _attackPosition;
 
-    private void Update()
+    protected virtual void Update()
     {
         Seek();
     }
@@ -24,20 +23,21 @@ public class SeekState : State
     private void Seek()
     {
         _attackPosition = Zombie.Target.GetClosesetPositin(transform.position);
-        _canAttack = _lastAttackTime > _attackDelay && Vector3.Distance(transform.position, _attackPosition) < AttackDistance;
-
-        Movment.LookAtTarget(Zombie.Target.transform);
 
         if (_lastAttackTime < _attackDelay)
         {
             _lastAttackTime += Time.deltaTime;
         }
 
-        if (_canAttack)
+        if (Vector3.Distance(transform.position, _attackPosition) < AttackDistance)
         {
-            Attack();
+            Movment.LookAtTarget(Zombie.Target.transform);
+            if (_lastAttackTime > _attackDelay)
+            {
+                Attack();
+            }
         }
-        else if(Vector3.Distance(transform.position, _attackPosition) > AttackDistance)
+        else
         {
             Movment.MoveToTarget(_attackPosition);
         }

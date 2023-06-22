@@ -3057,6 +3057,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _magnetizationRadius: 2
   _magnetizationForce: 1
+  _coinCollecter: {fileID: 6020230762934783284}
 --- !u!1 &6303639034639922846
 GameObject:
   m_ObjectHideFlags: 0

@@ -7,9 +7,9 @@ public class Zombie : MonoBehaviour, Idamageable
 {
     public float StunDuration => _stunDuration;
     public float CurrentHealth => _currentHealth;
-    public bool Standig { get; private set; }
     public Target Target => _target;
-
+    public bool Standig { get; private set; }
+    
     [SerializeField] private Target _target;
     [SerializeField] private float _maxHealth;
     [SerializeField] private StunState _stunState;
@@ -35,6 +35,7 @@ public class Zombie : MonoBehaviour, Idamageable
     {
         if(_currentHealth > 0)
         {
+            Debug.Log(damage);
             _currentHealth -= damage;
             _animation.SetHit();
             Hit?.Invoke();
