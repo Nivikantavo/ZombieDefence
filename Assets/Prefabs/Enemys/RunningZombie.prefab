@@ -7,6 +7,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1989180554571530209, guid: 756cf7b1f633c254680d06a4315aa5c8, type: 3}
+      propertyPath: _maxIntensity
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 5632080403386624829, guid: 756cf7b1f633c254680d06a4315aa5c8, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -17,7 +21,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5633919890731990331, guid: 756cf7b1f633c254680d06a4315aa5c8, type: 3}
       propertyPath: m_Name
-      value: Zombie Variant
+      value: RunningZombie
       objectReference: {fileID: 0}
     - target: {fileID: 5633919890731990331, guid: 756cf7b1f633c254680d06a4315aa5c8, type: 3}
       propertyPath: m_TagString

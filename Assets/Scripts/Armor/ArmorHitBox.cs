@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ArmorHitBox : HitBox
 {
-    [SerializeField] private Helmet _helmet;
+    [SerializeField] private ArmorElement _helmet;
 
     protected override void Awake()
     {

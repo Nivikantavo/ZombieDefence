@@ -1,12 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
-public class Helmet : MonoBehaviour, Idamageable
+public class ArmorElement : MonoBehaviour, Idamageable
 {
     [SerializeField] private float _maxHealth;
 
     private float _currentHealth;
+
+    public event UnityAction Hit;
 
     private void Awake()
     {
@@ -15,9 +18,10 @@ public class Helmet : MonoBehaviour, Idamageable
 
     public void TakeDamage(float damage)
     {
+        Debug.Log(_currentHealth);
         _currentHealth -= damage;
-
-        if(_currentHealth < 0)
+        Hit?.Invoke();
+        if (_currentHealth < 0)
         {
             BreakDown();
         }
