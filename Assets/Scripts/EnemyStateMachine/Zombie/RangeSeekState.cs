@@ -29,7 +29,7 @@ public class RangeSeekState : SeekState
     public void ThrowMissile()
     {
         Vector3 fromTo = Zombie.Target.transform.position - transform.position;
-        Vector3 fromToXZ = new Vector3(fromTo.x, _yOffset, fromTo.z);
+        Vector3 fromToXZ = new Vector3(fromTo.x, 0, fromTo.z);
 
         _shotPoint.transform.rotation = Quaternion.LookRotation(new Vector3(fromTo.x, fromTo.y + _yOffset, fromTo.z));
 
@@ -39,10 +39,10 @@ public class RangeSeekState : SeekState
         float angelInRadians = _throwingAngle * Mathf.PI / 180;
 
         float throwingSpeedSquare = (_gravityForce * XDistance * XDistance) / (2 * (YDistance - Mathf.Tan(angelInRadians) * XDistance) * Mathf.Pow(Mathf.Cos(angelInRadians), 2));
-        float throwingSpeed = Mathf.Sqrt(Mathf.Abs(throwingSpeedSquare));
+        float throwingSpeed = Mathf.Sqrt(Mathf.Abs(throwingSpeedSquare)) * 1.3f;
 
         _missile.transform.parent = _missilePool.Container.transform;
-        _missile.GetComponent<Rigidbody>().velocity = _shotPoint.forward * throwingSpeed;
+        _missile.GetComponent<Rigidbody>().velocity = _shotPoint.forward * throwingSpeed * _yOffset;
         _missile.Throw();
         _missile = null;
     }

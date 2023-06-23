@@ -1287,10 +1287,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ca48ff1304a38a48b57293a2b27285f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _maxIntensity: 5
+  _duration: 0.2
+  _color: {r: 1, g: 1, b: 1, a: 1}
   _zombie: {fileID: 8442072147314796571}
-  _effectIntensity: 2
-  _effectDuration: 0.2
-  _effectColor: {r: 1, g: 1, b: 1, a: 1}
 --- !u!114 &8442072147314796555
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10158,27 +10158,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4120715626345144, guid: cfe86ff67def9cd4bb8dc14105e1b710, type: 3}
       propertyPath: m_LocalScale.x
-      value: 1.07
+      value: 1.1
       objectReference: {fileID: 0}
     - target: {fileID: 4120715626345144, guid: cfe86ff67def9cd4bb8dc14105e1b710, type: 3}
       propertyPath: m_LocalScale.y
-      value: 1.07
+      value: 1.1
       objectReference: {fileID: 0}
     - target: {fileID: 4120715626345144, guid: cfe86ff67def9cd4bb8dc14105e1b710, type: 3}
       propertyPath: m_LocalScale.z
-      value: 1.07
+      value: 1.1
       objectReference: {fileID: 0}
     - target: {fileID: 4120715626345144, guid: cfe86ff67def9cd4bb8dc14105e1b710, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 4120715626345144, guid: cfe86ff67def9cd4bb8dc14105e1b710, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -0.013
       objectReference: {fileID: 0}
     - target: {fileID: 4120715626345144, guid: cfe86ff67def9cd4bb8dc14105e1b710, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 0.012
       objectReference: {fileID: 0}
     - target: {fileID: 4120715626345144, guid: cfe86ff67def9cd4bb8dc14105e1b710, type: 3}
       propertyPath: m_LocalRotation.w
@@ -10263,6 +10263,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _damageRatio: 1
   _helmet: {fileID: 8642359444362747487}
+--- !u!114 &5006739319433197061
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3414883819857515983}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7fbcb503e9af3644b985a2ae3803d5c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _maxIntensity: 10
+  _duration: 0.2
+  _color: {r: 1, g: 1, b: 1, a: 1}
+  _armor: {fileID: 8642359444362747487}
 --- !u!114 &8642359444362747487
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10276,6 +10292,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _maxHealth: 25
+--- !u!138 &1500209408303812764
+FixedJoint:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3414883819857515983}
+  m_ConnectedBody: {fileID: 8447983772916580733}
+  m_ConnectedArticulationBody: {fileID: 0}
+  m_BreakForce: Infinity
+  m_BreakTorque: Infinity
+  m_EnableCollision: 0
+  m_EnablePreprocessing: 1
+  m_MassScale: 1
+  m_ConnectedMassScale: 1
 --- !u!4 &3417845180271265161 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4120715626345144, guid: cfe86ff67def9cd4bb8dc14105e1b710, type: 3}

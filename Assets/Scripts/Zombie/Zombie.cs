@@ -35,7 +35,6 @@ public class Zombie : MonoBehaviour, Idamageable
     {
         if(_currentHealth > 0)
         {
-            Debug.Log(damage);
             _currentHealth -= damage;
             _animation.SetHit();
             Hit?.Invoke();

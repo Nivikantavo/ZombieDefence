@@ -343,10 +343,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ca48ff1304a38a48b57293a2b27285f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _maxIntensity: 5
+  _duration: 0.2
+  _color: {r: 1, g: 1, b: 1, a: 1}
   _zombie: {fileID: 5633919890731990343}
-  _effectIntensity: 2
-  _effectDuration: 0.2
-  _effectColor: {r: 1, g: 1, b: 1, a: 1}
 --- !u!114 &7405384492906248994
 MonoBehaviour:
   m_ObjectHideFlags: 0
