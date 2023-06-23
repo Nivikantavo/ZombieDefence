@@ -8284,7 +8284,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _target: {fileID: 0}
-  _maxHealth: 100
+  _maxHealth: 25
   _stunState: {fileID: 6211429000256134780}
   _animation: {fileID: 6211429000256134772}
 --- !u!114 &6211429000256134774
@@ -8392,7 +8392,6 @@ MonoBehaviour:
   _animation: {fileID: 6211429000256134772}
   Movment: {fileID: 6211429000256134774}
   Zombie: {fileID: 6211429000256134773}
-  _missile: {fileID: 180543300370531999, guid: 5b458db675b6c7349bc204fae4bf7612, type: 3}
   _shotPoint: {fileID: 1399639809640593611}
   _throwingAngle: 45
   _yOffset: 1.6
