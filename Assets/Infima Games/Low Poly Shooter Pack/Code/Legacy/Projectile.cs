@@ -87,7 +87,14 @@ namespace InfimaGames.LowPolyShooterPack.Legacy
 			if(collision.gameObject.TryGetComponent<HitBox>(out HitBox hitBox))
 			{
                 hitBox.OnHit(_damage);
+				Debug.Log("hitbox");
 			}
+
+			if(collision.gameObject.TryGetComponent<Idamageable>(out Idamageable damageable))
+			{
+				damageable.TakeDamage(_damage);
+                Debug.Log("Idamageable");
+            }
 
 			//If bullet collides with "Blood" tag
 			if (collision.transform.tag == "Blood")
