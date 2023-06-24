@@ -32,7 +32,6 @@ public class Bomb : MonoBehaviour, Idamageable
 
     public void BlowUp()
     {
-        Debug.Log("Explosion");
         RaycastHit checkGround;
         if (Physics.Raycast(transform.position, Vector3.down, out checkGround, 50))
         {
