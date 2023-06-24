@@ -44361,6 +44361,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1580294496, guid: e723aeaeb11bb6d4e9c4ee487af1fa1a, type: 3}
+      propertyPath: _track
+      value: 
+      objectReference: {fileID: 948791922}
+    - target: {fileID: 1580294496, guid: e723aeaeb11bb6d4e9c4ee487af1fa1a, type: 3}
+      propertyPath: _player
+      value: 
+      objectReference: {fileID: 1064808751}
+    - target: {fileID: 1580294496, guid: e723aeaeb11bb6d4e9c4ee487af1fa1a, type: 3}
+      propertyPath: _zombieSpawner
+      value: 
+      objectReference: {fileID: 1279349235}
     - target: {fileID: 599186966981082218, guid: e723aeaeb11bb6d4e9c4ee487af1fa1a, type: 3}
       propertyPath: _target
       value: 
@@ -53029,6 +53041,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1161561094}
     m_Modifications:
+    - target: {fileID: 1155505703426036, guid: 974ab4ab5090b1a4b98992c7e5f563ff, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1155505703426036, guid: 974ab4ab5090b1a4b98992c7e5f563ff, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 8

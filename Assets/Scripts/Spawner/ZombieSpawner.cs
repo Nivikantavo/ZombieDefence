@@ -18,6 +18,9 @@ public class ZombieSpawner : MonoBehaviour
     private List<DieState> _zombiesDieStates = new List<DieState>();
     private Wave _currentWave;
     private int _currentWaveNumber = 0;
+    private int _deadZombie = 0;
+
+    public event UnityAction AllZombieDied;
 
     private void Awake()
     {
@@ -88,6 +91,7 @@ public class ZombieSpawner : MonoBehaviour
     {
         DieState dieState = zombie.GetComponent<DieState>();
         dieState.NeedSpawnCoin += OnNeedSpawnCoin;
+        dieState.ZombieDied += OnZombieDied;
         _zombiesDieStates.Add(dieState);
     }
 
@@ -103,5 +107,14 @@ public class ZombieSpawner : MonoBehaviour
     private void OnNeedSpawnCoin(Vector3 spawnPosition)
     {
         _coinsPool.SpawnCoin(spawnPosition);
+    }
+
+    private void OnZombieDied()
+    {
+        _deadZombie++;
+        if(_deadZombie >= ZombieCount)
+        {
+            AllZombieDied?.Invoke();
+        }
     }
 }

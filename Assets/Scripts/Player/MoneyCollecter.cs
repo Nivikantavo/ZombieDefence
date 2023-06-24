@@ -29,7 +29,7 @@ public class MoneyCollecter : MonoBehaviour
     {
         _coinsCount += coin.Count;
         coin.Collect();
-        //CoinCollected?.Invoke(coin);
+        CoinCollected?.Invoke(coin);
         coin.gameObject.SetActive(false);
     }
 }
