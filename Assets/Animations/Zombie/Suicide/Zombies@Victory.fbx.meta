@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: e9d5665bca90cec42ab5be6037ed8923
+guid: 90703540c6411ee4b948ebd75db672f5
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
@@ -33,11 +33,11 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Throw
+      name: Victory
       takeName: mixamo.com
       internalID: -203655887218126122
       firstFrame: 0
-      lastFrame: 146
+      lastFrame: 135
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -56,21 +56,7 @@ ModelImporter:
       mirror: 0
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
-      events:
-      - time: 0.20812182
-        functionName: TryGetObjectFromPool
-        data: 
-        objectReferenceParameter: {instanceID: 0}
-        floatParameter: 0
-        intParameter: 0
-        messageOptions: 0
-      - time: 0.5076142
-        functionName: ThrowMissile
-        data: 
-        objectReferenceParameter: {instanceID: 0}
-        floatParameter: 0
-        intParameter: 0
-        messageOptions: 0
+      events: []
       transformMask: []
       maskType: 3
       maskSource: {instanceID: 0}
@@ -291,22 +277,6 @@ ModelImporter:
         value: {x: 0, y: 0, z: 0}
         length: 0
         modified: 0
-    - boneName: Jaw
-      humanName: LeftEye
-      limit:
-        min: {x: 0, y: 0, z: 0}
-        max: {x: 0, y: 0, z: 0}
-        value: {x: 0, y: 0, z: 0}
-        length: 0
-        modified: 0
-    - boneName: Eyebrows
-      humanName: Jaw
-      limit:
-        min: {x: 0, y: 0, z: 0}
-        max: {x: 0, y: 0, z: 0}
-        value: {x: 0, y: 0, z: 0}
-        length: 0
-        modified: 0
     - boneName: Thumb_01
       humanName: Left Thumb Proximal
       limit:
@@ -349,30 +319,6 @@ ModelImporter:
         modified: 0
     - boneName: IndexFinger_03
       humanName: Left Index Distal
-      limit:
-        min: {x: 0, y: 0, z: 0}
-        max: {x: 0, y: 0, z: 0}
-        value: {x: 0, y: 0, z: 0}
-        length: 0
-        modified: 0
-    - boneName: Finger_01
-      humanName: Left Little Proximal
-      limit:
-        min: {x: 0, y: 0, z: 0}
-        max: {x: 0, y: 0, z: 0}
-        value: {x: 0, y: 0, z: 0}
-        length: 0
-        modified: 0
-    - boneName: Finger_02
-      humanName: Left Little Intermediate
-      limit:
-        min: {x: 0, y: 0, z: 0}
-        max: {x: 0, y: 0, z: 0}
-        value: {x: 0, y: 0, z: 0}
-        length: 0
-        modified: 0
-    - boneName: Finger_03
-      humanName: Left Little Distal
       limit:
         min: {x: 0, y: 0, z: 0}
         max: {x: 0, y: 0, z: 0}
@@ -427,30 +373,6 @@ ModelImporter:
         value: {x: 0, y: 0, z: 0}
         length: 0
         modified: 0
-    - boneName: Finger_01 1
-      humanName: Right Little Proximal
-      limit:
-        min: {x: 0, y: 0, z: 0}
-        max: {x: 0, y: 0, z: 0}
-        value: {x: 0, y: 0, z: 0}
-        length: 0
-        modified: 0
-    - boneName: Finger_02 1
-      humanName: Right Little Intermediate
-      limit:
-        min: {x: 0, y: 0, z: 0}
-        max: {x: 0, y: 0, z: 0}
-        value: {x: 0, y: 0, z: 0}
-        length: 0
-        modified: 0
-    - boneName: Finger_03 1
-      humanName: Right Little Distal
-      limit:
-        min: {x: 0, y: 0, z: 0}
-        max: {x: 0, y: 0, z: 0}
-        value: {x: 0, y: 0, z: 0}
-        length: 0
-        modified: 0
     - boneName: Spine_03
       humanName: UpperChest
       limit:
@@ -459,291 +381,239 @@ ModelImporter:
         value: {x: 0, y: 0, z: 0}
         length: 0
         modified: 0
+    - boneName: Finger_01
+      humanName: Left Middle Proximal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Finger_02
+      humanName: Left Middle Intermediate
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Finger_03
+      humanName: Left Middle Distal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Finger_01 1
+      humanName: Right Middle Proximal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Finger_02 1
+      humanName: Right Middle Intermediate
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Finger_03 1
+      humanName: Right Middle Distal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
     skeleton:
-    - name: Zombies(Clone)
+    - name: Characters(Clone)
       parentName: 
       position: {x: 0, y: 0, z: 0}
       rotation: {x: 0, y: 0, z: 0, w: 1}
       scale: {x: 1, y: 1, z: 1}
-    - name: Zombie_Bellboy_Male_01
-      parentName: Zombies(Clone)
+    - name: SM_Chr_Biker_Male_01
+      parentName: Characters(Clone)
       position: {x: -0, y: 0, z: 0}
       rotation: {x: 0, y: -0, z: -0, w: 1}
       scale: {x: 1, y: 1, z: 1}
-    - name: Zombie_Biker_Male_01
-      parentName: Zombies(Clone)
+    - name: SM_Chr_Business_Male_01
+      parentName: Characters(Clone)
       position: {x: -0, y: 0, z: 0}
       rotation: {x: 0, y: -0, z: -0, w: 1}
       scale: {x: 1, y: 1, z: 1}
-    - name: Zombie_BioHazardSuit_Male_01
-      parentName: Zombies(Clone)
+    - name: SM_Chr_Cool_Female_01
+      parentName: Characters(Clone)
       position: {x: -0, y: 0, z: 0}
       rotation: {x: 0, y: -0, z: -0, w: 1}
       scale: {x: 1, y: 1, z: 1}
-    - name: Zombie_Bride_Female_01
-      parentName: Zombies(Clone)
+    - name: SM_Chr_Cool_Male_01
+      parentName: Characters(Clone)
+      position: {x: -15.698556, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: SM_Chr_Criminal_Male_01
+      parentName: Characters(Clone)
       position: {x: -0, y: 0, z: 0}
       rotation: {x: 0, y: -0, z: -0, w: 1}
       scale: {x: 1, y: 1, z: 1}
-    - name: Zombie_Business_Female_01
-      parentName: Zombies(Clone)
+    - name: SM_Chr_Eastern_Female_01
+      parentName: Characters(Clone)
       position: {x: -0, y: 0, z: 0}
       rotation: {x: 0, y: -0, z: -0, w: 1}
       scale: {x: 1, y: 1, z: 1}
-    - name: Zombie_Businessman_Male_01
-      parentName: Zombies(Clone)
+    - name: SM_Chr_Emo_Female_01
+      parentName: Characters(Clone)
       position: {x: -0, y: 0, z: 0}
       rotation: {x: 0, y: -0, z: -0, w: 1}
       scale: {x: 1, y: 1, z: 1}
-    - name: Zombie_BusinessShirt_Male_01
-      parentName: Zombies(Clone)
+    - name: SM_Chr_Hazmat_Male_01
+      parentName: Characters(Clone)
       position: {x: -0, y: 0, z: 0}
       rotation: {x: 0, y: -0, z: -0, w: 1}
       scale: {x: 1, y: 1, z: 1}
-    - name: Zombie_Cheerleader_Female_01
-      parentName: Zombies(Clone)
+    - name: SM_Chr_Homeless_Male_01
+      parentName: Characters(Clone)
       position: {x: -0, y: 0, z: 0}
       rotation: {x: 0, y: -0, z: -0, w: 1}
       scale: {x: 1, y: 1, z: 1}
-    - name: Zombie_Clown_Male_01
-      parentName: Zombies(Clone)
+    - name: SM_Chr_Hunter_Male_01
+      parentName: Characters(Clone)
       position: {x: -0, y: 0, z: 0}
       rotation: {x: 0, y: -0, z: -0, w: 1}
       scale: {x: 1, y: 1, z: 1}
-    - name: Zombie_Coat_Female_01
-      parentName: Zombies(Clone)
+    - name: SM_Chr_Islander_Male_01
+      parentName: Characters(Clone)
       position: {x: -0, y: 0, z: 0}
       rotation: {x: 0, y: -0, z: -0, w: 1}
       scale: {x: 1, y: 1, z: 1}
-    - name: Zombie_Daughter_Female_01
-      parentName: Zombies(Clone)
+    - name: SM_Chr_Mechanic_Female_01
+      parentName: Characters(Clone)
       position: {x: -0, y: 0, z: 0}
       rotation: {x: 0, y: -0, z: -0, w: 1}
       scale: {x: 1, y: 1, z: 1}
-    - name: Zombie_Diver_Male_01
-      parentName: Zombies(Clone)
+    - name: SM_Chr_Nerd_Female_01
+      parentName: Characters(Clone)
       position: {x: -0, y: 0, z: 0}
       rotation: {x: 0, y: -0, z: -0, w: 1}
       scale: {x: 1, y: 1, z: 1}
-    - name: Zombie_FastfoodWorker_Male_01
-      parentName: Zombies(Clone)
+    - name: SM_Chr_Nun_Female_01
+      parentName: Characters(Clone)
       position: {x: -0, y: 0, z: 0}
       rotation: {x: 0, y: -0, z: -0, w: 1}
       scale: {x: 1, y: 1, z: 1}
-    - name: Zombie_Father_Male_01
-      parentName: Zombies(Clone)
+    - name: SM_Chr_Patient_Female_01
+      parentName: Characters(Clone)
       position: {x: -0, y: 0, z: 0}
       rotation: {x: 0, y: -0, z: -0, w: 1}
       scale: {x: 1, y: 1, z: 1}
-    - name: Zombie_Father_Male_02
-      parentName: Zombies(Clone)
+    - name: SM_Chr_Press_Male_01
+      parentName: Characters(Clone)
       position: {x: -0, y: 0, z: 0}
       rotation: {x: 0, y: -0, z: -0, w: 1}
       scale: {x: 1, y: 1, z: 1}
-    - name: Zombie_Firefighter_Male_01
-      parentName: Zombies(Clone)
+    - name: SM_Chr_Punk_Female_01
+      parentName: Characters(Clone)
       position: {x: -0, y: 0, z: 0}
       rotation: {x: 0, y: -0, z: -0, w: 1}
       scale: {x: 1, y: 1, z: 1}
-    - name: Zombie_Footballer_Male_01
-      parentName: Zombies(Clone)
+    - name: SM_Chr_RiotCop_Male_01
+      parentName: Characters(Clone)
       position: {x: -0, y: 0, z: 0}
       rotation: {x: 0, y: -0, z: -0, w: 1}
       scale: {x: 1, y: 1, z: 1}
-    - name: Zombie_GamerGirl_Female_01
-      parentName: Zombies(Clone)
+    - name: SM_Chr_Scout_Female_01
+      parentName: Characters(Clone)
+      position: {x: -4.2011557, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: SM_Chr_Sheriff_Male_01
+      parentName: Characters(Clone)
       position: {x: -0, y: 0, z: 0}
       rotation: {x: 0, y: -0, z: -0, w: 1}
       scale: {x: 1, y: 1, z: 1}
-    - name: Zombie_Gangster_Male_01
-      parentName: Zombies(Clone)
+    - name: SM_Chr_Soldier_Female_01
+      parentName: Characters(Clone)
       position: {x: -0, y: 0, z: 0}
       rotation: {x: 0, y: -0, z: -0, w: 1}
       scale: {x: 1, y: 1, z: 1}
-    - name: Zombie_Grandma_Female_01
-      parentName: Zombies(Clone)
+    - name: SM_Chr_Soldier_Male_01
+      parentName: Characters(Clone)
       position: {x: -0, y: 0, z: 0}
       rotation: {x: 0, y: -0, z: -0, w: 1}
       scale: {x: 1, y: 1, z: 1}
-    - name: Zombie_Grandpa_Male_01
-      parentName: Zombies(Clone)
+    - name: SM_Chr_Teen_Female_01
+      parentName: Characters(Clone)
       position: {x: -0, y: 0, z: 0}
       rotation: {x: 0, y: -0, z: -0, w: 1}
       scale: {x: 1, y: 1, z: 1}
-    - name: Zombie_Hipster_Female_01
-      parentName: Zombies(Clone)
+    - name: SM_Chr_Teen_Male_01
+      parentName: Characters(Clone)
       position: {x: -0, y: 0, z: 0}
       rotation: {x: 0, y: -0, z: -0, w: 1}
       scale: {x: 1, y: 1, z: 1}
-    - name: Zombie_Hipster_Male_01
-      parentName: Zombies(Clone)
+    - name: SM_Chr_Waitress_Female_01
+      parentName: Characters(Clone)
       position: {x: -0, y: 0, z: 0}
       rotation: {x: 0, y: -0, z: -0, w: 1}
       scale: {x: 1, y: 1, z: 1}
-    - name: Zombie_Hobo_Male_01
-      parentName: Zombies(Clone)
+    - name: SM_Chr_Wanderer_Male_01
+      parentName: Characters(Clone)
       position: {x: -0, y: 0, z: 0}
       rotation: {x: 0, y: -0, z: -0, w: 1}
       scale: {x: 1, y: 1, z: 1}
-    - name: Zombie_Hoodie_Male_01
-      parentName: Zombies(Clone)
+    - name: SM_Chr_Zombie_Female_01
+      parentName: Characters(Clone)
       position: {x: -0, y: 0, z: 0}
       rotation: {x: 0, y: -0, z: -0, w: 1}
       scale: {x: 1, y: 1, z: 1}
-    - name: Zombie_HotDogSuit_Male_01
-      parentName: Zombies(Clone)
+    - name: SM_Chr_Zombie_Female_02
+      parentName: Characters(Clone)
       position: {x: -0, y: 0, z: 0}
       rotation: {x: 0, y: -0, z: -0, w: 1}
       scale: {x: 1, y: 1, z: 1}
-    - name: Zombie_Jacket_Female_01
-      parentName: Zombies(Clone)
+    - name: SM_Chr_Zombie_Male_01
+      parentName: Characters(Clone)
       position: {x: -0, y: 0, z: 0}
       rotation: {x: 0, y: -0, z: -0, w: 1}
       scale: {x: 1, y: 1, z: 1}
-    - name: Zombie_Jacket_Male_01
-      parentName: Zombies(Clone)
-      position: {x: -0, y: 0, z: 0}
-      rotation: {x: 0, y: -0, z: -0, w: 1}
-      scale: {x: 1, y: 1, z: 1}
-    - name: Zombie_Jock_Male_01
-      parentName: Zombies(Clone)
-      position: {x: -0, y: 0, z: 0}
-      rotation: {x: 0, y: -0, z: -0, w: 1}
-      scale: {x: 1, y: 1, z: 1}
-    - name: Zombie_Military_Male_01
-      parentName: Zombies(Clone)
-      position: {x: -0, y: 0, z: 0}
-      rotation: {x: 0, y: -0, z: -0, w: 1}
-      scale: {x: 1, y: 1, z: 1}
-    - name: Zombie_Mother_Female_01
-      parentName: Zombies(Clone)
-      position: {x: -0, y: 0, z: 0}
-      rotation: {x: 0, y: -0, z: -0, w: 1}
-      scale: {x: 1, y: 1, z: 1}
-    - name: Zombie_Mother_Female_02
-      parentName: Zombies(Clone)
-      position: {x: -0, y: 0, z: 0}
-      rotation: {x: 0, y: -0, z: -0, w: 1}
-      scale: {x: 1, y: 1, z: 1}
-    - name: Zombie_Paramedic_Female_01
-      parentName: Zombies(Clone)
-      position: {x: -0, y: 0, z: 0}
-      rotation: {x: 0, y: -0, z: -0, w: 1}
-      scale: {x: 1, y: 1, z: 1}
-    - name: Zombie_Patient_Female_01
-      parentName: Zombies(Clone)
-      position: {x: -0, y: 0, z: 0}
-      rotation: {x: 0, y: -0, z: -0, w: 1}
-      scale: {x: 1, y: 1, z: 1}
-    - name: Zombie_Police_Female_01
-      parentName: Zombies(Clone)
-      position: {x: -0, y: 0, z: 0}
-      rotation: {x: 0, y: -0, z: -0, w: 1}
-      scale: {x: 1, y: 1, z: 1}
-    - name: Zombie_Police_Male_01
-      parentName: Zombies(Clone)
-      position: {x: -0, y: 0, z: 0}
-      rotation: {x: 0, y: -0, z: -0, w: 1}
-      scale: {x: 1, y: 1, z: 1}
-    - name: Zombie_Prisinor_Male_01
-      parentName: Zombies(Clone)
-      position: {x: -0, y: 0, z: 0}
-      rotation: {x: 0, y: -0, z: -0, w: 1}
-      scale: {x: 1, y: 1, z: 1}
-    - name: Zombie_Punk_Female_01
-      parentName: Zombies(Clone)
-      position: {x: -0, y: 0, z: 0}
-      rotation: {x: 0, y: -0, z: -0, w: 1}
-      scale: {x: 1, y: 1, z: 1}
-    - name: Zombie_Punk_Male_01
-      parentName: Zombies(Clone)
-      position: {x: -0, y: 0, z: 0}
-      rotation: {x: 0, y: -0, z: -0, w: 1}
-      scale: {x: 1, y: 1, z: 1}
-    - name: Zombie_RiotCop_Male_01
-      parentName: Zombies(Clone)
-      position: {x: -0, y: 0, z: 0}
-      rotation: {x: 0, y: -0, z: -0, w: 1}
-      scale: {x: 1, y: 1, z: 1}
-    - name: Zombie_Roadworker_Male_01
-      parentName: Zombies(Clone)
-      position: {x: -0, y: 0, z: 0}
-      rotation: {x: 0, y: -0, z: -0, w: 1}
-      scale: {x: 1, y: 1, z: 1}
-    - name: Zombie_SchoolBoy_Male_01
-      parentName: Zombies(Clone)
-      position: {x: -0, y: 0, z: 0}
-      rotation: {x: 0, y: -0, z: -0, w: 1}
-      scale: {x: 1, y: 1, z: 1}
-    - name: Zombie_SchoolGirl_Female_01
-      parentName: Zombies(Clone)
-      position: {x: -0, y: 0, z: 0}
-      rotation: {x: 0, y: -0, z: -0, w: 1}
-      scale: {x: 1, y: 1, z: 1}
-    - name: Zombie_ShopKeeper_Female_01
-      parentName: Zombies(Clone)
-      position: {x: -0, y: 0, z: 0}
-      rotation: {x: 0, y: -0, z: -0, w: 1}
-      scale: {x: 1, y: 1, z: 1}
-    - name: Zombie_ShopKeeper_Male_01
-      parentName: Zombies(Clone)
-      position: {x: -0, y: 0, z: 0}
-      rotation: {x: 0, y: -0, z: -0, w: 1}
-      scale: {x: 1, y: 1, z: 1}
-    - name: Zombie_Son_Male_01
-      parentName: Zombies(Clone)
-      position: {x: -0, y: 0, z: 0}
-      rotation: {x: 0, y: -0, z: -0, w: 1}
-      scale: {x: 1, y: 1, z: 1}
-    - name: Zombie_SummerGirl_Female_01
-      parentName: Zombies(Clone)
-      position: {x: -0, y: 0, z: 0}
-      rotation: {x: 0, y: -0, z: -0, w: 1}
-      scale: {x: 1, y: 1, z: 1}
-    - name: Zombie_Tourist_Male_01
-      parentName: Zombies(Clone)
-      position: {x: -0, y: 0, z: 0}
-      rotation: {x: 0, y: -0, z: -0, w: 1}
-      scale: {x: 1, y: 1, z: 1}
-    - name: Zombie_Underwear_Female_01
-      parentName: Zombies(Clone)
-      position: {x: -0, y: 0, z: 0}
-      rotation: {x: 0, y: -0, z: -0, w: 1}
-      scale: {x: 1, y: 1, z: 1}
-    - name: Zombie_Underwear_Male_01
-      parentName: Zombies(Clone)
+    - name: SM_Chr_Zombie_Male_02
+      parentName: Characters(Clone)
       position: {x: -0, y: 0, z: 0}
       rotation: {x: 0, y: -0, z: -0, w: 1}
       scale: {x: 1, y: 1, z: 1}
     - name: Root
-      parentName: Zombies(Clone)
-      position: {x: -0, y: 0, z: 0}
+      parentName: Characters(Clone)
+      position: {x: 0, y: 0.028015926, z: 0}
       rotation: {x: 0, y: -0, z: -0, w: 1}
       scale: {x: 1, y: 1, z: 1}
     - name: Hips
       parentName: Root
-      position: {x: 0, y: 0.904292, z: 0}
+      position: {x: -0, y: 0.8762761, z: 0}
       rotation: {x: 0.46113664, y: -0.5360532, z: -0.46113664, w: 0.5360532}
       scale: {x: 1, y: 1, z: 1}
     - name: Spine_01
       parentName: Hips
-      position: {x: -0.10393265, y: 1.7763568e-17, z: 6.923305e-17}
-      rotation: {x: 0.9950197, y: -0.09967895, z: 1.223222e-15, w: 6.1000944e-17}
+      position: {x: -0.10393265, y: 1.3322676e-17, z: 4.6155368e-17}
+      rotation: {x: 0.9950197, y: -0.09967895, z: 1.2986438e-15, w: 6.855654e-17}
       scale: {x: 1, y: 1, z: 1}
     - name: Spine_02
       parentName: Spine_01
-      position: {x: -0.18151169, y: 2.6645352e-17, z: -1.571043e-16}
-      rotation: {x: 0.99518615, y: -0.098002784, z: -3.6713833e-16, w: -9.7683155e-17}
+      position: {x: -0.18151169, y: 1.5543122e-17, z: -7.101073e-17}
+      rotation: {x: 0.99518615, y: -0.098002784, z: -6.0366487e-16, w: -1.2097554e-16}
       scale: {x: 1, y: 1, z: 1}
     - name: Spine_03
       parentName: Spine_02
-      position: {x: -0.17903724, y: 1.0658141e-16, z: 1.7801493e-16}
-      rotation: {x: 0.9938103, y: -0.11109032, z: -2.7205684e-16, w: -9.202483e-17}
+      position: {x: -0.17903724, y: 2.2204459e-17, z: 7.509725e-17}
+      rotation: {x: 0.9938103, y: -0.11109032, z: -7.955034e-16, w: -1.5053684e-16}
       scale: {x: 1, y: 1, z: 1}
     - name: Neck
       parentName: Spine_03
       position: {x: -0.111889675, y: -6.661338e-18, z: -4.6244128e-17}
-      rotation: {x: -3.7140232e-16, y: 1.2849276e-15, z: 0.04173335, w: 0.9991288}
+      rotation: {x: 7.053966e-17, y: 1.3040385e-15, z: 0.04173335, w: 0.9991288}
       scale: {x: 1, y: 1, z: 1}
     - name: Head
       parentName: Neck
@@ -762,7 +632,7 @@ ModelImporter:
       scale: {x: 1, y: 1, z: 1}
     - name: Jaw
       parentName: Head
-      position: {x: -1.5975625e-16, y: 0.062334336, z: 0.023799846}
+      position: {x: -0.000045919798, y: 0.06247511, z: 0.02164003}
       rotation: {x: 0, y: -0, z: -0, w: 1}
       scale: {x: 1, y: 1, z: 1}
     - name: Clavicle_L
@@ -858,7 +728,7 @@ ModelImporter:
     - name: Hand_R
       parentName: Elbow_R
       position: {x: 0.2711449, y: -2.842171e-16, z: 0.00038136088}
-      rotation: {x: -1.0083177e-16, y: -0.035830766, z: -1.1722682e-15, w: 0.9993579}
+      rotation: {x: -9.685131e-17, y: -0.035830766, z: -1.0612489e-15, w: 0.9993579}
       scale: {x: 1, y: 1, z: 1}
     - name: Thumb_01 1
       parentName: Hand_R
@@ -922,23 +792,23 @@ ModelImporter:
       scale: {x: 1, y: 1, z: 1}
     - name: LowerLeg_R
       parentName: UpperLeg_R
-      position: {x: -0.39930904, y: 7.105427e-17, z: 7.9936054e-17}
+      position: {x: -0.39930904, y: -6.883383e-17, z: -5.3342145e-17}
       rotation: {x: 0.64437777, y: 0.024462728, z: -0.00473771, w: 0.7643013}
       scale: {x: 1, y: 1, z: 1}
     - name: Ankle_R
       parentName: LowerLeg_R
-      position: {x: -0.3771235, y: 8.881784e-18, z: 7.105427e-17}
+      position: {x: -0.3771235, y: -7.771561e-17, z: 1.6819879e-16}
       rotation: {x: 0.85767007, y: 0.507213, z: 0.039752707, w: -0.0745436}
       scale: {x: 1, y: 1, z: 1}
     - name: Ball_R
       parentName: Ankle_R
       position: {x: -0.112840354, y: -1.1546319e-16, z: -2.113351e-17}
-      rotation: {x: -7.296576e-16, y: 1.162869e-15, z: -0.2700158, w: 0.96285594}
+      rotation: {x: -8.012619e-16, y: 1.2480334e-15, z: -0.2700158, w: 0.96285594}
       scale: {x: 1, y: 1, z: 1}
     - name: Toes_R
       parentName: Ball_R
       position: {x: -0.07295756, y: 2.040087e-18, z: 3.4087125e-18}
-      rotation: {x: 1.8856444e-14, y: -0.7071068, z: 1.8856444e-14, w: 0.7071068}
+      rotation: {x: 1.9013454e-14, y: -0.7071068, z: 1.9013454e-14, w: 0.7071068}
       scale: {x: 1, y: 1, z: 1}
     - name: UpperLeg_L
       parentName: Hips
@@ -947,7 +817,7 @@ ModelImporter:
       scale: {x: 1, y: 1, z: 1}
     - name: LowerLeg_L
       parentName: UpperLeg_L
-      position: {x: 0.3993092, y: -0.00000038050263, z: 1.8651746e-16}
+      position: {x: 0.3993092, y: -0.00000038050263, z: 1.4654943e-16}
       rotation: {x: 0.64437777, y: 0.024462728, z: -0.00473771, w: 0.7643013}
       scale: {x: 1, y: 1, z: 1}
     - name: Ankle_L
@@ -958,7 +828,7 @@ ModelImporter:
     - name: Ball_L
       parentName: Ankle_L
       position: {x: 0.112840325, y: -0.00000001684957, z: -7.105427e-17}
-      rotation: {x: 3.533937e-15, y: 4.8918194e-15, z: -0.2700158, w: 0.96285594}
+      rotation: {x: 3.3983913e-15, y: 4.813244e-15, z: -0.2700158, w: 0.96285594}
       scale: {x: 1, y: 1, z: 1}
     - name: Toes_L
       parentName: Ball_L
@@ -977,7 +847,7 @@ ModelImporter:
     hasTranslationDoF: 0
     hasExtraRoot: 1
     skeletonHasParents: 1
-  lastHumanDescriptionAvatarSource: {fileID: 9000000, guid: b20a3c10714a6ac439af479e3273de65, type: 3}
+  lastHumanDescriptionAvatarSource: {fileID: 9000000, guid: ffdfcb810f2918b4f8fe9f917f07bc78, type: 3}
   autoGenerateAvatarMappingIfUnspecified: 1
   animationType: 3
   humanoidOversampling: 1
