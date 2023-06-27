@@ -10275,6 +10275,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Wep_Bomb_Propane_01
       objectReference: {fileID: 0}
+    - target: {fileID: 2273524966437611736, guid: 7802a9b5a162bf440af12b726ec7b3ce, type: 3}
+      propertyPath: _radius
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 8172993944208150785, guid: 7802a9b5a162bf440af12b726ec7b3ce, type: 3}
       propertyPath: m_ConnectedBody
       value: 
