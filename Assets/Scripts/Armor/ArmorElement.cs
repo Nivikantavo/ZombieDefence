@@ -18,7 +18,6 @@ public class ArmorElement : MonoBehaviour, Idamageable
 
     public void TakeDamage(float damage)
     {
-        Debug.Log(_currentHealth);
         _currentHealth -= damage;
         Hit?.Invoke();
         if (_currentHealth < 0)
