@@ -13040,6 +13040,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Env_BackgroundCard_01 (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 1900698595858124, guid: cb6fffda3cc588a4a83419c6e2160bbf, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4214776062344456, guid: cb6fffda3cc588a4a83419c6e2160bbf, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -13225,6 +13229,10 @@ PrefabInstance:
     - target: {fileID: 1900698595858124, guid: cb6fffda3cc588a4a83419c6e2160bbf, type: 3}
       propertyPath: m_Name
       value: SM_Env_BackgroundCard_01 (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1900698595858124, guid: cb6fffda3cc588a4a83419c6e2160bbf, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4214776062344456, guid: cb6fffda3cc588a4a83419c6e2160bbf, type: 3}
       propertyPath: m_RootOrder
@@ -13558,6 +13566,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1636860873}
     m_Modifications:
+    - target: {fileID: 1107303198417516, guid: edf88c54e7daa8a439be3d69bb238252, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4064870996049918, guid: edf88c54e7daa8a439be3d69bb238252, type: 3}
       propertyPath: m_RootOrder
       value: 5
@@ -25182,6 +25194,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Env_BackgroundCard_01 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 1900698595858124, guid: cb6fffda3cc588a4a83419c6e2160bbf, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4214776062344456, guid: cb6fffda3cc588a4a83419c6e2160bbf, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -25819,6 +25835,10 @@ PrefabInstance:
     - target: {fileID: 1900698595858124, guid: cb6fffda3cc588a4a83419c6e2160bbf, type: 3}
       propertyPath: m_Name
       value: SM_Env_BackgroundCard_01 (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1900698595858124, guid: cb6fffda3cc588a4a83419c6e2160bbf, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4214776062344456, guid: cb6fffda3cc588a4a83419c6e2160bbf, type: 3}
       propertyPath: m_RootOrder
@@ -35660,6 +35680,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1636860873}
     m_Modifications:
+    - target: {fileID: 1900698595858124, guid: cb6fffda3cc588a4a83419c6e2160bbf, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4214776062344456, guid: cb6fffda3cc588a4a83419c6e2160bbf, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -35829,6 +35853,10 @@ PrefabInstance:
     - target: {fileID: 1107303198417516, guid: edf88c54e7daa8a439be3d69bb238252, type: 3}
       propertyPath: m_Name
       value: SM_Env_BackgroundCard_02 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1107303198417516, guid: edf88c54e7daa8a439be3d69bb238252, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4064870996049918, guid: edf88c54e7daa8a439be3d69bb238252, type: 3}
       propertyPath: m_RootOrder

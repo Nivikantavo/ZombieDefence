@@ -1,122 +1,344 @@
 fileFormatVersion: 2
 guid: 03336d372b3854043b18096209507e9b
 ModelImporter:
-  serializedVersion: 22
-  fileIDToRecycleName:
-    100000: Ankle_L
-    100002: Ankle_R
-    100004: Ball_L
-    100006: Ball_R
-    100008: Belly_01
-    100010: Clavicle_L
-    100012: Clavicle_R
-    100014: Elbow_L
-    100016: Elbow_R
-    100018: Eyebrows
-    100020: Eyes
-    100022: Finger_Index_01
-    100024: Finger_Index_01 1
-    100026: Finger_Index_02
-    100028: Finger_Index_02 1
-    100030: Finger_Index_03
-    100032: Finger_Index_03 1
-    100034: Finger_Index_04
-    100036: Finger_Index_04 1
-    100038: Finger_Ring_01
-    100040: Finger_Ring_01 1
-    100042: Finger_Ring_02
-    100044: Finger_Ring_02 1
-    100046: Finger_Ring_03
-    100048: Finger_Ring_03 1
-    100050: Finger_Ring_04
-    100052: Finger_Ring_04 1
-    100054: Hand_L
-    100056: Hand_R
-    100058: Head
-    100060: Hips
-    100062: Jaw
-    100064: LowerLeg_L
-    100066: LowerLeg_R
-    100068: Neck
-    100070: Root
-    100072: Shoulder_L
-    100074: Shoulder_R
-    100076: SM_Chr_ZombieBoss_Wretch_01
-    100078: Spine_01
-    100080: Spine_02
-    100082: Spine_03
-    100084: Thumb_01
-    100086: Thumb_01 1
-    100088: Thumb_02
-    100090: Thumb_02 1
-    100092: Thumb_03
-    100094: Thumb_03 1
-    100096: Toes_L
-    100098: Toes_R
-    100100: UpperLeg_L
-    100102: UpperLeg_R
-    100104: //RootNode
-    400000: Ankle_L
-    400002: Ankle_R
-    400004: Ball_L
-    400006: Ball_R
-    400008: Belly_01
-    400010: Clavicle_L
-    400012: Clavicle_R
-    400014: Elbow_L
-    400016: Elbow_R
-    400018: Eyebrows
-    400020: Eyes
-    400022: Finger_Index_01
-    400024: Finger_Index_01 1
-    400026: Finger_Index_02
-    400028: Finger_Index_02 1
-    400030: Finger_Index_03
-    400032: Finger_Index_03 1
-    400034: Finger_Index_04
-    400036: Finger_Index_04 1
-    400038: Finger_Ring_01
-    400040: Finger_Ring_01 1
-    400042: Finger_Ring_02
-    400044: Finger_Ring_02 1
-    400046: Finger_Ring_03
-    400048: Finger_Ring_03 1
-    400050: Finger_Ring_04
-    400052: Finger_Ring_04 1
-    400054: Hand_L
-    400056: Hand_R
-    400058: Head
-    400060: Hips
-    400062: Jaw
-    400064: LowerLeg_L
-    400066: LowerLeg_R
-    400068: Neck
-    400070: Root
-    400072: Shoulder_L
-    400074: Shoulder_R
-    400076: SM_Chr_ZombieBoss_Wretch_01
-    400078: Spine_01
-    400080: Spine_02
-    400082: Spine_03
-    400084: Thumb_01
-    400086: Thumb_01 1
-    400088: Thumb_02
-    400090: Thumb_02 1
-    400092: Thumb_03
-    400094: Thumb_03 1
-    400096: Toes_L
-    400098: Toes_R
-    400100: UpperLeg_L
-    400102: UpperLeg_R
-    400104: //RootNode
-    2100000: ZombieBoss_A
-    4300000: SM_Chr_ZombieBoss_Wretch_01
-    7400000: Take 001
-    9500000: //RootNode
-    13700000: SM_Chr_ZombieBoss_Wretch_01
+  serializedVersion: 21300
+  internalIDToNameTable:
+  - first:
+      1: 100000
+    second: Ankle_L
+  - first:
+      1: 100002
+    second: Ankle_R
+  - first:
+      1: 100004
+    second: Ball_L
+  - first:
+      1: 100006
+    second: Ball_R
+  - first:
+      1: 100008
+    second: Belly_01
+  - first:
+      1: 100010
+    second: Clavicle_L
+  - first:
+      1: 100012
+    second: Clavicle_R
+  - first:
+      1: 100014
+    second: Elbow_L
+  - first:
+      1: 100016
+    second: Elbow_R
+  - first:
+      1: 100018
+    second: Eyebrows
+  - first:
+      1: 100020
+    second: Eyes
+  - first:
+      1: 100022
+    second: Finger_Index_01
+  - first:
+      1: 100024
+    second: Finger_Index_01 1
+  - first:
+      1: 100026
+    second: Finger_Index_02
+  - first:
+      1: 100028
+    second: Finger_Index_02 1
+  - first:
+      1: 100030
+    second: Finger_Index_03
+  - first:
+      1: 100032
+    second: Finger_Index_03 1
+  - first:
+      1: 100034
+    second: Finger_Index_04
+  - first:
+      1: 100036
+    second: Finger_Index_04 1
+  - first:
+      1: 100038
+    second: Finger_Ring_01
+  - first:
+      1: 100040
+    second: Finger_Ring_01 1
+  - first:
+      1: 100042
+    second: Finger_Ring_02
+  - first:
+      1: 100044
+    second: Finger_Ring_02 1
+  - first:
+      1: 100046
+    second: Finger_Ring_03
+  - first:
+      1: 100048
+    second: Finger_Ring_03 1
+  - first:
+      1: 100050
+    second: Finger_Ring_04
+  - first:
+      1: 100052
+    second: Finger_Ring_04 1
+  - first:
+      1: 100054
+    second: Hand_L
+  - first:
+      1: 100056
+    second: Hand_R
+  - first:
+      1: 100058
+    second: Head
+  - first:
+      1: 100060
+    second: Hips
+  - first:
+      1: 100062
+    second: Jaw
+  - first:
+      1: 100064
+    second: LowerLeg_L
+  - first:
+      1: 100066
+    second: LowerLeg_R
+  - first:
+      1: 100068
+    second: Neck
+  - first:
+      1: 100070
+    second: Root
+  - first:
+      1: 100072
+    second: Shoulder_L
+  - first:
+      1: 100074
+    second: Shoulder_R
+  - first:
+      1: 100076
+    second: SM_Chr_ZombieBoss_Wretch_01
+  - first:
+      1: 100078
+    second: Spine_01
+  - first:
+      1: 100080
+    second: Spine_02
+  - first:
+      1: 100082
+    second: Spine_03
+  - first:
+      1: 100084
+    second: Thumb_01
+  - first:
+      1: 100086
+    second: Thumb_01 1
+  - first:
+      1: 100088
+    second: Thumb_02
+  - first:
+      1: 100090
+    second: Thumb_02 1
+  - first:
+      1: 100092
+    second: Thumb_03
+  - first:
+      1: 100094
+    second: Thumb_03 1
+  - first:
+      1: 100096
+    second: Toes_L
+  - first:
+      1: 100098
+    second: Toes_R
+  - first:
+      1: 100100
+    second: UpperLeg_L
+  - first:
+      1: 100102
+    second: UpperLeg_R
+  - first:
+      1: 100104
+    second: //RootNode
+  - first:
+      4: 400000
+    second: Ankle_L
+  - first:
+      4: 400002
+    second: Ankle_R
+  - first:
+      4: 400004
+    second: Ball_L
+  - first:
+      4: 400006
+    second: Ball_R
+  - first:
+      4: 400008
+    second: Belly_01
+  - first:
+      4: 400010
+    second: Clavicle_L
+  - first:
+      4: 400012
+    second: Clavicle_R
+  - first:
+      4: 400014
+    second: Elbow_L
+  - first:
+      4: 400016
+    second: Elbow_R
+  - first:
+      4: 400018
+    second: Eyebrows
+  - first:
+      4: 400020
+    second: Eyes
+  - first:
+      4: 400022
+    second: Finger_Index_01
+  - first:
+      4: 400024
+    second: Finger_Index_01 1
+  - first:
+      4: 400026
+    second: Finger_Index_02
+  - first:
+      4: 400028
+    second: Finger_Index_02 1
+  - first:
+      4: 400030
+    second: Finger_Index_03
+  - first:
+      4: 400032
+    second: Finger_Index_03 1
+  - first:
+      4: 400034
+    second: Finger_Index_04
+  - first:
+      4: 400036
+    second: Finger_Index_04 1
+  - first:
+      4: 400038
+    second: Finger_Ring_01
+  - first:
+      4: 400040
+    second: Finger_Ring_01 1
+  - first:
+      4: 400042
+    second: Finger_Ring_02
+  - first:
+      4: 400044
+    second: Finger_Ring_02 1
+  - first:
+      4: 400046
+    second: Finger_Ring_03
+  - first:
+      4: 400048
+    second: Finger_Ring_03 1
+  - first:
+      4: 400050
+    second: Finger_Ring_04
+  - first:
+      4: 400052
+    second: Finger_Ring_04 1
+  - first:
+      4: 400054
+    second: Hand_L
+  - first:
+      4: 400056
+    second: Hand_R
+  - first:
+      4: 400058
+    second: Head
+  - first:
+      4: 400060
+    second: Hips
+  - first:
+      4: 400062
+    second: Jaw
+  - first:
+      4: 400064
+    second: LowerLeg_L
+  - first:
+      4: 400066
+    second: LowerLeg_R
+  - first:
+      4: 400068
+    second: Neck
+  - first:
+      4: 400070
+    second: Root
+  - first:
+      4: 400072
+    second: Shoulder_L
+  - first:
+      4: 400074
+    second: Shoulder_R
+  - first:
+      4: 400076
+    second: SM_Chr_ZombieBoss_Wretch_01
+  - first:
+      4: 400078
+    second: Spine_01
+  - first:
+      4: 400080
+    second: Spine_02
+  - first:
+      4: 400082
+    second: Spine_03
+  - first:
+      4: 400084
+    second: Thumb_01
+  - first:
+      4: 400086
+    second: Thumb_01 1
+  - first:
+      4: 400088
+    second: Thumb_02
+  - first:
+      4: 400090
+    second: Thumb_02 1
+  - first:
+      4: 400092
+    second: Thumb_03
+  - first:
+      4: 400094
+    second: Thumb_03 1
+  - first:
+      4: 400096
+    second: Toes_L
+  - first:
+      4: 400098
+    second: Toes_R
+  - first:
+      4: 400100
+    second: UpperLeg_L
+  - first:
+      4: 400102
+    second: UpperLeg_R
+  - first:
+      4: 400104
+    second: //RootNode
+  - first:
+      21: 2100000
+    second: ZombieBoss_A
+  - first:
+      43: 4300000
+    second: SM_Chr_ZombieBoss_Wretch_01
+  - first:
+      74: 7400000
+    second: Take 001
+  - first:
+      95: 9500000
+    second: //RootNode
+  - first:
+      137: 13700000
+    second: SM_Chr_ZombieBoss_Wretch_01
   externalObjects: {}
   materials:
-    importMaterials: 0
+    materialImportMode: 0
     materialName: 0
     materialSearch: 1
     materialLocation: 1
@@ -125,6 +347,7 @@ ModelImporter:
     bakeSimulation: 0
     resampleCurves: 1
     optimizeGameObjects: 0
+    removeConstantScaleCurves: 0
     motionNodeName: 
     rigImportErrors: 
     rigImportWarnings: 
@@ -133,6 +356,7 @@ ModelImporter:
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
     importAnimatedCustomProperties: 0
+    importConstraints: 0
     animationCompression: 3
     animationRotationError: 0.5
     animationPositionError: 0.5
@@ -145,34 +369,49 @@ ModelImporter:
   meshes:
     lODScreenPercentages: []
     globalScale: 1
-    meshCompression: 0
+    meshCompression: 3
     addColliders: 0
+    useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
     importVisibility: 0
     importBlendShapes: 0
     importCameras: 0
     importLights: 0
+    nodeNameCollisionStrategy: 0
+    fileIdsGeneration: 1
     swapUVChannels: 0
     generateSecondaryUV: 0
     useFileUnits: 1
-    optimizeMeshForGPU: 0
     keepQuads: 0
     weldVertices: 0
+    bakeAxisConversion: 0
     preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    optimizeBones: 1
+    meshOptimizationFlags: 1
     indexFormat: 0
     secondaryUVAngleDistortion: 8
     secondaryUVAreaDistortion: 15.000001
     secondaryUVHardAngle: 88
+    secondaryUVMarginMethod: 0
+    secondaryUVMinLightmapResolution: 40
+    secondaryUVMinObjectScale: 1
     secondaryUVPackMargin: 4
     useFileScale: 1
   tangentSpace:
     normalSmoothAngle: 0
     normalImportMode: 1
-    tangentImportMode: 3
+    tangentImportMode: 2
     normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 1
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  referencedClips: []
   importAnimation: 0
-  copyAvatar: 0
   humanDescription:
-    serializedVersion: 2
+    serializedVersion: 3
     human:
     - boneName: Hips
       humanName: Hips
@@ -775,14 +1014,18 @@ ModelImporter:
     armStretch: 0.05
     legStretch: 0.05
     feetSpacing: 0
+    globalScale: 1
     rootMotionBoneName: 
-    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
     hasTranslationDoF: 0
     hasExtraRoot: 1
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
+  autoGenerateAvatarMappingIfUnspecified: 1
   animationType: 3
   humanoidOversampling: 1
+  avatarSetup: 1
+  addHumanoidExtraRootOnlyWhenUsingAvatar: 0
+  remapMaterialsIfMaterialImportModeIsNone: 1
   additionalBone: 0
   userData: 
   assetBundleName: 

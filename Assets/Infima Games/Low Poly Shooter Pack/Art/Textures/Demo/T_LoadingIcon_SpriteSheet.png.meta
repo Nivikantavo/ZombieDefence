@@ -340,7 +340,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 3
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -2350,11 +2350,11 @@ TextureImporter:
       T_LoadingIcon_SpriteSheet_47: -2899169531465838149
       T_LoadingIcon_SpriteSheet_81: -860636212689417052
       T_LoadingIcon_SpriteSheet_6: 3165348621200415635
-      T_LoadingIcon_SpriteSheet_15: -6526089651497408234
-      T_LoadingIcon_SpriteSheet_13: 4812216990625713555
       T_LoadingIcon_SpriteSheet_33: -7162914553100448509
-      T_LoadingIcon_SpriteSheet_46: -623676268232351403
+      T_LoadingIcon_SpriteSheet_15: -6526089651497408234
       T_LoadingIcon_SpriteSheet_38: 9188427250558682944
+      T_LoadingIcon_SpriteSheet_46: -623676268232351403
+      T_LoadingIcon_SpriteSheet_13: 4812216990625713555
       T_LoadingIcon_SpriteSheet_89: -8800213606716764623
       T_LoadingIcon_SpriteSheet_80: -3663759776964440513
       T_LoadingIcon_SpriteSheet_58: -5200622511933253953
@@ -2391,15 +2391,15 @@ TextureImporter:
       T_LoadingIcon_SpriteSheet_49: 628428310621368562
       T_LoadingIcon_SpriteSheet_74: 1172092333769653619
       T_LoadingIcon_SpriteSheet_14: -8534175772208080593
-      T_LoadingIcon_SpriteSheet_17: 2582393251421198919
       T_LoadingIcon_SpriteSheet_42: 3287536356141847209
+      T_LoadingIcon_SpriteSheet_17: 2582393251421198919
+      T_LoadingIcon_SpriteSheet_43: 8808047112006175335
       T_LoadingIcon_SpriteSheet_4: 4558991274990252155
       T_LoadingIcon_SpriteSheet_31: 3073114988190841959
       T_LoadingIcon_SpriteSheet_56: 773398264037261915
       T_LoadingIcon_SpriteSheet_86: 3178862717109795412
-      T_LoadingIcon_SpriteSheet_43: 8808047112006175335
-      T_LoadingIcon_SpriteSheet_39: -4168661293050635400
       T_LoadingIcon_SpriteSheet_75: -8699411296454667945
+      T_LoadingIcon_SpriteSheet_39: -4168661293050635400
       T_LoadingIcon_SpriteSheet_24: -4885976327427366415
   spritePackingTag: 
   pSDRemoveMatte: 0
