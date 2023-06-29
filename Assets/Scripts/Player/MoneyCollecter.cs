@@ -6,10 +6,13 @@ using UnityEngine.Events;
 [RequireComponent(typeof(CapsuleCollider))]
 public class MoneyCollecter : MonoBehaviour
 {
+    public int CoinsCount => _coinsCount;
+
     private int _coinsCount = 0;
     private CapsuleCollider _collectionCollider;
 
     public event UnityAction<Coin> CoinCollected;
+    public event UnityAction<int> CoinsCountChanged;
 
     private void Awake()
     {
@@ -30,6 +33,7 @@ public class MoneyCollecter : MonoBehaviour
         _coinsCount += coin.Count;
         coin.Collect();
         CoinCollected?.Invoke(coin);
+        CoinsCountChanged?.Invoke(_coinsCount);
         coin.gameObject.SetActive(false);
     }
 }
