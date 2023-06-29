@@ -1232,10 +1232,10 @@ MonoBehaviour:
   walkingMultiplierForward: 1
   walkingMultiplierSideways: 0.9
   walkingMultiplierBackwards: 0.9
-  airControl: 0.15
+  airControl: 0.5
   gravity: 35
   jumpGravity: 35
-  jumpForce: 10
+  jumpForce: 7
   stickToGroundForce: 0.03
   canCrouch: 0
   canCrouchWhileFalling: 0
