@@ -18,6 +18,8 @@ namespace InfimaGames.LowPolyShooterPack
 	{
 		#region FIELDS SERIALIZED
 
+		[SerializeField] private Player _player;
+
 		[Title(label: "References")]
 
 		[Tooltip("The character's LowerWeapon component.")]
@@ -1597,6 +1599,16 @@ namespace InfimaGames.LowPolyShooterPack
 				_ => tutorialTextVisible
 			};
 		}
+
+		public void OnTryUseForce(InputAction.CallbackContext context)
+		{
+            switch (context)
+            {
+                case { phase: InputActionPhase.Performed }:
+                    _player.TryUsePushForce();
+                    break;
+            }
+        }
 
 		#endregion
 

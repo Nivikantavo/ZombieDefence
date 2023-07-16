@@ -1,19 +1,23 @@
+using InfimaGames.LowPolyShooterPack;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Player : Target
 {
-    [SerializeField] private Force _force;
+    [SerializeField] private Force _pushForce;
+    [SerializeField] private MoneyCollecter _moneyCollecter;
+    [SerializeField] private Inventory _inventory;
 
-    private void Update()
+    private PlayerData _playerData;
+
+    public void TryUsePushForce()
     {
-        if (Input.GetKey(KeyCode.E))
-        {
-            if(_force != null)
-            {
-                _force.UseForce();
-            }
-        }
+        _pushForce.UseForce();
+    }
+
+    public void Initialize()
+    {
+
     }
 }

@@ -1,5 +1,7 @@
 ﻿//Copyright 2022, Infima Games. All Rights Reserved.
 
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace InfimaGames.LowPolyShooterPack
@@ -37,6 +39,24 @@ namespace InfimaGames.LowPolyShooterPack
 
             //Equip.
             Equip(equippedAtStart);
+        }
+
+        public void LoadWeapons(string[] weaponsNames)
+        {
+            List<WeaponBehaviour> buyedWeapons = new List<WeaponBehaviour>();
+
+            foreach (WeaponBehaviour weaponBehaviour in this.weapons)
+            {
+                Weapon weapon = weaponBehaviour as Weapon;
+                foreach(string weaponName in weaponsNames)
+                {
+                    if(weaponName == weapon.WeaponName)
+                    {
+                        buyedWeapons.Add(weapon);
+                    }
+                }
+            }
+            this.weapons = weapons.Except(buyedWeapons).ToArray();
         }
 
         public override WeaponBehaviour Equip(int index)
