@@ -10,6 +10,8 @@ namespace InfimaGames.LowPolyShooterPack
     /// </summary>
     public class Weapon : WeaponBehaviour
     {
+        public string WeaponName => weaponName;
+
         #region FIELDS SERIALIZED
         
         [Title(label: "Settings")]
