@@ -12,9 +12,9 @@ public class ZombieSpawner : MonoBehaviour
     [SerializeField] private Track _track;
     [SerializeField] private CoinsPool _coinsPool;
     [SerializeField] private MissilePool _missilePool;
-    [SerializeField] private List<Wave> _waves;
     [SerializeField] private List<Transform> _spawnPoints;
 
+    private List<Wave> _waves;
     private List<DieState> _zombiesDieStates = new List<DieState>();
     private Wave _currentWave;
     private int _currentWaveNumber = 0;
@@ -46,6 +46,11 @@ public class ZombieSpawner : MonoBehaviour
         {
             dieState.NeedSpawnCoin -= OnNeedSpawnCoin;
         }
+    }
+
+    public void SetLevelWaves(List<Wave> waves)
+    {
+        _waves = waves;
     }
 
     private void SetCurrentWave(int waveNumber)
