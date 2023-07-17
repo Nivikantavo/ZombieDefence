@@ -18,8 +18,10 @@ public class Progress : MonoBehaviour, ILoadable
     {
         while(SaveSystem.Instance.DataLoaded == false)
         {
+            Debug.Log("Progress Start: Загрузка 0.25");
             yield return new WaitForSecondsRealtime(0.25f);
         }
+        Debug.Log("SetData");
         PlayerData playerData = SaveSystem.Instance.GetData();
         SetData(playerData);
     }

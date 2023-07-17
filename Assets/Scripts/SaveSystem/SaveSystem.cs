@@ -27,6 +27,7 @@ public class SaveSystem : MonoBehaviour
     private IEnumerator Start()
     {
 #if !UNITY_WEBGL || UNITY_EDITOR
+        Debug.Log("breake on save system start");
         yield break;
 #endif
         yield return YandexGamesSdk.Initialize();
