@@ -13,7 +13,7 @@ public class MoneyViewer : MonoBehaviour
 
     private void Awake()
     {
-        _currentValue = _moneyCollecter.CoinsCount;
+        _currentValue = _moneyCollecter.Money;
         _moneyText.text = _currentValue.ToString();
     }
 

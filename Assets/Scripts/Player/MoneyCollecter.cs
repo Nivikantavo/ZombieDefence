@@ -4,11 +4,11 @@ using UnityEngine;
 using UnityEngine.Events;
 
 [RequireComponent(typeof(CapsuleCollider))]
-public class MoneyCollecter : MonoBehaviour
+public class MoneyCollecter : MonoBehaviour, ILoadable
 {
-    public int CoinsCount => _coinsCount;
+    public int Money => _money;
 
-    private int _coinsCount = 0;
+    private int _money = 0;
     private CapsuleCollider _collectionCollider;
 
     public event UnityAction<Coin> CoinCollected;
@@ -20,6 +20,16 @@ public class MoneyCollecter : MonoBehaviour
         _collectionCollider.isTrigger = true;
     }
 
+    private void OnEnable()
+    {
+        SetData(SaveSystem.Instance.GetData());
+    }
+
+    private void OnDisable()
+    {
+        SaveSystem.Instance.SetMoneyValue(_money);
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if(other.TryGetComponent<Coin>(out Coin coin))
@@ -28,12 +38,27 @@ public class MoneyCollecter : MonoBehaviour
         }
     }
 
+    public bool TrySpendMoney(int cost)
+    {
+        if(_money < cost)
+        {
+            return false;
+        }
+        _money -= cost;
+        return true;
+    }
+
     private void CollectCoin(Coin coin)
     {
-        _coinsCount += coin.Count;
+        _money += coin.Count;
         coin.Collect();
         CoinCollected?.Invoke(coin);
-        CoinsCountChanged?.Invoke(_coinsCount);
+        CoinsCountChanged?.Invoke(_money);
         coin.gameObject.SetActive(false);
+    }
+
+    public void SetData(PlayerData data)
+    {
+        _money = data.Money;
     }
 }

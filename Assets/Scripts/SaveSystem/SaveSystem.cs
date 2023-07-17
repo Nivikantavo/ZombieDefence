@@ -27,11 +27,15 @@ public class SaveSystem : MonoBehaviour
     private IEnumerator Start()
     {
 #if !UNITY_WEBGL || UNITY_EDITOR
-        Debug.Log("breake on save system start");
         yield break;
 #endif
         yield return YandexGamesSdk.Initialize();
         Load();
+    }
+
+    private void OnDisable()
+    {
+        Save();
     }
 
     public void Save()
@@ -42,7 +46,6 @@ public class SaveSystem : MonoBehaviour
 
     public void Load()
     {
-        Debug.Log("Load");
         PlayerAccount.GetCloudSaveData(OnLoadDataSuccess, OnLoadDataError);
     }
 
@@ -50,8 +53,36 @@ public class SaveSystem : MonoBehaviour
     {
         if (YandexGamesSdk.IsInitialized == false)
             return null;
-        Debug.Log("Get data");
+        
         return _playerData;
+    }
+
+    public void SetMoneyValue(int money)
+    {
+        if(money <= 0)
+        {
+            _playerData.Money = money;
+        }
+    }
+
+    public void SetSensetiveValue(float sensetive)
+    {
+        _playerData.Sensetive = sensetive;
+    }
+
+    public void SetWeaponsArrey(string[] weapons)
+    {
+        _playerData.Weapons = weapons;
+    }
+
+    public void SetWeaponsLevelsArrat(int[] weaponsLevels)
+    {
+        _playerData.WeaponsLevels = weaponsLevels;
+    }
+
+    public void SetGranadesCount(int granadesCount)
+    {
+        _playerData.GranadesCount = granadesCount;
     }
 
     private void OnLoadDataSuccess(string data)
@@ -64,7 +95,6 @@ public class SaveSystem : MonoBehaviour
         {
             _playerData = JsonUtility.FromJson<PlayerData>(data);
         }
-        Debug.Log("Success callback : " + _playerData);
         DataLoaded = true;
     }
 
