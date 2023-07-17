@@ -18,10 +18,8 @@ public class Progress : MonoBehaviour, ILoadable
     {
         while(SaveSystem.Instance.DataLoaded == false)
         {
-            Debug.Log("Progress Start: Загрузка 0.25");
             yield return new WaitForSecondsRealtime(0.25f);
         }
-        Debug.Log("SetData");
         PlayerData playerData = SaveSystem.Instance.GetData();
         SetData(playerData);
     }
@@ -30,8 +28,6 @@ public class Progress : MonoBehaviour, ILoadable
     {
         CurrentLevel = data.Level;
         _currentStage = _stages[data.Stage - 1];
-        Debug.Log($"Levels Count: {_currentStage.LevelsCount}, \n Level: {_currentStage.CurrentLevelNumber}");
-        Debug.Log("DataLoaded");
         DataLoaded?.Invoke();
     }
 }
