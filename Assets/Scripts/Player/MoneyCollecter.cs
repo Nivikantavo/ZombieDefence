@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.Events;
 
 [RequireComponent(typeof(CapsuleCollider))]
-public class MoneyCollecter : MonoBehaviour
+public class MoneyCollecter : MonoBehaviour, ILoadable
 {
     public int CoinsCount => _coinsCount;
 
@@ -26,6 +26,12 @@ public class MoneyCollecter : MonoBehaviour
         {
             CollectCoin(coin);
         }
+    }
+
+    public void SetData(PlayerData data)
+    {
+        _coinsCount = data.Money;
+        CoinsCountChanged?.Invoke(_coinsCount);
     }
 
     private void CollectCoin(Coin coin)
