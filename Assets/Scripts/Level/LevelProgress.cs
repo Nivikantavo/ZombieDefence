@@ -33,6 +33,6 @@ public class LevelProgress : MonoBehaviour
 
     private void SaveProgress()
     {
-
+        SaveSystem.Instance.SetProgress()
     }
 }
