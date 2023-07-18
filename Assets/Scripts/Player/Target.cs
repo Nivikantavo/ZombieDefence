@@ -16,7 +16,7 @@ public class Target : MonoBehaviour, Idamageable
     private int _currentAttackersCount = 0;
 
     public event UnityAction<float> HealthChanged;
-    public event UnityAction TargetDied;
+    public event UnityAction<bool> TargetDied;
 
     protected virtual void Awake()
     {
@@ -51,6 +51,6 @@ public class Target : MonoBehaviour, Idamageable
 
     private void Die()
     {
-        TargetDied?.Invoke();
+        TargetDied?.Invoke(false);
     }
 }
