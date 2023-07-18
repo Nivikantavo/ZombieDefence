@@ -12,8 +12,8 @@ public class LevelChoicer : MonoBehaviour
     private void Awake()
     {
         PlayerData playerData = SaveSystem.Instance.GetData();
-        _currentLevelNumber = SaveSystem.Instance.GetData().Level;
-        Debug.Log($"Stage: {playerData.Stage}, \n Level: {playerData.Level}");
+        _currentLevelNumber = SaveSystem.Instance.GetData().ComplitedLevelsOnStage;
+        Debug.Log($"Stage: {playerData.ComplitedStages}, \n Level: {playerData.ComplitedLevelsOnStage}");
         _levels = transform.GetComponentsInChildren<LevelWaves>(true).ToList();
 
         for (int i = 0; i < _levels.Count; i++)
