@@ -1,34 +1,74 @@
-using Agava.YandexGames;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LevelsPanel : MonoBehaviour
+public class LevelsPanel : MonoBehaviour, ILoadable
 {
-    [SerializeField] private Progress _progress;
-    [SerializeField] private LevelView _levelView;
-    [SerializeField] private Sprite _standartlevelImage;
-    [SerializeField] private Sprite _currentLevelImage;
+    public Stage SelectedStage { get; private set; }
 
-    private void OnEnable()
-    {
-        _progress.DataLoaded += InstantiateLevelViews;
-    }
+    [SerializeField] private List<Stage> _stages = new List<Stage>();
 
-    private void OnDisable()
-    {
-        _progress.DataLoaded -= InstantiateLevelViews;
-    }
+    private List<LevelView> _levelViews = new List<LevelView>();
 
-    private void InstantiateLevelViews()
+    private void Awake()
     {
-        for (int i = 0; i < _progress.CurrentStage.LevelsCount; i++)
+        for (int i = 0; i < _stages.Count; i++)
         {
-            int levelNumber = i + 1;
-            Sprite levelImage = levelNumber != _progress.CurrentStage.CurrentLevelNumber ? _standartlevelImage : _currentLevelImage;
-
-            LevelView levelView = Instantiate(_levelView, transform);
-            levelView.Initialize(levelNumber.ToString(), levelImage);
+            _levelViews.Add(_stages[i].GetComponent<LevelView>());
         }
+    }
+
+    private IEnumerator Start()
+    {
+        while (SaveSystem.Instance.DataLoaded == false)
+        {
+            yield return new WaitForSecondsRealtime(0.25f);
+        }
+        PlayerData playerData = SaveSystem.Instance.GetData();
+        SetData(playerData);
+    }
+
+    public void SetData(PlayerData data)
+    {
+        Debug.Log($"Пройдено стейджей: {data.ComplitedStages}, пройдено уровней: {data.ComplitedLevelsOnStage}");
+        for (int i = 0; i < _stages.Count; i++)
+        {
+            if(i < data.ComplitedStages)
+            {
+                _stages[i].SetProgress(_stages[i].LevelsCount);
+            }
+            else if(i == data.ComplitedStages)
+            {
+                _stages[i].SetProgress(data.ComplitedLevelsOnStage);
+                SelectLevel(_stages[i], _levelViews[i]);
+            }
+            else
+            {
+                _stages[i].SetProgress(0);
+                _levelViews[i].Lock();
+            }
+            _levelViews[i].Initialize(_stages[i]);
+        }
+    }
+
+    public void OnLevelViewClick(LevelView view)
+    {
+        for (int i = 0; i < _levelViews.Count; i++)
+        {
+            if(view == _levelViews[i])
+            {
+                SelectLevel(_stages[i], _levelViews[i]);
+            }
+            else
+            {
+                _levelViews[i].Deselect();
+            }
+        }
+    }
+
+    private void SelectLevel(Stage stage, LevelView view)
+    {
+        SelectedStage = stage;
+        view.Select();
     }
 }

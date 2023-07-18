@@ -12,7 +12,7 @@ public class Progress : MonoBehaviour, ILoadable
 
     private Stage _currentStage;
 
-    public event UnityAction DataLoaded;
+    public event UnityAction<PlayerData> DataLoaded;
 
     private IEnumerator Start()
     {
@@ -26,8 +26,9 @@ public class Progress : MonoBehaviour, ILoadable
 
     public void SetData(PlayerData data)
     {
-        CurrentLevel = data.Level;
-        _currentStage = _stages[data.Stage - 1];
-        DataLoaded?.Invoke();
+        CurrentLevel = data.ComplitedLevelsOnStage;
+        _currentStage = _stages[data.ComplitedStages - 1];
+        Debug.Log("Progress DataLoaded");
+        DataLoaded?.Invoke(data);
     }
 }

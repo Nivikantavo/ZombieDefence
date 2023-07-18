@@ -7,7 +7,7 @@ using UnityEngine.UI;
 [RequireComponent(typeof(Button))]
 public class StartButton : MonoBehaviour
 {
-    [SerializeField] private Progress _playerProgress;
+    [SerializeField] private LevelsPanel _levelsPanel;
 
     private Button _startButton;
 
@@ -28,6 +28,7 @@ public class StartButton : MonoBehaviour
 
     private void LoadLevel()
     {
-        SceneManager.LoadScene(_playerProgress.CurrentStage.Number);
+        int sceneNumber = _levelsPanel.SelectedStage.Number;
+        SceneManager.LoadScene(sceneNumber);
     }
 }

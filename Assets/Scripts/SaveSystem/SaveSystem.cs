@@ -1,5 +1,7 @@
 using Agava.YandexGames;
 using System.Collections;
+using System.IO;
+using UnityEditor.Build.Reporting;
 using UnityEngine;
 
 public class SaveSystem : MonoBehaviour
@@ -7,6 +9,7 @@ public class SaveSystem : MonoBehaviour
     public bool DataLoaded { get; private set; }
 
     private PlayerData _playerData;
+    private string file = "PlayerData.txt";
 
     public static SaveSystem Instance;
 
@@ -27,6 +30,7 @@ public class SaveSystem : MonoBehaviour
     private IEnumerator Start()
     {
 #if !UNITY_WEBGL || UNITY_EDITOR
+        Load();
         yield break;
 #endif
         yield return YandexGamesSdk.Initialize();
@@ -40,20 +44,36 @@ public class SaveSystem : MonoBehaviour
 
     public void Save()
     {
+#if UNITY_WEBGL && !UNITY_EDITOR
+
         string jsonData = JsonUtility.ToJson(_playerData);
         PlayerAccount.SetCloudSaveData(jsonData);
+#endif
+#if UNITY_EDITOR
+        string json = JsonUtility.ToJson(_playerData);
+        WriteToFile(file, json);
+#endif
     }
 
     public void Load()
     {
+#if UNITY_WEBGL && !UNITY_EDITOR
         PlayerAccount.GetCloudSaveData(OnLoadDataSuccess, OnLoadDataError);
+#endif
+#if UNITY_EDITOR
+        _playerData = new PlayerData();
+        string jsonData = ReadFromFile(file);
+        JsonUtility.FromJsonOverwrite(jsonData, _playerData);
+        DataLoaded = true;
+#endif
     }
 
     public PlayerData GetData()
     {
+#if UNITY_WEBGL && !UNITY_EDITOR
         if (YandexGamesSdk.IsInitialized == false)
             return null;
-        
+#endif
         return _playerData;
     }
 
@@ -101,5 +121,39 @@ public class SaveSystem : MonoBehaviour
     private void OnLoadDataError(string errorMessage)
     {
         Debug.Log("Error callback : " + errorMessage);
+    }
+
+    private void WriteToFile(string fileName, string json)
+    {
+        string path = GetFilePath(fileName);
+        FileStream fileStream = new FileStream(path, FileMode.Create);
+
+        using(StreamWriter writer = new StreamWriter(fileStream))
+        {
+            writer.Write(json);
+        }
+    }
+
+    private string ReadFromFile(string fileName)
+    {
+        string path = GetFilePath(fileName);
+        if (File.Exists(path))
+        {
+            using(StreamReader reader = new StreamReader(path))
+            {
+                string json = reader.ReadToEnd();
+                return json;
+            }
+        }
+        else
+        {
+            Debug.LogWarning("File not founded");
+        }
+        return "";
+    }
+
+    private string GetFilePath(string fileName)
+    {
+        return Application.persistentDataPath + "/" + fileName;
     }
 }
