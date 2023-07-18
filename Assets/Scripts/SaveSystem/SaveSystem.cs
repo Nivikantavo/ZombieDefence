@@ -1,7 +1,6 @@
 using Agava.YandexGames;
 using System.Collections;
 using System.IO;
-using UnityEditor.Build.Reporting;
 using UnityEngine;
 
 public class SaveSystem : MonoBehaviour
@@ -82,6 +81,18 @@ public class SaveSystem : MonoBehaviour
         if(money <= 0)
         {
             _playerData.Money = money;
+        }
+    }
+
+    public void SetProgress(int complitedLevelNumber, int stageNumber)
+    {
+        _playerData.ComplitedLevelsOnStage = complitedLevelNumber;
+        if(complitedLevelNumber == 3)
+        {
+            if(stageNumber > _playerData.ComplitedStages)
+            {
+                _playerData.ComplitedStages = stageNumber;
+            }
         }
     }
 
