@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class Shop : MonoBehaviour
@@ -25,12 +26,45 @@ public class Shop : MonoBehaviour
 
     private void TrySellItem(Item item)
     {
-        if (item.IsBought == false)
+        if (item is WeaponItem)
         {
-            if (_moneyCollecter.TrySpendMoney(item.SellingPrice))
+            TrySellWeapon(item as WeaponItem);
+        }
+        else if(item is ImproveItem)
+        {
+            TrySellImprovment(item as ImproveItem);
+        }
+    }
+
+    private void TrySellWeapon(WeaponItem weapon)
+    {
+        
+        if (weapon.IsBought == false)
+        {
+            if (_moneyCollecter.TrySpendMoney(weapon.SellingPrice))
             {
-                item.Sell();
+                weapon.Sell();
+                AddBoughtWeapon(weapon);
             }
         }
+    }
+
+    private void TrySellImprovment(ImproveItem improvment)
+    {
+
+        if (improvment.IsBought == false)
+        {
+            if (_moneyCollecter.TrySpendMoney(improvment.SellingPrice))
+            {
+                improvment.Sell();
+            }
+        }
+    }
+
+    private void AddBoughtWeapon(WeaponItem weaponItem)
+    {
+        List<string> weapons = SaveSystem.Instance.GetData().Weapons.ToList();
+        weapons.Add(weaponItem.Weapon.WeaponName);
+        SaveSystem.Instance.SetWeaponsArrey(weapons.ToArray());
     }
 }

@@ -19,6 +19,7 @@ namespace InfimaGames.LowPolyShooterPack
 		#region FIELDS SERIALIZED
 
 		[SerializeField] private Player _player;
+		[SerializeField] private InventorySetter _inventorySetter;
 
 		[Title(label: "References")]
 
@@ -383,7 +384,9 @@ namespace InfimaGames.LowPolyShooterPack
 			movementBehaviour = GetComponent<MovementBehaviour>();
 
 			//Initialize Inventory.
-			inventory.Init(weaponIndexEquippedAtStart);
+			_inventorySetter.SetWeapons();
+
+            inventory.Init(weaponIndexEquippedAtStart);
 
 			//Refresh!
 			RefreshWeaponSetup();
@@ -959,7 +962,6 @@ namespace InfimaGames.LowPolyShooterPack
 		/// </summary>
 		private void UpdateCursorState()
 		{
-            Debug.Log("LockCursor");
             //Update cursor visibility.
             //Cursor.visible = !cursorLocked;
 			//Update cursor lock state.

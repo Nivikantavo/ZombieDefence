@@ -12,7 +12,6 @@ public class LanguageChanger : MonoBehaviour
     
     private void Awake()
     {
-        Debug.Log(_flagIndex);
         if (PlayerPrefs.GetString("Lang", "No Lang") == "No Lang")
         {
             PlayerPrefs.SetString("Lang", "English");
@@ -32,7 +31,6 @@ public class LanguageChanger : MonoBehaviour
         {
             _flagIndex = 2;
         }
-        Debug.Log(_flagIndex);
         _currentLanguage.image.sprite = _flags[_flagIndex];
     }
 

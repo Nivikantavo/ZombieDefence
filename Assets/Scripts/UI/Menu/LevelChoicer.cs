@@ -20,7 +20,6 @@ public class LevelChoicer : MonoBehaviour
         {
             if(_currentLevelNumber == i)
             {
-                Debug.Log(i);
                 _levels[i].gameObject.SetActive(true);
             }
         }

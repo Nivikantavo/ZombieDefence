@@ -74,7 +74,6 @@ public class SaveSystem : MonoBehaviour
 
     public void SetMoneyValue(int money)
     {
-        Debug.Log("Save money: " + money);
         if(money >= 0)
         {
             _playerData.Money = money;
