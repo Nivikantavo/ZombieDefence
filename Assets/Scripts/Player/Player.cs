@@ -8,6 +8,7 @@ public class Player : Target
     [SerializeField] private Force _pushForce;
     [SerializeField] private MoneyCollecter _moneyCollecter;
     [SerializeField] private Inventory _inventory;
+    [SerializeField] private Character _character;
 
     private PlayerData _playerData;
 

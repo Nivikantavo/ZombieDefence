@@ -1,11 +1,11 @@
+using InfimaGames.LowPolyShooterPack.Interface;
 using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class EndLevelPanel : MonoBehaviour
+public class EndLevelPanel : Element
 {
     [SerializeField] private MoneyCollecter _moneyCollecter;
     [SerializeField] private TMP_Text _totalEarned;
@@ -17,9 +17,17 @@ public class EndLevelPanel : MonoBehaviour
 
     private void OnEnable()
     {
+        characterBehaviour.LockCursor(true);
         _inMenuButton.onClick.AddListener(OnInMenuButtonClick);
         _restartButton.onClick.AddListener(OnRestartLevelButtonClick);
-        SetScoreSmoothly(_moneyCollecter.Money);
+        StartCoroutine(SetScoreSmoothly(_moneyCollecter.Money));
+    }
+
+    private void OnDisable()
+    {
+        characterBehaviour.LockCursor(false);
+        _inMenuButton.onClick.RemoveListener(OnInMenuButtonClick);
+        _restartButton.onClick.RemoveListener(OnRestartLevelButtonClick);
     }
 
     private void OnRestartLevelButtonClick()
@@ -34,7 +42,7 @@ public class EndLevelPanel : MonoBehaviour
 
     private IEnumerator SetScoreSmoothly(int score)
     {
-        WaitForSeconds delaye = new WaitForSeconds(_settingScoreTime);
+        WaitForSeconds delaye = new WaitForSeconds(_settingScoreTime / score);
 
         for (int i = 0; i < score; i++)
         {

@@ -30,9 +30,11 @@ namespace InfimaGames.LowPolyShooterPack
         protected virtual void LateUpdate(){}
 
         #endregion
-        
+
+        public abstract void LockCursor(bool needlock);
+
         #region GETTERS
-        
+
         /// <summary>
         /// This function should return the amount of shots that the character has fired in succession.
         /// Using this value for applying recoil, and for modifying spread is what we have this function for.
