@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class LevelProgress : MonoBehaviour
 {
@@ -6,33 +7,50 @@ public class LevelProgress : MonoBehaviour
     [SerializeField] private Player _player;
     [SerializeField] private ZombieSpawner _zombieSpawner;
     [SerializeField] private GameObject _endLevelPanel;
+    [SerializeField] private LevelChoicer _levelChoicer;
     [SerializeField] private LevelEndZone _endZone;
+
+    private bool _levelComplited = false;
 
     private void OnEnable()
     {
-        _player.TargetDied += LevelEnd;
-        _track.TargetDied += LevelEnd;
-        _zombieSpawner.AllZombieDied += LevelEnd;
+        _endZone.PlayerInLevelEndZone += LevelEnd;
+        _player.TargetDied += PlayerLost;
+        _track.TargetDied += PlayerLost;
+        _zombieSpawner.AllZombieDied += PlayerWin;
     }
 
     private void OnDisable()
     {
-        _player.TargetDied -= LevelEnd;
-        _track.TargetDied -= LevelEnd;
-        _zombieSpawner.AllZombieDied -= LevelEnd;
+        _endZone.PlayerInLevelEndZone -= LevelEnd;
+        _player.TargetDied -= PlayerLost;
+        _track.TargetDied -= PlayerLost;
+        _zombieSpawner.AllZombieDied -= PlayerWin;
     }
 
-    private void LevelEnd(bool levelComplited)
+    private void LevelEnd()
     {
-        _endZone.gameObject.SetActive(true);
-        if (levelComplited)
+        if (_levelComplited)
         {
             SaveProgress();
         }
+        _endLevelPanel.SetActive(true);
+    }
+
+    private void PlayerWin()
+    {
+        _levelComplited = true;
+        _endZone.gameObject.SetActive(true);
+    }
+
+    private void PlayerLost()
+    {
+        _endLevelPanel.SetActive(true);
     }
 
     private void SaveProgress()
     {
-        SaveSystem.Instance.SetProgress()
+        int stageNumber = SceneManager.GetActiveScene().buildIndex;
+        SaveSystem.Instance.SetProgress(_levelChoicer.CurrentLevelNumber + 1, stageNumber);
     }
 }

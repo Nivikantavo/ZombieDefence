@@ -36,11 +36,6 @@ public class SaveSystem : MonoBehaviour
         Load();
     }
 
-    private void OnDisable()
-    {
-        Save();
-    }
-
     public void Save()
     {
 #if UNITY_WEBGL && !UNITY_EDITOR
@@ -48,10 +43,10 @@ public class SaveSystem : MonoBehaviour
         string jsonData = JsonUtility.ToJson(_playerData);
         PlayerAccount.SetCloudSaveData(jsonData);
 #endif
-#if UNITY_EDITOR
+//#if UNITY_EDITOR
         string json = JsonUtility.ToJson(_playerData);
         WriteToFile(file, json);
-#endif
+//#endif
     }
 
     public void Load()
@@ -59,12 +54,12 @@ public class SaveSystem : MonoBehaviour
 #if UNITY_WEBGL && !UNITY_EDITOR
         PlayerAccount.GetCloudSaveData(OnLoadDataSuccess, OnLoadDataError);
 #endif
-#if UNITY_EDITOR
+//#if UNITY_EDITOR
         _playerData = new PlayerData();
-        string jsonData = ReadFromFile(file);
-        JsonUtility.FromJsonOverwrite(jsonData, _playerData);
+        string json = ReadFromFile(file);
+        JsonUtility.FromJsonOverwrite(json, _playerData);
         DataLoaded = true;
-#endif
+//#endif
     }
 
     public PlayerData GetData()
@@ -73,15 +68,18 @@ public class SaveSystem : MonoBehaviour
         if (YandexGamesSdk.IsInitialized == false)
             return null;
 #endif
+        
         return _playerData;
     }
 
     public void SetMoneyValue(int money)
     {
-        if(money <= 0)
+        Debug.Log("Save money: " + money);
+        if(money >= 0)
         {
             _playerData.Money = money;
         }
+        Save();
     }
 
     public void SetProgress(int complitedLevelNumber, int stageNumber)
@@ -92,28 +90,34 @@ public class SaveSystem : MonoBehaviour
             if(stageNumber > _playerData.ComplitedStages)
             {
                 _playerData.ComplitedStages = stageNumber;
+                _playerData.ComplitedLevelsOnStage = 0;
             }
         }
+        Save();
     }
 
     public void SetSensetiveValue(float sensetive)
     {
         _playerData.Sensetive = sensetive;
+        Save();
     }
 
     public void SetWeaponsArrey(string[] weapons)
     {
         _playerData.Weapons = weapons;
+        Save();
     }
 
     public void SetWeaponsLevelsArrat(int[] weaponsLevels)
     {
         _playerData.WeaponsLevels = weaponsLevels;
+        Save();
     }
 
     public void SetGranadesCount(int granadesCount)
     {
         _playerData.GranadesCount = granadesCount;
+        Save();
     }
 
     private void OnLoadDataSuccess(string data)

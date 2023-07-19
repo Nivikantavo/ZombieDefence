@@ -20,7 +20,7 @@ public class ZombieSpawner : MonoBehaviour
     private int _currentWaveNumber = 0;
     private int _deadZombie = 0;
 
-    public event UnityAction<bool> AllZombieDied;
+    public event UnityAction AllZombieDied;
 
     private void Awake()
     {
@@ -119,7 +119,7 @@ public class ZombieSpawner : MonoBehaviour
         _deadZombie++;
         if(_deadZombie >= ZombieCount)
         {
-            AllZombieDied?.Invoke(true);
+            AllZombieDied?.Invoke();
         }
     }
 }

@@ -13,6 +13,5 @@ public class LevelWaves : MonoBehaviour
         _waves = GetComponentsInChildren<Wave>().ToList();
 
         _zombieSpawner.SetLevelWaves(_waves);
-        Debug.Log("LevelWaves Set wave");
     }
 }

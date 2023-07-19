@@ -959,10 +959,11 @@ namespace InfimaGames.LowPolyShooterPack
 		/// </summary>
 		private void UpdateCursorState()
 		{
-			//Update cursor visibility.
-			Cursor.visible = !cursorLocked;
+            Debug.Log("LockCursor");
+            //Update cursor visibility.
+            //Cursor.visible = !cursorLocked;
 			//Update cursor lock state.
-			Cursor.lockState = cursorLocked ? CursorLockMode.Locked : CursorLockMode.None;
+			//Cursor.lockState = cursorLocked ? CursorLockMode.Locked : CursorLockMode.None;
 		}
 
 		/// <summary>
@@ -1542,6 +1543,7 @@ namespace InfimaGames.LowPolyShooterPack
 		
 		public void OnLockCursor(InputAction.CallbackContext context)
 		{
+			
 			//Switch.
 			switch (context)
 			{
@@ -1700,6 +1702,12 @@ namespace InfimaGames.LowPolyShooterPack
 			//Set Active.
 			knife.SetActive(active != 0);
 		}
+
+		public override void LockCursor(bool needlock)
+		{
+            cursorLocked = needlock;
+            UpdateCursorState();
+        }
 
 		#endregion
 
