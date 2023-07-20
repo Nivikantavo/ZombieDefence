@@ -27449,22 +27449,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 175169087984674501, guid: be81f15462f628443975a2390ab28d8d, type: 3}
-      propertyPath: _character
-      value: 
-      objectReference: {fileID: 1064808752}
-    - target: {fileID: 175169087984674501, guid: be81f15462f628443975a2390ab28d8d, type: 3}
-      propertyPath: _inventory
-      value: 
-      objectReference: {fileID: 1064808753}
-    - target: {fileID: 175169087984674501, guid: be81f15462f628443975a2390ab28d8d, type: 3}
-      propertyPath: _pushForce
-      value: 
-      objectReference: {fileID: 1064808754}
-    - target: {fileID: 175169087984674501, guid: be81f15462f628443975a2390ab28d8d, type: 3}
-      propertyPath: _moneyCollecter
-      value: 
-      objectReference: {fileID: 790381246}
+    - target: {fileID: 115395583, guid: be81f15462f628443975a2390ab28d8d, type: 3}
+      propertyPath: _name
+      value: JumpDash
+      objectReference: {fileID: 0}
+    - target: {fileID: 2103672605, guid: be81f15462f628443975a2390ab28d8d, type: 3}
+      propertyPath: _name
+      value: ForwardDash
+      objectReference: {fileID: 0}
     - target: {fileID: 175169088371318763, guid: be81f15462f628443975a2390ab28d8d, type: 3}
       propertyPath: _inventorySetter
       value: 
@@ -27550,17 +27542,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d3c368290cc3e914ab3a0cf540de2166, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1064808754 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2103672605, guid: be81f15462f628443975a2390ab28d8d, type: 3}
-  m_PrefabInstance: {fileID: 1064808750}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 17f4cb6d6b0294948ae122c9f980d72a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &1064823484
@@ -45528,6 +45509,10 @@ PrefabInstance:
       propertyPath: _moneyCollecter
       value: 
       objectReference: {fileID: 790381246}
+    - target: {fileID: 1697027602, guid: e723aeaeb11bb6d4e9c4ee487af1fa1a, type: 3}
+      propertyPath: _settingScoreTime
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 2036676794, guid: e723aeaeb11bb6d4e9c4ee487af1fa1a, type: 3}
       propertyPath: _moneyCollecter
       value: 

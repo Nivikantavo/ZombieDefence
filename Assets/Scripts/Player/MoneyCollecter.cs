@@ -20,8 +20,12 @@ public class MoneyCollecter : MonoBehaviour, ILoadable
         _collectionCollider.isTrigger = true;
     }
 
-    private void OnEnable()
+    private IEnumerator Start()
     {
+        while (SaveSystem.Instance.DataLoaded == false)
+        {
+            yield return new WaitForSecondsRealtime(0.25f);
+        }
         SetData(SaveSystem.Instance.GetData());
     }
 

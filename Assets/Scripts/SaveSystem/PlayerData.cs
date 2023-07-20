@@ -5,9 +5,9 @@ public class PlayerData
     public int ComplitedLevelsOnStage;
     public float Sensetive;
     public string[] Weapons;
-    public int[] WeaponsLevels;
     public int GranadesCount;
     public string[] Forces;
+    public int TruckHealth;
 
     public PlayerData()
     {
@@ -16,8 +16,8 @@ public class PlayerData
         ComplitedLevelsOnStage = 0;
         Weapons = new string[1];
         Weapons[0] = "SMG 01";
-        WeaponsLevels = new int[1];
-        WeaponsLevels[0] = 1;
         GranadesCount = 1;
+        Forces = new string[1] {""};
+        TruckHealth = 300;
     }
 }

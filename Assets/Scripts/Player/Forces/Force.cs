@@ -4,7 +4,10 @@ using UnityEngine;
 
 public class Force : MonoBehaviour
 {
+    public string Name => _name;
+
     [SerializeField] protected float Cooldown;
+    [SerializeField] private string _name;
 
     protected float LastUseTime;
 

@@ -7,6 +7,8 @@ using UnityEngine.UI;
 
 public class ItemView : MonoBehaviour
 {
+    public string ItemName => _item.Name;
+
     [SerializeField] private Sprite _background;
     [SerializeField] private Sprite _itemIcon;
 
@@ -20,6 +22,30 @@ public class ItemView : MonoBehaviour
 
     public event UnityAction<Item> ViewClick;
 
+    private void OnEnable()
+    {
+        Render();
+        _sellButton.onClick.AddListener(OnSellButtonClick);
+        _item.ItemBought += OnItemBought;
+    }
+
+    private void OnDisable()
+    {
+        _sellButton.onClick.RemoveListener(OnSellButtonClick);
+        _item.ItemBought -= OnItemBought;
+    }
+
+    public void MarkItemAsBought()
+    {
+        _item.Sell();
+        Render();
+    }
+
+    private void OnSellButtonClick()
+    {
+        ViewClick?.Invoke(_item);
+    }
+    
     private void Render()
     {
         _backgroundImage.sprite = _background;
@@ -32,19 +58,9 @@ public class ItemView : MonoBehaviour
         }
     }
 
-    private void OnEnable()
+    private void OnItemBought()
     {
         Render();
-        _sellButton.onClick.AddListener(OnSellButtonClick);
     }
 
-    private void OnDisable()
-    {
-        _sellButton.onClick.RemoveListener(OnSellButtonClick);
-    }
-
-    public void OnSellButtonClick()
-    {
-        ViewClick?.Invoke(_item);
-    }
 }

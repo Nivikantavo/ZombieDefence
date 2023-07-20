@@ -382,13 +382,10 @@ namespace InfimaGames.LowPolyShooterPack
 
 			//Cache the movement behaviour.
 			movementBehaviour = GetComponent<MovementBehaviour>();
+			SetGranadesCount();
 
-			//_inventorySetter.TakeExtraWeapons();
+        }
 
-			//inventory.Init(weaponIndexEquippedAtStart);
-
-			//RefreshWeaponSetup();
-		}
 		/// <summary>
 		/// Start.
 		/// </summary>
@@ -887,10 +884,15 @@ namespace InfimaGames.LowPolyShooterPack
 			//Reload.
 			equippedWeapon.Reload();
 		}
-		/// <summary>
-		/// Plays The Reload Animation After A Delay. Helpful to reload automatically after running out of ammunition.
-		/// </summary>
-		private IEnumerator TryReloadAutomatic()
+        private void SetGranadesCount()
+        {
+            grenadeTotal = SaveSystem.Instance.GetData().GranadesCount;
+        }
+
+        /// <summary>
+        /// Plays The Reload Animation After A Delay. Helpful to reload automatically after running out of ammunition.
+        /// </summary>
+        private IEnumerator TryReloadAutomatic()
 		{
 			//Yield.
 			yield return new WaitForSeconds(equippedWeapon.GetAutomaticallyReloadOnEmptyDelay());
