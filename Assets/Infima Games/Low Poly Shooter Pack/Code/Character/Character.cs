@@ -383,13 +383,11 @@ namespace InfimaGames.LowPolyShooterPack
 			//Cache the movement behaviour.
 			movementBehaviour = GetComponent<MovementBehaviour>();
 
-			//Initialize Inventory.
-			_inventorySetter.SetWeapons();
+			//_inventorySetter.TakeExtraWeapons();
 
-            inventory.Init(weaponIndexEquippedAtStart);
+			//inventory.Init(weaponIndexEquippedAtStart);
 
-			//Refresh!
-			RefreshWeaponSetup();
+			//RefreshWeaponSetup();
 		}
 		/// <summary>
 		/// Start.
@@ -927,11 +925,15 @@ namespace InfimaGames.LowPolyShooterPack
 		/// <summary>
 		/// Refresh all weapon things to make sure we're all set up!
 		/// </summary>
-		private void RefreshWeaponSetup()
+		public void RefreshWeaponSetup()
 		{
 			//Make sure we have a weapon. We don't want errors!
 			if ((equippedWeapon = inventory.GetEquipped()) == null)
-				return;
+			{
+				Debug.Log("inventory.GetEquipped()) == null");
+                return;
+            }
+				
 			
 			//Update Animator Controller. We do this to update all animations to a specific weapon's set.
 			characterAnimator.runtimeAnimatorController = equippedWeapon.GetAnimatorController();

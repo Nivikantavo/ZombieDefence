@@ -13,11 +13,10 @@ public class ItemView : MonoBehaviour
     [SerializeField] private Image _backgroundImage;
     [SerializeField] private Image _itemImage;
     [SerializeField] private TMP_Text _priceText;
+
     [SerializeField] private GameObject _priceLable;
-
     [SerializeField] private Item _item;
-
-    private Button _sellButton;
+    [SerializeField] private Button _sellButton;
 
     public event UnityAction<Item> ViewClick;
 
