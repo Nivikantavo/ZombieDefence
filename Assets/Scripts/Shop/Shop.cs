@@ -6,6 +6,7 @@ using UnityEngine;
 public class Shop : MonoBehaviour
 {
     [SerializeField] private List<ItemView> _itemViews;
+    [SerializeField] private List<Item> _items;
     [SerializeField] private MoneyCollecter _moneyCollecter;
 
     private void OnEnable()
@@ -22,6 +23,15 @@ public class Shop : MonoBehaviour
         {
             itemView.ViewClick -= TrySellItem;
         }
+    }
+
+    private IEnumerator Start()
+    {
+        while (SaveSystem.Instance.DataLoaded == false)
+        {
+            yield return new WaitForSecondsRealtime(0.25f);
+        }
+        MarkAllBoughtItem();
     }
 
     private void TrySellItem(Item item)
@@ -65,5 +75,21 @@ public class Shop : MonoBehaviour
         List<string> weapons = SaveSystem.Instance.GetData().Weapons.ToList();
         weapons.Add(weaponItem.Weapon.WeaponName);
         SaveSystem.Instance.SetWeaponsArrey(weapons.ToArray());
+    }
+
+    private void MarkAllBoughtItem()
+    {
+        List<string> boughtWeapons = SaveSystem.Instance.GetData().Weapons.ToList();
+
+        foreach (var wewaponName in boughtWeapons)
+        {
+            foreach (var view in _itemViews)
+            {
+                if (view.ItemName == wewaponName)
+                {
+                    view.MarkItemAsBought();
+                }
+            }
+        }
     }
 }

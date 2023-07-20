@@ -5,6 +5,7 @@ using UnityEngine.Events;
 
 public abstract class Item : MonoBehaviour
 {
+    public virtual string Name => ItemName;
     public int SellingPrice => Price;
     public bool IsBought => Bought;
 

@@ -24,7 +24,11 @@ public class SaveSystem : MonoBehaviour
         {
             Destroy(gameObject);
         }
+#if UNITY_EDITOR
+
         Load();
+#endif
+
     }
 
     private IEnumerator Start()
