@@ -45528,6 +45528,10 @@ PrefabInstance:
       propertyPath: _moneyCollecter
       value: 
       objectReference: {fileID: 790381246}
+    - target: {fileID: 1697027602, guid: e723aeaeb11bb6d4e9c4ee487af1fa1a, type: 3}
+      propertyPath: _settingScoreTime
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 2036676794, guid: e723aeaeb11bb6d4e9c4ee487af1fa1a, type: 3}
       propertyPath: _moneyCollecter
       value: 
