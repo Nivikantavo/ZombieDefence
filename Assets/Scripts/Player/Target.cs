@@ -5,38 +5,25 @@ using UnityEngine.Events;
 
 public class Target : MonoBehaviour, Idamageable
 {
-    public int MaxAttacersCount => _maxAttackersCount;
-    public float MaxHealth => _maxHealth;
+    public float MaxHealth => MaxHealthPoints;
     public float CurrentHealth => _currentHealth;
 
-    [SerializeField] private int _maxAttackersCount;
-    [SerializeField] private float _maxHealth;
+    [SerializeField] protected float MaxHealthPoints;
 
     private float _currentHealth;
-    private int _currentAttackersCount = 0;
 
     public event UnityAction<float> HealthChanged;
     public event UnityAction TargetDied;
 
     protected virtual void Awake()
     {
-        _currentHealth = _maxHealth;
-    }
-
-    public bool TryAddAttacker()
-    {
-        if(_currentAttackersCount < _maxAttackersCount)
-        {
-            _currentAttackersCount++;
-            return true;
-        }
-        return false;
+        _currentHealth = MaxHealthPoints;
     }
 
     public void TakeDamage(float damage)
     {
         _currentHealth -= damage;
-        _currentHealth = Mathf.Clamp(_currentHealth, 0, _maxHealth);
+        _currentHealth = Mathf.Clamp(_currentHealth, 0, MaxHealthPoints);
         HealthChanged?.Invoke(_currentHealth);
         if (_currentHealth <= 0)
         {

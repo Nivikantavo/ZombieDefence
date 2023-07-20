@@ -64,7 +64,6 @@ public class SaveSystem : MonoBehaviour
         string json = ReadFromFile(file);
         JsonUtility.FromJsonOverwrite(json, _playerData);
         DataLoaded = true;
-        Debug.Log(_playerData.Money);
 #endif
     }
 
@@ -74,7 +73,6 @@ public class SaveSystem : MonoBehaviour
         if (YandexGamesSdk.IsInitialized == false)
             return null;
 #endif
-        Debug.Log(_playerData.Money);
         return _playerData;
     }
 
@@ -113,15 +111,21 @@ public class SaveSystem : MonoBehaviour
         Save();
     }
 
-    public void SetWeaponsLevelsArrat(int[] weaponsLevels)
+    public void SetForcesArrey(string[] forces)
     {
-        _playerData.WeaponsLevels = weaponsLevels;
+        _playerData.Forces = forces;
         Save();
     }
 
     public void SetGranadesCount(int granadesCount)
     {
         _playerData.GranadesCount = granadesCount;
+        Save();
+    }
+
+    public void SetTruckHealth(int truckHealth)
+    {
+        _playerData.TruckHealth = truckHealth;
         Save();
     }
 

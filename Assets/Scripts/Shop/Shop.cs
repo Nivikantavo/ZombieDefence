@@ -6,7 +6,8 @@ using UnityEngine;
 public class Shop : MonoBehaviour
 {
     [SerializeField] private List<ItemView> _itemViews;
-    [SerializeField] private List<Item> _items;
+    [SerializeField] private List<WeaponItem> _weapons;
+    [SerializeField] private List<ImproveItem> _improveItems;
     [SerializeField] private MoneyCollecter _moneyCollecter;
 
     private void OnEnable()
@@ -44,6 +45,10 @@ public class Shop : MonoBehaviour
         {
             TrySellImprovment(item as ImproveItem);
         }
+        else if(item is ForceItem)
+        {
+            TrySellForce(item as ForceItem);
+        }
     }
 
     private void TrySellWeapon(WeaponItem weapon)
@@ -60,13 +65,19 @@ public class Shop : MonoBehaviour
 
     private void TrySellImprovment(ImproveItem improvment)
     {
-
-        if (improvment.IsBought == false)
+        if (_moneyCollecter.TrySpendMoney(improvment.SellingPrice))
         {
-            if (_moneyCollecter.TrySpendMoney(improvment.SellingPrice))
-            {
-                improvment.Sell();
-            }
+            improvment.Sell();
+            AddBoughtImprovement(improvment);
+        }
+    }
+
+    private void TrySellForce(ForceItem force)
+    {
+        if (_moneyCollecter.TrySpendMoney(force.SellingPrice))
+        {
+            force.Sell();
+            AddBoughtForce(force);
         }
     }
 
@@ -75,6 +86,33 @@ public class Shop : MonoBehaviour
         List<string> weapons = SaveSystem.Instance.GetData().Weapons.ToList();
         weapons.Add(weaponItem.Weapon.WeaponName);
         SaveSystem.Instance.SetWeaponsArrey(weapons.ToArray());
+    }
+
+    private void AddBoughtImprovement(ImproveItem improveItem)
+    {
+        if(improveItem.Name == "TruckHealth")
+        {
+            int truckHealth = SaveSystem.Instance.GetData().TruckHealth;
+            truckHealth += improveItem.ImproveStep;
+            SaveSystem.Instance.SetTruckHealth(truckHealth);
+        }
+        else if(improveItem.Name == "Granade")
+        {
+            int granadesCount = SaveSystem.Instance.GetData().GranadesCount;
+            granadesCount += improveItem.ImproveStep;
+            SaveSystem.Instance.SetGranadesCount(granadesCount);
+        }
+    }
+
+    private void AddBoughtForce(ForceItem forceItem)
+    {
+        List<string> forces = SaveSystem.Instance.GetData().Forces.ToList();
+        forces.Add(forceItem.ForceName);
+        for (int i = 0; i < forces.Count; i++)
+        {
+            Debug.Log(forces[i]);
+        }
+        SaveSystem.Instance.SetForcesArrey(forces.ToArray());
     }
 
     private void MarkAllBoughtItem()

@@ -63,7 +63,6 @@ public class MoneyCollecter : MonoBehaviour, ILoadable
 
     public void SetData(PlayerData data)
     {
-        Debug.Log(data);
         _money = data.Money;
         CoinsCountChanged?.Invoke(_money);
     }

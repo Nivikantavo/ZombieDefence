@@ -19,6 +19,7 @@ public class Track : Target
 
     protected override void Awake()
     {
+        SetMaxHealth();
         base.Awake();
         _currentFuel = 0;
     }
@@ -42,5 +43,10 @@ public class Track : Target
             FuelUpdate?.Invoke(_currentFuel);
             yield return fillDelay;
         }
+    }
+
+    private void SetMaxHealth()
+    {
+        MaxHealthPoints = SaveSystem.Instance.GetData().TruckHealth;
     }
 }

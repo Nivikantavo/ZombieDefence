@@ -22,14 +22,12 @@ public class InventorySetter : MonoBehaviour
     {
         string[] equipedWeapons = SaveSystem.Instance.GetData().Weapons;
         bool inList = false;
-        Debug.Log(equipedWeapons[0]);
         foreach (var weapon in _weaponList)
         {
             for (int i = 0; i < equipedWeapons.Length; i++)
             {
                 if (equipedWeapons[i] == weapon.WeaponName)
                 {
-                    Debug.Log(equipedWeapons[0] + " / " + weapon.WeaponName);
                     inList = true;
                 }
             }

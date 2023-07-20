@@ -18,7 +18,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &115395582
 Transform:
   m_ObjectHideFlags: 0
@@ -47,6 +47,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Cooldown: 0
+  _name: 
   _explosionRadius: 3
   _explosionForce: 500
   _upForce: 5
@@ -184,7 +185,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2103672603
 Transform:
   m_ObjectHideFlags: 0
@@ -226,6 +227,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Cooldown: 3
+  _name: 
   _forsePower: 300
   _stunDuration: 5
 --- !u!54 &2103672606
@@ -1276,6 +1278,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _player: {fileID: 175169087984674501}
+  _inventorySetter: {fileID: 0}
   lowerWeapon: {fileID: 3767928863838762353}
   weaponIndexEquippedAtStart: 0
   inventory: {fileID: 8346850263575613592}
@@ -1730,9 +1733,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39aa384d76844cd45b6f0ef7578c0b60, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxAttackersCount: 100
-  _maxHealth: 100
-  _pushForce: {fileID: 0}
+  MaxHealthPoints: 100
+  _pushForce: {fileID: 2103672605}
+  _forces:
+  - {fileID: 2103672605}
+  - {fileID: 115395583}
 --- !u!1 &2624981364381252991
 GameObject:
   m_ObjectHideFlags: 0
