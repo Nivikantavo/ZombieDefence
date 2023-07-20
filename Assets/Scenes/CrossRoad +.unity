@@ -27465,6 +27465,10 @@ PrefabInstance:
       propertyPath: _moneyCollecter
       value: 
       objectReference: {fileID: 790381246}
+    - target: {fileID: 175169088371318763, guid: be81f15462f628443975a2390ab28d8d, type: 3}
+      propertyPath: _inventorySetter
+      value: 
+      objectReference: {fileID: 1805003580}
     - target: {fileID: 2613158985840325698, guid: be81f15462f628443975a2390ab28d8d, type: 3}
       propertyPath: m_Name
       value: Player
@@ -47163,6 +47167,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _playerInventory: {fileID: 1064808753}
+  _character: {fileID: 1064808752}
 --- !u!1001 &1805646446
 PrefabInstance:
   m_ObjectHideFlags: 0

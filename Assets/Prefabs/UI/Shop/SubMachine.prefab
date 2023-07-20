@@ -281,6 +281,7 @@ MonoBehaviour:
   Price: 0
   ItemName: 
   Bought: 1
+  _weapon: {fileID: 0}
 --- !u!114 &6381983799060027514
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -300,6 +301,7 @@ MonoBehaviour:
   _priceText: {fileID: 6381983800128813312}
   _priceLable: {fileID: 6381983798134473918}
   _item: {fileID: 6381983799060027515}
+  _sellButton: {fileID: 6381983799060027511}
 --- !u!1 &6381983799256559656
 GameObject:
   m_ObjectHideFlags: 0

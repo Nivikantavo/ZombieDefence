@@ -30,7 +30,6 @@ public class LevelsPanel : MonoBehaviour, ILoadable
 
     public void SetData(PlayerData data)
     {
-        Debug.Log($"Пройдено стейджей: {data.ComplitedStages}, пройдено уровней: {data.ComplitedLevelsOnStage}");
         for (int i = 0; i < _stages.Count; i++)
         {
             if(i < data.ComplitedStages)
