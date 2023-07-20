@@ -38,7 +38,6 @@ public class Shop : MonoBehaviour
 
     private void TrySellWeapon(WeaponItem weapon)
     {
-        
         if (weapon.IsBought == false)
         {
             if (_moneyCollecter.TrySpendMoney(weapon.SellingPrice))

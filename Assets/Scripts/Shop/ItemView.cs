@@ -36,11 +36,18 @@ public class ItemView : MonoBehaviour
     {
         Render();
         _sellButton.onClick.AddListener(OnSellButtonClick);
+        _item.ItemBought += OnItemBought;
     }
 
     private void OnDisable()
     {
         _sellButton.onClick.RemoveListener(OnSellButtonClick);
+        _item.ItemBought -= OnItemBought;
+    }
+
+    private void OnItemBought()
+    {
+        Render();
     }
 
     public void OnSellButtonClick()

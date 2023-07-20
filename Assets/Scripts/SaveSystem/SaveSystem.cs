@@ -24,12 +24,13 @@ public class SaveSystem : MonoBehaviour
         {
             Destroy(gameObject);
         }
+        Load();
     }
 
     private IEnumerator Start()
     {
 #if !UNITY_WEBGL || UNITY_EDITOR
-        Load();
+        
         yield break;
 #endif
         yield return YandexGamesSdk.Initialize();
@@ -43,10 +44,10 @@ public class SaveSystem : MonoBehaviour
         string jsonData = JsonUtility.ToJson(_playerData);
         PlayerAccount.SetCloudSaveData(jsonData);
 #endif
-//#if UNITY_EDITOR
+#if UNITY_EDITOR
         string json = JsonUtility.ToJson(_playerData);
         WriteToFile(file, json);
-//#endif
+#endif
     }
 
     public void Load()
@@ -54,12 +55,13 @@ public class SaveSystem : MonoBehaviour
 #if UNITY_WEBGL && !UNITY_EDITOR
         PlayerAccount.GetCloudSaveData(OnLoadDataSuccess, OnLoadDataError);
 #endif
-//#if UNITY_EDITOR
+#if UNITY_EDITOR
         _playerData = new PlayerData();
         string json = ReadFromFile(file);
         JsonUtility.FromJsonOverwrite(json, _playerData);
         DataLoaded = true;
-//#endif
+        Debug.Log(_playerData.Money);
+#endif
     }
 
     public PlayerData GetData()
@@ -68,7 +70,7 @@ public class SaveSystem : MonoBehaviour
         if (YandexGamesSdk.IsInitialized == false)
             return null;
 #endif
-        
+        Debug.Log(_playerData.Money);
         return _playerData;
     }
 

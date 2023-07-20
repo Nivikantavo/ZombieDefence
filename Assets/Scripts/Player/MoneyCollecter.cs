@@ -20,7 +20,7 @@ public class MoneyCollecter : MonoBehaviour, ILoadable
         _collectionCollider.isTrigger = true;
     }
 
-    private void OnEnable()
+    private void Start()
     {
         SetData(SaveSystem.Instance.GetData());
     }
@@ -59,6 +59,7 @@ public class MoneyCollecter : MonoBehaviour, ILoadable
 
     public void SetData(PlayerData data)
     {
+        Debug.Log(data);
         _money = data.Money;
         CoinsCountChanged?.Invoke(_money);
     }
