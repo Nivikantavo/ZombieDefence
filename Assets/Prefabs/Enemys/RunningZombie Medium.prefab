@@ -21,15 +21,15 @@ PrefabInstance:
       objectReference: {fileID: 3430892198399513514}
     - target: {fileID: 5629672702031566389, guid: 756cf7b1f633c254680d06a4315aa5c8, type: 3}
       propertyPath: m_LocalScale.x
-      value: 1
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 5629672702031566389, guid: 756cf7b1f633c254680d06a4315aa5c8, type: 3}
       propertyPath: m_LocalScale.y
-      value: 1
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 5629672702031566389, guid: 756cf7b1f633c254680d06a4315aa5c8, type: 3}
       propertyPath: m_LocalScale.z
-      value: 1
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 5632080403386624829, guid: 756cf7b1f633c254680d06a4315aa5c8, type: 3}
       propertyPath: m_IsActive
@@ -45,7 +45,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5633919890731990331, guid: 756cf7b1f633c254680d06a4315aa5c8, type: 3}
       propertyPath: m_Name
-      value: RunningZombie
+      value: RunningZombie Medium
       objectReference: {fileID: 0}
     - target: {fileID: 5633919890731990331, guid: 756cf7b1f633c254680d06a4315aa5c8, type: 3}
       propertyPath: m_TagString

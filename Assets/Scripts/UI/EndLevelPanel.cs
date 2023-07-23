@@ -17,7 +17,7 @@ public class EndLevelPanel : Element
 
     private void OnEnable()
     {
-        characterBehaviour.LockCursor(true);
+        characterBehaviour.LockCursor(false);
         _inMenuButton.onClick.AddListener(OnInMenuButtonClick);
         _restartButton.onClick.AddListener(OnRestartLevelButtonClick);
         StartCoroutine(SetScoreSmoothly(_moneyCollecter.Money));
@@ -25,7 +25,7 @@ public class EndLevelPanel : Element
 
     private void OnDisable()
     {
-        characterBehaviour.LockCursor(false);
+        characterBehaviour.LockCursor(true);
         _inMenuButton.onClick.RemoveListener(OnInMenuButtonClick);
         _restartButton.onClick.RemoveListener(OnRestartLevelButtonClick);
     }

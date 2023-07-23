@@ -8,6 +8,7 @@ public class PlayerData
     public int GranadesCount;
     public string[] Forces;
     public int TruckHealth;
+    public bool SurvivalMode;
 
     public PlayerData()
     {
@@ -19,5 +20,6 @@ public class PlayerData
         GranadesCount = 1;
         Forces = new string[1] {""};
         TruckHealth = 300;
+        SurvivalMode = false;
     }
 }

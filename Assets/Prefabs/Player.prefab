@@ -47,7 +47,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Cooldown: 0
-  _name: 
+  _name: JumpDash
   _explosionRadius: 3
   _explosionForce: 500
   _upForce: 5
@@ -227,7 +227,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Cooldown: 3
-  _name: 
+  _name: ForwardDash
   _forsePower: 300
   _stunDuration: 5
 --- !u!54 &2103672606
@@ -1684,7 +1684,19 @@ MonoBehaviour:
     m_ActionId: 48620936-869d-449d-a2b8-144b256bad4a
     m_ActionName: Player/Lower Weapon[/Keyboard/h,/XInputControllerWindows/rightShoulder]
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 175169088371318763}
+        m_TargetAssemblyTypeName: InfimaGames.LowPolyShooterPack.Character, Assembly-CSharp
+        m_MethodName: OnTryUseForce
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: e4e2893a-6c68-491e-ba71-470c159a4220
     m_ActionName: Player/Force[/Keyboard/e]
   m_NeverAutoSwitchControlSchemes: 0
