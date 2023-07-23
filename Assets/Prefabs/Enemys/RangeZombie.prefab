@@ -8435,6 +8435,7 @@ MonoBehaviour:
   _transitions: []
   _zombie: {fileID: 6211429000256134773}
   _minimapSign: {fileID: 4095318977541289570}
+  _fadeDelay: 3
 --- !u!114 &6211429000256134783
 MonoBehaviour:
   m_ObjectHideFlags: 0

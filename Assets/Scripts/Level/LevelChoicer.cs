@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class LevelChoicer : MonoBehaviour
 {
+    public bool SurvivalMode { get; private set; }
+
     public int CurrentLevelNumber => _currentLevelNumber;
     private int _currentLevelNumber;
 
@@ -14,8 +16,8 @@ public class LevelChoicer : MonoBehaviour
     private void Awake()
     {
         //PlayerData data = SaveSystem.Instance.GetData();
-
-        if(true)
+        SurvivalMode = true;
+        if (SurvivalMode)
         {
             _survivalMode = transform.GetComponentInChildren<SurvivalMode>(true);
             _survivalMode.gameObject.SetActive(true);

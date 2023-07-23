@@ -41,7 +41,6 @@ public class SurvivalMode : MonoBehaviour
             
             if (_currentComplexity == Complexity.easy)
             {
-                Debug.Log("Spawn Wave easy");
                 SpawnWave(_easy);
             }
             else if (_currentComplexity == Complexity.medium)
@@ -89,5 +88,6 @@ public class SurvivalMode : MonoBehaviour
         wave.SetCount(enemiesCount);
         _delayBetweenWaves = enemiesCount * wave.DelayBetweenSpawn + wave.DelayAfterWave;
         _spawner.StartSpawnWave(wave);
+        _spawnedWavesCount++;
     }
 }

@@ -15,14 +15,15 @@ public class RagDoll : MonoBehaviour
 
     private Rigidbody[] _rigidbodies;
 
-    private void Start()
+    private void Awake()
     {
         _rigidbodies = GetComponentsInChildren<Rigidbody>();
-        DeactivateRagDoll();
     }
 
     private void OnEnable()
     {
+        Debug.Log("DeactivateRagdol");
+        DeactivateRagDoll();
         _stunState.Stunned += ActivateRagDoll;
         _standUpState.BonesReset += DeactivateRagDoll;
         _dieState.ZombieDied += ActivateRagDoll;

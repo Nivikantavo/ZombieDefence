@@ -41,8 +41,11 @@ public class LevelProgress : MonoBehaviour
 
     private void PlayerWin()
     {
-        _levelComplited = true;
-        _endZone.gameObject.SetActive(true);
+        if(_levelChoicer.SurvivalMode == false)
+        {
+            _levelComplited = true;
+            _endZone.gameObject.SetActive(true);
+        }
     }
 
     private void PlayerLost()
