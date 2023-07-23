@@ -22,12 +22,19 @@ public class ZombieSpawner : MonoBehaviour
 
     public event UnityAction AllZombieDied;
 
+    private bool _survivalMode = false;
+
     private void Awake()
     {
+        _survivalMode = SaveSystem.Instance.GetData().SurvivalMode;
+        if (_survivalMode)
+        {
+            return;
+        }
         foreach (var wave in _waves)
         {
             ZombieCount += wave.ZombieCount;
-            if(wave.EnemyTemplate.TryGetComponent<RangeSeekState>(out RangeSeekState rangeSeekState))
+            if (wave.EnemyTemplate.TryGetComponent<RangeSeekState>(out RangeSeekState rangeSeekState))
             {
                 RangeZombieCount += wave.ZombieCount;
             }
@@ -36,6 +43,10 @@ public class ZombieSpawner : MonoBehaviour
 
     private void Start()
     {
+        if (_survivalMode)
+        {
+            return;
+        }
         SetCurrentWave(_currentWaveNumber);
         StartCoroutine(SpawnWaves());
     }
@@ -53,6 +64,11 @@ public class ZombieSpawner : MonoBehaviour
         _waves = waves;
     }
 
+    public void StartSpawnWave(Wave wave)
+    {
+        StartCoroutine(SpawnWave(wave));
+    }
+
     private void SetCurrentWave(int waveNumber)
     {
         if(waveNumber < _waves.Count)
@@ -61,11 +77,11 @@ public class ZombieSpawner : MonoBehaviour
 
     private IEnumerator SpawnWaves()
     {
-        WaitForSeconds spawnDelay = new WaitForSeconds(_currentWave.DelayBetweenSpawn);
         WaitForSeconds waveDelay = new WaitForSeconds(_currentWave.DelayAfterWave);
-
+        WaitForSeconds spawnDelay;
         for (int i = 0; i < _waves.Count; i++)
         {
+            spawnDelay = new WaitForSeconds(_currentWave.DelayBetweenSpawn);
             for (int j = 0; j < _currentWave.ZombieCount; j++)
             {
                 SpawnZombie();
@@ -73,6 +89,16 @@ public class ZombieSpawner : MonoBehaviour
             }
             yield return waveDelay;
             NextWave();
+        }
+    }
+
+    private IEnumerator SpawnWave(Wave wave)
+    {
+        WaitForSeconds spawnDelay = new WaitForSeconds(wave.DelayBetweenSpawn);
+        for (int j = 0; j < wave.ZombieCount; j++)
+        {
+            SpawnZombie();
+            yield return spawnDelay;
         }
     }
 

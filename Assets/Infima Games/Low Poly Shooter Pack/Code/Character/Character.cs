@@ -383,7 +383,6 @@ namespace InfimaGames.LowPolyShooterPack
 			//Cache the movement behaviour.
 			movementBehaviour = GetComponent<MovementBehaviour>();
 			SetGranadesCount();
-
         }
 
 		/// <summary>
@@ -966,10 +965,8 @@ namespace InfimaGames.LowPolyShooterPack
 		/// </summary>
 		private void UpdateCursorState()
 		{
-            //Update cursor visibility.
-            //Cursor.visible = !cursorLocked;
-			//Update cursor lock state.
-			//Cursor.lockState = cursorLocked ? CursorLockMode.Locked : CursorLockMode.None;
+			Cursor.visible = !cursorLocked;
+			Cursor.lockState = cursorLocked ? CursorLockMode.Locked : CursorLockMode.None;
 		}
 
 		/// <summary>

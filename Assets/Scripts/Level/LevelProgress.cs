@@ -1,3 +1,4 @@
+using InfimaGames.LowPolyShooterPack;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -9,6 +10,7 @@ public class LevelProgress : MonoBehaviour
     [SerializeField] private GameObject _endLevelPanel;
     [SerializeField] private LevelChoicer _levelChoicer;
     [SerializeField] private LevelEndZone _endZone;
+    [SerializeField] private Character _charachter;
 
     private bool _levelComplited = false;
 
