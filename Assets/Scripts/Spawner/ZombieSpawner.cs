@@ -22,11 +22,11 @@ public class ZombieSpawner : MonoBehaviour
 
     public event UnityAction AllZombieDied;
 
-    private bool _survivalMode = false;
+    [SerializeField] private bool _survivalMode = false;
 
     private void Awake()
     {
-        _survivalMode = SaveSystem.Instance.GetData().SurvivalMode;
+        //_survivalMode = SaveSystem.Instance.GetData().SurvivalMode;
         if (_survivalMode)
         {
             return;
@@ -94,6 +94,7 @@ public class ZombieSpawner : MonoBehaviour
 
     private IEnumerator SpawnWave(Wave wave)
     {
+        _currentWave = wave;
         WaitForSeconds spawnDelay = new WaitForSeconds(wave.DelayBetweenSpawn);
         for (int j = 0; j < wave.ZombieCount; j++)
         {
@@ -105,17 +106,19 @@ public class ZombieSpawner : MonoBehaviour
     private void SpawnZombie()
     {
         int spawnPointNumber = Random.Range(0, _spawnPoints.Count);
-        _currentWave.TryGetObject(out GameObject enemy);
-        enemy.transform.position = _spawnPoints[spawnPointNumber].position;
-        enemy.GetComponent<TargetSwitcher>().Initialize(_player, _track);
-
-        if(enemy.TryGetComponent<RangeSeekState>(out RangeSeekState rangeSeekState))
+        if (_currentWave.TryGetObject(out GameObject enemy))
         {
-            rangeSeekState.SetMissilePool(_missilePool);
-        }
+            enemy.transform.position = _spawnPoints[spawnPointNumber].position;
+            enemy.GetComponent<TargetSwitcher>().Initialize(_player, _track);
 
-        enemy.gameObject.SetActive(true);
-        AddInList(enemy);
+            if (enemy.TryGetComponent<RangeSeekState>(out RangeSeekState rangeSeekState))
+            {
+                rangeSeekState.SetMissilePool(_missilePool);
+            }
+
+            enemy.gameObject.SetActive(true);
+            AddInList(enemy);
+        }
     }
 
     private void AddInList(GameObject zombie)

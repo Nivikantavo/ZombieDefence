@@ -14,4 +14,9 @@ public class Wave : ObjectPool
     {
         Initialize(EnemyTemplate, ZombieCount);
     }
+
+    public void SetCount(int count)
+    {
+        ZombieCount = count;
+    }
 }

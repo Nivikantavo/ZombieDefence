@@ -13,16 +13,16 @@ public class LevelChoicer : MonoBehaviour
 
     private void Awake()
     {
-        PlayerData data = SaveSystem.Instance.GetData();
+        //PlayerData data = SaveSystem.Instance.GetData();
 
-        if(data.SurvivalMode == true)
+        if(true)
         {
-            _survivalMode = transform.GetComponentInChildren<SurvivalMode>();
+            _survivalMode = transform.GetComponentInChildren<SurvivalMode>(true);
             _survivalMode.gameObject.SetActive(true);
         }
         else
         {
-            _currentLevelNumber = data.ComplitedLevelsOnStage;
+            //_currentLevelNumber = data.ComplitedLevelsOnStage;
             _levels = transform.GetComponentsInChildren<LevelWaves>(true).ToList();
 
             for (int i = 0; i < _levels.Count; i++)

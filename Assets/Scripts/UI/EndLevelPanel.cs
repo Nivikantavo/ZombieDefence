@@ -25,7 +25,6 @@ public class EndLevelPanel : Element
 
     private void OnDisable()
     {
-        characterBehaviour.LockCursor(true);
         _inMenuButton.onClick.RemoveListener(OnInMenuButtonClick);
         _restartButton.onClick.RemoveListener(OnRestartLevelButtonClick);
     }
