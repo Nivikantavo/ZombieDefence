@@ -15,8 +15,10 @@ public class LevelChoicer : MonoBehaviour
 
     private void Awake()
     {
-        //PlayerData data = SaveSystem.Instance.GetData();
-        SurvivalMode = true;
+        PlayerData data = SaveSystem.Instance.GetData();
+
+        if(data.SurvivalMode == true)
+        SurvivalMode = data.SurvivalMode;
         if (SurvivalMode)
         {
             _survivalMode = transform.GetComponentInChildren<SurvivalMode>(true);

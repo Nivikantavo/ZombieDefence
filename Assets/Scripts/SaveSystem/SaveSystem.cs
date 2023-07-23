@@ -129,6 +129,12 @@ public class SaveSystem : MonoBehaviour
         Save();
     }
 
+    public void SetSurvivalModeEnabled(bool enabled)
+    {
+        _playerData.SurvivalMode = enabled;
+        Save();
+    }
+
     private void OnLoadDataSuccess(string data)
     {
         if (string.IsNullOrEmpty(data))
