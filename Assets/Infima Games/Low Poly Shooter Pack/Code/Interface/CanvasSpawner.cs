@@ -33,7 +33,7 @@ namespace InfimaGames.LowPolyShooterPack.Interface
             //Spawn Interface.
             Instantiate(canvasPrefab);
             //Spawn Quality Settings Menu.
-            Instantiate(qualitySettingsPrefab);
+            //Instantiate(qualitySettingsPrefab);
         }
 
         #endregion
