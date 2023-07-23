@@ -40,7 +40,7 @@ public class RangeSeekState : SeekState
 
         float throwingSpeedSquare = (_gravityForce * XDistance * XDistance) / (2 * (YDistance - Mathf.Tan(angelInRadians) * XDistance) * Mathf.Pow(Mathf.Cos(angelInRadians), 2));
         float throwingSpeed = Mathf.Sqrt(Mathf.Abs(throwingSpeedSquare)) * 1.3f;
-
+        
         _missile.transform.parent = _missilePool.Container.transform;
         _missile.GetComponent<Rigidbody>().velocity = _shotPoint.forward * throwingSpeed * _yOffset;
         _missile.Throw();

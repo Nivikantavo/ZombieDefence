@@ -2118,7 +2118,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _conteiter: {fileID: 62329958}
-  ZombieCount: 50
+  ZombieCount: 2
   DelayBetweenSpawn: 0.5
   DelayAfterWave: 10
   EnemyTemplate: {fileID: 5633919890731990331, guid: 756cf7b1f633c254680d06a4315aa5c8, type: 3}
@@ -7579,7 +7579,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _conteiter: {fileID: 260527708}
-  ZombieCount: 50
+  ZombieCount: 2
   DelayBetweenSpawn: 0.5
   DelayAfterWave: 10
   EnemyTemplate: {fileID: 1950201464240969781, guid: 2984b4e26c11be84ebf98bf967b6381a, type: 3}
@@ -35534,10 +35534,10 @@ MonoBehaviour:
   _hard:
   - {fileID: 1693264934}
   _spawner: {fileID: 1279349235}
-  _easyWavesCount: 10
+  _easyWavesCount: 1
   _mediumWavesCount: 20
-  _minimumEnemiesInWave: 5
-  _maximumEnemiesInWave: 20
+  _minimumEnemiesInWave: 1
+  _maximumEnemiesInWave: 2
 --- !u!1001 &1206458970
 PrefabInstance:
   m_ObjectHideFlags: 0

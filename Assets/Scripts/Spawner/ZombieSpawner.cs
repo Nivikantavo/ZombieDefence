@@ -19,7 +19,7 @@ public class ZombieSpawner : MonoBehaviour
     private Wave _currentWave;
     private int _currentWaveNumber = 0;
     private int _deadZombie = 0;
-
+    private int _defaultRangeZombieCount = 30;
     public event UnityAction AllZombieDied;
 
     [SerializeField] private bool _survivalMode = false;
@@ -29,14 +29,17 @@ public class ZombieSpawner : MonoBehaviour
         //_survivalMode = SaveSystem.Instance.GetData().SurvivalMode;
         if (_survivalMode)
         {
-            return;
+            RangeZombieCount = _defaultRangeZombieCount;
         }
-        foreach (var wave in _waves)
+        else
         {
-            ZombieCount += wave.ZombieCount;
-            if (wave.EnemyTemplate.TryGetComponent<RangeSeekState>(out RangeSeekState rangeSeekState))
+            foreach (var wave in _waves)
             {
-                RangeZombieCount += wave.ZombieCount;
+                ZombieCount += wave.ZombieCount;
+                if (wave.EnemyTemplate.TryGetComponent<RangeSeekState>(out RangeSeekState rangeSeekState))
+                {
+                    RangeZombieCount += wave.ZombieCount;
+                }
             }
         }
     }
@@ -110,7 +113,7 @@ public class ZombieSpawner : MonoBehaviour
         {
             enemy.transform.position = _spawnPoints[spawnPointNumber].position;
             enemy.GetComponent<TargetSwitcher>().Initialize(_player, _track);
-
+            enemy.GetComponent<Zombie>().Initialize();
             if (enemy.TryGetComponent<RangeSeekState>(out RangeSeekState rangeSeekState))
             {
                 rangeSeekState.SetMissilePool(_missilePool);

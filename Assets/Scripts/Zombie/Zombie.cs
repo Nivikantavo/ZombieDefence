@@ -22,13 +22,18 @@ public class Zombie : MonoBehaviour, Idamageable
 
     private void Awake()
     {
-        Standig = true;
-        _currentHealth = _maxHealth;
+        Initialize();
     }
 
     private void OnEnable()
     {
         _stunState.StunOvered += OnStaneOvered;
+    }
+
+    public void Initialize()
+    {
+        Standig = true;
+        _currentHealth = _maxHealth;
     }
 
     public void TakeDamage(float damage)

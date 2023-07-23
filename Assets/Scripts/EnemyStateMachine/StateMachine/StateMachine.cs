@@ -13,6 +13,11 @@ public class StateMachine : MonoBehaviour
         Reset(_firstState);
     }
 
+    private void OnEnable()
+    {
+        Reset(_firstState);
+    }
+
     private void Update()
     {
         if (_currentState == null)
@@ -27,8 +32,13 @@ public class StateMachine : MonoBehaviour
 
     private void Reset(State startState)
     {
-        _currentState = startState;
+        State[] states = GetComponents<State>();
+        foreach(var state in states)
+        {
+            state.enabled = false;
+        }
 
+        _currentState = startState;
         if (_currentState != null)
             _currentState.Enter();
     }
