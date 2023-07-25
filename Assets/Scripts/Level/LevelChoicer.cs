@@ -26,7 +26,7 @@ public class LevelChoicer : MonoBehaviour
         }
         else
         {
-            //_currentLevelNumber = data.ComplitedLevelsOnStage;
+            _currentLevelNumber = data.ComplitedLevelsOnStage;
             _levels = transform.GetComponentsInChildren<LevelWaves>(true).ToList();
 
             for (int i = 0; i < _levels.Count; i++)

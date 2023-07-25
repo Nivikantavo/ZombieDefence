@@ -39,17 +39,14 @@ public class SurvivalModeToggle : MonoBehaviour
 
     private void OnStageSelected()
     {
-        if (SaveSystem.Instance.DataLoaded)
+        if(_levelsPanel.SelectedStage.ComplitedLevels < 3)
         {
-            if(SaveSystem.Instance.GetData().ComplitedLevelsOnStage < 3)
-            {
-                _surviveModeButton.interactable = false;
-                SwitchEnabled(false);
-            }
-            else
-            {
-                _surviveModeButton.interactable = true;
-            }
+            _surviveModeButton.interactable = false;
+            SwitchEnabled(false);
+        }
+        else
+        {
+            _surviveModeButton.interactable = true;
         }
     }
 
