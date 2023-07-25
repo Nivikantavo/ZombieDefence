@@ -4,11 +4,16 @@ using UnityEngine;
 public class PausePanel : Element
 {
     [SerializeField] private GameObject _pausePanel;
+    [SerializeField] private LevelProgress _levelProgress;
     private bool _menuIsEnabled;
 
     protected override void Tick()
     {
         bool cursorLocked = characterBehaviour.IsCursorLocked();
+        if(_levelProgress.LevelEnded == true)
+        {
+            return;
+        } 
         switch (cursorLocked)
         {
             case true when _menuIsEnabled:

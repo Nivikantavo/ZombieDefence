@@ -4,6 +4,8 @@ using UnityEngine.SceneManagement;
 
 public class LevelProgress : MonoBehaviour
 {
+    public bool LevelEnded { get; private set; }
+
     [SerializeField] private Track _track;
     [SerializeField] private Player _player;
     [SerializeField] private ZombieSpawner _zombieSpawner;
@@ -13,6 +15,11 @@ public class LevelProgress : MonoBehaviour
     [SerializeField] private Character _charachter;
 
     private bool _levelComplited = false;
+
+    private void Awake()
+    {
+        LevelEnded = false;
+    }
 
     private void OnEnable()
     {
@@ -32,6 +39,7 @@ public class LevelProgress : MonoBehaviour
 
     private void LevelEnd()
     {
+        LevelEnded = true;
         if (_levelComplited)
         {
             SaveProgress();
