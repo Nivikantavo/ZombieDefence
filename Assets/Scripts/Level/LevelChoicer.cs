@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class LevelChoicer : MonoBehaviour
 {
@@ -26,16 +27,26 @@ public class LevelChoicer : MonoBehaviour
         }
         else
         {
-            _currentLevelNumber = data.ComplitedLevelsOnStage;
+            int currentStage = SceneManager.GetActiveScene().buildIndex - 1;
             _levels = transform.GetComponentsInChildren<LevelWaves>(true).ToList();
-
-            for (int i = 0; i < _levels.Count; i++)
+            if (data.ComplitedStages == currentStage)
             {
-                if (_currentLevelNumber == i)
+                _currentLevelNumber = data.ComplitedLevelsOnStage;
+
+                for (int i = 0; i < _levels.Count; i++)
                 {
-                    _levels[i].gameObject.SetActive(true);
+                    if (_currentLevelNumber == i)
+                    {
+                        _levels[i].gameObject.SetActive(true);
+                    }
                 }
             }
+            else
+            {
+                _currentLevelNumber = _levels.Count - 1;
+                _levels[_currentLevelNumber].gameObject.SetActive(true);
+            }
+            Debug.Log("Stage: " + currentStage + ", Level: " + _currentLevelNumber);
         }
     }
 }

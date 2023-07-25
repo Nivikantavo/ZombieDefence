@@ -22,7 +22,6 @@ public class UIInput : MonoBehaviour
         switch (context)
         {
             case { phase: InputActionPhase.Performed }:
-                Debug.Log("UI:  Esc pressed");
                 SwitchPauseEnabled();
                 break;
         }
@@ -42,6 +41,5 @@ public class UIInput : MonoBehaviour
     {
         Cursor.visible = !_cursorLocked;
         Cursor.lockState = _cursorLocked ? CursorLockMode.Locked : CursorLockMode.None;
-        Debug.Log("UI: " + Cursor.lockState);
     }
 }
