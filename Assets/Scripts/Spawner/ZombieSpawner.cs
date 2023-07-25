@@ -22,11 +22,11 @@ public class ZombieSpawner : MonoBehaviour
     private int _defaultRangeZombieCount = 30;
     public event UnityAction AllZombieDied;
 
-    [SerializeField] private bool _survivalMode = false;
+    private bool _survivalMode = false;
 
     private void Awake()
     {
-        //_survivalMode = SaveSystem.Instance.GetData().SurvivalMode;
+        _survivalMode = SaveSystem.Instance.GetData().SurvivalMode;
         if (_survivalMode)
         {
             RangeZombieCount = _defaultRangeZombieCount;

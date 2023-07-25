@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class LevelsPanel : MonoBehaviour, ILoadable
 {
@@ -9,6 +10,8 @@ public class LevelsPanel : MonoBehaviour, ILoadable
     [SerializeField] private List<Stage> _stages = new List<Stage>();
 
     private List<LevelView> _levelViews = new List<LevelView>();
+
+    public event UnityAction StageSelected;
 
     private void Awake()
     {
@@ -69,5 +72,6 @@ public class LevelsPanel : MonoBehaviour, ILoadable
     {
         SelectedStage = stage;
         view.Select();
+        StageSelected?.Invoke();
     }
 }
