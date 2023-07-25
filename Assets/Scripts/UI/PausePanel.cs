@@ -38,4 +38,9 @@ public class PausePanel : Element
         Time.timeScale = 1;
         _pausePanel.SetActive(_menuIsEnabled);
     }
+
+    public void OnBackButtonClick()
+    {
+        Hide();
+    }
 }
