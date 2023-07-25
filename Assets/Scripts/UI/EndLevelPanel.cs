@@ -8,6 +8,7 @@ using UnityEngine.UI;
 public class EndLevelPanel : Element
 {
     [SerializeField] private MoneyCollecter _moneyCollecter;
+    [SerializeField] private LoadingScreen _loadingScreen;
     [SerializeField] private TMP_Text _totalEarned;
     [SerializeField] private Button _inMenuButton;
     [SerializeField] private Button _restartButton;
@@ -31,12 +32,12 @@ public class EndLevelPanel : Element
 
     private void OnRestartLevelButtonClick()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        _loadingScreen.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     private void OnInMenuButtonClick()
     {
-        SceneManager.LoadScene(0);
+        _loadingScreen.LoadScene(0);
     }
 
     private IEnumerator SetScoreSmoothly(int score)
