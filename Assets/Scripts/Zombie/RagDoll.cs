@@ -22,7 +22,6 @@ public class RagDoll : MonoBehaviour
 
     private void OnEnable()
     {
-        Debug.Log("DeactivateRagdol");
         DeactivateRagDoll();
         _stunState.Stunned += ActivateRagDoll;
         _standUpState.BonesReset += DeactivateRagDoll;

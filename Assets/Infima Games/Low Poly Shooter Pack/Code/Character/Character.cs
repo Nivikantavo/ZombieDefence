@@ -20,6 +20,7 @@ namespace InfimaGames.LowPolyShooterPack
 
 		[SerializeField] private Player _player;
 		[SerializeField] private InventorySetter _inventorySetter;
+		private float _lookSensetive;
 
 		[Title(label: "References")]
 
@@ -383,6 +384,7 @@ namespace InfimaGames.LowPolyShooterPack
 			//Cache the movement behaviour.
 			movementBehaviour = GetComponent<MovementBehaviour>();
 			SetGranadesCount();
+			SetSavedSensetive();
         }
 
 		/// <summary>
@@ -883,9 +885,21 @@ namespace InfimaGames.LowPolyShooterPack
 			//Reload.
 			equippedWeapon.Reload();
 		}
+
         private void SetGranadesCount()
         {
             grenadeTotal = SaveSystem.Instance.GetData().GranadesCount;
+        }
+
+		public void ChangeSensetive(float newSensetive)
+		{
+			_lookSensetive = newSensetive;
+
+        }
+
+		private void SetSavedSensetive()
+		{
+			_lookSensetive = SaveSystem.Instance.GetData().Sensetive;
         }
 
         /// <summary>
@@ -1546,18 +1560,18 @@ namespace InfimaGames.LowPolyShooterPack
 		
 		public void OnLockCursor(InputAction.CallbackContext context)
 		{
-			
-			//Switch.
-			switch (context)
-			{
-				//Performed.
-				case {phase: InputActionPhase.Performed}:
-					//Toggle the cursor locked value.
-					cursorLocked = !cursorLocked;
-					//Update the cursor's state.
-					UpdateCursorState();
-					break;
-			}
+			//Debug.Log("Character: Esc pressed");
+			////Switch.
+			//switch (context)
+			//{
+			//	//Performed.
+			//	case { phase: InputActionPhase.Performed }:
+			//		//Toggle the cursor locked value.
+			//		cursorLocked = !cursorLocked;
+			//		//Update the cursor's state.
+			//		UpdateCursorState();
+			//		break;
+			//}
 		}
 		
 		/// <summary>
@@ -1586,6 +1600,7 @@ namespace InfimaGames.LowPolyShooterPack
 
 			//If we're aiming, multiply by the mouse sensitivity multiplier of the equipped weapon's scope!
 			axisLook *= aiming ? equippedWeaponScope.GetMultiplierMouseSensitivity() : 1.0f;
+			axisLook *= _lookSensetive;
 		}
 
 		/// <summary>

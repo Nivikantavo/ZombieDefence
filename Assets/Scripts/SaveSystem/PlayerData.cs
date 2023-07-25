@@ -21,5 +21,6 @@ public class PlayerData
         Forces = new string[1] {""};
         TruckHealth = 300;
         SurvivalMode = false;
+        Sensetive = 1;
     }
 }

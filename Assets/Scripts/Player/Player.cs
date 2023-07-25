@@ -28,10 +28,8 @@ public class Player : Target
         {
             for (int i = 0; i < _forces.Count; i++)
             {
-                Debug.Log(force + " / " + _forces[i].Name);
                 if(force == _forces[i].Name)
                 {
-                    Debug.Log(force + " == " + _forces[i].Name);
                     _forces[i].gameObject.SetActive(true);
                 }
             }
