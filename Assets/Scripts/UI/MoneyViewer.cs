@@ -11,20 +11,16 @@ public class MoneyViewer : MonoBehaviour
     private int _currentValue;
     private Coroutine _settingValue;
 
-    private void Awake()
-    {
-        _currentValue = _moneyCollecter.Money;
-        _moneyText.text = _currentValue.ToString();
-    }
-
     private void OnEnable()
     {
         _moneyCollecter.CoinsCountChanged += OnCoinsCountChanged;
+        _moneyCollecter.MoneyLoaded += OnMoneyLoaded;
     }
 
     private void OnDisable()
     {
         _moneyCollecter.CoinsCountChanged -= OnCoinsCountChanged;
+        _moneyCollecter.MoneyLoaded -= OnMoneyLoaded;
     }
 
     private void OnCoinsCountChanged(int newValue)
@@ -48,5 +44,11 @@ public class MoneyViewer : MonoBehaviour
             _moneyText.text = _currentValue.ToString();
             yield return delaye;
         }
+    }
+
+    public void OnMoneyLoaded(int money)
+    {
+        _currentValue = money;
+        _moneyText.text = _currentValue.ToString();
     }
 }

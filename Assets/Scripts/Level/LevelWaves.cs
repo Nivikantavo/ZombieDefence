@@ -5,7 +5,11 @@ using UnityEngine;
 
 public class LevelWaves : MonoBehaviour
 {
+    public int LevelBonus => _levelBonus;
+
     [SerializeField] private ZombieSpawner _zombieSpawner;
+    [SerializeField] private int _levelBonus;
+
     private List<Wave> _waves = new List<Wave>();
 
     private void Awake()
