@@ -37,8 +37,7 @@ public class ItemView : MonoBehaviour
 
     public void MarkItemAsBought()
     {
-        _item.Sell();
-        Render();
+        _item.MarkAsBought();
     }
 
     private void OnSellButtonClick()
@@ -52,7 +51,7 @@ public class ItemView : MonoBehaviour
         _itemImage.sprite = _itemIcon;
         _priceText.text = _item.SellingPrice.ToString();
 
-        if (_item.IsBought)
+        if (_item.IsBought && _item.IsSoldOnce)
         {
             _priceLable.SetActive(false);
         }
@@ -62,5 +61,4 @@ public class ItemView : MonoBehaviour
     {
         Render();
     }
-
 }
