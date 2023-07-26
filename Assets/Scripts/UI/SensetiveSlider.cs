@@ -20,6 +20,7 @@ public class SensetiveSlider : MonoBehaviour
     private void OnEnable()
     {
         _sensetiveSlider.onValueChanged.AddListener(OnSensetiveChanged);
+        SetCurrentSensetive();
     }
 
     private void OnDisable()
@@ -31,5 +32,10 @@ public class SensetiveSlider : MonoBehaviour
     private void OnSensetiveChanged(float newSensetive)
     {
         _player.ChangeSensetive(newSensetive);
+    }
+
+    private void SetCurrentSensetive()
+    {
+        _sensetiveSlider.value = SaveSystem.Instance.GetData().Sensetive;
     }
 }

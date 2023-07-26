@@ -7,8 +7,11 @@ public class Shop : MonoBehaviour
 {
     [SerializeField] private List<ItemView> _itemViews;
     [SerializeField] private List<WeaponItem> _weapons;
-    [SerializeField] private List<ImproveItem> _improveItems;
+    [SerializeField] private ImproveItem _granadeItem;
+    [SerializeField] private ImproveItem _truckHealthItem;
     [SerializeField] private MoneyCollecter _moneyCollecter;
+
+    private PlayerData _playerData;
 
     private void OnEnable()
     {
@@ -32,7 +35,9 @@ public class Shop : MonoBehaviour
         {
             yield return new WaitForSecondsRealtime(0.25f);
         }
+        _playerData = SaveSystem.Instance.GetData();
         MarkAllBoughtItem();
+        Debug.Log(_playerData.GranadesCount);
     }
 
     private void TrySellItem(Item item)
@@ -83,7 +88,7 @@ public class Shop : MonoBehaviour
 
     private void AddBoughtWeapon(WeaponItem weaponItem)
     {
-        List<string> weapons = SaveSystem.Instance.GetData().Weapons.ToList();
+        List<string> weapons = _playerData.Weapons.ToList();
         weapons.Add(weaponItem.Weapon.WeaponName);
         SaveSystem.Instance.SetWeaponsArrey(weapons.ToArray());
     }
@@ -92,13 +97,13 @@ public class Shop : MonoBehaviour
     {
         if(improveItem.Name == "TruckHealth")
         {
-            int truckHealth = SaveSystem.Instance.GetData().TruckHealth;
+            int truckHealth = _playerData.TruckHealth;
             truckHealth += improveItem.ImproveStep;
             SaveSystem.Instance.SetTruckHealth(truckHealth);
         }
         else if(improveItem.Name == "Granade")
         {
-            int granadesCount = SaveSystem.Instance.GetData().GranadesCount;
+            int granadesCount = _playerData.GranadesCount;
             granadesCount += improveItem.ImproveStep;
             SaveSystem.Instance.SetGranadesCount(granadesCount);
         }
@@ -106,7 +111,7 @@ public class Shop : MonoBehaviour
 
     private void AddBoughtForce(ForceItem forceItem)
     {
-        List<string> forces = SaveSystem.Instance.GetData().Forces.ToList();
+        List<string> forces = _playerData.Forces.ToList();
         forces.Add(forceItem.ForceName);
         for (int i = 0; i < forces.Count; i++)
         {
@@ -117,17 +122,27 @@ public class Shop : MonoBehaviour
 
     private void MarkAllBoughtItem()
     {
-        List<string> boughtWeapons = SaveSystem.Instance.GetData().Weapons.ToList();
+        List<string> boughtItems = new List<string>();
+        boughtItems.AddRange(_playerData.Weapons.ToList());
+        boughtItems.AddRange(_playerData.Forces.ToList());
+        boughtItems.Add(_granadeItem.Name);
+        boughtItems.Add(_truckHealthItem.Name);
 
-        foreach (var wewaponName in boughtWeapons)
+        int granadeBought = (_playerData.GranadesCount - 1) / _granadeItem.ImproveStep;
+        int truckHealthBiught = (_playerData.TruckHealth - 300) / _truckHealthItem.ImproveStep ;
+        _granadeItem.SetSellsNumber(granadeBought);
+        _truckHealthItem.SetSellsNumber(truckHealthBiught);
+
+        foreach (var items in boughtItems)
         {
             foreach (var view in _itemViews)
             {
-                if (view.ItemName == wewaponName)
+                if (view.ItemName == items)
                 {
                     view.MarkItemAsBought();
                 }
             }
         }
+        
     }
 }
