@@ -7,12 +7,15 @@ using UnityEngine.Events;
 public class MoneyCollecter : MonoBehaviour, ILoadable
 {
     public int Money => _money;
+    public int StartMoney => _startMoney;
 
     private int _money = 0;
+    private int _startMoney = 0;
     private CapsuleCollider _collectionCollider;
 
     public event UnityAction<Coin> CoinCollected;
-    public event UnityAction<int> CoinsCountChanged;
+    public event UnityAction<int> MoneyCountChanged;
+    public event UnityAction<int> MoneyLoaded;
 
     private void Awake()
     {
@@ -52,18 +55,25 @@ public class MoneyCollecter : MonoBehaviour, ILoadable
         return true;
     }
 
+    public void AddMoney(int money)
+    {
+        _money += money;
+        MoneyCountChanged?.Invoke(_money);
+    }
+
     private void CollectCoin(Coin coin)
     {
-        _money += coin.Count;
+        AddMoney(coin.Count);
         coin.Collect();
         CoinCollected?.Invoke(coin);
-        CoinsCountChanged?.Invoke(_money);
+        MoneyCountChanged?.Invoke(_money);
         coin.gameObject.SetActive(false);
     }
 
     public void SetData(PlayerData data)
     {
         _money = data.Money;
-        CoinsCountChanged?.Invoke(_money);
+        _startMoney = _money;
+        MoneyLoaded?.Invoke(_money);
     }
 }

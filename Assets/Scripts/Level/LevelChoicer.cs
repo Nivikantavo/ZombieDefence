@@ -6,6 +6,8 @@ using UnityEngine.SceneManagement;
 
 public class LevelChoicer : MonoBehaviour
 {
+    public LevelWaves CurrentLevel { get; private set; }
+
     public bool SurvivalMode { get; private set; }
 
     public int CurrentLevelNumber => _currentLevelNumber;
@@ -38,6 +40,7 @@ public class LevelChoicer : MonoBehaviour
                     if (_currentLevelNumber == i)
                     {
                         _levels[i].gameObject.SetActive(true);
+                        CurrentLevel = _levels[i];
                     }
                 }
             }
@@ -45,6 +48,7 @@ public class LevelChoicer : MonoBehaviour
             {
                 _currentLevelNumber = _levels.Count - 1;
                 _levels[_currentLevelNumber].gameObject.SetActive(true);
+                CurrentLevel = _levels[_currentLevelNumber];
             }
             Debug.Log("Stage: " + currentStage + ", Level: " + _currentLevelNumber);
         }
