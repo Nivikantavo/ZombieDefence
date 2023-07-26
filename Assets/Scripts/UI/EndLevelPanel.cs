@@ -46,10 +46,14 @@ public class EndLevelPanel : Element
         WaitForSeconds delay = new WaitForSeconds(_settingScoreDelay);
         int forKillScore = _moneyCollecter.Money - _moneyCollecter.StartMoney;
         int totalScore = forKillScore + _levelChoicer.CurrentLevel.LevelBonus;
+
         yield return delay;
         _forKillEarned.text = forKillScore.ToString();
+
         yield return delay;
         _levelBonus.text = _levelChoicer.CurrentLevel.LevelBonus.ToString();
+        _moneyCollecter.AddMoney(_levelChoicer.CurrentLevel.LevelBonus);
+
         yield return delay;
         _totalScore.text = totalScore.ToString();
     }

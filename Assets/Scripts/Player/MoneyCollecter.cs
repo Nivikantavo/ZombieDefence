@@ -14,7 +14,7 @@ public class MoneyCollecter : MonoBehaviour, ILoadable
     private CapsuleCollider _collectionCollider;
 
     public event UnityAction<Coin> CoinCollected;
-    public event UnityAction<int> CoinsCountChanged;
+    public event UnityAction<int> MoneyCountChanged;
     public event UnityAction<int> MoneyLoaded;
 
     private void Awake()
@@ -55,12 +55,18 @@ public class MoneyCollecter : MonoBehaviour, ILoadable
         return true;
     }
 
+    public void AddMoney(int money)
+    {
+        _money += money;
+        MoneyCountChanged?.Invoke(_money);
+    }
+
     private void CollectCoin(Coin coin)
     {
-        _money += coin.Count;
+        AddMoney(coin.Count);
         coin.Collect();
         CoinCollected?.Invoke(coin);
-        CoinsCountChanged?.Invoke(_money);
+        MoneyCountChanged?.Invoke(_money);
         coin.gameObject.SetActive(false);
     }
 
