@@ -7,7 +7,6 @@ using UnityEngine.SceneManagement;
 public class LevelChoicer : MonoBehaviour
 {
     public LevelWaves CurrentLevel { get; private set; }
-
     public bool SurvivalMode { get; private set; }
 
     public int CurrentLevelNumber => _currentLevelNumber;

@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class SurvivalMode : MonoBehaviour
 {
+    [SerializeField] private GameObject _surviveTimer;
+
     [SerializeField] private List<Wave> _easy;
     [SerializeField] private List<Wave> _medium;
     [SerializeField] private List<Wave> _hard;
@@ -14,6 +16,8 @@ public class SurvivalMode : MonoBehaviour
     [SerializeField] private int _mediumWavesCount;
     [SerializeField] private int _minimumEnemiesInWave;
     [SerializeField] private int _maximumEnemiesInWave;
+
+    private int _magnificationEnemiesLimit;
 
     private int _spawnedWavesCount = 0;
     private float _timeAfterLastWave = 0;
@@ -29,8 +33,14 @@ public class SurvivalMode : MonoBehaviour
 
     private void Awake()
     {
+        _magnificationEnemiesLimit = _easy.Count;
         UpdateComplexity();
         _timeAfterLastWave = _delayBetweenWaves;
+    }
+
+    private void OnEnable()
+    {
+        _surviveTimer.SetActive(true);
     }
 
     private void Update()
@@ -45,18 +55,21 @@ public class SurvivalMode : MonoBehaviour
             }
             else if (_currentComplexity == Complexity.medium)
             {
-                Debug.Log("Spawn Wave medium");
                 SpawnWave(_easy);
                 SpawnWave(_medium);
             }
             else
             {
-                Debug.Log("Spawn Wave hard");
                 SpawnWave(_easy);
                 SpawnWave(_medium);
                 SpawnWave(_hard);
             }
             _timeAfterLastWave = 0;
+
+            if(_maximumEnemiesInWave < _magnificationEnemiesLimit)
+            {
+                _maximumEnemiesInWave++;
+            }
         }
 
         UpdateComplexity();
