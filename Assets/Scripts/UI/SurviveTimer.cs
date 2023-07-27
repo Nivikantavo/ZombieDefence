@@ -5,11 +5,15 @@ using UnityEngine;
 
 public class SurviveTimer : MonoBehaviour
 {
+    public float SurviveTime => _surviveTime;
+
     private TMP_Text _timer;
-    private float _timerTime;
+    private float _surviveTime;
     private float _seconds = 0;
     private float _minutes = 0;
-    private float _hours = 0;
+    private float _milliseconds = 0;
+
+    private bool _stopped = false;
 
     private void Awake()
     {
@@ -18,15 +22,30 @@ public class SurviveTimer : MonoBehaviour
 
     private void Update()
     {
-        _timerTime += Time.deltaTime;
-        Timer(_timerTime);
-        _timer.text = string.Format("{00:00}:{1:00}:{2:00}", _hours ,_minutes, _seconds);
+        if(_stopped == false)
+        {
+            Timer(_surviveTime);
+        }
+    }
+
+    public float[] GetTimer()
+    {
+        return new float[] {_minutes, _seconds, _milliseconds};
+    }
+
+    public void Stop()
+    {
+        _stopped = true;
     }
 
     private void Timer(float time)
     {
-        _hours = Mathf.FloorToInt(time / (60 * 60));
+        _surviveTime += Time.deltaTime;
+
+        _milliseconds = Mathf.FloorToInt((time * 1000) % 100);
         _minutes = Mathf.FloorToInt(time / 60);
         _seconds = Mathf.FloorToInt(time % 60);
+
+        _timer.text = string.Format("{00:00}:{1:00}:{2:00}", _minutes, _seconds, _milliseconds);
     }
 }

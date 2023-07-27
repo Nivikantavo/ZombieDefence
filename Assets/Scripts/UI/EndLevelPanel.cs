@@ -10,9 +10,11 @@ public class EndLevelPanel : Element
     [SerializeField] private MoneyCollecter _moneyCollecter;
     [SerializeField] private LoadingScreen _loadingScreen;
     [SerializeField] private LevelChoicer _levelChoicer;
-    [SerializeField] private TMP_Text _totalScore;
-    [SerializeField] private TMP_Text _forKillEarned;
-    [SerializeField] private TMP_Text _levelBonus;
+    [SerializeField] private SurviveTimer _surviveTimer;
+
+    [SerializeField] private SurviveScorePanel _surviveScorePanel;
+    [SerializeField] private LevelScorePanel _levelScorePanel;
+    
     [SerializeField] private Button _inMenuButton;
     [SerializeField] private Button _restartButton;
     [SerializeField] private float _settingScoreDelay;
@@ -22,7 +24,21 @@ public class EndLevelPanel : Element
         characterBehaviour.LockCursor(false);
         _inMenuButton.onClick.AddListener(OnInMenuButtonClick);
         _restartButton.onClick.AddListener(OnRestartLevelButtonClick);
-        StartCoroutine(SetScore());
+
+        if (_levelChoicer.SurvivalMode)
+        {
+            _surviveScorePanel.gameObject.SetActive(true);
+            _levelScorePanel.gameObject.SetActive(false);
+            _surviveTimer.Stop();
+            _surviveScorePanel.SetScore(_surviveTimer.SurviveTime);
+        }
+        else
+        {
+            _surviveScorePanel.gameObject.SetActive(false);
+            _levelScorePanel.gameObject.SetActive(true);
+            _levelScorePanel.SetScore(_moneyCollecter.StartMoney - _moneyCollecter.Money, _levelChoicer.CurrentLevel.LevelBonus);
+            _moneyCollecter.AddMoney(_levelChoicer.CurrentLevel.LevelBonus);
+        }
     }
 
     private void OnDisable()
@@ -39,22 +55,5 @@ public class EndLevelPanel : Element
     private void OnInMenuButtonClick()
     {
         _loadingScreen.LoadScene(0);
-    }
-
-    private IEnumerator SetScore()
-    {
-        WaitForSeconds delay = new WaitForSeconds(_settingScoreDelay);
-        int forKillScore = _moneyCollecter.Money - _moneyCollecter.StartMoney;
-        int totalScore = forKillScore + _levelChoicer.CurrentLevel.LevelBonus;
-
-        yield return delay;
-        _forKillEarned.text = forKillScore.ToString();
-
-        yield return delay;
-        _levelBonus.text = _levelChoicer.CurrentLevel.LevelBonus.ToString();
-        _moneyCollecter.AddMoney(_levelChoicer.CurrentLevel.LevelBonus);
-
-        yield return delay;
-        _totalScore.text = totalScore.ToString();
     }
 }
