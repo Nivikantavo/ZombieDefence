@@ -140,6 +140,12 @@ public class SaveSystem : MonoBehaviour
         Save();
     }
 
+    public void SetSurvivelRecord(float newRecord)
+    {
+        _playerData.SurviveTimeRecord = newRecord;
+        Save();
+    }
+
     private void OnLoadDataSuccess(string data)
     {
         if (string.IsNullOrEmpty(data))
