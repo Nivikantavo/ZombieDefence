@@ -176,11 +176,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68b6680a09f1e5148bf112e921fcab77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxAttackersCount: 10
-  _maxHealth: 1000
+  MaxHealthPoints: 0
   _collider: {fileID: 7850621483827013589}
   _maxFuel: 100
-  _fillingTime: 60
+  _fillingTime: 120
   _fillingStep: 1
 --- !u!64 &7850621483827013589
 MeshCollider:
@@ -1299,6 +1298,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BasicZoneBlue
       objectReference: {fileID: 0}
+    - target: {fileID: 131378, guid: 1c09e97cb5a737143be70edaf30e1126, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 471988, guid: 1c09e97cb5a737143be70edaf30e1126, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -1345,6 +1348,25 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1c09e97cb5a737143be70edaf30e1126, type: 3}
+--- !u!1 &4315963873912121823 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 131378, guid: 1c09e97cb5a737143be70edaf30e1126, type: 3}
+  m_PrefabInstance: {fileID: 4315963873911990509}
+  m_PrefabAsset: {fileID: 0}
+--- !u!136 &948791924
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4315963873912121823}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 1.25
+  m_Height: 4.09
+  m_Direction: 1
+  m_Center: {x: 0, y: 0.72, z: 0}
 --- !u!4 &4315963873912314713 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 471988, guid: 1c09e97cb5a737143be70edaf30e1126, type: 3}
