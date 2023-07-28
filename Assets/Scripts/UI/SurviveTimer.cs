@@ -41,10 +41,10 @@ public class SurviveTimer : MonoBehaviour
     private void Timer(float time)
     {
         _surviveTime += Time.deltaTime;
-
-        _milliseconds = Mathf.FloorToInt((time * 1000) % 100);
+        
         _minutes = Mathf.FloorToInt(time / 60);
         _seconds = Mathf.FloorToInt(time % 60);
+        _milliseconds = Mathf.FloorToInt((time * 1000) % 100);
 
         _timer.text = string.Format("{00:00}:{1:00}:{2:00}", _minutes, _seconds, _milliseconds);
     }

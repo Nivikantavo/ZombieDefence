@@ -36,7 +36,7 @@ public class EndLevelPanel : Element
         {
             _surviveScorePanel.gameObject.SetActive(false);
             _levelScorePanel.gameObject.SetActive(true);
-            _levelScorePanel.SetScore(_moneyCollecter.StartMoney - _moneyCollecter.Money, _levelChoicer.CurrentLevel.LevelBonus);
+            _levelScorePanel.SetScore(_moneyCollecter.Money - _moneyCollecter.StartMoney, _levelChoicer.CurrentLevel.LevelBonus);
             _moneyCollecter.AddMoney(_levelChoicer.CurrentLevel.LevelBonus);
         }
     }
