@@ -26,6 +26,11 @@ public class ZombieSpawner : MonoBehaviour
 
     private void Awake()
     {
+        
+    }
+
+    private void Start()
+    {
         _survivalMode = SaveSystem.Instance.GetData().SurvivalMode;
         if (_survivalMode)
         {
@@ -42,10 +47,7 @@ public class ZombieSpawner : MonoBehaviour
                 }
             }
         }
-    }
 
-    private void Start()
-    {
         if (_survivalMode)
         {
             return;

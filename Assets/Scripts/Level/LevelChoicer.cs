@@ -49,7 +49,6 @@ public class LevelChoicer : MonoBehaviour
                 _levels[_currentLevelNumber].gameObject.SetActive(true);
                 CurrentLevel = _levels[_currentLevelNumber];
             }
-            Debug.Log("Stage: " + currentStage + ", Level: " + _currentLevelNumber);
         }
     }
 }

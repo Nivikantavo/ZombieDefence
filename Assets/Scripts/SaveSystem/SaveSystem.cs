@@ -87,15 +87,15 @@ public class SaveSystem : MonoBehaviour
 
     public void SetProgress(int complitedLevelNumber, int stageNumber)
     {
-        if(stageNumber < _playerData.ComplitedStages)
+        if(stageNumber <= _playerData.ComplitedStages)
         {
-            Debug.Log($"stageNumber {stageNumber} <= ComplitedStages: {_playerData.ComplitedStages}");
-            _playerData.ComplitedLevelsOnStage = complitedLevelNumber;
+            return;
         }
-        
-        if(complitedLevelNumber == 3)
+        _playerData.ComplitedLevelsOnStage = complitedLevelNumber;
+
+        if (complitedLevelNumber == 3)
         {
-            if(stageNumber > _playerData.ComplitedStages)
+            if (stageNumber > _playerData.ComplitedStages)
             {
                 _playerData.ComplitedStages = stageNumber;
                 _playerData.ComplitedLevelsOnStage = 0;
