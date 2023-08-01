@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
 public class LevelView : MonoBehaviour
@@ -13,6 +14,9 @@ public class LevelView : MonoBehaviour
 
     private Stage _stage;
     private bool _locked;
+
+    public event UnityAction<LevelView> LevelViewClicked;
+
     public void Initialize(Stage stage, bool locked)
     {
         _stage = stage;
@@ -34,5 +38,10 @@ public class LevelView : MonoBehaviour
         _lockImage.enabled = _locked;
         _levelImage.color = _selectButton.colors.normalColor;
         _selectButton.interactable = !_locked;
+    }
+
+    private void OnViewClicked(LevelView view)
+    {
+        LevelViewClicked?.Invoke(view);
     }
 }

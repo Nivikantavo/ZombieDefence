@@ -19,7 +19,6 @@ namespace InfimaGames.LowPolyShooterPack
 		#region FIELDS SERIALIZED
 
 		[SerializeField] private Player _player;
-		[SerializeField] private InventorySetter _inventorySetter;
 		private float _lookSensetive;
 
 		[Title(label: "References")]
