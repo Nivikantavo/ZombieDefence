@@ -8,6 +8,8 @@ public class LevelsPanel : MonoBehaviour, ILoadable
     public Stage SelectedStage { get; private set; }
 
     [SerializeField] private List<Stage> _stages = new List<Stage>();
+    [SerializeField] private LoadingScreen _loadingScreen;
+    [SerializeField] private DifficultyPanel _difficultyPanel;
 
     private List<LevelView> _levelViews = new List<LevelView>();
 
@@ -31,25 +33,37 @@ public class LevelsPanel : MonoBehaviour, ILoadable
         SetData(playerData);
     }
 
+    private void OnEnable()
+    {
+        _difficultyPanel.DifficaltySelected += OnDifficultySelected;
+    }
+
+    private void OnDisable()
+    {
+        _difficultyPanel.DifficaltySelected -= OnDifficultySelected;
+    }
+
     public void SetData(PlayerData data)
     {
+        bool locked = true;
         for (int i = 0; i < _stages.Count; i++)
         {
             if(i < data.ComplitedStages)
             {
                 _stages[i].SetProgress(_stages[i].LevelsCount);
+                locked = false;
             }
             else if(i == data.ComplitedStages)
             {
                 _stages[i].SetProgress(data.ComplitedLevelsOnStage);
-                SelectLevel(_stages[i], _levelViews[i]);
+                locked = false;
             }
             else
             {
                 _stages[i].SetProgress(0);
-                _levelViews[i].Lock();
+                locked = true;
             }
-            _levelViews[i].Initialize(_stages[i]);
+            _levelViews[i].Initialize(_stages[i], locked);
         }
     }
 
@@ -61,17 +75,19 @@ public class LevelsPanel : MonoBehaviour, ILoadable
             {
                 SelectLevel(_stages[i], _levelViews[i]);
             }
-            else
-            {
-                _levelViews[i].Deselect();
-            }
         }
     }
 
     private void SelectLevel(Stage stage, LevelView view)
     {
+        _difficultyPanel.gameObject.SetActive(true);
+        _difficultyPanel.Initialize(stage.ComplitedLevels + 1);
         SelectedStage = stage;
-        view.Select();
         StageSelected?.Invoke();
+    }
+
+    private void OnDifficultySelected()
+    {
+        _loadingScreen.LoadScene(SelectedStage.Number);
     }
 }

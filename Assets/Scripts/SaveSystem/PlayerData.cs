@@ -3,6 +3,7 @@ public class PlayerData
     public int Money;
     public int ComplitedStages;
     public int ComplitedLevelsOnStage;
+    public int SelectedLevel;
     public float Sensetive;
     public string[] Weapons;
     public int GranadesCount;

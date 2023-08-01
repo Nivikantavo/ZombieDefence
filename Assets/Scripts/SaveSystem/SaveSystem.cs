@@ -146,6 +146,12 @@ public class SaveSystem : MonoBehaviour
         Save();
     }
 
+    public void SetSelectedLevel(int selectedLevel)
+    {
+        _playerData.SelectedLevel = selectedLevel;
+        Save();
+    }
+
     private void OnLoadDataSuccess(string data)
     {
         if (string.IsNullOrEmpty(data))

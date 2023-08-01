@@ -28,27 +28,39 @@ public class LevelChoicer : MonoBehaviour
         }
         else
         {
-            int currentStage = SceneManager.GetActiveScene().buildIndex - 1;
+            //int currentStage = SceneManager.GetActiveScene().buildIndex - 1;
             _levels = transform.GetComponentsInChildren<LevelWaves>(true).ToList();
-            if (data.ComplitedStages == currentStage)
-            {
-                _currentLevelNumber = data.ComplitedLevelsOnStage;
 
-                for (int i = 0; i < _levels.Count; i++)
+            _currentLevelNumber = data.SelectedLevel;
+
+            for (int i = 0; i < _levels.Count; i++)
+            {
+                if (_currentLevelNumber == i)
                 {
-                    if (_currentLevelNumber == i)
-                    {
-                        _levels[i].gameObject.SetActive(true);
-                        CurrentLevel = _levels[i];
-                    }
+                    _levels[i].gameObject.SetActive(true);
+                    CurrentLevel = _levels[i];
                 }
             }
-            else
-            {
-                _currentLevelNumber = _levels.Count - 1;
-                _levels[_currentLevelNumber].gameObject.SetActive(true);
-                CurrentLevel = _levels[_currentLevelNumber];
-            }
+
+            //if (data.ComplitedStages == currentStage)
+            //{
+            //    _currentLevelNumber = data.ComplitedLevelsOnStage;
+
+            //    for (int i = 0; i < _levels.Count; i++)
+            //    {
+            //        if (_currentLevelNumber == i)
+            //        {
+            //            _levels[i].gameObject.SetActive(true);
+            //            CurrentLevel = _levels[i];
+            //        }
+            //    }
+            //}
+            //else
+            //{
+            //    _currentLevelNumber = _levels.Count - 1;
+            //    _levels[_currentLevelNumber].gameObject.SetActive(true);
+            //    CurrentLevel = _levels[_currentLevelNumber];
+            //}
         }
     }
 }
