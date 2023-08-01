@@ -12,9 +12,9 @@ public class DifficultyPanel : MonoBehaviour
 
     public void Initialize(int levelsAvailable)
     {
-        for (int i = 0; i < levelsAvailable; i++)
+        for (int i = 0; i < _levelButtons.Count; i++)
         {
-            _levelButtons[i].interactable = true;
+            _levelButtons[i].interactable = i <= levelsAvailable;
         }
     }
 
@@ -22,10 +22,12 @@ public class DifficultyPanel : MonoBehaviour
     {
         SaveSystem.Instance.SetSelectedLevel(difficulty);
         SaveSystem.Instance.SetSurvivalModeEnabled(false);
+        DifficaltySelected?.Invoke();
     }
 
     public void SetSurvivalMode()
     {
         SaveSystem.Instance.SetSurvivalModeEnabled(true);
+        DifficaltySelected?.Invoke();
     }
 }

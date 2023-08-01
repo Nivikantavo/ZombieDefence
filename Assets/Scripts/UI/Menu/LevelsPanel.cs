@@ -73,15 +73,15 @@ public class LevelsPanel : MonoBehaviour, ILoadable
         {
             if(view == _levelViews[i])
             {
-                SelectLevel(_stages[i], _levelViews[i]);
+                SelectLevel(_stages[i]);
             }
         }
     }
 
-    private void SelectLevel(Stage stage, LevelView view)
+    private void SelectLevel(Stage stage)
     {
         _difficultyPanel.gameObject.SetActive(true);
-        _difficultyPanel.Initialize(stage.ComplitedLevels + 1);
+        _difficultyPanel.Initialize(stage.ComplitedLevels);
         SelectedStage = stage;
         StageSelected?.Invoke();
     }
