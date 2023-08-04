@@ -13,6 +13,7 @@ public class MoneyViewer : MonoBehaviour
 
     private void OnEnable()
     {
+        OnMoneyLoaded(_moneyCollecter.Money);
         _moneyCollecter.MoneyCountChanged += OnCoinsCountChanged;
         _moneyCollecter.MoneyLoaded += OnMoneyLoaded;
     }

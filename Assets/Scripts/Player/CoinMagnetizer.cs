@@ -51,7 +51,7 @@ public class CoinMagnetizer : MonoBehaviour
             if(_coins.Contains(coinRigidBody) == false)
             {
                 _coins.Add(coinRigidBody);
-                coinRigidBody.WakeUp();
+                coin.WakeUp();
             }
         }
     }
@@ -63,7 +63,7 @@ public class CoinMagnetizer : MonoBehaviour
             Rigidbody coinRigidBody = coin.GetComponent<Rigidbody>();
             if (_coins.Contains(coinRigidBody) == true)
             {
-                coinRigidBody.Sleep();
+                coin.Sleep();
                 _coins.Remove(coinRigidBody);
             }
         }
@@ -74,6 +74,7 @@ public class CoinMagnetizer : MonoBehaviour
         Rigidbody coinRigidBody = coin.GetComponent<Rigidbody>();
         if (_coins.Contains(coinRigidBody) == true)
         {
+            coin.Sleep();
             _coins.Remove(coinRigidBody);
         }
     }

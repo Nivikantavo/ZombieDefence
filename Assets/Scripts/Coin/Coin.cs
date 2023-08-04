@@ -16,13 +16,21 @@ public class Coin : MonoBehaviour
         _rigidbody = GetComponent<Rigidbody>();
     }
 
-    public void Collect()
+    private void OnEnable()
     {
+        Sleep();
+    }
+
+    public void Sleep()
+    {
+        _rigidbody.isKinematic = true;
+        _rigidbody.angularVelocity = Vector3.zero;
         _rigidbody.Sleep();
     }
 
-    public void Spawn()
+    public void WakeUp()
     {
-        _rigidbody.WakeUp();
+        _rigidbody.isKinematic = false;
+        _rigidbody.angularVelocity = Vector3.zero;
     }
 }
