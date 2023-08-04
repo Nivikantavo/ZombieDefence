@@ -1,20 +1,25 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
-using UnityEngine.UI;
 
 public class DifficultyPanel : MonoBehaviour
 {
-    [SerializeField] private List<Button> _levelButtons;
+    [SerializeField] private List<DifficultyButton> _difficultButtons;
 
     public event UnityAction DifficaltySelected;
 
     public void Initialize(int levelsAvailable)
     {
-        for (int i = 0; i < _levelButtons.Count; i++)
+        for (int i = 0; i < _difficultButtons.Count; i++)
         {
-            _levelButtons[i].interactable = i <= levelsAvailable;
+            if(i <= levelsAvailable)
+            {
+                _difficultButtons[i].Unlock();
+            }
+            else
+            {
+                _difficultButtons[i].Lock();
+            }
         }
     }
 
