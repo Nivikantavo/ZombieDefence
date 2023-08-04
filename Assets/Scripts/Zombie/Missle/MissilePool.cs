@@ -17,5 +17,4 @@ public class MissilePool : ObjectPool
         _capacity = _zombieSpawner.RangeZombieCount * _missilsPerZombie;
         Initialize(_missileTemplate, _capacity);
     }
-
 }

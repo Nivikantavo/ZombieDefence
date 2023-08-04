@@ -10,7 +10,17 @@ public class CoinsPool : ObjectPool
 
     private int _capacity;
 
-    private void Start()
+    private void OnEnable()
+    {
+        _spawner.ZombyCounted += Init;
+    }
+
+    private void OnDisable()
+    {
+        _spawner.ZombyCounted -= Init;
+    }
+
+    private void Init()
     {
         _capacity = _spawner.ZombieCount;
         Initialize(_coinTemplate, _capacity);

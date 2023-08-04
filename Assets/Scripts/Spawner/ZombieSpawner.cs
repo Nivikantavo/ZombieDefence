@@ -24,10 +24,7 @@ public class ZombieSpawner : MonoBehaviour
 
     private bool _survivalMode = false;
 
-    private void Awake()
-    {
-        
-    }
+    public event UnityAction ZombyCounted;
 
     private void Start()
     {
@@ -47,6 +44,7 @@ public class ZombieSpawner : MonoBehaviour
                 }
             }
         }
+        ZombyCounted?.Invoke();
 
         if (_survivalMode)
         {

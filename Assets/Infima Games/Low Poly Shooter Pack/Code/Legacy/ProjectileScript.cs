@@ -10,7 +10,7 @@ namespace InfimaGames.LowPolyShooterPack.Legacy
 
 		private bool explodeSelf;
 
-		[SerializeField]private float damage;
+		[SerializeField] private float _damage;
 
 		[Tooltip("Enable to use constant force, instead of force at launch only")]
 		public bool useConstantForce;
@@ -191,10 +191,6 @@ namespace InfimaGames.LowPolyShooterPack.Legacy
 			Collider[] colliders = Physics.OverlapSphere(explosionPos, radius);
 			foreach (Collider hit in colliders)
 			{
-				//Ignore The Player.
-				if (hit.CompareTag("Player"))
-					continue;
-
 				Rigidbody rb = hit.GetComponent<Rigidbody>();
 
 				//Add force to nearby rigidbodies
@@ -210,14 +206,13 @@ namespace InfimaGames.LowPolyShooterPack.Legacy
 					hit.gameObject.GetComponent<TargetScript>().isHit = true;
 				}
 
-				if(hit.TryGetComponent<HitBox>(out HitBox hitBox))
-				{
-                    hitBox.OnHit(damage);
-					Debug.Log("hit zombie");
-				}
+                if (hit.TryGetComponent<Idamageable>(out Idamageable damageable))
+                {
+                    damageable.TakeDamage(_damage);
+                }
 
-				//If the projectile explosion hits barrels with the tag "ExplosiveBarrel"
-				if (hit.transform.tag == "ExplosiveBarrel")
+                //If the projectile explosion hits barrels with the tag "ExplosiveBarrel"
+                if (hit.transform.tag == "ExplosiveBarrel")
 				{
 
 					//Toggle the explode bool on the explosive barrel object

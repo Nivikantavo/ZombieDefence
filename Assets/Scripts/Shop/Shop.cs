@@ -37,7 +37,6 @@ public class Shop : MonoBehaviour
         }
         _playerData = SaveSystem.Instance.GetData();
         MarkAllBoughtItem();
-        Debug.Log(_playerData.GranadesCount);
     }
 
     private void TrySellItem(Item item)

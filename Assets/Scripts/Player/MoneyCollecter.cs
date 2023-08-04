@@ -64,7 +64,7 @@ public class MoneyCollecter : MonoBehaviour, ILoadable
     private void CollectCoin(Coin coin)
     {
         AddMoney(coin.Count);
-        coin.Collect();
+        coin.Sleep();
         CoinCollected?.Invoke(coin);
         MoneyCountChanged?.Invoke(_money);
         coin.gameObject.SetActive(false);
