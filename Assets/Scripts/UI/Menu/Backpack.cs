@@ -11,6 +11,7 @@ public class Backpack : MonoBehaviour
     private const string SlamForce = "JumpDash";
     private const string ShieldForce = "Shield";
 
+    [SerializeField] private Shop _shop;
     [SerializeField] private TMP_Text _granagesCountText;
     [SerializeField] private TMP_Text _truckHealthText;
 
@@ -30,8 +31,26 @@ public class Backpack : MonoBehaviour
         {
             yield return new WaitForSecondsRealtime(0.25f);
         }
-        PlayerData playerData = SaveSystem.Instance.GetData();
-        SetData(playerData);
+        LoadData();
+    }
+
+    private void OnEnable()
+    {
+        _shop.ItemBought += LoadData;
+    }
+
+    private void OnDisable()
+    {
+        _shop.ItemBought -= LoadData;
+    }
+
+    private void LoadData()
+    {
+        if (SaveSystem.Instance.DataLoaded)
+        {
+            PlayerData playerData = SaveSystem.Instance.GetData();
+            SetData(playerData);
+        }
     }
 
     private void SetData(PlayerData playerData)

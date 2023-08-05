@@ -52,6 +52,7 @@ public class MoneyCollecter : MonoBehaviour, ILoadable
             return false;
         }
         _money -= cost;
+        MoneyCountChanged?.Invoke(_money);
         return true;
     }
 

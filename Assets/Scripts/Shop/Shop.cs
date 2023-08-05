@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Shop : MonoBehaviour
 {
@@ -12,6 +13,8 @@ public class Shop : MonoBehaviour
     [SerializeField] private MoneyCollecter _moneyCollecter;
 
     private PlayerData _playerData;
+
+    public event UnityAction ItemBought;
 
     private void OnEnable()
     {
@@ -53,6 +56,7 @@ public class Shop : MonoBehaviour
         {
             TrySellForce(item as ForceItem);
         }
+        ItemBought?.Invoke();
     }
 
     private void TrySellWeapon(WeaponItem weapon)
