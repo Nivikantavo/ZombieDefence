@@ -8,7 +8,7 @@ public class MoneyViewer : MonoBehaviour
     [SerializeField] private TMP_Text _moneyText;
     [SerializeField] private float _settingTime;
 
-    private int _currentValue;
+    private float _currentValue;
     private Coroutine _settingValue;
 
     private void OnEnable()
@@ -37,11 +37,12 @@ public class MoneyViewer : MonoBehaviour
     private IEnumerator SetValueSmoothly(int newValue)
     {
         float difference = newValue - _currentValue;
-        WaitForSeconds delaye = new WaitForSeconds(_settingTime / difference);
+        WaitForSeconds delaye = new WaitForSeconds(_settingTime / Mathf.Abs(difference));
 
-        for (int i = 0; i < difference; i++)
+        for (int i = 0; i < Mathf.Abs(difference); i++)
         {
-            _currentValue++;
+            
+            _currentValue += Mathf.Sign(difference);
             _moneyText.text = _currentValue.ToString();
             yield return delaye;
         }
