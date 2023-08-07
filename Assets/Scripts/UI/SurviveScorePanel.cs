@@ -12,6 +12,8 @@ public class SurviveScorePanel : MonoBehaviour
 
     private int _currentRecord = 0;
 
+    private int _millisecondsInSecond = 1000;
+
     private IEnumerator Start()
     {
         yield return YandexGamesSdk.Initialize();
@@ -26,7 +28,7 @@ public class SurviveScorePanel : MonoBehaviour
         if(_currentRecord < time)
         {
             _currentRecord = Mathf.FloorToInt(time);
-            Leaderboard.SetScore(_leaderboardName, _currentRecord, OnSetScoreSuccess);
+            Leaderboard.SetScore(_leaderboardName, _currentRecord * _millisecondsInSecond, OnSetScoreSuccess);
         }
 
         ViewSurviveResult(_currentRecord, _surviveRecord);
@@ -38,7 +40,7 @@ public class SurviveScorePanel : MonoBehaviour
         { 
             Mathf.FloorToInt(time / 60),
             Mathf.FloorToInt(time % 60),
-            Mathf.FloorToInt((time * 1000) % 100)
+            Mathf.FloorToInt((time * _millisecondsInSecond) % 100)
         };
 
         text.text = string.Format("{00:00}:{1:00}:{2:00}", timersValue[0], timersValue[1], timersValue[2]);
