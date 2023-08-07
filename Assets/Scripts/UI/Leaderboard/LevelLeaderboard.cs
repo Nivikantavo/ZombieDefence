@@ -14,11 +14,13 @@ public class LevelLeaderboard : MonoBehaviour
 
     public void InitializePlayerEntries()
     {
-        Leaderboard.GetEntries(_leaderboardName, OnGetEntriesSuccess, null, _leaderboardsLenth);
+        Leaderboard.GetEntries(_leaderboardName, OnGetEntriesSuccess, OnGetEntriesError, _leaderboardsLenth);
     }
 
     private void OnGetEntriesSuccess(LeaderboardGetEntriesResponse result)
     {
+        Debug.Log(gameObject.name + " " + _leaderboardName);
+        Debug.Log("LEADERBORD TITLE: " + _leaderboardName + " Rank: " + result.userRank);
         LeaderboardEntryResponse playerEntry = GetPlayerEntry();
 
         for (int i = 0; i < result.entries.Length; i++)
@@ -32,6 +34,11 @@ public class LevelLeaderboard : MonoBehaviour
 
             FillLeaderboard(playerEntry, _backgrounds[_backgrounds.Count - 1]);
         }
+    }
+
+    private void OnGetEntriesError(string error)
+    {
+        Debug.Log(_leaderboardName + " ERROR: " + error);
     }
 
     private void FillLeaderboard(LeaderboardEntryResponse entry, Sprite background)

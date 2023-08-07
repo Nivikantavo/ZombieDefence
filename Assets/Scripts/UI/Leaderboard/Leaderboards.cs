@@ -22,12 +22,10 @@ public class Leaderboards : MonoBehaviour
         {
             if (PlayerAccount.IsAuthorized == false)
             {
-                Debug.Log("IsAuthorized == false");
                 PlayerAccount.Authorize(ShowLevelLeaderbord, null);
             }
             else
             {
-                Debug.Log("IsAuthorized == true");
                 ShowLevelLeaderbord();
             }
         }
