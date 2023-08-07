@@ -44165,6 +44165,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3072084833313319608, guid: b5653903e2f8fad40bdbabd074d165b2, type: 3}
+      propertyPath: _leaderboardName
+      value: TrailerPark
+      objectReference: {fileID: 0}
     - target: {fileID: 6022106025569629462, guid: b5653903e2f8fad40bdbabd074d165b2, type: 3}
       propertyPath: m_Name
       value: Canvas
@@ -44271,15 +44275,15 @@ PrefabInstance:
       objectReference: {fileID: 613154644}
     - target: {fileID: 6055733573217719260, guid: b5653903e2f8fad40bdbabd074d165b2, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0.492
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6055733573217719260, guid: b5653903e2f8fad40bdbabd074d165b2, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6055733573217719260, guid: b5653903e2f8fad40bdbabd074d165b2, type: 3}
       propertyPath: m_AnchorMin.x
-      value: 0.492
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6055733573764744312, guid: b5653903e2f8fad40bdbabd074d165b2, type: 3}
       propertyPath: m_AnchorMax.x
@@ -44335,15 +44339,15 @@ PrefabInstance:
       objectReference: {fileID: 613154643}
     - target: {fileID: 8996308867176695157, guid: b5653903e2f8fad40bdbabd074d165b2, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8996308867176695157, guid: b5653903e2f8fad40bdbabd074d165b2, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8996308867176695157, guid: b5653903e2f8fad40bdbabd074d165b2, type: 3}
       propertyPath: m_AnchorMin.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8996308867629388485, guid: b5653903e2f8fad40bdbabd074d165b2, type: 3}
       propertyPath: m_AnchorMax.x
@@ -44361,7 +44365,8 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5532477101924668549, guid: b5653903e2f8fad40bdbabd074d165b2, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: b5653903e2f8fad40bdbabd074d165b2, type: 3}
 --- !u!114 &1282022181 stripped
 MonoBehaviour:

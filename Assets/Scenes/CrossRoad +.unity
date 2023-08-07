@@ -54367,6 +54367,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3072084833313319608, guid: b5653903e2f8fad40bdbabd074d165b2, type: 3}
+      propertyPath: _leaderboardName
+      value: Crossroads
+      objectReference: {fileID: 0}
     - target: {fileID: 6022106025569629462, guid: b5653903e2f8fad40bdbabd074d165b2, type: 3}
       propertyPath: m_Name
       value: Canvas

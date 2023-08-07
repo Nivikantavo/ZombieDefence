@@ -1,3 +1,4 @@
+using Agava.YandexGames;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -5,24 +6,27 @@ using UnityEngine;
 
 public class SurviveScorePanel : MonoBehaviour
 {
+    [SerializeField] private string _leaderboardName;
     [SerializeField] private TMP_Text _surviveText;
     [SerializeField] private TMP_Text _surviveRecord;
 
-    private float _currentRecord = 0;
+    private int _currentRecord = 0;
 
-    private void OnEnable()
+    private IEnumerator Start()
     {
-        _currentRecord = SaveSystem.Instance.GetData().SurviveTimeRecord;
+        yield return YandexGamesSdk.Initialize();
+        
     }
 
     public void SetScore(float time)
     {
+        SetCurrentScore();
         ViewSurviveResult(time, _surviveText);
 
         if(_currentRecord < time)
         {
-            _currentRecord = time;
-            SaveSystem.Instance.SetSurvivelRecord(_currentRecord);
+            _currentRecord = Mathf.FloorToInt(time);
+            Leaderboard.SetScore(_leaderboardName, _currentRecord, OnSetScoreSuccess);
         }
 
         ViewSurviveResult(_currentRecord, _surviveRecord);
@@ -38,5 +42,28 @@ public class SurviveScorePanel : MonoBehaviour
         };
 
         text.text = string.Format("{00:00}:{1:00}:{2:00}", timersValue[0], timersValue[1], timersValue[2]);
+    }
+
+    private void SetCurrentScore()
+    {
+        Leaderboard.GetPlayerEntry(_leaderboardName, (result) =>
+        {
+            if (result != null)
+                _currentRecord = result.score;
+        });
+    }
+
+    private void OnSetScoreSuccess()
+    {
+        Debug.Log(_leaderboardName);
+
+        Leaderboard.GetPlayerEntry(_leaderboardName, (result) =>
+        {
+            if (result != null)
+            {
+                Debug.Log($"Player: {result.player.publicName}, Score: {result.score}");
+            }
+                
+        });
     }
 }
