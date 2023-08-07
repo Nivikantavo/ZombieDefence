@@ -199,6 +199,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a846de32982417498b0d5385ce4a68d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _leaderboardName: 
   _surviveText: {fileID: 1357593559}
   _surviveRecord: {fileID: 452900652}
 --- !u!1 &617395765
