@@ -17,7 +17,8 @@ public class LevelScorePanel : MonoBehaviour
 
     private IEnumerator SetLevelScore(int forKillMoney, int levelBonus)
     {
-        WaitForSeconds delay = new WaitForSeconds(_settingScoreDelay);
+
+        WaitForSecondsRealtime delay = new WaitForSecondsRealtime(_settingScoreDelay);
         int totalScore = forKillMoney + levelBonus;
 
         yield return delay;

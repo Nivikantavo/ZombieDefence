@@ -21,6 +21,7 @@ public class EndLevelPanel : Element
 
     private void OnEnable()
     {
+        Time.timeScale = 0;
         characterBehaviour.LockCursor(false);
         _inMenuButton.onClick.AddListener(OnInMenuButtonClick);
         _restartButton.onClick.AddListener(OnRestartLevelButtonClick);

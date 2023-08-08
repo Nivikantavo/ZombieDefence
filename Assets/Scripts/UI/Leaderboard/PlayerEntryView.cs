@@ -14,7 +14,6 @@ public class PlayerEntryView : MonoBehaviour
         _rank.text = rank.ToString();
         SetRecordInFormat(score, _score);
         _background.sprite = background;
-        Debug.Log("Nickname: " + nickname);
         if (string.IsNullOrEmpty(nickname))
         {
             nickname = "Anonymous";
