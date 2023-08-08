@@ -6,6 +6,7 @@ using UnityEngine;
 public class Leaderboards : MonoBehaviour
 {
     [SerializeField] private List<LevelLeaderboard> _leaderboards;
+    [SerializeField] private int _leaderboardsLenth;
 
     private IEnumerator Start()
     {
@@ -17,7 +18,7 @@ public class Leaderboards : MonoBehaviour
 
     public void ShowLeaderboards()
     {
-#if UNITY_WEBGL && !UNITY_EDITOR
+//#if UNITY_WEBGL && !UNITY_EDITOR
         if (YandexGamesSdk.IsInitialized)
         {
             if (PlayerAccount.IsAuthorized == false)
@@ -29,7 +30,7 @@ public class Leaderboards : MonoBehaviour
                 ShowLevelLeaderbord();
             }
         }
-#endif
+//#endif
 
 #if UNITY_EDITOR
         ShowLevelLeaderbord();
@@ -46,12 +47,49 @@ public class Leaderboards : MonoBehaviour
 
     private void ShowLevelLeaderbord()
     {
+        //bool canEnableNext = false;
+        //foreach (var leaderboard in _leaderboards)
+        //{
+        //    leaderboard.gameObject.SetActive(true);
+        //    if(leaderboard.EntryesLoaded == false)
+        //    {
+        //        FillLeaderboard(leaderboard);
+        //    }
+        //}
+
+        StartCoroutine(SetLeaderboardsData());
+    }
+
+    private void FillLeaderboard(LevelLeaderboard leaderboard)
+    {
+        Debug.Log("FillLeaderboard " + leaderboard.Name);
+        Leaderboard.GetEntries(leaderboard.Name, (result) =>
+        {
+            leaderboard.FillEntryesData(result, _leaderboardsLenth);
+            
+        }, OnGetEntriesError, _leaderboardsLenth);
+    }
+
+    private void OnGetEntriesError(string error)
+    {
+        Debug.Log("ERROR: " + error);
+    }
+
+    private IEnumerator SetLeaderboardsData()
+    {
         foreach (var leaderboard in _leaderboards)
         {
             leaderboard.gameObject.SetActive(true);
-#if UNITY_WEBGL && !UNITY_EDITOR
-            leaderboard.InitializePlayerEntries();
-#endif
+            Leaderboard.GetEntries(leaderboard.Name, (result) =>
+            {
+                leaderboard.FillEntryesData(result, _leaderboardsLenth);
+
+            }, OnGetEntriesError, _leaderboardsLenth);
+
+            while (leaderboard.EntryesLoaded == false)
+            {
+                yield return new WaitForSeconds(0.01f);
+            }
         }
     }
 }

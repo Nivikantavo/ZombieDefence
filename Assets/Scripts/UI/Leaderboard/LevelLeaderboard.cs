@@ -5,61 +5,60 @@ using UnityEngine;
 
 public class LevelLeaderboard : MonoBehaviour
 {
-    [SerializeField] private string _leaderboardName;
+    public string Name => _name;
+    public bool EntryesLoaded => _entryesLoaded;
+
+    [SerializeField] private string _name;
     [SerializeField] private PlayerEntryView _scoreViewPrefab;
     [SerializeField] private Transform _content;
-    [SerializeField] private int _leaderboardsLenth;
     [SerializeField] private List<Sprite> _backgrounds;
     [SerializeField] private GameObject _emptySlot;
 
-    public void InitializePlayerEntries()
-    {
-        Leaderboard.GetEntries(_leaderboardName, OnGetEntriesSuccess, OnGetEntriesError, _leaderboardsLenth);
-    }
+    private List<GameObject> _entryViews = new List<GameObject>();
+    private bool _entryesLoaded = false;
 
-    private void OnGetEntriesSuccess(LeaderboardGetEntriesResponse result)
+    public void FillEntryesData(LeaderboardGetEntriesResponse entryesData, int lenth)
     {
-        Debug.Log(gameObject.name + " " + _leaderboardName);
-        Debug.Log("LEADERBORD TITLE: " + _leaderboardName + " Rank: " + result.userRank);
-        LeaderboardEntryResponse playerEntry = GetPlayerEntry();
+        Debug.Log(gameObject.name + " " + _name);
+        Debug.Log("LEADERBORD TITLE: " + entryesData.leaderboard.name + " Game Object: " + gameObject.name);
 
-        for (int i = 0; i < result.entries.Length; i++)
+//#if UNITY_WEBGL && !UNITY_EDITOR
+
+        for (int i = 0; i < entryesData.entries.Length; i++)
         {
-            FillLeaderboard(result.entries[i], _backgrounds[i]);
+            FillView(entryesData.entries[i], _backgrounds[i]);
         }
 
-        if (playerEntry.rank > _leaderboardsLenth)
+        if (entryesData.userRank > lenth - 1)
         {
-            Instantiate(_emptySlot, _content);
-
-            FillLeaderboard(playerEntry, _backgrounds[_backgrounds.Count - 1]);
+            LeaderboardEntryResponse playerEntry = GetPlayerEntry();
+            var emptySlot = Instantiate(_emptySlot, _content);
+            _entryViews.Add(emptySlot.gameObject);
+            FillView(playerEntry, _backgrounds[_backgrounds.Count - 1]);
         }
+
+        _entryesLoaded = true;
+//#endif
     }
 
-    private void OnGetEntriesError(string error)
-    {
-        Debug.Log(_leaderboardName + " ERROR: " + error);
-    }
 
-    private void FillLeaderboard(LeaderboardEntryResponse entry, Sprite background)
+    private void FillView(LeaderboardEntryResponse entry, Sprite background)
     {
         var view = Instantiate(_scoreViewPrefab, _content);
-        view.Initialize(entry.rank, entry.score, entry.player.publicName, background);
+        view.Initialize(entry.rank, entry.score / 1000, entry.player.publicName, background);
+        _entryViews.Add(view.gameObject);
     }
 
     private LeaderboardEntryResponse GetPlayerEntry()
     {
         LeaderboardEntryResponse playerEntry = null;
-        if (PlayerAccount.IsAuthorized)
+        Leaderboard.GetPlayerEntry(_name, (result) =>
         {
-            Leaderboard.GetPlayerEntry(_leaderboardName, (result) =>
+            if (result != null)
             {
-                if (result != null)
-                {
-                    playerEntry = result;
-                }
-            });
-        }
+                playerEntry = result;
+            }
+        });
 
         return playerEntry;
     }
