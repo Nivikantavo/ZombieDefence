@@ -5,15 +5,20 @@ using UnityEngine.AI;
 public class ZombieMovment : MonoBehaviour
 {
     [SerializeField] private ZombieAnimation _animation;
-    [SerializeField] private float _runDistance;
     [SerializeField] private NavMeshAgent _agent;
-    [SerializeField] private float _walkSpeed;
-    [SerializeField] private float _runSpeed;
+    [SerializeField] private float _minSpeed;
+    [SerializeField] private float _maxSpeed;
+    [SerializeField] private float _minAvoidanceRadius;
+    [SerializeField] private float _maxAvoidanceRadius;
+    [SerializeField] private int _minPrioryty;
+    [SerializeField] private int _maxPrioryty;
     [SerializeField] private bool _running;
 
     private void Awake()
     {
-        _agent.speed = _running == true ?  _runSpeed : _walkSpeed;
+        _agent.speed = Random.Range(_minSpeed, _maxSpeed);
+        _agent.radius = Random.Range(_minAvoidanceRadius, _maxAvoidanceRadius);
+        _agent.avoidancePriority = Random.Range(_minPrioryty, _maxPrioryty);
     }
 
     public void MoveToTarget(Vector3 targetPosition)

@@ -14,6 +14,7 @@ public class Zombie : MonoBehaviour, Idamageable
     [SerializeField] private float _maxHealth;
     [SerializeField] private StunState _stunState;
     [SerializeField] private ZombieAnimation _animation;
+    [SerializeField] private GameObject _mapSign;
 
     private float _currentHealth;
     private float _stunDuration;
@@ -34,6 +35,7 @@ public class Zombie : MonoBehaviour, Idamageable
     {
         Standig = true;
         _currentHealth = _maxHealth;
+        _mapSign.SetActive(true);
     }
 
     public void TakeDamage(float damage)
