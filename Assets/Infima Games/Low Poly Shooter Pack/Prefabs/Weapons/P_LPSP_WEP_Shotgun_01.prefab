@@ -603,8 +603,8 @@ MonoBehaviour:
   projectileImpulse: 400
   roundsPerMinutes: 125
   cycledReload: 1
-  canReloadWhenFull: 1
-  automaticReloadOnEmpty: 0
+  canReloadWhenFull: 0
+  automaticReloadOnEmpty: 1
   automaticReloadOnEmptyDelay: 0.25
   socketEjection: {fileID: 6767141054829411028}
   weaponOffsets:
@@ -663,7 +663,7 @@ MonoBehaviour:
   scopeDefaultBehaviour: {fileID: 3573039447453500961}
   scopeIndex: -1
   scopeIndexFirst: -1
-  scopeIndexRandom: 1
+  scopeIndexRandom: 0
   scopeArray:
   - {fileID: 6233119591725121357}
   - {fileID: 6649450430669250600}
@@ -673,20 +673,20 @@ MonoBehaviour:
   - {fileID: 7337910799066084589}
   - {fileID: 662540231014333318}
   - {fileID: 5622518778225094043}
-  muzzleIndex: 0
-  muzzleIndexRandom: 1
+  muzzleIndex: -1
+  muzzleIndexRandom: 0
   muzzleArray:
   - {fileID: 6861138110961136919}
   - {fileID: 4312938376787030108}
   - {fileID: 7784115019993291152}
   - {fileID: 5790227042524466649}
-  laserIndex: 0
-  laserIndexRandom: 1
+  laserIndex: -1
+  laserIndexRandom: 0
   laserArray:
   - {fileID: 385610152675495963}
   - {fileID: 7673251902465606313}
-  gripIndex: 1
-  gripIndexRandom: 1
+  gripIndex: -1
+  gripIndexRandom: 0
   gripArray:
   - {fileID: 6524145443411325396}
   - {fileID: 607583415081999894}
@@ -1503,6 +1503,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: daf3770baea414742ba7b6bdc426eeec, type: 2}
+    - target: {fileID: 2202878863374167112, guid: 7a743bcd0df24704ebbb7b5f8c3b15c0, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3366728951027924913, guid: 7a743bcd0df24704ebbb7b5f8c3b15c0, type: 3}
       propertyPath: sprite
       value: 
