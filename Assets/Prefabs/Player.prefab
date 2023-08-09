@@ -1278,7 +1278,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _player: {fileID: 175169087984674501}
-  _inventorySetter: {fileID: 0}
   lowerWeapon: {fileID: 3767928863838762353}
   weaponIndexEquippedAtStart: 0
   inventory: {fileID: 8346850263575613592}
@@ -1323,7 +1322,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canvasPrefab: {fileID: 5393623835024644669, guid: 48d7771c50bd625489d38055025597a3, type: 3}
-  qualitySettingsPrefab: {fileID: 5965040680208419700, guid: 458b1dae88c7baf46a163b218ce42a30, type: 3}
 --- !u!114 &4055235613104680759
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3163,7 +3161,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _magnetizationRadius: 2
-  _magnetizationForce: 1
+  _magnetizationForce: 10
   _coinCollecter: {fileID: 6020230762934783284}
 --- !u!1 &6303639034639922846
 GameObject:

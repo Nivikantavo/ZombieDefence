@@ -1556,7 +1556,7 @@ MonoBehaviour:
   _track: {fileID: 0}
   _player: {fileID: 0}
   _zombieSpawner: {fileID: 0}
-  _endLevelPanel: {fileID: 6611966883208069999}
+  _endLevelPanel: {fileID: 6611966882716942643}
   _levelChoicer: {fileID: 0}
   _endZone: {fileID: 0}
   _charachter: {fileID: 0}
