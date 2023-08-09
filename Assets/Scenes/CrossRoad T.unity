@@ -3313,6 +3313,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1644478814099928, guid: 5aed343e83179d249af6934614d6f0ea, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1644478814099928, guid: 5aed343e83179d249af6934614d6f0ea, type: 3}
       propertyPath: m_NavMeshLayer
       value: 1
       objectReference: {fileID: 0}
