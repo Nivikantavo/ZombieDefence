@@ -17,7 +17,6 @@ public class SurviveScorePanel : MonoBehaviour
     private IEnumerator Start()
     {
         yield return YandexGamesSdk.Initialize();
-        
     }
 
     public void SetScore(float time)

@@ -25,27 +25,42 @@ public class EndLevelPanel : Element
         characterBehaviour.LockCursor(false);
         _inMenuButton.onClick.AddListener(OnInMenuButtonClick);
         _restartButton.onClick.AddListener(OnRestartLevelButtonClick);
-
-        if (_levelChoicer.SurvivalMode)
-        {
-            _surviveScorePanel.gameObject.SetActive(true);
-            _levelScorePanel.gameObject.SetActive(false);
-            _surviveTimer.Stop();
-            _surviveScorePanel.SetScore(_surviveTimer.SurviveTime);
-        }
-        else
-        {
-            _surviveScorePanel.gameObject.SetActive(false);
-            _levelScorePanel.gameObject.SetActive(true);
-            _levelScorePanel.SetScore(_moneyCollecter.Money - _moneyCollecter.StartMoney, _levelChoicer.CurrentLevel.LevelBonus);
-            _moneyCollecter.AddMoney(_levelChoicer.CurrentLevel.LevelBonus);
-        }
     }
 
     private void OnDisable()
     {
         _inMenuButton.onClick.RemoveListener(OnInMenuButtonClick);
         _restartButton.onClick.RemoveListener(OnRestartLevelButtonClick);
+    }
+
+    public void Initialize(bool levelComplited)
+    {
+        if (_levelChoicer.SurvivalMode)
+        {
+            OpenSurvivePanel();
+        }
+        else
+        {
+            OpenScorePanel(levelComplited);
+        }
+    }
+
+    private void OpenSurvivePanel()
+    {
+        _surviveScorePanel.gameObject.SetActive(true);
+        _levelScorePanel.gameObject.SetActive(false);
+        _surviveTimer.Stop();
+        _surviveScorePanel.SetScore(_surviveTimer.SurviveTime);
+    }
+
+    private void OpenScorePanel(bool levelComplited)
+    {
+        _surviveScorePanel.gameObject.SetActive(false);
+        _levelScorePanel.gameObject.SetActive(true);
+        int levelBonus = levelComplited ? _levelChoicer.CurrentLevel.LevelBonus : 0;
+
+        _levelScorePanel.SetScore(_moneyCollecter.Money - _moneyCollecter.StartMoney, levelBonus);
+        _moneyCollecter.AddMoney(levelBonus);
     }
 
     private void OnRestartLevelButtonClick()

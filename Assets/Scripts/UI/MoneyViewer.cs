@@ -37,7 +37,7 @@ public class MoneyViewer : MonoBehaviour
     private IEnumerator SetValueSmoothly(int newValue)
     {
         float difference = newValue - _currentValue;
-        WaitForSeconds delaye = new WaitForSeconds(_settingTime / Mathf.Abs(difference));
+        WaitForSecondsRealtime delaye = new WaitForSecondsRealtime(_settingTime / Mathf.Abs(difference));
 
         for (int i = 0; i < Mathf.Abs(difference); i++)
         {

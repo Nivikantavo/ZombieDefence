@@ -54520,6 +54520,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 320588057}
     - target: {fileID: 6611966882833135169, guid: b5653903e2f8fad40bdbabd074d165b2, type: 3}
+      propertyPath: _endLevelPanel
+      value: 
+      objectReference: {fileID: 6611966882671763119}
+    - target: {fileID: 6611966882833135169, guid: b5653903e2f8fad40bdbabd074d165b2, type: 3}
       propertyPath: _zombieSpawner
       value: 
       objectReference: {fileID: 1279349235}
@@ -54545,6 +54549,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b5653903e2f8fad40bdbabd074d165b2, type: 3}
+--- !u!114 &6611966882671763119 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6611966882716942643, guid: b5653903e2f8fad40bdbabd074d165b2, type: 3}
+  m_PrefabInstance: {fileID: 6611966882671763118}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02d4682f466992e4ea12727fd66b663f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &7109547121575785135
 PrefabInstance:
   m_ObjectHideFlags: 0

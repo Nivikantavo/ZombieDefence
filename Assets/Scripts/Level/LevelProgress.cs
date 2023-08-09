@@ -9,7 +9,7 @@ public class LevelProgress : MonoBehaviour
     [SerializeField] private Track _track;
     [SerializeField] private Player _player;
     [SerializeField] private ZombieSpawner _zombieSpawner;
-    [SerializeField] private GameObject _endLevelPanel;
+    [SerializeField] private EndLevelPanel _endLevelPanel;
     [SerializeField] private LevelChoicer _levelChoicer;
     [SerializeField] private LevelEndZone _endZone;
     [SerializeField] private Character _charachter;
@@ -44,7 +44,8 @@ public class LevelProgress : MonoBehaviour
         {
             SaveProgress();
         }
-        _endLevelPanel.SetActive(true);
+        _endLevelPanel.gameObject.SetActive(true);
+        _endLevelPanel.Initialize(_levelComplited);
     }
 
     private void PlayerWin()
@@ -58,7 +59,8 @@ public class LevelProgress : MonoBehaviour
 
     private void PlayerLost()
     {
-        _endLevelPanel.SetActive(true);
+        _endLevelPanel.gameObject.SetActive(true);
+        _endLevelPanel.Initialize(_levelComplited);
     }
 
     private void SaveProgress()
