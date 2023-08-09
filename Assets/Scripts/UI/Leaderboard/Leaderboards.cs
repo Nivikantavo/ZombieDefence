@@ -8,6 +8,8 @@ public class Leaderboards : MonoBehaviour
     [SerializeField] private List<LevelLeaderboard> _leaderboards;
     [SerializeField] private int _leaderboardsLenth;
 
+    private float _delay = 0.01f;
+
     private IEnumerator Start()
     {
 #if UNITY_WEBGL && !UNITY_EDITOR
@@ -18,7 +20,7 @@ public class Leaderboards : MonoBehaviour
 
     public void ShowLeaderboards()
     {
-//#if UNITY_WEBGL && !UNITY_EDITOR
+#if UNITY_WEBGL && !UNITY_EDITOR
         if (YandexGamesSdk.IsInitialized)
         {
             if (PlayerAccount.IsAuthorized == false)
@@ -30,10 +32,6 @@ public class Leaderboards : MonoBehaviour
                 ShowLevelLeaderbord();
             }
         }
-//#endif
-
-#if UNITY_EDITOR
-        ShowLevelLeaderbord();
 #endif
     }
 
@@ -47,22 +45,30 @@ public class Leaderboards : MonoBehaviour
 
     private void ShowLevelLeaderbord()
     {
-        //bool canEnableNext = false;
-        //foreach (var leaderboard in _leaderboards)
-        //{
-        //    leaderboard.gameObject.SetActive(true);
-        //    if(leaderboard.EntryesLoaded == false)
-        //    {
-        //        FillLeaderboard(leaderboard);
-        //    }
-        //}
-
         StartCoroutine(SetLeaderboardsData());
+    }
+
+    private IEnumerator SetLeaderboardsData()
+    {
+        WaitForSeconds delay = new WaitForSeconds(_delay);
+
+        foreach (var leaderboard in _leaderboards)
+        {
+            if (leaderboard.EntryesLoaded == false)
+            {
+                FillLeaderboard(leaderboard);
+            }
+
+            while (leaderboard.EntryesLoaded == false)
+            {
+                yield return delay;
+            }
+        }
     }
 
     private void FillLeaderboard(LevelLeaderboard leaderboard)
     {
-        Debug.Log("FillLeaderboard " + leaderboard.Name);
+        leaderboard.gameObject.SetActive(true);
         Leaderboard.GetEntries(leaderboard.Name, (result) =>
         {
             leaderboard.FillEntryesData(result, _leaderboardsLenth);
@@ -75,21 +81,4 @@ public class Leaderboards : MonoBehaviour
         Debug.Log("ERROR: " + error);
     }
 
-    private IEnumerator SetLeaderboardsData()
-    {
-        foreach (var leaderboard in _leaderboards)
-        {
-            leaderboard.gameObject.SetActive(true);
-            Leaderboard.GetEntries(leaderboard.Name, (result) =>
-            {
-                leaderboard.FillEntryesData(result, _leaderboardsLenth);
-
-            }, OnGetEntriesError, _leaderboardsLenth);
-
-            while (leaderboard.EntryesLoaded == false)
-            {
-                yield return new WaitForSeconds(0.01f);
-            }
-        }
-    }
 }
