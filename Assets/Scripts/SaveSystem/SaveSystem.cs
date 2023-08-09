@@ -1,4 +1,5 @@
 using Agava.YandexGames;
+using InfimaGames.LowPolyShooterPack;
 using System.Collections;
 using System.IO;
 using UnityEngine;
@@ -113,6 +114,12 @@ public class SaveSystem : MonoBehaviour
     public void SetWeaponsArrey(string[] weapons)
     {
         _playerData.Weapons = weapons;
+        Save();
+    }
+
+    public void SetWeaponsUpgradeArrey(string[] upgradeWeapons)
+    {
+        _playerData.UpgradeWeapons = upgradeWeapons;
         Save();
     }
 

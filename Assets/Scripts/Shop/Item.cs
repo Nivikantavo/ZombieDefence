@@ -7,28 +7,28 @@ public abstract class Item : MonoBehaviour
 {
     public virtual string Name => ItemName;
     public virtual int SellingPrice => Price;
-    public bool IsBought => Bought;
-    public bool IsSoldOnce => SoldOnce;
+    public int Purchases => BoughtCount;
+    public int NumberOfItems => ItemsCount;
 
     [SerializeField] protected int Price;
     [SerializeField] protected string ItemName;
-    [SerializeField] protected bool Bought;
-    [SerializeField] protected bool SoldOnce;
+    [SerializeField] protected int BoughtCount;
+    [SerializeField] protected int ItemsCount;
 
     public event UnityAction ItemBought;
 
     public virtual void Sell()
     {
-        if(Bought == false || SoldOnce == false)
+        if(BoughtCount < ItemsCount)
         {
-            Bought = true;
+            BoughtCount++;
             ItemBought?.Invoke();
         }
     }
 
-    public virtual void MarkAsBought()
+    public virtual void MarkAsBought(int bougtCount)
     {
-        Bought = true;
+        BoughtCount = bougtCount;
         ItemBought?.Invoke();
     }
 }
