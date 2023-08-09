@@ -12,9 +12,19 @@ public class MissilePool : ObjectPool
 
     private int _capacity = 0;
 
-    private void Start()
+    private void OnEnable()
     {
-        _capacity = _zombieSpawner.RangeZombieCount * _missilsPerZombie;
+        _zombieSpawner.ZombyCounted += Init;
+    }
+
+    private void OnDisable()
+    {
+        _zombieSpawner.ZombyCounted -= Init;
+    }
+
+    private void Init()
+    {
+        _capacity = _zombieSpawner.RangeZombieCount;
         Initialize(_missileTemplate, _capacity);
     }
 }
