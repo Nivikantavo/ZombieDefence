@@ -61,13 +61,18 @@ public class Shop : MonoBehaviour
 
     private void TrySellWeapon(WeaponItem weapon)
     {
-        if (weapon.IsBought == false)
+        if (weapon.Purchases == 0)
         {
             if (_moneyCollecter.TrySpendMoney(weapon.SellingPrice))
             {
                 weapon.Sell();
                 AddBoughtWeapon(weapon);
             }
+        }
+        else if(weapon.Purchases < weapon.NumberOfItems)
+        {
+            weapon.Sell();
+            AddWeaponUpgrade(weapon);
         }
     }
 
@@ -94,6 +99,13 @@ public class Shop : MonoBehaviour
         List<string> weapons = _playerData.Weapons.ToList();
         weapons.Add(weaponItem.Weapon.WeaponName);
         SaveSystem.Instance.SetWeaponsArrey(weapons.ToArray());
+    }
+
+    private void AddWeaponUpgrade(WeaponItem weaponItem)
+    {
+        List<string> upgradeWeapons = _playerData.UpgradeWeapons.ToList();
+        upgradeWeapons.Add(weaponItem.Weapon.WeaponName);
+        SaveSystem.Instance.SetWeaponsUpgradeArrey(upgradeWeapons.ToArray());
     }
 
     private void AddBoughtImprovement(ImproveItem improveItem)
@@ -142,10 +154,41 @@ public class Shop : MonoBehaviour
             {
                 if (view.ItemName == items)
                 {
-                    view.MarkItemAsBought();
+                    //view.MarkItemAsBought();
                 }
             }
         }
         
+    }
+
+    private void MarkBoughtWeapon()
+    {
+        List<string> boughtWeapons = new List<string>();
+        boughtWeapons.AddRange(_playerData.Weapons.ToList());
+        List<string> boughtWeaponsUpgrade = new List<string>();
+        boughtWeaponsUpgrade.AddRange(_playerData.UpgradeWeapons.ToList());
+
+        int boughtCount = 0;
+
+
+        foreach (var view in _itemViews)
+        {
+            foreach (var boughtWeapon in boughtWeapons)
+            {
+                if (view.ItemName == boughtWeapon)
+                {
+                    boughtCount++;
+                }
+            }
+
+            foreach (var boughtUpgrade in boughtWeaponsUpgrade)
+            {
+                if (view.ItemName == boughtUpgrade)
+                {
+                    boughtCount++;
+                }
+            }
+            view.MarkItemAsBought(boughtCount);
+        }
     }
 }
