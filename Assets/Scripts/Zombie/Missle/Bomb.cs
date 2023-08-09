@@ -13,7 +13,7 @@ public class Bomb : MonoBehaviour, Idamageable
 
     private float _currentHealth;
 
-    private void Awake()
+    private void OnEnable()
     {
         _currentHealth = _maxHealth;
     }

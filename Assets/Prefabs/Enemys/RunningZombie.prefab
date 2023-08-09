@@ -100,6 +100,14 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5633919890731990342, guid: 756cf7b1f633c254680d06a4315aa5c8, type: 3}
+      propertyPath: _maxSpeed
+      value: 2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5633919890731990342, guid: 756cf7b1f633c254680d06a4315aa5c8, type: 3}
+      propertyPath: _minSpeed
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5633919890731990342, guid: 756cf7b1f633c254680d06a4315aa5c8, type: 3}
       propertyPath: _runSpeed
       value: 2.5
       objectReference: {fileID: 0}
@@ -107,10 +115,30 @@ PrefabInstance:
       propertyPath: _walkSpeed
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5633919890731990342, guid: 756cf7b1f633c254680d06a4315aa5c8, type: 3}
+      propertyPath: _maxPrioryty
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 5633919890731990342, guid: 756cf7b1f633c254680d06a4315aa5c8, type: 3}
+      propertyPath: _minPrioryty
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 5633919890731990342, guid: 756cf7b1f633c254680d06a4315aa5c8, type: 3}
+      propertyPath: _maxAvoidanceRadius
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5633919890731990342, guid: 756cf7b1f633c254680d06a4315aa5c8, type: 3}
+      propertyPath: _minAvoidanceRadius
+      value: 0.15
+      objectReference: {fileID: 0}
     - target: {fileID: 5633919890731990343, guid: 756cf7b1f633c254680d06a4315aa5c8, type: 3}
       propertyPath: _target
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 5633919890731990343, guid: 756cf7b1f633c254680d06a4315aa5c8, type: 3}
+      propertyPath: _mapSign
+      value: 
+      objectReference: {fileID: 3430892198399513514}
     - target: {fileID: 5633919890731990343, guid: 756cf7b1f633c254680d06a4315aa5c8, type: 3}
       propertyPath: _maxHealth
       value: 20

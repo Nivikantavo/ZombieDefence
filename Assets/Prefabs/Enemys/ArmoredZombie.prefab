@@ -1047,6 +1047,7 @@ MonoBehaviour:
   _maxHealth: 100
   _stunState: {fileID: 8442072147314796562}
   _animation: {fileID: 8442072147314796570}
+  _mapSign: {fileID: 72621344977375226}
 --- !u!114 &8442072147314796568
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1060,10 +1061,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _animation: {fileID: 8442072147314796570}
-  _runDistance: 15
   _agent: {fileID: 8442072147314796569}
-  _walkSpeed: 0.5
-  _runSpeed: 2
+  _minSpeed: 0.3
+  _maxSpeed: 0.6
+  _minAvoidanceRadius: 0.15
+  _maxAvoidanceRadius: 0.45
+  _minPrioryty: 10
+  _maxPrioryty: 30
   _running: 0
 --- !u!195 &8442072147314796569
 NavMeshAgent:
