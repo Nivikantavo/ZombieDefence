@@ -33,6 +33,8 @@ namespace InfimaGames.LowPolyShooterPack
         [SerializeField]
         private bool scopeIndexRandom;
 
+        [SerializeField] private int upgradeScopeIndex;
+
         [Tooltip("All possible Scope Attachments that this Weapon can use!")]
         [SerializeField]
         private ScopeBehaviour[] scopeArray;
@@ -46,6 +48,8 @@ namespace InfimaGames.LowPolyShooterPack
         [Tooltip("Should we pick a random index when starting the game?")]
         [SerializeField]
         private bool muzzleIndexRandom = true;
+
+        [SerializeField] private int upgradeMuzzleIndex;
 
         [Tooltip("All possible Muzzle Attachments that this Weapon can use!")]
         [SerializeField]
@@ -61,6 +65,8 @@ namespace InfimaGames.LowPolyShooterPack
         [SerializeField]
         private bool laserIndexRandom = true;
 
+        [SerializeField] private int upgradeLaserIndex;
+
         [Tooltip("All possible Laser Attachments that this Weapon can use!")]
         [SerializeField]
         private LaserBehaviour[] laserArray;
@@ -74,6 +80,8 @@ namespace InfimaGames.LowPolyShooterPack
         [Tooltip("Should we pick a random index when starting the game?")]
         [SerializeField]
         private bool gripIndexRandom = true;
+
+        [SerializeField] private int upgradeGripIndex;
 
         [Tooltip("All possible Grip Attachments that this Weapon can use!")]
         [SerializeField]
@@ -96,6 +104,8 @@ namespace InfimaGames.LowPolyShooterPack
         #endregion
 
         #region FIELDS
+
+        private bool upgraded = false;
 
         /// <summary>
         /// Equipped Scope.
@@ -125,7 +135,33 @@ namespace InfimaGames.LowPolyShooterPack
         /// <summary>
         /// Awake.
         /// </summary>
-        protected override void Awake()
+
+        public override void SetUpgradeAttachments()
+        {
+            scopeBehaviour = scopeArray.SelectAndSetActive(upgradeScopeIndex);
+
+            if (scopeBehaviour == null)
+            {
+                //Select Default Scope.
+                scopeBehaviour = scopeDefaultBehaviour;
+                //Set Active.
+                scopeBehaviour.gameObject.SetActive(scopeDefaultShow);
+            }
+
+            muzzleBehaviour = muzzleArray.SelectAndSetActive(upgradeMuzzleIndex);
+
+            laserBehaviour = laserArray.SelectAndSetActive(upgradeLaserIndex);
+
+            gripBehaviour = gripArray.SelectAndSetActive(upgradeGripIndex);
+
+            magazineArray[magazineIndex].SetUpgradeAmmunition();
+
+            magazineBehaviour = magazineArray.SelectAndSetActive(magazineIndex);
+
+        }
+
+
+        public void SetDefultOrRandomAttachments()
         {
             //Randomize. This allows us to spice things up a little!
             if (scopeIndexRandom)
@@ -140,7 +176,7 @@ namespace InfimaGames.LowPolyShooterPack
                 //Set Active.
                 scopeBehaviour.gameObject.SetActive(scopeDefaultShow);
             }
-            
+
             //Randomize. This allows us to spice things up a little!
             if (muzzleIndexRandom)
                 muzzleIndex = Random.Range(0, muzzleArray.Length);
@@ -152,20 +188,19 @@ namespace InfimaGames.LowPolyShooterPack
                 laserIndex = Random.Range(0, laserArray.Length);
             //Select Laser!
             laserBehaviour = laserArray.SelectAndSetActive(laserIndex);
-            
+
             //Randomize. This allows us to spice things up a little!
             if (gripIndexRandom)
                 gripIndex = Random.Range(0, gripArray.Length);
             //Select Grip!
             gripBehaviour = gripArray.SelectAndSetActive(gripIndex);
-            
+
             //Randomize. This allows us to spice things up a little!
             if (magazineIndexRandom)
                 magazineIndex = Random.Range(0, magazineArray.Length);
             //Select Magazine!
             magazineBehaviour = magazineArray.SelectAndSetActive(magazineIndex);
-        }        
-
+        }
         #endregion
 
         #region GETTERS

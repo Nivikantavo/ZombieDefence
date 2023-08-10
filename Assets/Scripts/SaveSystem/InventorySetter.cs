@@ -16,6 +16,9 @@ public class InventorySetter : MonoBehaviour
     {
         _weaponList = _playerInventory.GetComponentsInChildren<Weapon>(true).ToList();
         TakeExtraWeapons();
+        UpgradeWeapons();
+        _playerInventory.Init(_startWeaponIndex);
+        _character.RefreshWeaponSetup();
     }
 
     public void TakeExtraWeapons()
@@ -37,9 +40,26 @@ public class InventorySetter : MonoBehaviour
                 weapon.gameObject.SetActive(false);
             }
             inList = false;
-           
         }
-        _playerInventory.Init(_startWeaponIndex);
-        _character.RefreshWeaponSetup();
+    }
+
+    private void UpgradeWeapons()
+    {
+        string[] upgradeWeapons = SaveSystem.Instance.GetData().UpgradeWeapons;
+
+        foreach (var weapon in _weaponList)
+        {
+            WeaponAttachmentManager attachments = weapon.GetComponent<WeaponAttachmentManager>();
+
+            if (upgradeWeapons.Contains(weapon.WeaponName))
+            {
+                attachments.SetUpgradeAttachments();
+                weapon.SetUpgrades();
+            }
+            else
+            {
+                attachments.SetDefultOrRandomAttachments();
+            }
+        }
     }
 }
