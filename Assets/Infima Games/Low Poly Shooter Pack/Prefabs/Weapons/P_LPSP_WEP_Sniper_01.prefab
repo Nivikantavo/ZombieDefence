@@ -610,10 +610,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scopeDefaultShow: 1
   scopeDefaultBehaviour: {fileID: 7210251747282612047}
-  scopeIndex: 6
+  scopeIndex: 5
   scopeIndexFirst: -1
   scopeIndexRandom: 0
-  upgradeScopeIndex: 6
+  upgradeScopeIndex: 5
   scopeArray:
   - {fileID: 675201911050377510}
   - {fileID: 259280641924056643}
