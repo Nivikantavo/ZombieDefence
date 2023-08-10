@@ -137,42 +137,21 @@ public class Shop : MonoBehaviour
 
     private void MarkAllBoughtItem()
     {
-        List<string> boughtItems = new List<string>();
-        boughtItems.AddRange(_playerData.Weapons.ToList());
-        boughtItems.AddRange(_playerData.Forces.ToList());
-        boughtItems.Add(_granadeItem.Name);
-        boughtItems.Add(_truckHealthItem.Name);
-
-        int granadeBought = (_playerData.GranadesCount - 1) / _granadeItem.ImproveStep;
-        int truckHealthBiught = (_playerData.TruckHealth - 300) / _truckHealthItem.ImproveStep ;
-        _granadeItem.SetSellsNumber(granadeBought);
-        _truckHealthItem.SetSellsNumber(truckHealthBiught);
-
-        foreach (var items in boughtItems)
-        {
-            foreach (var view in _itemViews)
-            {
-                if (view.ItemName == items)
-                {
-                    //view.MarkItemAsBought();
-                }
-            }
-        }
-        
+        MarkBoughtWeapon();
+        MarkBoughtForces();
+        MarkBoughtImpruvment();
     }
 
     private void MarkBoughtWeapon()
     {
-        List<string> boughtWeapons = new List<string>();
-        boughtWeapons.AddRange(_playerData.Weapons.ToList());
-        List<string> boughtWeaponsUpgrade = new List<string>();
-        boughtWeaponsUpgrade.AddRange(_playerData.UpgradeWeapons.ToList());
+        List<string> boughtWeapons = _playerData.Weapons.ToList();
+        List<string> boughtWeaponsUpgrade = _playerData.UpgradeWeapons.ToList();
 
-        int boughtCount = 0;
-
+        int boughtCount;
 
         foreach (var view in _itemViews)
         {
+            boughtCount = 0;
             foreach (var boughtWeapon in boughtWeapons)
             {
                 if (view.ItemName == boughtWeapon)
@@ -190,5 +169,41 @@ public class Shop : MonoBehaviour
             }
             view.MarkItemAsBought(boughtCount);
         }
+    }
+
+    private void MarkBoughtForces()
+    {
+        List<string> boughtForces = _playerData.Forces.ToList();
+
+        foreach (var items in boughtForces)
+        {
+            foreach (var view in _itemViews)
+            {
+                if (view.ItemName == items)
+                {
+                    view.MarkItemAsBought(1);
+                }
+            }
+        }
+    }
+
+    private void MarkBoughtImpruvment()
+    {
+        int granadeBought = (_playerData.GranadesCount - 1) / _granadeItem.ImproveStep;
+        int truckHealthBiught = (_playerData.TruckHealth - 300) / _truckHealthItem.ImproveStep;
+
+        foreach (var view in _itemViews)
+        {
+            if (view.ItemName == _granadeItem.Name)
+            {
+                view.MarkItemAsBought(granadeBought);
+            }
+
+            if (view.ItemName == _truckHealthItem.Name)
+            {
+                view.MarkItemAsBought(truckHealthBiught);
+            }
+        }
+        
     }
 }
