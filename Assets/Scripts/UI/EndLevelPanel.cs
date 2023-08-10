@@ -1,3 +1,4 @@
+using Agava.YandexGames;
 using InfimaGames.LowPolyShooterPack.Interface;
 using System.Collections;
 using TMPro;
@@ -17,7 +18,11 @@ public class EndLevelPanel : Element
     
     [SerializeField] private Button _inMenuButton;
     [SerializeField] private Button _restartButton;
+    [SerializeField] private Button _rewardButton;
     [SerializeField] private float _settingScoreDelay;
+
+    private int _levelBonus;
+    private bool _wasRewarded = false;
 
     private void OnEnable()
     {
@@ -25,12 +30,14 @@ public class EndLevelPanel : Element
         characterBehaviour.LockCursor(false);
         _inMenuButton.onClick.AddListener(OnInMenuButtonClick);
         _restartButton.onClick.AddListener(OnRestartLevelButtonClick);
+        _rewardButton.onClick.AddListener(OnRewardButtonClick);
     }
 
     private void OnDisable()
     {
         _inMenuButton.onClick.RemoveListener(OnInMenuButtonClick);
         _restartButton.onClick.RemoveListener(OnRestartLevelButtonClick);
+        _rewardButton.onClick.RemoveListener(OnRewardButtonClick);
     }
 
     public void Initialize(bool levelComplited)
@@ -49,6 +56,7 @@ public class EndLevelPanel : Element
     {
         _surviveScorePanel.gameObject.SetActive(true);
         _levelScorePanel.gameObject.SetActive(false);
+        _rewardButton.gameObject.SetActive(false);
         _surviveTimer.Stop();
         _surviveScorePanel.SetScore(_surviveTimer.SurviveTime);
     }
@@ -57,19 +65,49 @@ public class EndLevelPanel : Element
     {
         _surviveScorePanel.gameObject.SetActive(false);
         _levelScorePanel.gameObject.SetActive(true);
-        int levelBonus = levelComplited ? _levelChoicer.CurrentLevel.LevelBonus : 0;
+        _levelBonus = levelComplited ? _levelChoicer.CurrentLevel.LevelBonus : 0;
 
-        _levelScorePanel.SetScore(_moneyCollecter.Money - _moneyCollecter.StartMoney, levelBonus);
-        _moneyCollecter.AddMoney(levelBonus);
+        _levelScorePanel.SetScore(_moneyCollecter.Money - _moneyCollecter.StartMoney, _levelBonus);
+        _moneyCollecter.AddMoney(_levelBonus);
     }
 
     private void OnRestartLevelButtonClick()
     {
+#if UNITY_WEBGL && !UNITY_EDITOR
+        if(_wasRewarded == false)
+        {
+            InterstitialAd.Show();
+        }
+#endif
         _loadingScreen.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     private void OnInMenuButtonClick()
     {
+#if UNITY_WEBGL && !UNITY_EDITOR
+        if(_wasRewarded == false)
+        {
+            InterstitialAd.Show();
+        }
+#endif
         _loadingScreen.LoadScene(0);
+    }
+
+    private void OnRewardButtonClick()
+    {
+#if UNITY_WEBGL && !UNITY_EDITOR
+        VideoAd.Show(OnVideoAdOpen, OnRewardCallback);
+#endif
+    }
+
+    private void OnVideoAdOpen()
+    {
+
+    }
+
+    private void OnRewardCallback()
+    {
+        _moneyCollecter.AddMoney(_moneyCollecter.Money - _moneyCollecter.StartMoney);
+        _wasRewarded = true;
     }
 }
