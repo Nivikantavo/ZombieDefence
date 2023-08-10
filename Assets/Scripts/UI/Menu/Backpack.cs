@@ -14,10 +14,12 @@ public class Backpack : MonoBehaviour
     [SerializeField] private Shop _shop;
     [SerializeField] private TMP_Text _granagesCountText;
     [SerializeField] private TMP_Text _truckHealthText;
+    [SerializeField] private Color _disabledColor;
+    [SerializeField] private Color _normalColor;
 
-    [SerializeField] private Button _pushForce;
-    [SerializeField] private Button _slamForce;
-    [SerializeField] private Button _shieldForce;
+    [SerializeField] private Image _pushForce;
+    [SerializeField] private Image _slamForce;
+    [SerializeField] private Image _shieldForce;
 
     private int _granadesCount;
     private int _truckHealth;
@@ -79,8 +81,8 @@ public class Backpack : MonoBehaviour
         _granagesCountText.text = _granadesCount.ToString();
         _truckHealthText.text = _truckHealth.ToString();
 
-        _pushForce.interactable = _hasPushForce;
-        _slamForce.interactable = _hasSlamForce;
-        _shieldForce.interactable = _hasShieldForce;
+        _pushForce.color = _hasPushForce ? _normalColor : _disabledColor;
+        _slamForce.color = _hasSlamForce ? _normalColor : _disabledColor;
+        _shieldForce.color = _hasShieldForce ? _normalColor : _disabledColor;
     }
 }

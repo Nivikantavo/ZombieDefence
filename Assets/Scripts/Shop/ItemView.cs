@@ -14,6 +14,7 @@ public class ItemView : MonoBehaviour
 
     [SerializeField] private Image _backgroundImage;
     [SerializeField] private Image _itemImage;
+    [SerializeField] private Image _upgradeImage;
     [SerializeField] private TMP_Text _priceText;
 
     [SerializeField] private GameObject _priceLable;
@@ -54,6 +55,18 @@ public class ItemView : MonoBehaviour
         if (_item.Purchases >= _item.NumberOfItems)
         {
             _priceLable.SetActive(false);
+        }
+
+        if(_upgradeImage != null)
+        {
+            if (_item.Purchases > 0 && _item.Purchases < _item.NumberOfItems)
+            {
+                _upgradeImage.gameObject.SetActive(true);
+            }
+            else
+            {
+                _upgradeImage.gameObject.SetActive(false);
+            }
         }
     }
 
