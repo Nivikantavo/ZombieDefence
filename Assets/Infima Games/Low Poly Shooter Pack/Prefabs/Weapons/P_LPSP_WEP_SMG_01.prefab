@@ -331,6 +331,7 @@ MonoBehaviour:
   boltAction: 0
   shotCount: 1
   damage: 3
+  upgradeDamage: 5
   spread: 0.25
   projectileImpulse: 400
   roundsPerMinutes: 750
@@ -396,6 +397,7 @@ MonoBehaviour:
   scopeIndex: -1
   scopeIndexFirst: -1
   scopeIndexRandom: 0
+  upgradeScopeIndex: 2
   scopeArray:
   - {fileID: 7969213252200224523}
   - {fileID: 7232710546249517166}
@@ -407,6 +409,7 @@ MonoBehaviour:
   - {fileID: 8511551569725392349}
   muzzleIndex: 0
   muzzleIndexRandom: 0
+  upgradeMuzzleIndex: 0
   muzzleArray:
   - {fileID: 8002980094126972946}
   - {fileID: 863918887610361177}
@@ -414,11 +417,13 @@ MonoBehaviour:
   - {fileID: 6952686933382682844}
   laserIndex: -1
   laserIndexRandom: 0
+  upgradeLaserIndex: 0
   laserArray:
   - {fileID: 3630894888444754565}
   - {fileID: 6721248879272765495}
   gripIndex: -1
   gripIndexRandom: 0
+  upgradeGripIndex: 0
   gripArray:
   - {fileID: 7433630473462786162}
   - {fileID: 3876884410458884016}
@@ -766,7 +771,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 965555d451af4a2299927c4e3dd7ee09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ammunitionTotal: 37
+  ammunitionTotal: 30
+  upgradeAmmunitionTotal: 40
   sprite: {fileID: 21300000, guid: 129fab05e8e650b4d8c3f2cb51ec656c, type: 3}
 --- !u!1001 &2630633502815365147
 PrefabInstance:
@@ -1026,6 +1032,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 5d353f81c53a0f643a20b0ec171ca4fd, type: 2}
+    - target: {fileID: 2202878863374167112, guid: 7a743bcd0df24704ebbb7b5f8c3b15c0, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3366728951027924913, guid: 7a743bcd0df24704ebbb7b5f8c3b15c0, type: 3}
       propertyPath: sprite
       value: 

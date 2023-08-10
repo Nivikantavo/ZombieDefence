@@ -599,6 +599,7 @@ MonoBehaviour:
   boltAction: 1
   shotCount: 6
   damage: 5
+  upgradeDamage: 7
   spread: 0.5
   projectileImpulse: 400
   roundsPerMinutes: 125
@@ -664,6 +665,7 @@ MonoBehaviour:
   scopeIndex: -1
   scopeIndexFirst: -1
   scopeIndexRandom: 0
+  upgradeScopeIndex: -1
   scopeArray:
   - {fileID: 6233119591725121357}
   - {fileID: 6649450430669250600}
@@ -675,6 +677,7 @@ MonoBehaviour:
   - {fileID: 5622518778225094043}
   muzzleIndex: -1
   muzzleIndexRandom: 0
+  upgradeMuzzleIndex: 2
   muzzleArray:
   - {fileID: 6861138110961136919}
   - {fileID: 4312938376787030108}
@@ -682,11 +685,13 @@ MonoBehaviour:
   - {fileID: 5790227042524466649}
   laserIndex: -1
   laserIndexRandom: 0
+  upgradeLaserIndex: 0
   laserArray:
   - {fileID: 385610152675495963}
   - {fileID: 7673251902465606313}
   gripIndex: -1
   gripIndexRandom: 0
+  upgradeGripIndex: 0
   gripArray:
   - {fileID: 6524145443411325396}
   - {fileID: 607583415081999894}
@@ -1002,6 +1007,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: daf3770baea414742ba7b6bdc426eeec, type: 2}
+    - target: {fileID: 1157167080683658114, guid: 613eeb9dc59c9934392391ae63fffa9d, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1366133415999661822, guid: 613eeb9dc59c9934392391ae63fffa9d, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -1046,6 +1055,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4344479955153924831, guid: 613eeb9dc59c9934392391ae63fffa9d, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4359136084285236088, guid: 613eeb9dc59c9934392391ae63fffa9d, type: 3}
       propertyPath: sprite
       value: 
@@ -1058,6 +1071,10 @@ PrefabInstance:
       propertyPath: sprite
       value: 
       objectReference: {fileID: 21300000, guid: 9842bf57dfe14dc4e9d6fad1cc19d766, type: 3}
+    - target: {fileID: 8473582562353897339, guid: 613eeb9dc59c9934392391ae63fffa9d, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8473582562356150715, guid: 613eeb9dc59c9934392391ae63fffa9d, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -1434,6 +1451,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ammunitionTotal: 8
+  upgradeAmmunitionTotal: 10
   sprite: {fileID: 21300000, guid: 45d4f59d4af53e04a81b38d60a7c62b9, type: 3}
 --- !u!4 &7658936806974792846 stripped
 Transform:

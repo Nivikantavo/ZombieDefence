@@ -206,7 +206,8 @@ MonoBehaviour:
   automatic: 1
   boltAction: 0
   shotCount: 1
-  damage: 8
+  damage: 10
+  upgradeDamage: 10
   spread: 0.25
   projectileImpulse: 400
   roundsPerMinutes: 650
@@ -272,6 +273,7 @@ MonoBehaviour:
   scopeIndex: 1
   scopeIndexFirst: -1
   scopeIndexRandom: 0
+  upgradeScopeIndex: 0
   scopeArray:
   - {fileID: 4196312526207557977}
   - {fileID: 3529598159347646012}
@@ -283,6 +285,7 @@ MonoBehaviour:
   - {fileID: 2502596452765922191}
   muzzleIndex: 1
   muzzleIndexRandom: 0
+  upgradeMuzzleIndex: 0
   muzzleArray:
   - {fileID: 1106376868149417405}
   - {fileID: 7761859118619463926}
@@ -290,11 +293,13 @@ MonoBehaviour:
   - {fileID: 15217197743009139}
   laserIndex: 0
   laserIndexRandom: 0
+  upgradeLaserIndex: 0
   laserArray:
   - {fileID: 1230793423412612628}
   - {fileID: 9093193775675153574}
   gripIndex: 0
   gripIndexRandom: 0
+  upgradeGripIndex: 0
   gripArray:
   - {fileID: 9036713933051847927}
   - {fileID: 3426149850570459957}
@@ -1385,6 +1390,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ammunitionTotal: 35
+  upgradeAmmunitionTotal: 40
   sprite: {fileID: 21300000, guid: 8379dc4e93f66b04d98edb8e6ded955b, type: 3}
 --- !u!4 &3362969298200837502 stripped
 Transform:

@@ -32,12 +32,12 @@ namespace InfimaGames.LowPolyShooterPack
         protected virtual void LateUpdate(){}
 
         #endregion
-        
+        public virtual void SetUpgradeAttachments() { }
         #region GETTERS
 
-        /// <summary>
-        /// Returns the equipped scope.
-        /// </summary>
+            /// <summary>
+            /// Returns the equipped scope.
+            /// </summary>
         public abstract ScopeBehaviour GetEquippedScope();
         /// <summary>
         /// Returns the equipped scope default.

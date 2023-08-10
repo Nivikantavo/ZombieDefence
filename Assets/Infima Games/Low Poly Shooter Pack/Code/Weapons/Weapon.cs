@@ -1,6 +1,7 @@
 ﻿//Copyright 2022, Infima Games. All Rights Reserved.
 
 using InfimaGames.LowPolyShooterPack.Legacy;
+using UnityEditor;
 using UnityEngine;
 
 namespace InfimaGames.LowPolyShooterPack
@@ -40,6 +41,9 @@ namespace InfimaGames.LowPolyShooterPack
 
         [SerializeField]
         private float damage = 5f;
+
+        [SerializeField]
+        private float upgradeDamage = 5f;
 
         [Tooltip("How far the weapon can fire from the center of the screen.")]
         [SerializeField]
@@ -155,6 +159,8 @@ namespace InfimaGames.LowPolyShooterPack
 
         #region FIELDS
 
+        private bool upgraded = false;
+
         /// <summary>
         /// Weapon Animator.
         /// </summary>
@@ -220,7 +226,6 @@ namespace InfimaGames.LowPolyShooterPack
             animator = GetComponent<Animator>();
             //Get Attachment Manager.
             attachmentManager = GetComponent<WeaponAttachmentManagerBehaviour>();
-
             //Cache the game mode service. We only need this right here, but we'll cache it in case we ever need it again.
             gameModeService = ServiceLocator.Current.Get<IGameModeService>();
             //Cache the player character.
@@ -231,24 +236,15 @@ namespace InfimaGames.LowPolyShooterPack
         protected override void Start()
         {
             #region Cache Attachment References
-
-            //Get Scope.
-            scopeBehaviour = attachmentManager.GetEquippedScope();
             
-            //Get Magazine.
+
             magazineBehaviour = attachmentManager.GetEquippedMagazine();
-            //Get Muzzle.
+            scopeBehaviour = attachmentManager.GetEquippedScope();
             muzzleBehaviour = attachmentManager.GetEquippedMuzzle();
-
-            //Get Laser.
             laserBehaviour = attachmentManager.GetEquippedLaser();
-            //Get Grip.
             gripBehaviour = attachmentManager.GetEquippedGrip();
-
-            #endregion
-
-            //Max Out Ammo.
             ammunitionCurrent = magazineBehaviour.GetAmmunitionTotal();
+            #endregion
         }
 
         #endregion
@@ -386,6 +382,11 @@ namespace InfimaGames.LowPolyShooterPack
                 //Add velocity to the projectile.
                 projectile.GetComponent<Rigidbody>().velocity = projectile.transform.forward * projectileImpulse;
             }
+        }
+
+        public void SetUpgrades()
+        {
+            damage = upgradeDamage;
         }
 
         /// <summary>

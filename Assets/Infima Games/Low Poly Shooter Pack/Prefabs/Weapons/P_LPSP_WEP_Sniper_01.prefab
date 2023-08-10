@@ -547,6 +547,7 @@ MonoBehaviour:
   boltAction: 1
   shotCount: 1
   damage: 70
+  upgradeDamage: 100
   spread: 0.25
   projectileImpulse: 400
   roundsPerMinutes: 125
@@ -609,9 +610,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scopeDefaultShow: 1
   scopeDefaultBehaviour: {fileID: 7210251747282612047}
-  scopeIndex: 5
+  scopeIndex: 6
   scopeIndexFirst: -1
   scopeIndexRandom: 0
+  upgradeScopeIndex: 6
   scopeArray:
   - {fileID: 675201911050377510}
   - {fileID: 259280641924056643}
@@ -623,6 +625,7 @@ MonoBehaviour:
   - {fileID: 1286202908790934512}
   muzzleIndex: 0
   muzzleIndexRandom: 0
+  upgradeMuzzleIndex: 1
   muzzleArray:
   - {fileID: 2958006091162053426}
   - {fileID: 5612039869369298553}
@@ -630,11 +633,13 @@ MonoBehaviour:
   - {fileID: 2765314408033047548}
   laserIndex: -1
   laserIndexRandom: 0
+  upgradeLaserIndex: 0
   laserArray:
   - {fileID: 5429510121837831147}
   - {fileID: 2629069909375873369}
   gripIndex: -1
   gripIndexRandom: 0
+  upgradeGripIndex: 1
   gripArray:
   - {fileID: 877957729795129230}
   - {fileID: 6830794826764341324}
@@ -839,6 +844,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: abd5b66a9ca30ee42ba93392201adf78, type: 2}
+    - target: {fileID: 4340404084443897168, guid: 7a743bcd0df24704ebbb7b5f8c3b15c0, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7a743bcd0df24704ebbb7b5f8c3b15c0, type: 3}
 --- !u!114 &877957729795129230 stripped
@@ -954,6 +963,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ammunitionTotal: 7
+  upgradeAmmunitionTotal: 10
   sprite: {fileID: 0}
 --- !u!4 &2657098032119006043 stripped
 Transform:
@@ -1033,6 +1043,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1366133415999661822, guid: 613eeb9dc59c9934392391ae63fffa9d, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4344479955153924831, guid: 613eeb9dc59c9934392391ae63fffa9d, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5367789600872443889, guid: 613eeb9dc59c9934392391ae63fffa9d, type: 3}
@@ -1124,6 +1138,10 @@ PrefabInstance:
     - target: {fileID: 1145889618073004828, guid: c472be678311843468e98214f36dec77, type: 3}
       propertyPath: fieldOfViewMultiplierAim
       value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1349881915802770799, guid: c472be678311843468e98214f36dec77, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1588931168028539544, guid: c472be678311843468e98214f36dec77, type: 3}
       propertyPath: m_Materials.Array.data[0]

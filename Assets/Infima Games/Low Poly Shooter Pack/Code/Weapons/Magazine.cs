@@ -17,6 +17,8 @@ namespace InfimaGames.LowPolyShooterPack
         [SerializeField]
         private int ammunitionTotal = 10;
 
+        [SerializeField] private int upgradeAmmunitionTotal = 10;
+
         [Title(label: "Interface")]
 
         [Tooltip("Interface Sprite.")]
@@ -24,6 +26,11 @@ namespace InfimaGames.LowPolyShooterPack
         private Sprite sprite;
 
         #endregion
+
+        public override void SetUpgradeAmmunition()
+        {
+            ammunitionTotal = upgradeAmmunitionTotal;
+        }
 
         #region GETTERS
 
