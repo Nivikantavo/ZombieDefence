@@ -19,9 +19,6 @@ public class LevelLeaderboard : MonoBehaviour
 
     public void FillEntryesData(LeaderboardGetEntriesResponse entryesData, int lenth)
     {
-        Debug.Log(gameObject.name + " " + _name);
-        Debug.Log("LEADERBORD TITLE: " + entryesData.leaderboard.name + " Game Object: " + gameObject.name);
-
 //#if UNITY_WEBGL && !UNITY_EDITOR
 
         for (int i = 0; i < entryesData.entries.Length; i++)

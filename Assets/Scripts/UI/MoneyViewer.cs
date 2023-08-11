@@ -38,10 +38,9 @@ public class MoneyViewer : MonoBehaviour
     {
         float difference = newValue - _currentValue;
         WaitForSecondsRealtime delaye = new WaitForSecondsRealtime(_settingTime / Mathf.Abs(difference));
-
+        Debug.Log(difference);
         for (int i = 0; i < Mathf.Abs(difference); i++)
         {
-            
             _currentValue += Mathf.Sign(difference);
             _moneyText.text = _currentValue.ToString();
             yield return delaye;
