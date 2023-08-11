@@ -261,4 +261,21 @@ public class Shop : MonoBehaviour
             }
         }
     }
+
+    public void DeleteProducts()
+    {
+        Billing.GetPurchasedProducts(purchasedProductsResponse => DeleteAllPurchasedProducts(purchasedProductsResponse.purchasedProducts));
+    }
+
+    private void DeleteAllPurchasedProducts(PurchasedProduct[] products)
+    {
+        foreach (var product in products)
+        {
+            Billing.ConsumeProduct(product.purchaseToken, () =>
+            {
+
+            });
+        }
+        
+    }
 }

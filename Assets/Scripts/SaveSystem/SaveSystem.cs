@@ -79,6 +79,13 @@ public class SaveSystem : MonoBehaviour
         return _playerData;
     }
 
+    public void DeleteData()
+    {
+        _playerData = new PlayerData();
+
+        Save();
+    }
+
     public void SetMoneyValue(int money)
     {
         if(money >= 0)

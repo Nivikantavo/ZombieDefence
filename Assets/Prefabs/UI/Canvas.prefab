@@ -1639,7 +1639,6 @@ GameObject:
   - component: {fileID: 6320638713439141545}
   - component: {fileID: 6263141807751830340}
   - component: {fileID: 608769360413414739}
-  - component: {fileID: 775739390048598266}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -1764,20 +1763,6 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!114 &775739390048598266
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4058676410213561439}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dbf51be86e70d7941bd40914206e4ddc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  translationName: MainMenu
-  FallbackText: "\u04252"
 --- !u!1 &5437339297477544217
 GameObject:
   m_ObjectHideFlags: 0
