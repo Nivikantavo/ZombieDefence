@@ -176,7 +176,9 @@ public class Shop : MonoBehaviour
         MarkBoughtWeapon();
         MarkBoughtForces();
         MarkBoughtImpruvment();
+#if !UNITY_EDITOR
         GetBoughtProducts();
+#endif
     }
 
     private void MarkBoughtWeapon()

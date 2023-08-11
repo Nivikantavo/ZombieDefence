@@ -13,6 +13,7 @@ public class LevelProgress : MonoBehaviour
     [SerializeField] private LevelChoicer _levelChoicer;
     [SerializeField] private LevelEndZone _endZone;
     [SerializeField] private Character _charachter;
+    [SerializeField] private GameObject _mobileInput;
 
     private bool _levelComplited = false;
 
@@ -44,6 +45,7 @@ public class LevelProgress : MonoBehaviour
         {
             SaveProgress();
         }
+        _mobileInput.SetActive(false);
         _endLevelPanel.gameObject.SetActive(true);
         _endLevelPanel.Initialize(_levelComplited);
     }
@@ -59,6 +61,7 @@ public class LevelProgress : MonoBehaviour
 
     private void PlayerLost()
     {
+        _mobileInput.SetActive(false);
         _endLevelPanel.gameObject.SetActive(true);
         _endLevelPanel.Initialize(_levelComplited);
     }

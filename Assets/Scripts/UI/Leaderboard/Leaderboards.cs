@@ -2,11 +2,13 @@ using Agava.YandexGames;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Leaderboards : MonoBehaviour
 {
     [SerializeField] private List<LevelLeaderboard> _leaderboards;
     [SerializeField] private int _leaderboardsLenth;
+    [SerializeField] private Image _background;
 
     private float _delay = 0.01f;
 
@@ -25,12 +27,9 @@ public class Leaderboards : MonoBehaviour
         {
             if (PlayerAccount.IsAuthorized == false)
             {
-                PlayerAccount.Authorize(ShowLevelLeaderbord, null);
+                PlayerAccount.Authorize(null, null);
             }
-            else
-            {
-                ShowLevelLeaderbord();
-            }
+            ShowLevelLeaderbord();
         }
 #endif
     }
@@ -51,16 +50,21 @@ public class Leaderboards : MonoBehaviour
     private IEnumerator SetLeaderboardsData()
     {
         WaitForSeconds delay = new WaitForSeconds(_delay);
-
+        _background.enabled = true;
         foreach (var leaderboard in _leaderboards)
         {
             if (leaderboard.EntryesLoaded == false)
             {
                 FillLeaderboard(leaderboard);
             }
-
+            else
+            {
+                leaderboard.gameObject.SetActive(true);
+            }
+            Debug.Log("Before While");
             while (leaderboard.EntryesLoaded == false)
             {
+                Debug.Log("While");
                 yield return delay;
             }
         }
