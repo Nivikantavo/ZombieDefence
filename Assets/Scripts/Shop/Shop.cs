@@ -1,3 +1,5 @@
+using Agava.YandexGames;
+using Agava.YandexGames.Samples;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +9,7 @@ using UnityEngine.Events;
 public class Shop : MonoBehaviour
 {
     [SerializeField] private List<ItemView> _itemViews;
-    [SerializeField] private List<WeaponItem> _weapons;
+    [SerializeField] private List<ProductView> _productsView;
     [SerializeField] private ImproveItem _granadeItem;
     [SerializeField] private ImproveItem _truckHealthItem;
     [SerializeField] private MoneyCollecter _moneyCollecter;
@@ -18,9 +20,14 @@ public class Shop : MonoBehaviour
 
     private void OnEnable()
     {
+        Billing.GetProductCatalog(productCatalogReponse => UpdateProductCatalog(productCatalogReponse.products));
         foreach (var itemView in _itemViews)
         {
             itemView.ViewClick += TrySellItem;
+        }
+        foreach (var productView in _productsView)
+        {
+            productView.PoductViewClick += TrySellProduct;
         }
     }
 
@@ -29,6 +36,10 @@ public class Shop : MonoBehaviour
         foreach (var itemView in _itemViews)
         {
             itemView.ViewClick -= TrySellItem;
+        }
+        foreach (var productView in _productsView)
+        {
+            productView.PoductViewClick -= TrySellProduct;
         }
     }
 
@@ -57,6 +68,31 @@ public class Shop : MonoBehaviour
             TrySellForce(item as ForceItem);
         }
         ItemBought?.Invoke();
+    }
+
+    private void UpdateProductCatalog(CatalogProduct[] products)
+    {
+        for (int i = 0; i < products.Length; i++)
+        {
+            _productsView[i].Product = products[i];
+        }
+    }
+
+    private void TrySellProduct(Item item, string id)
+    {
+        Billing.PurchaseProduct(id, (purchaseProduct) =>
+        {
+            SaveSystem.Instance.SetBoughtProduct(purchaseProduct.purchaseData.productID);
+
+            foreach (ProductView view in _productsView)
+            {
+                if (view.ProductID == purchaseProduct.purchaseData.productID)
+                {
+                    view.OnSellSuccessfully();
+                    TrySellItem(item);
+                }
+            }
+        });
     }
 
     private void TrySellWeapon(WeaponItem weapon)
@@ -140,6 +176,7 @@ public class Shop : MonoBehaviour
         MarkBoughtWeapon();
         MarkBoughtForces();
         MarkBoughtImpruvment();
+        GetBoughtProducts();
     }
 
     private void MarkBoughtWeapon()
@@ -204,6 +241,24 @@ public class Shop : MonoBehaviour
                 view.MarkItemAsBought(truckHealthBiught);
             }
         }
-        
+    }
+
+    private void GetBoughtProducts()
+    {
+        Billing.GetPurchasedProducts(purchasedProductsResponse => MarkBoughtProduct(purchasedProductsResponse.purchasedProducts));
+    }
+
+    private void MarkBoughtProduct(PurchasedProduct[] products)
+    {
+        foreach (ProductView view in _productsView)
+        {
+            foreach(var product in products)
+            {
+                if(product.productID == view.ProductID)
+                {
+                    view.OnSellSuccessfully();
+                }
+            }
+        }
     }
 }
