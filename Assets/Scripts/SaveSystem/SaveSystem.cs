@@ -1,7 +1,9 @@
 using Agava.YandexGames;
 using InfimaGames.LowPolyShooterPack;
 using System.Collections;
+using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using UnityEngine;
 
 public class SaveSystem : MonoBehaviour
@@ -157,6 +159,18 @@ public class SaveSystem : MonoBehaviour
     {
         _playerData.SelectedLevel = selectedLevel;
         Save();
+    }
+
+    public void SetBoughtProduct(string productID)
+    {
+        List<string> products = _playerData.ProductsID.ToList();
+
+        if(products.Contains(productID) == false)
+        {
+            products.Add(productID);
+        }
+
+        _playerData.ProductsID = products.ToArray();
     }
 
     private void OnLoadDataSuccess(string data)

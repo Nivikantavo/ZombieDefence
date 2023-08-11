@@ -7,6 +7,7 @@ public class PlayerData
     public float Sensetive;
     public string[] Weapons;
     public string[] UpgradeWeapons;
+    public string[] ProductsID;
     public int GranadesCount;
     public string[] Forces;
     public int TruckHealth;
@@ -21,8 +22,9 @@ public class PlayerData
         Weapons = new string[1];
         Weapons[0] = "SMG 01";
         UpgradeWeapons = new string[1];
+        ProductsID = new string[1];
         GranadesCount = 1;
-        Forces = new string[1] {""};
+        Forces = new string[1];
         TruckHealth = 300;
         SurvivalMode = false;
         Sensetive = 1;
