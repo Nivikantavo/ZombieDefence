@@ -5,6 +5,7 @@ public class Player : Target
 {
     [SerializeField] private Force _pushForce;
     [SerializeField] private List<Force> _forces;
+    [SerializeField] private List<ForceUIView> _forcesViews;
 
     protected override void Awake()
     {
@@ -29,6 +30,11 @@ public class Player : Target
             for (int i = 0; i < _forces.Count; i++)
             {
                 if(force == _forces[i].Name)
+                {
+                    _forces[i].gameObject.SetActive(true);
+                    
+                }
+                if(force == _forcesViews[i].ForceName)
                 {
                     _forces[i].gameObject.SetActive(true);
                 }
