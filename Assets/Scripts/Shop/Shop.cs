@@ -20,7 +20,9 @@ public class Shop : MonoBehaviour
 
     private void OnEnable()
     {
+#if !UNITY_EDITOR
         Billing.GetProductCatalog(productCatalogReponse => UpdateProductCatalog(productCatalogReponse.products));
+#endif
         foreach (var itemView in _itemViews)
         {
             itemView.ViewClick += TrySellItem;
@@ -28,6 +30,10 @@ public class Shop : MonoBehaviour
         foreach (var productView in _productsView)
         {
             productView.PoductViewClick += TrySellProduct;
+        }
+        if (SaveSystem.Instance.DataLoaded)
+        {
+            UpdateData();
         }
     }
 
@@ -49,6 +55,11 @@ public class Shop : MonoBehaviour
         {
             yield return new WaitForSecondsRealtime(0.25f);
         }
+        UpdateData();
+    }
+
+    private void UpdateData()
+    {
         _playerData = SaveSystem.Instance.GetData();
         MarkAllBoughtItem();
     }
@@ -105,7 +116,7 @@ public class Shop : MonoBehaviour
                 AddBoughtWeapon(weapon);
             }
         }
-        else if(weapon.Purchases < weapon.NumberOfItems)
+        else if(weapon.Purchases < weapon.NumberOfItems && _moneyCollecter.TrySpendMoney(weapon.SellingPrice))
         {
             weapon.Sell();
             AddWeaponUpgrade(weapon);
