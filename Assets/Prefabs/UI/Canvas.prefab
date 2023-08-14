@@ -12093,6 +12093,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: MobileInput
       objectReference: {fileID: 0}
+    - target: {fileID: 5132107016419168995, guid: f1b983b98ead2e74ea25bcf15823ee57, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f1b983b98ead2e74ea25bcf15823ee57, type: 3}
 --- !u!224 &6022106027313286596 stripped

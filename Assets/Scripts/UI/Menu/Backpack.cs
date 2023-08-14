@@ -39,11 +39,13 @@ public class Backpack : MonoBehaviour
     private void OnEnable()
     {
         _shop.ItemBought += LoadData;
+        SaveSystem.Instance.DataUpdated += LoadData;
     }
 
     private void OnDisable()
     {
         _shop.ItemBought -= LoadData;
+        SaveSystem.Instance.DataUpdated -= LoadData;
     }
 
     private void LoadData()

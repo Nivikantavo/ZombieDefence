@@ -8,6 +8,9 @@ public class Leaderboards : MonoBehaviour
 {
     [SerializeField] private List<LevelLeaderboard> _leaderboards;
     [SerializeField] private int _leaderboardsLenth;
+    [SerializeField] private GameObject _authorizePanel;
+    [SerializeField] private GameObject _showButton;
+    [SerializeField] private GameObject _hideButton;
     [SerializeField] private Image _background;
 
     private float _delay = 0.01f;
@@ -22,16 +25,31 @@ public class Leaderboards : MonoBehaviour
 
     public void ShowLeaderboards()
     {
-#if UNITY_WEBGL && !UNITY_EDITOR
+//#if UNITY_WEBGL && !UNITY_EDITOR
         if (YandexGamesSdk.IsInitialized)
         {
             if (PlayerAccount.IsAuthorized == false)
             {
-                PlayerAccount.Authorize(null, null);
+                _authorizePanel.SetActive(true);
             }
-            ShowLevelLeaderbord();
+            else
+            {
+                ShowLevelLeaderbord();
+            }
         }
-#endif
+//#endif
+    }
+
+    public void Authorize()
+    {
+        PlayerAccount.Authorize(OnAuthotizeSuccess, null);
+    }
+
+    private void OnAuthotizeSuccess()
+    {
+        _authorizePanel.SetActive(false);
+        SaveSystem.Instance.Load();
+        ShowLevelLeaderbord();
     }
 
     public void HideLeaderboards()
@@ -40,11 +58,15 @@ public class Leaderboards : MonoBehaviour
         {
             leaderboard.gameObject.SetActive(false);
         }
+        _showButton.SetActive(true);
+        _hideButton.SetActive(false);
     }
 
     private void ShowLevelLeaderbord()
     {
         StartCoroutine(SetLeaderboardsData());
+        _showButton.SetActive(false);
+        _hideButton.SetActive(true);
     }
 
     private IEnumerator SetLeaderboardsData()

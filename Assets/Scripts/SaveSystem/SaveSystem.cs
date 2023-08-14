@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class SaveSystem : MonoBehaviour
 {
@@ -14,6 +15,8 @@ public class SaveSystem : MonoBehaviour
     private string file = "PlayerData.txt";
 
     public static SaveSystem Instance;
+
+    public event UnityAction DataUpdated;
 
     private void Awake()
     {
@@ -61,6 +64,7 @@ public class SaveSystem : MonoBehaviour
     {
 #if UNITY_WEBGL && !UNITY_EDITOR
         PlayerAccount.GetCloudSaveData(OnLoadDataSuccess, OnLoadDataError);
+        DataUpdated?.Invoke();
 #endif
 #if UNITY_EDITOR
         _playerData = new PlayerData();

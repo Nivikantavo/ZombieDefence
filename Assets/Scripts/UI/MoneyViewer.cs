@@ -9,6 +9,7 @@ public class MoneyViewer : MonoBehaviour
     [SerializeField] private float _settingTime;
 
     private float _currentValue;
+    private float _addingMultiplayer = 10;
     private Coroutine _settingValue;
 
     private void OnEnable()
@@ -38,10 +39,10 @@ public class MoneyViewer : MonoBehaviour
     {
         float difference = newValue - _currentValue;
         WaitForSecondsRealtime delaye = new WaitForSecondsRealtime(_settingTime / Mathf.Abs(difference));
-        Debug.Log(difference);
-        for (int i = 0; i < Mathf.Abs(difference); i++)
+        Debug.Log(_settingTime / Mathf.Abs(difference));
+        for (int i = 0; i < Mathf.Abs(difference) / _addingMultiplayer; i ++)
         {
-            _currentValue += Mathf.Sign(difference);
+            _currentValue += Mathf.Sign(difference) * _addingMultiplayer;
             _moneyText.text = _currentValue.ToString();
             yield return delaye;
         }

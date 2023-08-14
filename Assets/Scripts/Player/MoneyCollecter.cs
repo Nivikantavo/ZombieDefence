@@ -32,8 +32,14 @@ public class MoneyCollecter : MonoBehaviour, ILoadable
         SetData(SaveSystem.Instance.GetData());
     }
 
+    private void OnEnable()
+    {
+        SaveSystem.Instance.DataUpdated += OnDataUpdated;
+    }
+
     private void OnDisable()
     {
+        SaveSystem.Instance.DataUpdated -= OnDataUpdated;
         SaveSystem.Instance.SetMoneyValue(_money);
     }
 
@@ -43,6 +49,13 @@ public class MoneyCollecter : MonoBehaviour, ILoadable
         {
             CollectCoin(coin);
         }
+    }
+
+    public void SetData(PlayerData data)
+    {
+        _money = data.Money;
+        _startMoney = _money;
+        MoneyLoaded?.Invoke(_money);
     }
 
     public bool TrySpendMoney(int cost)
@@ -67,14 +80,11 @@ public class MoneyCollecter : MonoBehaviour, ILoadable
         AddMoney(coin.Count);
         coin.Sleep();
         CoinCollected?.Invoke(coin);
-        MoneyCountChanged?.Invoke(_money);
         coin.gameObject.SetActive(false);
     }
 
-    public void SetData(PlayerData data)
+    private void OnDataUpdated()
     {
-        _money = data.Money;
-        _startMoney = _money;
-        MoneyLoaded?.Invoke(_money);
+        SetData(SaveSystem.Instance.GetData());
     }
 }
