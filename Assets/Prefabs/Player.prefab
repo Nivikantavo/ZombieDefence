@@ -306,7 +306,7 @@ Camera:
     width: 1
     height: 1
   near clip plane: 0.01
-  far clip plane: 1000
+  far clip plane: 40
   field of view: 112.629166
   orthographic: 0
   orthographic size: 5
@@ -1554,54 +1554,6 @@ MonoBehaviour:
     m_ActionName: Player/Inspect[/Keyboard/t,/XInputControllerWindows/dpad/left]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 4055235613104680759}
-        m_TargetAssemblyTypeName: InfimaGames.LowPolyShooterPack.TimeHandler, Assembly-CSharp
-        m_MethodName: OnToggle
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_ActionId: bfdda7d2-cee8-4cb7-91a0-f3d4411e7f97
-    m_ActionName: Player/Time Speed Stop[/Keyboard/5]
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 4055235613104680759}
-        m_TargetAssemblyTypeName: InfimaGames.LowPolyShooterPack.TimeHandler, Assembly-CSharp
-        m_MethodName: OnIncrease
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_ActionId: 418359b7-9253-4bb8-a363-e1fb23da7133
-    m_ActionName: Player/Time Speed Up[/Keyboard/9,/XInputControllerWindows/dpad/up]
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 4055235613104680759}
-        m_TargetAssemblyTypeName: InfimaGames.LowPolyShooterPack.TimeHandler, Assembly-CSharp
-        m_MethodName: OnDecrease
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_ActionId: e3ef7edf-7ab7-43b4-8fdc-67547435a45b
-    m_ActionName: Player/Time Speed Down[/Keyboard/8,/XInputControllerWindows/dpad/down]
-  - m_PersistentCalls:
-      m_Calls:
       - m_Target: {fileID: 175169088371318763}
         m_TargetAssemblyTypeName: InfimaGames.LowPolyShooterPack.Character, Assembly-CSharp
         m_MethodName: OnTryInventoryNext
@@ -1768,7 +1720,9 @@ MonoBehaviour:
   _forces:
   - {fileID: 2103672605}
   - {fileID: 115395583}
-  _forcesViews: []
+  _forcesViews:
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!1 &2624981364381252991
 GameObject:
   m_ObjectHideFlags: 0
@@ -3470,7 +3424,7 @@ Camera:
     width: 1
     height: 1
   near clip plane: 0.01
-  far clip plane: 1000
+  far clip plane: 10
   field of view: 53.138165
   orthographic: 0
   orthographic size: 5
