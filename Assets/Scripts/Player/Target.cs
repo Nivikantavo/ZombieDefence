@@ -13,6 +13,7 @@ public class Target : MonoBehaviour, Idamageable
     private float _currentHealth;
 
     public event UnityAction<float> HealthChanged;
+    public event UnityAction HasAttacked;
     public event UnityAction TargetDied;
 
     protected virtual void Awake()
@@ -25,6 +26,7 @@ public class Target : MonoBehaviour, Idamageable
         _currentHealth -= damage;
         _currentHealth = Mathf.Clamp(_currentHealth, 0, MaxHealthPoints);
         HealthChanged?.Invoke(_currentHealth);
+        HasAttacked?.Invoke();
         if (_currentHealth <= 0)
         {
             Die();
