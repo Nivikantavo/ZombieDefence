@@ -1697,6 +1697,26 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: e4e2893a-6c68-491e-ba71-470c159a4220
     m_ActionName: Player/Force[/Keyboard/e]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 175169088371318763}
+        m_TargetAssemblyTypeName: InfimaGames.LowPolyShooterPack.Character, Assembly-CSharp
+        m_MethodName: OnTryEquipWeapun
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: ce4c76b2-5905-4e61-b309-4af0c2c4e6aa
+    m_ActionName: Player/Equip Weapon[/Keyboard/1,/Keyboard/2,/Keyboard/3,/Keyboard/4,/Keyboard/5,/Keyboard/6]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 3e39062b-600c-47d5-825c-c7e173d36d07
+    m_ActionName: UI/Pause[/Keyboard/escape,/Keyboard/p,/Keyboard/tab]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -1748,6 +1768,7 @@ MonoBehaviour:
   _forces:
   - {fileID: 2103672605}
   - {fileID: 115395583}
+  _forcesViews: []
 --- !u!1 &2624981364381252991
 GameObject:
   m_ObjectHideFlags: 0

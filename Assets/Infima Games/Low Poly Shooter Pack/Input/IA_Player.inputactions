@@ -141,33 +141,6 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "Time Speed Up",
-                    "type": "Button",
-                    "id": "418359b7-9253-4bb8-a363-e1fb23da7133",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "Time Speed Down",
-                    "type": "Button",
-                    "id": "e3ef7edf-7ab7-43b4-8fdc-67547435a45b",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "Time Speed Toggle",
-                    "type": "Button",
-                    "id": "bfdda7d2-cee8-4cb7-91a0-f3d4411e7f97",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
                     "name": "Tutorial",
                     "type": "Button",
                     "id": "207fb2a2-8add-4ddb-bda7-c1887aeb313a",
@@ -189,6 +162,15 @@
                     "name": "Force",
                     "type": "Button",
                     "id": "e4e2893a-6c68-491e-ba71-470c159a4220",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Equip Weapon",
+                    "type": "Button",
+                    "id": "ce4c76b2-5905-4e61-b309-4af0c2c4e6aa",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -429,50 +411,6 @@
                 },
                 {
                     "name": "",
-                    "id": "8a482ba6-21ca-4c8f-9727-9fbb2368f00f",
-                    "path": "<Keyboard>/9",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Time Speed Up",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "5e79e440-5045-4bbc-a8a7-30167589d397",
-                    "path": "<Gamepad>/dpad/up",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Time Speed Up",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "83f69484-fcc2-48ee-8c04-6c5d1e4f6e60",
-                    "path": "<Keyboard>/8",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Time Speed Down",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "65c0a406-e8d6-434f-aeff-75269e0cbaaa",
-                    "path": "<Gamepad>/dpad/down",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Time Speed Down",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "64767df0-dd96-438b-878e-fe24248339dd",
                     "path": "<Keyboard>/q",
                     "interactions": "",
@@ -490,17 +428,6 @@
                     "processors": "",
                     "groups": "Mobile",
                     "action": "Inventory Next",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "7bfee678-d7c2-4845-b78a-7b0479dbb478",
-                    "path": "<Keyboard>/5",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Time Speed Toggle",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -699,6 +626,72 @@
                     "processors": "",
                     "groups": "Mobile",
                     "action": "Force",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "94aaaca7-03a0-40c4-9413-bbb55f4e92af",
+                    "path": "<Keyboard>/1",
+                    "interactions": "",
+                    "processors": "Scale",
+                    "groups": "Mouse and Keyboard",
+                    "action": "Equip Weapon",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "4eeac2d3-d429-41be-a3a9-b50bf5c2efe5",
+                    "path": "<Keyboard>/2",
+                    "interactions": "",
+                    "processors": "Scale(factor=2)",
+                    "groups": "Mouse and Keyboard",
+                    "action": "Equip Weapon",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "d1900d5c-ddc1-4fdb-b422-9cd570e38c3b",
+                    "path": "<Keyboard>/3",
+                    "interactions": "",
+                    "processors": "Scale(factor=3)",
+                    "groups": "Mouse and Keyboard",
+                    "action": "Equip Weapon",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "40bc0455-5519-400a-9e96-900695882993",
+                    "path": "<Keyboard>/4",
+                    "interactions": "",
+                    "processors": "Scale(factor=4)",
+                    "groups": "Mouse and Keyboard",
+                    "action": "Equip Weapon",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "8ecfb5e9-6a0d-4762-bc13-3efb210c8fc1",
+                    "path": "<Keyboard>/5",
+                    "interactions": "",
+                    "processors": "Scale(factor=5)",
+                    "groups": "Mouse and Keyboard",
+                    "action": "Equip Weapon",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "cb16a083-a1ea-4352-b82e-1f5fe4acc1f8",
+                    "path": "<Keyboard>/6",
+                    "interactions": "",
+                    "processors": "Scale(factor=6)",
+                    "groups": "Mouse and Keyboard",
+                    "action": "Equip Weapon",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
