@@ -34,8 +34,10 @@ public class MoneyCollecter : MonoBehaviour, ILoadable
 
     private void OnEnable()
     {
-        Debug.Log(SaveSystem.Instance);
-        SaveSystem.Instance.DataUpdated += OnDataUpdated;
+        if(SaveSystem.Instance != null)
+        {
+            SaveSystem.Instance.DataUpdated += OnDataUpdated;
+        }
     }
 
     private void OnDisable()

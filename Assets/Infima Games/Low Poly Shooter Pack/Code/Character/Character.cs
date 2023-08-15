@@ -1556,8 +1556,37 @@ namespace InfimaGames.LowPolyShooterPack
 					break;
 			}
 		}
-		
-		public void OnLockCursor(InputAction.CallbackContext context)
+
+        public void OnTryEquipWeapun(InputAction.CallbackContext context)
+        {
+            if (!cursorLocked)
+                return;
+
+            //Null Check.
+            if (inventory == null)
+                return;
+
+            //Switch.
+            switch (context)
+            {
+                //Performed.
+                case { phase: InputActionPhase.Performed }:
+
+					float weaponIndex = context.ReadValue<Single>() - 1;
+
+                    int indexCurrent = inventory.GetEquippedIndex();
+					int weaponsLength = inventory.GetWeaponsLength();
+
+                    if (CanChangeWeapon() && (indexCurrent != weaponIndex) && (weaponIndex < weaponsLength))
+					{
+                        StartCoroutine(nameof(Equip), weaponIndex);
+                    }
+                        
+                    break;
+            }
+        }
+
+        public void OnLockCursor(InputAction.CallbackContext context)
 		{
 			//Debug.Log("Character: Esc pressed");
 			////Switch.
