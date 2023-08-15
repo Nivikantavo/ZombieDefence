@@ -21,7 +21,7 @@ public class Target : MonoBehaviour, Idamageable
         _currentHealth = MaxHealthPoints;
     }
 
-    public void TakeDamage(float damage)
+    public virtual void TakeDamage(float damage)
     {
         _currentHealth -= damage;
         _currentHealth = Mathf.Clamp(_currentHealth, 0, MaxHealthPoints);
