@@ -44285,6 +44285,14 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8199752308026953446, guid: b5653903e2f8fad40bdbabd074d165b2, type: 3}
+      propertyPath: _track
+      value: 
+      objectReference: {fileID: 510556877}
+    - target: {fileID: 8199752308026953446, guid: b5653903e2f8fad40bdbabd074d165b2, type: 3}
+      propertyPath: _player
+      value: 
+      objectReference: {fileID: 613154644}
     - target: {fileID: 8249351182992178366, guid: b5653903e2f8fad40bdbabd074d165b2, type: 3}
       propertyPath: _player
       value: 
