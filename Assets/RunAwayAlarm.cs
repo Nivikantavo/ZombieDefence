@@ -6,6 +6,7 @@ public class RunAwayAlarm : MonoBehaviour
 {
     [SerializeField] private TrackPosition _trackCoordinate;
     [SerializeField] private PlayerPosition _playerCoordinate;
+    [SerializeField] private FarAwayAlarm _alarmPanel;
     public float LevelLimitDistance;
    
     void Update()
@@ -15,7 +16,11 @@ public class RunAwayAlarm : MonoBehaviour
 
         if (currentDistance >= LevelLimitDistance) 
         {
-            Debug.Log("daleko daleko");
+            _alarmPanel.gameObject.SetActive(true);
+        }
+        else
+        {
+            _alarmPanel.gameObject.SetActive(false);
         }
     }
 }
