@@ -6,14 +6,16 @@ using UnityEngine;
 public class ReverseTimer : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI _timerText;
-    private float _timeToLose = 2.5f;
-    
+    [SerializeField] private DesertirPanel _DesertirPanel;
+    private float _timeToLose;
 
-    private void Start()
+    private void OnEnable()
     {
+        _timeToLose = 2.5f;
         _timerText.text = _timeToLose.ToString();
     }
 
+     
     private void Update()
     {
         if (_timeToLose >= 0)
@@ -23,7 +25,7 @@ public class ReverseTimer : MonoBehaviour
         }
         else
         {
-            _timerText.text = "0.00";
+            _DesertirPanel.gameObject.SetActive(true);
         }
     }
 }

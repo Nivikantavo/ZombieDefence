@@ -12,7 +12,7 @@ public class RunAwayAlarm : MonoBehaviour
     void Update()
     {
         float currentDistance = Vector3.Distance(_playerCoordinate.transform.position,_trackCoordinate.transform.position);
-        Debug.Log(currentDistance);
+        //Debug.Log(currentDistance);
 
         if (currentDistance >= LevelLimitDistance) 
         {
