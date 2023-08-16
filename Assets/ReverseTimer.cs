@@ -1,5 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
 using TMPro;
 using UnityEngine;
 
@@ -21,7 +20,7 @@ public class ReverseTimer : MonoBehaviour
         if (_timeToLose >= 0)
         {
             _timeToLose -= Time.deltaTime;
-            _timerText.text = _timeToLose.ToString();
+            _timerText.text = Math.Round(_timeToLose, 2).ToString(); 
         }
         else
         {
