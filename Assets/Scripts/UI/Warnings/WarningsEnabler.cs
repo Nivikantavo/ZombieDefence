@@ -29,13 +29,11 @@ public class WarningsEnabler : MonoBehaviour
 
     public void OnPlayerUnderAttack()
     {
-        Debug.Log("OnPlayerUnderAttack");
         ShowWarning(_playerWarnings);
     }
 
     private void ShowWarning(Warning warning)
     {
-        Debug.Log("ShowWarning" + warning.name);
         warning.gameObject.SetActive(true);
         warning.Show();
     }

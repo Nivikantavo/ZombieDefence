@@ -46,11 +46,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8f3b4e06972e4b4db147b535c141baa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Cooldown: 0
+  Cooldown: 5
   _name: JumpDash
   _explosionRadius: 3
   _explosionForce: 500
   _upForce: 5
+  _improveJumpForce: 7
+  _standartJumpForce: 2
   _stunDuration: 5
   _playerMovment: {fileID: 175169088423904484}
 --- !u!54 &115395585
@@ -226,7 +228,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17f4cb6d6b0294948ae122c9f980d72a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Cooldown: 3
+  Cooldown: 5
   _name: ForwardDash
   _forsePower: 300
   _stunDuration: 5
@@ -1225,7 +1227,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   acceleration: 8
-  accelerationInAir: 8
+  accelerationInAir: 3
   deceleration: 11
   speedWalking: 3.5
   speedAiming: 3
@@ -1234,10 +1236,10 @@ MonoBehaviour:
   walkingMultiplierForward: 1
   walkingMultiplierSideways: 0.9
   walkingMultiplierBackwards: 0.9
-  airControl: 0.5
+  airControl: 0.2
   gravity: 35
   jumpGravity: 35
-  jumpForce: 7
+  jumpForce: 2
   stickToGroundForce: 0.03
   canCrouch: 0
   canCrouchWhileFalling: 0
