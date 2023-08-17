@@ -10,7 +10,7 @@ public class RunAwayAlarm : MonoBehaviour
 
     private void Awake()
     {
-        transform.position = _track.position;
+        transform.position = new Vector3(_track.position.x, transform.position.y, _track.position.z);
         _zoneLine.transform.localScale = new Vector3(_levelLimitDistance, 1, _levelLimitDistance);
     }
 
