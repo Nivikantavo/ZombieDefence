@@ -32,11 +32,10 @@ public class Player : Target
                 if(force == _forces[i].Name)
                 {
                     _forces[i].gameObject.SetActive(true);
-                    
                 }
                 if(force == _forcesViews[i].ForceName)
                 {
-                    _forces[i].gameObject.SetActive(true);
+                    _forcesViews[i].gameObject.SetActive(true);
                 }
             }
         }

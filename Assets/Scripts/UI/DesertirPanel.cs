@@ -1,4 +1,5 @@
 using InfimaGames.LowPolyShooterPack.Interface;
+using Agava.YandexGames;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -26,10 +27,7 @@ public class DesertirPanel : Element
     private void OnRestartLevelButtonClick()
     {
 #if UNITY_WEBGL && !UNITY_EDITOR
-        if(_wasRewarded == false)
-        {
-            InterstitialAd.Show();
-        }
+        InterstitialAd.Show();
 #endif
         _loadingScreen.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
@@ -37,10 +35,7 @@ public class DesertirPanel : Element
     private void OnInMenuButtonClick()
     {
 #if UNITY_WEBGL && !UNITY_EDITOR
-        if(_wasRewarded == false)
-        {
-            InterstitialAd.Show();
-        }
+        InterstitialAd.Show();
 #endif
         _loadingScreen.LoadScene(0);
     }

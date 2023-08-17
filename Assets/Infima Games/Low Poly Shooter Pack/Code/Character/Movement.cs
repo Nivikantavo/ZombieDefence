@@ -374,6 +374,12 @@ namespace InfimaGames.LowPolyShooterPack
             else if(crouching)
                 StartCoroutine(nameof(TryUncrouch));
         }
+
+        public void SetJumpForce(float newJumpForce)
+        {
+            jumpForce = newJumpForce;
+        }
+
         /// <summary>
         /// Tries to un-crouch the character.
         /// </summary>

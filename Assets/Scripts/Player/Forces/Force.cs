@@ -21,7 +21,7 @@ public class Force : MonoBehaviour
         LastUseTime = Cooldown;
     }
 
-    private void Update()
+    protected virtual void Update()
     {
         if(LastUseTime <= Cooldown)
         {

@@ -10,7 +10,7 @@ public class ReverseTimer : MonoBehaviour
 
     private void OnEnable()
     {
-        _timeToLose = 2.5f;
+        _timeToLose = 10f;
         _timerText.text = _timeToLose.ToString();
     }
 

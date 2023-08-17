@@ -9,17 +9,31 @@ public class JumpSlam : Force
     [SerializeField] private float _explosionRadius;
     [SerializeField] private float _explosionForce;
     [SerializeField] private float _upForce;
+    [SerializeField] private float _improveJumpForce;
+    [SerializeField] private float _standartJumpForce;
     [SerializeField] private float _stunDuration;
     [SerializeField] private Movement _playerMovment;
 
     private CapsuleCollider _explosionCollider;
     private List<Zombie> _zombies = new List<Zombie>();
 
+    private bool _jumpImproved = false;
+
     protected override void Awake()
     {
         base.Awake();
         _explosionCollider = GetComponent<CapsuleCollider>();
         _explosionCollider.radius = _explosionRadius;
+    }
+
+    protected override void Update()
+    {
+        base.Update();
+        if(LastUseTime > Cooldown && _jumpImproved == false)
+        {
+            SetJumpForce(_improveJumpForce);
+            _jumpImproved = true;
+        }
     }
 
     private void OnEnable()
@@ -74,6 +88,13 @@ public class JumpSlam : Force
 
                 rigidbody.AddExplosionForce(_explosionForce, transform.position, _explosionRadius, _upForce, ForceMode.Impulse);
             }
+            SetJumpForce(_standartJumpForce);
+            _jumpImproved = false;
         }
+    }
+
+    private void SetJumpForce(float jumpforce)
+    {
+        _playerMovment.SetJumpForce(jumpforce);
     }
 }
