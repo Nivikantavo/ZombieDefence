@@ -184,6 +184,12 @@ public class SaveSystem : MonoBehaviour
         _playerData.ProductsID = products.ToArray();
     }
 
+    public void SetTrainingCompleted(bool complited)
+    {
+        _playerData.TrainingCompleted = complited;
+        Save();
+    }
+
     private void OnLoadDataSuccess(string data)
     {
         if (string.IsNullOrEmpty(data))
