@@ -8,8 +8,8 @@ public class ImproveItem : Item
     public override int SellingPrice 
     { 
         get { 
-            if(_sellsNumber > 0)
-                return Price + Price * _sellsNumber; 
+            if(BoughtCount > 0)
+                return Price + Price * BoughtCount; 
             else 
                 return Price; 
             } 
@@ -17,16 +17,8 @@ public class ImproveItem : Item
 
     [SerializeField] private int _improveStep;
 
-    private int _sellsNumber = 0;
-
-    public void SetSellsNumber(int sellsNumber)
-    {
-        _sellsNumber = sellsNumber;
-    }
-
     public override void Sell()
     {
-        SetSellsNumber(_sellsNumber + 1);
         base.Sell();
     }
 }
