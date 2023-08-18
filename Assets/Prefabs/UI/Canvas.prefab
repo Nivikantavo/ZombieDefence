@@ -4303,6 +4303,7 @@ MonoBehaviour:
   _endZone: {fileID: 0}
   _charachter: {fileID: 0}
   _mobileInput: {fileID: 6022106027313286597}
+  _educationPanel: {fileID: 0}
 --- !u!114 &6611966882671763133
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14890,7 +14891,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2605486985758286105, guid: 8325f4e474bd4094299ebcf74881dac2, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2605486985758286106, guid: 8325f4e474bd4094299ebcf74881dac2, type: 3}
       propertyPath: m_Pivot.x
