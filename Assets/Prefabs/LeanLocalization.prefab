@@ -1,5 +1,185 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &56645462
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 56645463}
+  - component: {fileID: 56645464}
+  m_Layer: 0
+  m_Name: Tip5
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &56645463
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 56645462}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1444076413708004642}
+  m_RootOrder: 40
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &56645464
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 56645462}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb15fa0e7301ff849bf4d6dcede7c12b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  data: 0
+  entries:
+  - Language: Russian
+    Text: "\u041F\u043E\u0441\u043B\u0435 \u0443\u043D\u0438\u0447\u0442\u043E\u0436\u0435\u043D\u0438\u044F
+      \u0432\u0441\u0435\u0445 \u0437\u043E\u043C\u0431\u0438 \u0432\u044B \u0441\u043C\u043E\u0436\u0435\u0442\u0435
+      \u043F\u043E\u043A\u0438\u043D\u0443\u0442\u044C \u0443\u0440\u043E\u0432\u0435\u043D\u044C
+      \u0432\u043E\u0439\u0434\u044F \u0432 \u0437\u043E\u043D\u0443 \u0437\u0430\u0432\u0435\u0440\u0448\u0435\u043D\u0438\u044F
+      \u0443\u0440\u043E\u0432\u043D\u044F!\n"
+    Object: {fileID: 0}
+  - Language: English
+    Text: After destroying all the zombies, you can leave the level by entering the
+      level completion zone!
+    Object: {fileID: 0}
+  - Language: Turkish
+    Text: "T\xFCm zombileri yok ettikten sonra b\xF6l\xFCm tamamlama b\xF6lgesine
+      girerek b\xF6l\xFCm\xFC terk edebilirsiniz!"
+    Object: {fileID: 0}
+--- !u!1 &269361281
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 269361282}
+  - component: {fileID: 269361283}
+  m_Layer: 0
+  m_Name: Tip2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &269361282
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 269361281}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1444076413708004642}
+  m_RootOrder: 37
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &269361283
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 269361281}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb15fa0e7301ff849bf4d6dcede7c12b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  data: 0
+  entries:
+  - Language: Russian
+    Text: "\u041D\u0435 \u0432\u044B\u0445\u043E\u0434\u0438\u0442\u0435 \u0438\u0437
+      \u043E\u0431\u043B\u0430\u0441\u0442\u0438 \u0437\u0430\u0449\u0438\u0442\u044B
+      \u043C\u0430\u0448\u0438\u043D\u044B, \u043D\u043E \u0432 \u0441\u043B\u0443\u0447\u0430\u0435
+      \u0435\u0441\u043B\u0438 \u044D\u0442\u043E \u043F\u0440\u043E\u0438\u0437\u043E\u0448\u043B\u043E,
+      \u0432\u0435\u0440\u043D\u0438\u0442\u0435\u0441\u044C \u0434\u043E \u0438\u0441\u0442\u0435\u0447\u0435\u043D\u0438\u0438
+      \u0442\u0430\u0439\u043C\u0435\u0440\u0430!"
+    Object: {fileID: 0}
+  - Language: English
+    Text: Do not leave the car's defense area, but if this happens, return before
+      the timer runs out!
+    Object: {fileID: 0}
+  - Language: Turkish
+    Text: "Araban\u0131n savunma alan\u0131n\u0131 terk etmeyin, ancak bu olursa,
+      s\xFCre dolmadan geri d\xF6n\xFCn!"
+    Object: {fileID: 0}
+--- !u!1 &299175729
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 299175730}
+  - component: {fileID: 299175731}
+  m_Layer: 0
+  m_Name: Tip1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &299175730
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 299175729}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1444076413708004642}
+  m_RootOrder: 36
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &299175731
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 299175729}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb15fa0e7301ff849bf4d6dcede7c12b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  data: 0
+  entries:
+  - Language: Russian
+    Text: "\u0426\u0435\u043B\u044C \u043C\u0438\u0441\u0441\u0438\u0438: \u0437\u0430\u0449\u0438\u0442\u0438\u0442\u044C
+      \u0441\u0435\u0431\u044F \u0438 \u043C\u0430\u0448\u0438\u043D\u0443 \u043E\u0442
+      \u0432\u043E\u043B\u043D \u0437\u043E\u043C\u0431\u0438"
+    Object: {fileID: 0}
+  - Language: English
+    Text: 'Mission Objective: Protect yourself and the car from waves of zombies'
+    Object: {fileID: 0}
+  - Language: Turkish
+    Text: "G\xF6rev Hedefi: Kendinizi ve arabay\u0131 zombi dalgalar\u0131ndan koruyun"
+    Object: {fileID: 0}
 --- !u!1 &340244625
 GameObject:
   m_ObjectHideFlags: 0
@@ -165,6 +345,61 @@ MonoBehaviour:
   - Language: Russian
     Text: "\u0417\u0410\u0413\u0420\u0423\u0417\u041A\u0410"
     Object: {fileID: 0}
+--- !u!1 &1241638779
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1241638780}
+  - component: {fileID: 1241638781}
+  m_Layer: 0
+  m_Name: Next
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1241638780
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1241638779}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1444076413708004642}
+  m_RootOrder: 41
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1241638781
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1241638779}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb15fa0e7301ff849bf4d6dcede7c12b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  data: 0
+  entries:
+  - Language: Russian
+    Text: "\u0421\u041B\u0415\u0414\u0423\u042E\u0429\u0418\u0419"
+    Object: {fileID: 0}
+  - Language: English
+    Text: NEXT
+    Object: {fileID: 0}
+  - Language: Turkish
+    Text: "SONRAK\u0130"
+    Object: {fileID: 0}
 --- !u!1 &1271512889
 GameObject:
   m_ObjectHideFlags: 0
@@ -220,6 +455,187 @@ MonoBehaviour:
   - Language: Turkish
     Text: 'GOL:'
     Object: {fileID: 0}
+--- !u!1 &1280627575
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1280627576}
+  - component: {fileID: 1280627577}
+  m_Layer: 0
+  m_Name: Close
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1280627576
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1280627575}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1444076413708004642}
+  m_RootOrder: 43
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1280627577
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1280627575}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb15fa0e7301ff849bf4d6dcede7c12b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  data: 0
+  entries:
+  - Language: Russian
+    Text: "\u0417\u0410\u041A\u0420\u042B\u0422\u042C\n"
+    Object: {fileID: 0}
+  - Language: English
+    Text: CLOSE
+    Object: {fileID: 0}
+  - Language: Turkish
+    Text: KAPALI
+    Object: {fileID: 0}
+--- !u!1 &1433485163
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1433485164}
+  - component: {fileID: 1433485165}
+  m_Layer: 0
+  m_Name: Tip3
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1433485164
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1433485163}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1444076413708004642}
+  m_RootOrder: 38
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1433485165
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1433485163}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb15fa0e7301ff849bf4d6dcede7c12b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  data: 0
+  entries:
+  - Language: Russian
+    Text: "\u0421 \u043D\u0435\u0441\u043A\u043E\u043B\u044C\u043A\u0438\u0445 \u0441\u0442\u043E\u0440\u043E\u043D
+      \u043D\u0430 \u0432\u0430\u0441 \u0431\u0443\u0434\u0443\u0442 \u043D\u0430\u0441\u0442\u0443\u043F\u0430\u0442\u044C
+      \u0442\u043E\u043B\u043F\u044B \u0437\u043E\u043C\u0431\u0438, \u0432\u044B
+      \u043C\u043E\u0436\u0435\u0442\u0435 \u043E\u0441\u0442\u043B\u0435\u0436\u0438\u0432\u0430\u0442\u044C
+      \u0438\u0445 \u0441 \u043F\u043E\u043C\u043E\u0449\u044C\u044E \u043C\u0438\u043D\u0438\u043A\u0430\u0440\u0442\u044B. "
+    Object: {fileID: 0}
+  - Language: English
+    Text: Crowds of zombies will attack you from several sides, you can track them
+      using the minimap.
+    Object: {fileID: 0}
+  - Language: Turkish
+    Text: "Zombi kalabal\u0131klar\u0131 size birka\xE7 y\xF6nden sald\u0131racak,
+      mini haritay\u0131 kullanarak onlar\u0131 takip edebilirsiniz."
+    Object: {fileID: 0}
+--- !u!1 &1450557713
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1450557714}
+  - component: {fileID: 1450557715}
+  m_Layer: 0
+  m_Name: Tip4
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1450557714
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1450557713}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1444076413708004642}
+  m_RootOrder: 39
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1450557715
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1450557713}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb15fa0e7301ff849bf4d6dcede7c12b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  data: 0
+  entries:
+  - Language: Russian
+    Text: "\u041F\u043E\u0441\u043B\u0435 \u0441\u043C\u0435\u0440\u0442\u0438 \u0438\u0437
+      \u043A\u043E\u0436\u0434\u043E\u0433\u043E \u0437\u043E\u043C\u0431\u0438 \u0432\u044B\u043F\u0430\u0434\u0430\u044E\u0442
+      \u0447\u0435\u0440\u0435\u043F\u0430, \u043D\u0435  \u0437\u0430\u0431\u0443\u0434\u044C\u0442\u0435
+      \u0441\u043E\u0431\u0440\u0430\u0442\u044C \u0438\u0445 \u0434\u043E \u043E\u043A\u043E\u043D\u0447\u0430\u043D\u0438\u044F
+      \u0440\u0430\u0443\u043D\u0434\u0430! \u041E\u043D\u0438 \u043F\u043E\u043D\u0430\u0434\u043E\u0431\u044F\u0442\u0441\u044F
+      \u0434\u043B\u044F \u0443\u043B\u0443\u0447\u0448\u0435\u043D\u0438\u044F \u0438
+      \u043F\u043E\u043A\u0443\u043F\u043A\u0438 \u043D\u043E\u0432\u043E\u0433\u043E
+      \u043E\u0440\u0443\u0436\u0438\u044F \u0438 \u043C\u043D\u043E\u0433\u043E\u0432\u043E
+      \u0434\u0440\u0443\u0433\u043E\u0433\u043E."
+    Object: {fileID: 0}
+  - Language: English
+    Text: 'Skulls drop out of each zombie upon death, don''t forget to collect them
+      before the end of the round! '
+    Object: {fileID: 0}
+  - Language: Turkish
+    Text: "Her zombi \xF6ld\xFCkten sonra kafataslar\u0131 d\xFC\u015Fer, tur bitmeden
+      kafataslar\u0131n\u0131 toplamay\u0131 unutmay\u0131n!"
+    Object: {fileID: 0}
 --- !u!1 &1671834205
 GameObject:
   m_ObjectHideFlags: 0
@@ -274,6 +690,61 @@ MonoBehaviour:
     Object: {fileID: 0}
   - Language: Turkish
     Text: "TEKRAR BA\u015ELAT"
+    Object: {fileID: 0}
+--- !u!1 &1776114519
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1776114520}
+  - component: {fileID: 1776114521}
+  m_Layer: 0
+  m_Name: Previous
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1776114520
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1776114519}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1444076413708004642}
+  m_RootOrder: 42
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1776114521
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1776114519}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb15fa0e7301ff849bf4d6dcede7c12b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  data: 0
+  entries:
+  - Language: Russian
+    Text: "\u041F\u0420\u0415\u0414\u042B\u0414\u0423\u0429\u0418\u0419"
+    Object: {fileID: 0}
+  - Language: English
+    Text: PREVIOUS
+    Object: {fileID: 0}
+  - Language: Turkish
+    Text: "\xD6NCES\u0130"
     Object: {fileID: 0}
 --- !u!1 &471953897511495758
 GameObject:
@@ -698,13 +1169,13 @@ MonoBehaviour:
   data: 0
   entries:
   - Language: Russian
-    Text: "\u0418\u041D\u0424\u041E"
+    Text: "\u0423\u041F\u0420\u0410\u0412\u041B\u0415\u041D\u0418\u0415\n"
     Object: {fileID: 0}
   - Language: English
-    Text: INFO
+    Text: CONTROL
     Object: {fileID: 0}
   - Language: Turkish
-    Text: BILGI
+    Text: KONTROL
     Object: {fileID: 0}
 --- !u!1 &1444076412612404033
 GameObject:
@@ -1489,6 +1960,14 @@ Transform:
   - {fileID: 7812301634967093031}
   - {fileID: 7396141313833992788}
   - {fileID: 4252000279204250822}
+  - {fileID: 299175730}
+  - {fileID: 269361282}
+  - {fileID: 1433485164}
+  - {fileID: 1450557714}
+  - {fileID: 56645463}
+  - {fileID: 1241638780}
+  - {fileID: 1776114520}
+  - {fileID: 1280627576}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

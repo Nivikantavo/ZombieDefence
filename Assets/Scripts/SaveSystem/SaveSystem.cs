@@ -190,6 +190,12 @@ public class SaveSystem : MonoBehaviour
         Save();
     }
 
+    public void SetSoundsValue(float musicVolume, float soundVolume)
+    {
+        _playerData.MusicVolume = musicVolume;
+        _playerData.SoundsVolume = soundVolume;
+    }
+
     private void OnLoadDataSuccess(string data)
     {
         if (string.IsNullOrEmpty(data))
