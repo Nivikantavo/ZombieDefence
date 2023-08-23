@@ -5,6 +5,8 @@ public class PlayerData
     public int ComplitedLevelsOnStage;
     public int SelectedLevel;
     public float Sensetive;
+    public float MusicVolume;
+    public float SoundsVolume;
     public string[] Weapons;
     public string[] UpgradeWeapons;
     public string[] ProductsID;
@@ -30,6 +32,8 @@ public class PlayerData
         SurvivalMode = false;
         TrainingCompleted = false;
         Sensetive = 1;
+        MusicVolume = 0f;
+        SoundsVolume = 0f;
         SurviveTimeRecord = 0;
     }
 }
