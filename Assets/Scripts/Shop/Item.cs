@@ -6,7 +6,16 @@ using UnityEngine.Events;
 public abstract class Item : MonoBehaviour
 {
     public virtual string Name => ItemName;
-    public virtual int SellingPrice => Price;
+    public virtual int SellingPrice
+    {
+        get
+        {
+            if (BoughtCount > 0)
+                return Price + Price * BoughtCount;
+            else
+                return Price;
+        }
+    }
     public int Purchases => BoughtCount;
     public int NumberOfItems => ItemsCount;
 
