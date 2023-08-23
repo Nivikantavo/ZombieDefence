@@ -14,12 +14,21 @@ public class LevelProgress : MonoBehaviour
     [SerializeField] private LevelEndZone _endZone;
     [SerializeField] private Character _charachter;
     [SerializeField] private GameObject _mobileInput;
+    [SerializeField] private EducationPanel _educationPanel;
 
     private bool _levelComplited = false;
 
     private void Awake()
     {
         LevelEnded = false;
+    }
+
+    private void Start()
+    {
+        if (_levelChoicer.CurrentLevelNumber == 0 && SaveSystem.Instance.GetData().TrainingCompleted == false)
+        {
+            _educationPanel.gameObject.SetActive(true);
+        }
     }
 
     private void OnEnable()

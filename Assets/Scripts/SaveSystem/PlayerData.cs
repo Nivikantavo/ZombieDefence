@@ -12,6 +12,7 @@ public class PlayerData
     public string[] Forces;
     public int TruckHealth;
     public bool SurvivalMode;
+    public bool TrainingCompleted;
     public float SurviveTimeRecord;
 
     public PlayerData()
@@ -27,6 +28,7 @@ public class PlayerData
         Forces = new string[1];
         TruckHealth = 300;
         SurvivalMode = false;
+        TrainingCompleted = false;
         Sensetive = 1;
         SurviveTimeRecord = 0;
     }
