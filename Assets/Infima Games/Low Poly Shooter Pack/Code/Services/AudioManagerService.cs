@@ -122,11 +122,13 @@ namespace InfimaGames.LowPolyShooterPack
             //Add an audio source component to that object.
             var newAudioSource = newSourceObject.AddComponent<AudioSource>();
             newAudioSource.outputAudioMixerGroup = _soundsGroup;
-            //Set volume.
-            //newAudioSource.volume = settings.Volume;
+            Debug.Log(newAudioSource.outputAudioMixerGroup);
+            _audioMixer.GetFloat(Sounds, out float volume);
+            Debug.Log(volume);
+            //newAudioSource.volume = volume;
             //Set spatial blend.
             newAudioSource.spatialBlend = settings.SpatialBlend;
-            
+
             //Play the clip!
             newAudioSource.PlayOneShot(clip);
             
