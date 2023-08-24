@@ -96,18 +96,25 @@ public class EndLevelPanel : Element
     private void OnRewardButtonClick()
     {
 #if UNITY_WEBGL && !UNITY_EDITOR
-        VideoAd.Show(OnVideoAdOpen, OnRewardCallback);
+        VideoAd.Show(OnVideoAdOpen, OnRewardCallback, OnRewardClose);
 #endif
     }
 
     private void OnVideoAdOpen()
     {
-
+        AudioListener.pause = true;
+        AudioListener.volume = 0f;
     }
 
     private void OnRewardCallback()
     {
         _moneyCollecter.AddMoney(_moneyCollecter.Money - _moneyCollecter.StartMoney);
         _wasRewarded = true;
+    }
+
+    private void OnRewardClose()
+    {
+        AudioListener.pause = false;
+        AudioListener.volume = 1f;
     }
 }

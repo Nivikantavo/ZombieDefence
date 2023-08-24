@@ -2,17 +2,37 @@
 
 using UnityEngine;
 using System.Collections;
+using UnityEngine.Audio;
+using Agava.YandexGames;
+using Unity.VisualScripting;
 
 namespace InfimaGames.LowPolyShooterPack
 {
+
     /// <summary>
     /// Manages the spawning and playing of sounds.
     /// </summary>
     public class AudioManagerService : MonoBehaviour, IAudioManagerService
     {
+        private const string Music = "Music";
+        private const string Sounds = "Sounds";
+
+        [SerializeField] private AudioMixer _audioMixer;
+        [SerializeField] private AudioMixerGroup _soundsGroup;
         /// <summary>
         /// Contains data related to playing a OneShot audio.
         /// </summary>
+        /// 
+        private IEnumerator Start()
+        {
+#if !UNITY_WEBGL || UNITY_EDITOR
+
+            yield break;
+#endif
+            yield return YandexGamesSdk.Initialize();
+            SetStartSoundsSettings();
+        }
+
         private readonly struct OneShotCoroutine
         {
             /// <summary>
@@ -41,7 +61,15 @@ namespace InfimaGames.LowPolyShooterPack
                 Delay = delay;
             }
         }
+        private void SetStartSoundsSettings()
+        {
+            PlayerData data = SaveSystem.Instance.GetData();
+            float musicVolume = data.MusicVolume;
+            float soundVolume = data.SoundsVolume;
 
+            _audioMixer.SetFloat(Music, musicVolume);
+            _audioMixer.SetFloat(Sounds, soundVolume);
+        }
         /// <summary>
         /// Checks if an AudioSource is valid, and playing!
         /// </summary>
@@ -93,9 +121,9 @@ namespace InfimaGames.LowPolyShooterPack
             var newSourceObject = new GameObject($"Audio Source -> {clip.name}");
             //Add an audio source component to that object.
             var newAudioSource = newSourceObject.AddComponent<AudioSource>();
-
+            newAudioSource.outputAudioMixerGroup = _soundsGroup;
             //Set volume.
-            newAudioSource.volume = settings.Volume;
+            //newAudioSource.volume = settings.Volume;
             //Set spatial blend.
             newAudioSource.spatialBlend = settings.SpatialBlend;
             

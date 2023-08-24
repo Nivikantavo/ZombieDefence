@@ -22,16 +22,24 @@ public class AdAsk : MonoBehaviour
 
     private void ShowVideoAd()
     {
-        VideoAd.Show(OnVideoAdOpen, OnRewardCallback);
+        VideoAd.Show(OnVideoAdOpen, OnRewardCallback, OnVideoAdClose);
     }
 
     private void OnVideoAdOpen()
     {
-        gameObject.SetActive(false);
+        AudioListener.pause = true;
+        AudioListener.volume = 0f;
     }
 
     private void OnRewardCallback()
     {
         _moneyCollecter.AddMoney(_reward);
+    }
+
+    private void OnVideoAdClose()
+    {
+        gameObject.SetActive(false);
+        AudioListener.pause = false;
+        AudioListener.volume = 1f;
     }
 }
