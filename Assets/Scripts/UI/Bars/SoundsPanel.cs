@@ -6,10 +6,8 @@ public class SoundsPanel : MonoBehaviour
 {
     private const string Music = "Music";
     private const string Sounds = "Sounds";
-    private const string PlayerMaster = "PlayerMaster";
 
     [SerializeField] private AudioMixer _audioMixer;
-    [SerializeField] private AudioMixer _playerMixer;
     [SerializeField] private Slider _musicSlider;
     [SerializeField] private Slider _soundSlider;
 
@@ -54,6 +52,5 @@ public class SoundsPanel : MonoBehaviour
     {
         _soundVolume = newVolume;
         _audioMixer.SetFloat(Sounds, _soundVolume);
-        _playerMixer.SetFloat(PlayerMaster, _soundVolume);
     }
 }
