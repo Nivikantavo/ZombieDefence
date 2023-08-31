@@ -16,13 +16,22 @@ namespace InfimaGames.LowPolyShooterPack
     {
         private const string Music = "Music";
         private const string Sounds = "Sounds";
-
+        private const string AudioMixer = "AudioMixer";
+        
         [SerializeField] private AudioMixer _audioMixer;
         [SerializeField] private AudioMixerGroup _soundsGroup;
         /// <summary>
         /// Contains data related to playing a OneShot audio.
         /// </summary>
         /// 
+
+        private void Awake()
+        {
+            _audioMixer = Resources.Load<AudioMixer>(AudioMixer);
+            _soundsGroup = _audioMixer.FindMatchingGroups(Sounds)[0];
+            Debug.Log(_audioMixer + " " + _soundsGroup);
+        }
+
         private IEnumerator Start()
         {
 #if !UNITY_WEBGL || UNITY_EDITOR
@@ -122,9 +131,7 @@ namespace InfimaGames.LowPolyShooterPack
             //Add an audio source component to that object.
             var newAudioSource = newSourceObject.AddComponent<AudioSource>();
             newAudioSource.outputAudioMixerGroup = _soundsGroup;
-            Debug.Log(newAudioSource.outputAudioMixerGroup);
             _audioMixer.GetFloat(Sounds, out float volume);
-            Debug.Log(volume);
             //newAudioSource.volume = volume;
             //Set spatial blend.
             newAudioSource.spatialBlend = settings.SpatialBlend;

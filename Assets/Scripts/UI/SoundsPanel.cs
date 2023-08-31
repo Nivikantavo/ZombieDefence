@@ -17,8 +17,8 @@ public class SoundsPanel : MonoBehaviour
     private void Awake()
     {
         PlayerData data = SaveSystem.Instance.GetData();
-        _musicVolume = data.MusicVolume;
-        _soundVolume = data.SoundsVolume;
+        OnMusicSliderValueChanged(data.MusicVolume);
+        OnSoundSliderValueChanged(data.SoundsVolume);
     }
 
     private void OnEnable()
