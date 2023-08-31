@@ -7,6 +7,8 @@ public class Repulse : Force
 {
     [SerializeField] private float _forsePower;
     [SerializeField] private float _stunDuration;
+    [SerializeField] private GameObject _projectile;
+    [SerializeField] private Repulse _projectilePoint;
 
     private List<Zombie> _zombies = new List<Zombie>();
 
@@ -53,6 +55,7 @@ public class Repulse : Force
 
                 rigidbody.AddForce(forceDirection * _forsePower, ForceMode.Impulse);
             }
+            Instantiate(_projectile, _projectilePoint.transform);
         }
     }
 }
