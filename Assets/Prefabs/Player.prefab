@@ -55,6 +55,8 @@ MonoBehaviour:
   _standartJumpForce: 2
   _stunDuration: 5
   _playerMovment: {fileID: 175169088423904484}
+  _explosionPoint: {fileID: 115395583}
+  _explosion: {fileID: 3296048985649900611, guid: 9a0f279a8d320084a953861330226a32, type: 3}
 --- !u!54 &115395585
 Rigidbody:
   m_ObjectHideFlags: 0

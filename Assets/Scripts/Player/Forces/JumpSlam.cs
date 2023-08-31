@@ -13,6 +13,8 @@ public class JumpSlam : Force
     [SerializeField] private float _standartJumpForce;
     [SerializeField] private float _stunDuration;
     [SerializeField] private Movement _playerMovment;
+    [SerializeField] private JumpSlam _explosionPoint;
+    [SerializeField] private GameObject _explosion;
 
     private CapsuleCollider _explosionCollider;
     private List<Zombie> _zombies = new List<Zombie>();
@@ -90,8 +92,10 @@ public class JumpSlam : Force
             }
             SetJumpForce(_standartJumpForce);
             _jumpImproved = false;
+            Instantiate(_explosion, _explosionPoint.transform);
         }
     }
+    
 
     private void SetJumpForce(float jumpforce)
     {
