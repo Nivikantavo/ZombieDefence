@@ -31049,6 +31049,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2103672605, guid: be81f15462f628443975a2390ab28d8d, type: 3}
+      propertyPath: _projectile
+      value: 
+      objectReference: {fileID: 658987373109062527, guid: 760252bef33671d4c9cdeeb02b8b3b95, type: 3}
+    - target: {fileID: 2103672605, guid: be81f15462f628443975a2390ab28d8d, type: 3}
+      propertyPath: _projectilePoint
+      value: 
+      objectReference: {fileID: 1064808754}
     - target: {fileID: 175169087984674501, guid: be81f15462f628443975a2390ab28d8d, type: 3}
       propertyPath: _forcesViews.Array.data[0]
       value: 
