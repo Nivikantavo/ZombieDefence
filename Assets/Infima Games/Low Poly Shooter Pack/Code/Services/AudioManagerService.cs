@@ -29,7 +29,6 @@ namespace InfimaGames.LowPolyShooterPack
         {
             _audioMixer = Resources.Load<AudioMixer>(AudioMixer);
             _soundsGroup = _audioMixer.FindMatchingGroups(Sounds)[0];
-            Debug.Log(_audioMixer + " " + _soundsGroup);
         }
 
         private IEnumerator Start()

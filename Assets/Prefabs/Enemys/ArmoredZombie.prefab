@@ -1168,7 +1168,7 @@ MonoBehaviour:
   _transitions:
   - {fileID: 8442072147314796566}
   - {fileID: 8442072147314796564}
-  AttackDistance: 1.5
+  AttackDistance: 2
   _attackDelay: 3
   _damage: 10
   _animation: {fileID: 8442072147314796570}
