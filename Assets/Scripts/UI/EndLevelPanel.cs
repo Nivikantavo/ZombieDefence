@@ -87,7 +87,7 @@ public class EndLevelPanel : Element
 #if UNITY_WEBGL && !UNITY_EDITOR
         if(_wasRewarded == false)
         {
-            InterstitialAd.Show();
+            InterstitialAd.Show(OnAdOpen, OnInterstitialAdClose);
         }
 #endif
         _loadingScreen.LoadScene(0);
@@ -96,11 +96,11 @@ public class EndLevelPanel : Element
     private void OnRewardButtonClick()
     {
 #if UNITY_WEBGL && !UNITY_EDITOR
-        VideoAd.Show(OnVideoAdOpen, OnRewardCallback, OnRewardClose);
+        VideoAd.Show(OnAdOpen, OnRewardCallback, OnRewardAdClose);
 #endif
     }
 
-    private void OnVideoAdOpen()
+    private void OnAdOpen()
     {
         AudioListener.pause = true;
         AudioListener.volume = 0f;
@@ -112,7 +112,13 @@ public class EndLevelPanel : Element
         _wasRewarded = true;
     }
 
-    private void OnRewardClose()
+    private void OnInterstitialAdClose(bool wasShown = true)
+    {
+        AudioListener.pause = false;
+        AudioListener.volume = 1f;
+    }
+
+    private void OnRewardAdClose()
     {
         AudioListener.pause = false;
         AudioListener.volume = 1f;
