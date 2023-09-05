@@ -48,6 +48,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Cooldown: 5
   _name: JumpDash
+  _forceSound: {fileID: 8300000, guid: 306550a4d97f8094897d31ee121ef8db, type: 3}
+  _forceSource: {fileID: 6061907202100392326}
   _explosionRadius: 3
   _explosionForce: 500
   _upForce: 5
@@ -232,8 +234,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Cooldown: 5
   _name: ForwardDash
+  _forceSound: {fileID: 8300000, guid: 0de2ebc747044e643928b79e0b064fc3, type: 3}
+  _forceSource: {fileID: 6061907202100392326}
   _forsePower: 300
   _stunDuration: 5
+  _projectile: {fileID: 658987373109062527, guid: 760252bef33671d4c9cdeeb02b8b3b95, type: 3}
+  _projectilePoint: {fileID: 2103672605}
 --- !u!54 &2103672606
 Rigidbody:
   m_ObjectHideFlags: 0

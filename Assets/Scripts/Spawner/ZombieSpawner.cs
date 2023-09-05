@@ -13,8 +13,10 @@ public class ZombieSpawner : MonoBehaviour
     [SerializeField] private CoinsPool _coinsPool;
     [SerializeField] private MissilePool _missilePool;
     [SerializeField] private List<Transform> _spawnPoints;
+    [SerializeField] private List<Transform> _startSpawnPoints;
 
     private List<Wave> _waves;
+    private Wave _startWave;
     private List<DieState> _zombiesDieStates = new List<DieState>();
     private Wave _currentWave;
     private int _currentWaveNumber = 0;
@@ -23,6 +25,7 @@ public class ZombieSpawner : MonoBehaviour
     public event UnityAction AllZombieDied;
 
     private bool _survivalMode = false;
+    private bool _startWaveSpawned = false;
 
     public event UnityAction ZombyCounted;
 
@@ -67,6 +70,11 @@ public class ZombieSpawner : MonoBehaviour
         _waves = waves;
     }
 
+    public void SetStartWave(Wave wave)
+    {
+        _startWave = wave;
+    } 
+
     public void StartSpawnWave(Wave wave)
     {
         StartCoroutine(SpawnWave(wave));
@@ -82,12 +90,20 @@ public class ZombieSpawner : MonoBehaviour
     {
         WaitForSeconds waveDelay = new WaitForSeconds(_currentWave.DelayAfterWave);
         WaitForSeconds spawnDelay;
+
+        if (_startWaveSpawned == false)
+        {
+            StartCoroutine(SpawnWave(_startWave, _startSpawnPoints));
+            SetCurrentWave(_currentWaveNumber);
+            _startWaveSpawned = true;
+        }
+
         for (int i = 0; i < _waves.Count; i++)
         {
             spawnDelay = new WaitForSeconds(_currentWave.DelayBetweenSpawn);
             for (int j = 0; j < _currentWave.ZombieCount; j++)
             {
-                SpawnZombie();
+                SpawnZombie(_spawnPoints);
                 yield return spawnDelay;
             }
             yield return waveDelay;
@@ -95,23 +111,28 @@ public class ZombieSpawner : MonoBehaviour
         }
     }
 
-    private IEnumerator SpawnWave(Wave wave)
+    private IEnumerator SpawnWave(Wave wave, List<Transform> spawnPoints = null)
     {
+        if(spawnPoints == null)
+        {
+            spawnPoints = _spawnPoints;
+        }
+
         _currentWave = wave;
         WaitForSeconds spawnDelay = new WaitForSeconds(wave.DelayBetweenSpawn);
         for (int j = 0; j < wave.ZombieCount; j++)
         {
-            SpawnZombie();
+            SpawnZombie(spawnPoints);
             yield return spawnDelay;
         }
     }
 
-    private void SpawnZombie()
+    private void SpawnZombie(List<Transform> spawnPoints)
     {
-        int spawnPointNumber = Random.Range(0, _spawnPoints.Count);
+        int spawnPointNumber = Random.Range(0, spawnPoints.Count);
         if (_currentWave.TryGetObject(out GameObject enemy))
         {
-            enemy.transform.position = _spawnPoints[spawnPointNumber].position;
+            enemy.transform.position = spawnPoints[spawnPointNumber].position;
             enemy.GetComponent<TargetSwitcher>().Initialize(_player, _track);
             enemy.GetComponent<Zombie>().Initialize();
             if (enemy.TryGetComponent<RangeSeekState>(out RangeSeekState rangeSeekState))

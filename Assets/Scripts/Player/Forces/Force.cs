@@ -11,6 +11,8 @@ public class Force : MonoBehaviour
 
     [SerializeField] protected float Cooldown;
     [SerializeField] private string _name;
+    [SerializeField] private AudioClip _forceSound;
+    [SerializeField] private AudioSource _forceSource;
 
     protected float LastUseTime;
 
@@ -35,6 +37,7 @@ public class Force : MonoBehaviour
         if(LastUseTime > Cooldown)
         {
             ForceUsed?.Invoke();
+            _forceSource.PlayOneShot(_forceSound);
             LastUseTime = 0;
         }
     }
