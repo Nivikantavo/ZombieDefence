@@ -40803,6 +40803,29 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 56645464, guid: 8dd5548133587fe4984a055cd455b5ab, type: 3}
+      propertyPath: entries.Array.data[2].Text
+      value: Tum zombileri yok ettikten sonra bolum tamamlama bolgesine girerek bolumu
+        terk edebilirsiniz!
+      objectReference: {fileID: 0}
+    - target: {fileID: 269361283, guid: 8dd5548133587fe4984a055cd455b5ab, type: 3}
+      propertyPath: entries.Array.data[2].Text
+      value: "Araban\u0131n savunma alan\u0131n\u0131 terk etmeyin, ancak bu olursa,
+        sure dolmadan geri donun!"
+      objectReference: {fileID: 0}
+    - target: {fileID: 340244627, guid: 8dd5548133587fe4984a055cd455b5ab, type: 3}
+      propertyPath: entries.Array.data[2].Text
+      value: HAYATTA KALMA SURESI
+      objectReference: {fileID: 0}
+    - target: {fileID: 1241638781, guid: 8dd5548133587fe4984a055cd455b5ab, type: 3}
+      propertyPath: entries.Array.data[2].Text
+      value: SONRAKI
+      objectReference: {fileID: 0}
+    - target: {fileID: 1433485165, guid: 8dd5548133587fe4984a055cd455b5ab, type: 3}
+      propertyPath: entries.Array.data[2].Text
+      value: "Zombi kalabaliklari size birkac yonden sald\u0131racak, mini haritay\u0131
+        kullanarak onlar\u0131 takip edebilirsiniz."
+      objectReference: {fileID: 0}
     - target: {fileID: 1450557715, guid: 8dd5548133587fe4984a055cd455b5ab, type: 3}
       propertyPath: entries.Array.data[0].Text
       value: "\r\u041D\u0430 \u0441\u043E\u0431\u0440\u0430\u043D\u043D\u044B\u0435
@@ -40819,8 +40842,20 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1450557715, guid: 8dd5548133587fe4984a055cd455b5ab, type: 3}
       propertyPath: entries.Array.data[2].Text
-      value: "Toplanan kafataslar\u0131na yeni silahlar ve g\xFC\xE7ler a\xE7abilir,
-        ayr\u0131ca arac\u0131n z\u0131rh\u0131n\u0131 geli\u015Ftirebilirsiniz."
+      value: "Toplanan kafataslar\u0131na yeni silahlar ve gucler acabilir, ayr\u0131ca
+        arac\u0131n z\u0131rh\u0131n\u0131 gelistirebilirsiniz."
+      objectReference: {fileID: 0}
+    - target: {fileID: 1671834207, guid: 8dd5548133587fe4984a055cd455b5ab, type: 3}
+      propertyPath: entries.Array.data[2].Text
+      value: TEKRAR BASLAT
+      objectReference: {fileID: 0}
+    - target: {fileID: 1776114521, guid: 8dd5548133587fe4984a055cd455b5ab, type: 3}
+      propertyPath: entries.Array.data[2].Text
+      value: ONCESI
+      objectReference: {fileID: 0}
+    - target: {fileID: 1314764625735854826, guid: 8dd5548133587fe4984a055cd455b5ab, type: 3}
+      propertyPath: entries.Array.data[2].Text
+      value: YENILENEN DUSMANLAR ICIN
       objectReference: {fileID: 0}
     - target: {fileID: 1444076413708004640, guid: 8dd5548133587fe4984a055cd455b5ab, type: 3}
       propertyPath: m_Name
@@ -40869,6 +40904,14 @@ PrefabInstance:
     - target: {fileID: 1444076413708004642, guid: 8dd5548133587fe4984a055cd455b5ab, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3409537365226978104, guid: 8dd5548133587fe4984a055cd455b5ab, type: 3}
+      propertyPath: entries.Array.data[2].Text
+      value: MENU
+      objectReference: {fileID: 0}
+    - target: {fileID: 7782839184636727000, guid: 8dd5548133587fe4984a055cd455b5ab, type: 3}
+      propertyPath: entries.Array.data[2].Text
+      value: MUZIk
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8dd5548133587fe4984a055cd455b5ab, type: 3}
