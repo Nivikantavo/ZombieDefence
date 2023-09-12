@@ -2,6 +2,7 @@ using Agava.WebUtility;
 using Agava.YandexGames;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class InputSwitcher : MonoBehaviour
 {
