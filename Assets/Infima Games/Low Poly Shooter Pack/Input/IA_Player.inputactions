@@ -335,7 +335,7 @@
                 {
                     "name": "",
                     "id": "6ab3c0c1-413c-4596-93a8-b92c2eb0157b",
-                    "path": "<Keyboard>/f",
+                    "path": "<Keyboard>/e",
                     "interactions": "",
                     "processors": "",
                     "groups": "Mouse and Keyboard",
@@ -346,7 +346,7 @@
                 {
                     "name": "",
                     "id": "7dd98274-256a-4623-973f-5995b0f261fa",
-                    "path": "<Gamepad>/rightStickPress",
+                    "path": "<Gamepad>/buttonEast",
                     "interactions": "",
                     "processors": "",
                     "groups": "Mobile",
