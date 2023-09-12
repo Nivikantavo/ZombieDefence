@@ -411,6 +411,7 @@ namespace InfimaGames.LowPolyShooterPack
 		/// </summary>
 		protected override void Update()
 		{
+			Debug.Log(GetComponent<PlayerInput>().currentControlScheme);
 			//Match Aim.
 			aiming = holdingButtonAim && CanAim();
 			//Match Run.
@@ -978,8 +979,8 @@ namespace InfimaGames.LowPolyShooterPack
 		/// </summary>
 		private void UpdateCursorState()
 		{
-			Cursor.visible = !cursorLocked;
-			Cursor.lockState = cursorLocked ? CursorLockMode.Locked : CursorLockMode.None;
+			//Cursor.visible = !cursorLocked;
+			//Cursor.lockState = cursorLocked ? CursorLockMode.Locked : CursorLockMode.None;
 		}
 
 		/// <summary>

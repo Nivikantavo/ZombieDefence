@@ -195,7 +195,7 @@
                     "path": "<Gamepad>/rightTrigger",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Mobile",
+                    "groups": "Mobile;Mouse and Keyboard",
                     "action": "Fire",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -217,7 +217,7 @@
                     "path": "<Gamepad>/leftTrigger",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Mobile",
+                    "groups": "Mobile;Mouse and Keyboard",
                     "action": "Aim",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -239,7 +239,7 @@
                     "path": "<Gamepad>/buttonWest",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Mobile",
+                    "groups": "Mobile;Mouse and Keyboard",
                     "action": "Reload",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -250,7 +250,7 @@
                     "path": "<Gamepad>/rightStick",
                     "interactions": "",
                     "processors": "ScaleVector2(x=2,y=2),StickDeadzone",
-                    "groups": "Mobile",
+                    "groups": "Mobile;Mouse and Keyboard",
                     "action": "Look",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -283,7 +283,7 @@
                     "path": "<Gamepad>/rightShoulder",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Mobile",
+                    "groups": "Mobile;Mouse and Keyboard",
                     "action": "Holster",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -305,7 +305,7 @@
                     "path": "<Gamepad>/buttonSouth",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Mobile",
+                    "groups": "Mobile;Mouse and Keyboard",
                     "action": "Jump",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -327,7 +327,7 @@
                     "path": "<Gamepad>/leftShoulder",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Mobile",
+                    "groups": "Mobile;Mouse and Keyboard",
                     "action": "Grenade",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -349,7 +349,7 @@
                     "path": "<Gamepad>/buttonEast",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Mobile",
+                    "groups": "Mobile;Mouse and Keyboard",
                     "action": "Melee",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -371,7 +371,7 @@
                     "path": "<Gamepad>/leftStickPress",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Mobile",
+                    "groups": "Mobile;Mouse and Keyboard",
                     "action": "Run",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -382,7 +382,7 @@
                     "path": "<Gamepad>/leftStick/up",
                     "interactions": "Hold(duration=1,pressPoint=1)",
                     "processors": "",
-                    "groups": "Mobile",
+                    "groups": "Mobile;Mouse and Keyboard",
                     "action": "Run",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -404,7 +404,7 @@
                     "path": "<Gamepad>/dpad/left",
                     "interactions": "Hold",
                     "processors": "",
-                    "groups": "Mobile",
+                    "groups": "Mobile;Mouse and Keyboard",
                     "action": "Inspect",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -426,7 +426,7 @@
                     "path": "<Gamepad>/buttonNorth",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Mobile",
+                    "groups": "Mobile;Mouse and Keyboard",
                     "action": "Inventory Next",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -437,7 +437,7 @@
                     "path": "<Gamepad>/leftStick",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Mobile",
+                    "groups": "Mobile;Mouse and Keyboard",
                     "action": "Movement",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -536,7 +536,7 @@
                     "path": "<Gamepad>/start",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Mobile",
+                    "groups": "Mobile;Mouse and Keyboard",
                     "action": "Lock Cursor",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -558,7 +558,7 @@
                     "path": "<Gamepad>/select",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Mobile",
+                    "groups": "Mobile;Mouse and Keyboard",
                     "action": "Tutorial",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -602,7 +602,7 @@
                     "path": "<Gamepad>/rightShoulder",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": "Mouse and Keyboard;Mobile",
                     "action": "Lower Weapon",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -624,7 +624,7 @@
                     "path": "<Gamepad>/buttonEast",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Mobile",
+                    "groups": "Mobile;Mouse and Keyboard",
                     "action": "Force",
                     "isComposite": false,
                     "isPartOfComposite": false

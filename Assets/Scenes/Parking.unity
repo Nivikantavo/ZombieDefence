@@ -38444,6 +38444,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2619117306477975653, guid: b5653903e2f8fad40bdbabd074d165b2, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3072084833313319608, guid: b5653903e2f8fad40bdbabd074d165b2, type: 3}
       propertyPath: _leaderboardName
       value: Parking
@@ -38560,6 +38564,10 @@ PrefabInstance:
       propertyPath: _target
       value: 
       objectReference: {fileID: 1440597918}
+    - target: {fileID: 6022106027313286597, guid: b5653903e2f8fad40bdbabd074d165b2, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6055733573764744312, guid: b5653903e2f8fad40bdbabd074d165b2, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -38572,6 +38580,10 @@ PrefabInstance:
       propertyPath: _moneyCollecter
       value: 
       objectReference: {fileID: 1440597920}
+    - target: {fileID: 6611966882393460751, guid: b5653903e2f8fad40bdbabd074d165b2, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6611966882716942643, guid: b5653903e2f8fad40bdbabd074d165b2, type: 3}
       propertyPath: _levelChoicer
       value: 
@@ -38608,6 +38620,30 @@ PrefabInstance:
       propertyPath: _zombieSpawner
       value: 
       objectReference: {fileID: 1433833344}
+    - target: {fileID: 6611966883504709578, guid: b5653903e2f8fad40bdbabd074d165b2, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0.728
+      objectReference: {fileID: 0}
+    - target: {fileID: 6611966883504709578, guid: b5653903e2f8fad40bdbabd074d165b2, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7249769973120563423, guid: b5653903e2f8fad40bdbabd074d165b2, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7249769973120563423, guid: b5653903e2f8fad40bdbabd074d165b2, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8113846236391430039, guid: b5653903e2f8fad40bdbabd074d165b2, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8113846236391430039, guid: b5653903e2f8fad40bdbabd074d165b2, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8199752308026953446, guid: b5653903e2f8fad40bdbabd074d165b2, type: 3}
       propertyPath: _track
       value: 
@@ -54919,6 +54955,10 @@ PrefabInstance:
       propertyPath: _forcesViews.Array.data[1]
       value: 
       objectReference: {fileID: 1012505884}
+    - target: {fileID: 736776351041723279, guid: be81f15462f628443975a2390ab28d8d, type: 3}
+      propertyPath: m_NeverAutoSwitchControlSchemes
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2613158985840325698, guid: be81f15462f628443975a2390ab28d8d, type: 3}
       propertyPath: m_Name
       value: Player
