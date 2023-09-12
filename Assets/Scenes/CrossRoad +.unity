@@ -26588,6 +26588,46 @@ PrefabInstance:
       propertyPath: _forceSource
       value: 
       objectReference: {fileID: 1064808756}
+    - target: {fileID: 2103672602, guid: be81f15462f628443975a2390ab28d8d, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2103672603, guid: be81f15462f628443975a2390ab28d8d, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.49
+      objectReference: {fileID: 0}
+    - target: {fileID: 2103672603, guid: be81f15462f628443975a2390ab28d8d, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.92300653
+      objectReference: {fileID: 0}
+    - target: {fileID: 2103672603, guid: be81f15462f628443975a2390ab28d8d, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.04668208
+      objectReference: {fileID: 0}
+    - target: {fileID: 2103672603, guid: be81f15462f628443975a2390ab28d8d, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.36303285
+      objectReference: {fileID: 0}
+    - target: {fileID: 2103672603, guid: be81f15462f628443975a2390ab28d8d, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.118688576
+      objectReference: {fileID: 0}
+    - target: {fileID: 2103672603, guid: be81f15462f628443975a2390ab28d8d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 9.925
+      objectReference: {fileID: 0}
+    - target: {fileID: 2103672603, guid: be81f15462f628443975a2390ab28d8d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -41.997
+      objectReference: {fileID: 0}
+    - target: {fileID: 2103672603, guid: be81f15462f628443975a2390ab28d8d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 10.837
+      objectReference: {fileID: 0}
+    - target: {fileID: 2103672605, guid: be81f15462f628443975a2390ab28d8d, type: 3}
+      propertyPath: _projectile
+      value: 
+      objectReference: {fileID: 3153472991145048103, guid: 429af9755e4387640a529385d63f4afb, type: 3}
     - target: {fileID: 2103672605, guid: be81f15462f628443975a2390ab28d8d, type: 3}
       propertyPath: _forceSource
       value: 
