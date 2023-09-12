@@ -44016,6 +44016,10 @@ PrefabInstance:
       propertyPath: _moneyCollecter
       value: 
       objectReference: {fileID: 613154642}
+    - target: {fileID: 6611966882393460751, guid: b5653903e2f8fad40bdbabd074d165b2, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6611966882716942643, guid: b5653903e2f8fad40bdbabd074d165b2, type: 3}
       propertyPath: _levelChoicer
       value: 
@@ -44054,11 +44058,11 @@ PrefabInstance:
       objectReference: {fileID: 496617836}
     - target: {fileID: 6611966883504709578, guid: b5653903e2f8fad40bdbabd074d165b2, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 0.728
       objectReference: {fileID: 0}
     - target: {fileID: 6611966883504709578, guid: b5653903e2f8fad40bdbabd074d165b2, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8199752308026953446, guid: b5653903e2f8fad40bdbabd074d165b2, type: 3}
       propertyPath: _track
