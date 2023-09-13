@@ -411,7 +411,6 @@ namespace InfimaGames.LowPolyShooterPack
 		/// </summary>
 		protected override void Update()
 		{
-			Debug.Log(GetComponent<PlayerInput>().currentControlScheme);
 			//Match Aim.
 			aiming = holdingButtonAim && CanAim();
 			//Match Run.
@@ -1608,6 +1607,7 @@ namespace InfimaGames.LowPolyShooterPack
 		/// </summary>
 		public void OnMove(InputAction.CallbackContext context)
 		{
+			Debug.Log("move");
 			//Read.
 			axisMovement = cursorLocked ? context.ReadValue<Vector2>() : default;
 		}
@@ -1616,8 +1616,6 @@ namespace InfimaGames.LowPolyShooterPack
 		/// </summary>
 		public void OnLook(InputAction.CallbackContext context)
 		{
-			//Debug.Log(context.control);
-            Debug.Log(context.action);
             //Read.
             axisLook = cursorLocked ? context.ReadValue<Vector2>() : default;
 
