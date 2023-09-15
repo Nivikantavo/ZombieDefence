@@ -58,8 +58,8 @@ MonoBehaviour:
       level completion zone!
     Object: {fileID: 0}
   - Language: Turkish
-    Text: "T\xFCm zombileri yok ettikten sonra b\xF6l\xFCm tamamlama b\xF6lgesine
-      girerek b\xF6l\xFCm\xFC terk edebilirsiniz!"
+    Text: Tum zombileri yok ettikten sonra bolum tamamlama bolgesine girerek bolumu
+      terk edebilirsiniz!
     Object: {fileID: 0}
 --- !u!1 &269361281
 GameObject:
@@ -121,7 +121,7 @@ MonoBehaviour:
     Object: {fileID: 0}
   - Language: Turkish
     Text: "Araban\u0131n savunma alan\u0131n\u0131 terk etmeyin, ancak bu olursa,
-      s\xFCre dolmadan geri d\xF6n\xFCn!"
+      sure dolmadan geri donun!"
     Object: {fileID: 0}
 --- !u!1 &299175729
 GameObject:
@@ -233,7 +233,7 @@ MonoBehaviour:
     Text: SURVIVAL TIME
     Object: {fileID: 0}
   - Language: Turkish
-    Text: "HAYATTA KALMA S\xDCRES\u0130"
+    Text: HAYATTA KALMA SURESI
     Object: {fileID: 0}
 --- !u!1 &379606383
 GameObject:
@@ -398,7 +398,7 @@ MonoBehaviour:
     Text: NEXT
     Object: {fileID: 0}
   - Language: Turkish
-    Text: "SONRAK\u0130"
+    Text: SONRAKI
     Object: {fileID: 0}
 --- !u!1 &1271512889
 GameObject:
@@ -568,8 +568,8 @@ MonoBehaviour:
       using the minimap.
     Object: {fileID: 0}
   - Language: Turkish
-    Text: "Zombi kalabal\u0131klar\u0131 size birka\xE7 y\xF6nden sald\u0131racak,
-      mini haritay\u0131 kullanarak onlar\u0131 takip edebilirsiniz."
+    Text: "Zombi kalabaliklari size birkac yonden sald\u0131racak, mini haritay\u0131
+      kullanarak onlar\u0131 takip edebilirsiniz."
     Object: {fileID: 0}
 --- !u!1 &1450557713
 GameObject:
@@ -618,23 +618,20 @@ MonoBehaviour:
   data: 0
   entries:
   - Language: Russian
-    Text: "\u041F\u043E\u0441\u043B\u0435 \u0441\u043C\u0435\u0440\u0442\u0438 \u0438\u0437
-      \u043A\u043E\u0436\u0434\u043E\u0433\u043E \u0437\u043E\u043C\u0431\u0438 \u0432\u044B\u043F\u0430\u0434\u0430\u044E\u0442
-      \u0447\u0435\u0440\u0435\u043F\u0430, \u043D\u0435  \u0437\u0430\u0431\u0443\u0434\u044C\u0442\u0435
-      \u0441\u043E\u0431\u0440\u0430\u0442\u044C \u0438\u0445 \u0434\u043E \u043E\u043A\u043E\u043D\u0447\u0430\u043D\u0438\u044F
-      \u0440\u0430\u0443\u043D\u0434\u0430! \u041E\u043D\u0438 \u043F\u043E\u043D\u0430\u0434\u043E\u0431\u044F\u0442\u0441\u044F
-      \u0434\u043B\u044F \u0443\u043B\u0443\u0447\u0448\u0435\u043D\u0438\u044F \u0438
-      \u043F\u043E\u043A\u0443\u043F\u043A\u0438 \u043D\u043E\u0432\u043E\u0433\u043E
-      \u043E\u0440\u0443\u0436\u0438\u044F \u0438 \u043C\u043D\u043E\u0433\u043E\u0432\u043E
-      \u0434\u0440\u0443\u0433\u043E\u0433\u043E."
+    Text: "\r\u041D\u0430 \u0441\u043E\u0431\u0440\u0430\u043D\u043D\u044B\u0435
+      \u0447\u0435\u0440\u0435\u043F\u0430 \u043C\u043E\u0436\u043D\u043E \u043E\u0442\u043A\u0440\u044B\u0442\u044C
+      \u043D\u043E\u0432\u044B\u0435 \u043E\u0440\u0443\u0436\u0438\u044F \u0438
+      \u0441\u0438\u043B\u044B, \u0442\u0430\u043A\u0436\u0435 \u0443\u043B\u0443\u0447\u0448\u0438\u0442\u044C
+      \u0431\u0440\u043E\u043D\u044E \u0430\u0432\u0442\u043E\u043C\u043E\u0431\u0438\u043B\u044F.
+      \r\n"
     Object: {fileID: 0}
   - Language: English
-    Text: 'Skulls drop out of each zombie upon death, don''t forget to collect them
-      before the end of the round! '
+    Text: "\rWith the collected skulls, you can unlock new weapons and powers, as
+      well as improve the armor of the car."
     Object: {fileID: 0}
   - Language: Turkish
-    Text: "Her zombi \xF6ld\xFCkten sonra kafataslar\u0131 d\xFC\u015Fer, tur bitmeden
-      kafataslar\u0131n\u0131 toplamay\u0131 unutmay\u0131n!"
+    Text: "Toplanan kafataslar\u0131na yeni silahlar ve gucler acabilir, ayr\u0131ca
+      arac\u0131n z\u0131rh\u0131n\u0131 gelistirebilirsiniz."
     Object: {fileID: 0}
 --- !u!1 &1671834205
 GameObject:
@@ -689,7 +686,7 @@ MonoBehaviour:
     Text: RESTART
     Object: {fileID: 0}
   - Language: Turkish
-    Text: "TEKRAR BA\u015ELAT"
+    Text: TEKRAR BASLAT
     Object: {fileID: 0}
 --- !u!1 &1776114519
 GameObject:
@@ -744,7 +741,7 @@ MonoBehaviour:
     Text: PREVIOUS
     Object: {fileID: 0}
   - Language: Turkish
-    Text: "\xD6NCES\u0130"
+    Text: ONCESI
     Object: {fileID: 0}
 --- !u!1 &471953897511495758
 GameObject:
@@ -2040,7 +2037,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 806f0696300aeac44a0e17efee222854, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentLanguage: Russian
+  currentLanguage: English
   detectLanguage: 1
   defaultLanguage: English
   saveLoad: 1
@@ -2422,14 +2419,13 @@ MonoBehaviour:
   data: 0
   entries:
   - Language: Russian
-    Text: "\u0417\u0410 \u041F\u041E\u0412\u0415\u0420\u0416\u0415\u041D\u042B\u0425
-      \u0412\u0420\u0410\u0413\u041E\u0412"
+    Text: "\u0423\u0411\u0418\u0422\u042B\u0415 \u0417\u041E\u041C\u0411\u0418"
     Object: {fileID: 0}
   - Language: English
-    Text: FOR DEFEATED ENEMIES
+    Text: KILLED ZOMBIES
     Object: {fileID: 0}
   - Language: Turkish
-    Text: "YEN\u0130LENEN D\xDC\u015EMANLAR \u0130\xC7\u0130N"
+    Text: OLDURULEN ZOMBILER
     Object: {fileID: 0}
 --- !u!1 &8260957875842706685
 GameObject:
@@ -2484,7 +2480,7 @@ MonoBehaviour:
     Text: MENU
     Object: {fileID: 0}
   - Language: Turkish
-    Text: "MEN\xDC"
+    Text: MENU
     Object: {fileID: 0}
 --- !u!1 &9207836505124578773
 GameObject:
@@ -2539,7 +2535,7 @@ MonoBehaviour:
     Text: MUSIC
     Object: {fileID: 0}
   - Language: Turkish
-    Text: "M\xDCZ\u0130K"
+    Text: MUZIk
     Object: {fileID: 0}
 --- !u!1001 &1444076412208408212
 PrefabInstance:
