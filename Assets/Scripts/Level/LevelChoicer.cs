@@ -1,44 +1,24 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class LevelChoicer : MonoBehaviour
 {
-    public LevelWaves CurrentLevel { get; private set; }
-    public bool SurvivalMode { get; private set; }
-
-    public int CurrentLevelNumber => _currentLevelNumber;
-    private int _currentLevelNumber;
-
-    private List<LevelWaves> _levels;
-    private SurvivalMode _survivalMode;
+    [SerializeField] private List<DifficultyChoicer> _levels;
+    [SerializeField] private List<GameObject> _levelsEnvironments;
+    [SerializeField] private List<NavMeshData> _levelsData;
+    [SerializeField] private EndLevelPanel _endLevelPanel;
 
     private void Awake()
     {
         PlayerData data = SaveSystem.Instance.GetData();
 
-        if(data.SurvivalMode == true)
-        SurvivalMode = data.SurvivalMode;
-        if (SurvivalMode)
-        {
-            _survivalMode = transform.GetComponentInChildren<SurvivalMode>(true);
-            _survivalMode.gameObject.SetActive(true);
-        }
-        else
-        {
-            _levels = transform.GetComponentsInChildren<LevelWaves>(true).ToList();
-
-            _currentLevelNumber = data.SelectedLevel;
-
-            for (int i = 0; i < _levels.Count; i++)
-            {
-                if (_currentLevelNumber == i)
-                {
-                    _levels[i].gameObject.SetActive(true);
-                    CurrentLevel = _levels[i];
-                }
-            }
-        }
+        int currentLevel = data.SelectedStage;
+        _levels[currentLevel].gameObject.SetActive(true);
+        _levelsEnvironments[currentLevel].gameObject.SetActive(true);
+        _endLevelPanel.SetCurrentLevel(_levels[currentLevel]);
+        NavMesh.RemoveAllNavMeshData();
+        NavMesh.AddNavMeshData(_levelsData[currentLevel]);
     }
 }

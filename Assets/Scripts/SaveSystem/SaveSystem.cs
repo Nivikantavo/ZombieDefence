@@ -92,11 +92,14 @@ public class SaveSystem : MonoBehaviour
 
     public void SetMoneyValue(int money)
     {
-        if(money >= 0)
+        if(money != _playerData.Money)
         {
-            _playerData.Money = money;
+            if (money >= 0)
+            {
+                _playerData.Money = money;
+            }
+            Save();
         }
-        Save();
     }
 
     public void SetProgress(int complitedLevelNumber, int stageNumber)
@@ -120,8 +123,11 @@ public class SaveSystem : MonoBehaviour
 
     public void SetSensetiveValue(float sensetive)
     {
-        _playerData.Sensetive = sensetive;
-        Save();
+        if(_playerData.Sensetive != sensetive)
+        {
+            _playerData.Sensetive = sensetive;
+            Save();
+        }
     }
 
     public void SetWeaponsArrey(string[] weapons)
@@ -156,8 +162,11 @@ public class SaveSystem : MonoBehaviour
 
     public void SetSurvivalModeEnabled(bool enabled)
     {
-        _playerData.SurvivalMode = enabled;
-        Save();
+        if(_playerData.SurvivalMode != enabled)
+        {
+            _playerData.SurvivalMode = enabled;
+            Save();
+        }
     }
 
     public void SetSurvivelRecord(float newRecord)
@@ -168,8 +177,20 @@ public class SaveSystem : MonoBehaviour
 
     public void SetSelectedLevel(int selectedLevel)
     {
-        _playerData.SelectedLevel = selectedLevel;
-        Save();
+        if(_playerData.SelectedLevel != selectedLevel)
+        {
+            _playerData.SelectedLevel = selectedLevel;
+            Save();
+        }
+    }
+
+    public void SetSelectedStage(int selectedStage)
+    {
+        if( _playerData.SelectedStage != selectedStage)
+        {
+            _playerData.SelectedStage = selectedStage;
+            Save();
+        }
     }
 
     public void SetBoughtProduct(string productID)

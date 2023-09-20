@@ -10,7 +10,7 @@ public class LevelProgress : MonoBehaviour
     [SerializeField] private Player _player;
     [SerializeField] private ZombieSpawner _zombieSpawner;
     [SerializeField] private EndLevelPanel _endLevelPanel;
-    [SerializeField] private LevelChoicer _levelChoicer;
+    [SerializeField] private DifficultyChoicer _levelChoicer;
     [SerializeField] private LevelEndZone _endZone;
     [SerializeField] private Character _charachter;
     [SerializeField] private GameObject _mobileInput;

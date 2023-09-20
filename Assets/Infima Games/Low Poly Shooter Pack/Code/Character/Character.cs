@@ -978,8 +978,8 @@ namespace InfimaGames.LowPolyShooterPack
 		/// </summary>
 		private void UpdateCursorState()
 		{
-			//Cursor.visible = !cursorLocked;
-			//Cursor.lockState = cursorLocked ? CursorLockMode.Locked : CursorLockMode.None;
+			Cursor.visible = !cursorLocked;
+			Cursor.lockState = cursorLocked ? CursorLockMode.Locked : CursorLockMode.None;
 		}
 
 		/// <summary>
@@ -1607,7 +1607,6 @@ namespace InfimaGames.LowPolyShooterPack
 		/// </summary>
 		public void OnMove(InputAction.CallbackContext context)
 		{
-			Debug.Log("move");
 			//Read.
 			axisMovement = cursorLocked ? context.ReadValue<Vector2>() : default;
 		}

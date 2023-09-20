@@ -22,11 +22,11 @@ public class ZombieSpawner : MonoBehaviour
     private int _currentWaveNumber = 0;
     private int _deadZombie = 0;
     private int _defaultRangeZombieCount = 30;
-    public event UnityAction AllZombieDied;
 
     private bool _survivalMode = false;
     private bool _startWaveSpawned = false;
 
+    public event UnityAction AllZombieDied;
     public event UnityAction ZombyCounted;
 
     private void Start()
@@ -170,9 +170,12 @@ public class ZombieSpawner : MonoBehaviour
     private void OnZombieDied()
     {
         _deadZombie++;
-        if(_deadZombie >= ZombieCount)
+        if (_survivalMode == false)
         {
-            AllZombieDied?.Invoke();
+            if (_deadZombie >= ZombieCount)
+            {
+                AllZombieDied?.Invoke();
+            }
         }
     }
 }

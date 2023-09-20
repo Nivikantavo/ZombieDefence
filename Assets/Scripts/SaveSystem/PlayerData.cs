@@ -4,6 +4,7 @@ public class PlayerData
     public int ComplitedStages;
     public int ComplitedLevelsOnStage;
     public int SelectedLevel;
+    public int SelectedStage;
     public float Sensetive;
     public float MusicVolume;
     public float SoundsVolume;

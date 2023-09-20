@@ -10,7 +10,6 @@ public class EndLevelPanel : Element
 {
     [SerializeField] private MoneyCollecter _moneyCollecter;
     [SerializeField] private LoadingScreen _loadingScreen;
-    [SerializeField] private LevelChoicer _levelChoicer;
     [SerializeField] private SurviveTimer _surviveTimer;
 
     [SerializeField] private SurviveScorePanel _surviveScorePanel;
@@ -21,6 +20,7 @@ public class EndLevelPanel : Element
     [SerializeField] private Button _rewardButton;
     [SerializeField] private float _settingScoreDelay;
 
+    private DifficultyChoicer _difficultyChoicer;
     private int _levelBonus;
     private bool _wasRewarded = false;
 
@@ -42,7 +42,7 @@ public class EndLevelPanel : Element
 
     public void Initialize(bool levelComplited)
     {
-        if (_levelChoicer.SurvivalMode)
+        if (_difficultyChoicer.SurvivalMode)
         {
             OpenSurvivePanel();
         }
@@ -50,6 +50,11 @@ public class EndLevelPanel : Element
         {
             OpenScorePanel(levelComplited);
         }
+    }
+
+    public void SetCurrentLevel(DifficultyChoicer difficultyChoicer)
+    {
+        _difficultyChoicer = difficultyChoicer;
     }
 
     private void OpenSurvivePanel()
@@ -65,7 +70,7 @@ public class EndLevelPanel : Element
     {
         _surviveScorePanel.gameObject.SetActive(false);
         _levelScorePanel.gameObject.SetActive(true);
-        _levelBonus = levelComplited ? _levelChoicer.CurrentLevel.LevelBonus : 0;
+        _levelBonus = levelComplited ? _difficultyChoicer.CurrentLevel.LevelBonus : 0;
 
         _levelScorePanel.SetScore(_moneyCollecter.Money - _moneyCollecter.StartMoney, _levelBonus);
         _moneyCollecter.AddMoney(_levelBonus);

@@ -766,6 +766,10 @@ PrefabInstance:
       propertyPath: m_NavMeshLayer
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5600200529336077617, guid: 7fa32e01150c90e4a88e6beb6f8952d5, type: 3}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7fa32e01150c90e4a88e6beb6f8952d5, type: 3}
 --- !u!4 &16252333 stripped
@@ -33618,7 +33622,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3457249909912453902, guid: 0523b9a715d2fc74db0c9f0c21b52bb0, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.61
+      value: 0.07
       objectReference: {fileID: 0}
     - target: {fileID: 3457249909912453902, guid: 0523b9a715d2fc74db0c9f0c21b52bb0, type: 3}
       propertyPath: m_LocalPosition.y
@@ -33626,7 +33630,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3457249909912453902, guid: 0523b9a715d2fc74db0c9f0c21b52bb0, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.6
+      value: 1.63
       objectReference: {fileID: 0}
     - target: {fileID: 3457249909912453902, guid: 0523b9a715d2fc74db0c9f0c21b52bb0, type: 3}
       propertyPath: m_LocalRotation.w
