@@ -83,10 +83,8 @@ public class Leaderboards : MonoBehaviour
             {
                 leaderboard.gameObject.SetActive(true);
             }
-            Debug.Log("Before While");
             while (leaderboard.EntryesLoaded == false)
             {
-                Debug.Log("While");
                 yield return delay;
             }
         }
