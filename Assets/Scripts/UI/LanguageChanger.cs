@@ -18,13 +18,6 @@ public class LanguageChanger : MonoBehaviour
 
     private void Awake()
     {
-        if (PlayerPrefs.GetString("Lang", "No Lang") == "No Lang")
-        {
-            PlayerPrefs.SetString("Lang", "English");
-        }
-
-        _localizator.SetCurrentLanguage(PlayerPrefs.GetString("Lang"));
-       
         if (_localizator.CurrentLanguage == "English") 
         {
             _flagIndex = 0;
@@ -53,17 +46,16 @@ public class LanguageChanger : MonoBehaviour
             _localizator.SetCurrentLanguage(Ru);
             _flagIndex = 1;
         }
-        else if (language == "en")
-        {
-            _localizator.SetCurrentLanguage(En);
-            _flagIndex = 0;
-        }
         else if (language == "tr")
         {
             _localizator.SetCurrentLanguage(Tr);
             _flagIndex = 2;
         }
-
+        else
+        {
+            _localizator.SetCurrentLanguage(En);
+            _flagIndex = 0;
+        }
         _currentLanguage.image.sprite = _flags[_flagIndex];
     }
 
@@ -73,27 +65,18 @@ public class LanguageChanger : MonoBehaviour
         if (_localizator.CurrentLanguage == "English")
         {
             _localizator.SetCurrentLanguage("Russian");
-            PlayerPrefs.SetString("Lang", "Russian");
             _flagIndex = 1;
         }
         else if (_localizator.CurrentLanguage == "Russian")
         {
             _localizator.SetCurrentLanguage("Turkish");
-            PlayerPrefs.SetString("Lang", "Turkish");
             _flagIndex = 2;
         }
         else if (_localizator.CurrentLanguage == "Turkish")
         {
             _localizator.SetCurrentLanguage("English");
-            PlayerPrefs.SetString("Lang", "English");
             _flagIndex = 0;
         }
-        Debug.Log(2);
-        Debug.Log(_flagIndex);
-        Debug.Log(_localizator.CurrentLanguage);
-        Debug.Log(PlayerPrefs.GetString("Lang"));
-
         _currentLanguage.image.sprite = _flags[_flagIndex];
-        Debug.Log(3);
     }
 }
