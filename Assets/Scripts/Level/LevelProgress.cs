@@ -77,7 +77,7 @@ public class LevelProgress : MonoBehaviour
 
     private void SaveProgress()
     {
-        int stageNumber = SceneManager.GetActiveScene().buildIndex;
+        int stageNumber = SaveSystem.Instance.GetData().SelectedStage;
         SaveSystem.Instance.SetProgress(_levelChoicer.CurrentLevelNumber + 1, stageNumber);
     }
 }

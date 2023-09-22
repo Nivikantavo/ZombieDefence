@@ -16,7 +16,8 @@ public class LevelWaves : MonoBehaviour
     private void Awake()
     {
         _waves = GetComponentsInChildren<Wave>().ToList();
-        _zombieSpawner.SetStartWave(_startWave);
+        _startWave.gameObject.SetActive(true);
         _zombieSpawner.SetLevelWaves(_waves);
+        _zombieSpawner.SetStartWave(_startWave);
     }
 }

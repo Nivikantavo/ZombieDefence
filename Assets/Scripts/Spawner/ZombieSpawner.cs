@@ -6,6 +6,7 @@ using UnityEngine.Events;
 public class ZombieSpawner : MonoBehaviour
 {
     public int ZombieCount { get; private set; }
+    public int DeadZombieCount => _deadZombie; 
     public int RangeZombieCount { get; private set; }
 
     [SerializeField] private Player _player;
@@ -16,7 +17,6 @@ public class ZombieSpawner : MonoBehaviour
     [SerializeField] private List<Transform> _startSpawnPoints;
 
     private List<Wave> _waves;
-    private Wave _startWave;
     private List<DieState> _zombiesDieStates = new List<DieState>();
     private Wave _currentWave;
     private int _currentWaveNumber = 0;
@@ -72,8 +72,14 @@ public class ZombieSpawner : MonoBehaviour
 
     public void SetStartWave(Wave wave)
     {
-        _startWave = wave;
+        _waves.Insert(0, wave);
     } 
+
+    public void SetSpawnPoints(List<Transform> spawnPoints, List<Transform> startSpawnPoints)
+    {
+        _spawnPoints = spawnPoints;
+        _startSpawnPoints = startSpawnPoints;
+    }
 
     public void StartSpawnWave(Wave wave)
     {
@@ -91,19 +97,14 @@ public class ZombieSpawner : MonoBehaviour
         WaitForSeconds waveDelay = new WaitForSeconds(_currentWave.DelayAfterWave);
         WaitForSeconds spawnDelay;
 
-        if (_startWaveSpawned == false)
-        {
-            StartCoroutine(SpawnWave(_startWave, _startSpawnPoints));
-            SetCurrentWave(_currentWaveNumber);
-            _startWaveSpawned = true;
-        }
-
         for (int i = 0; i < _waves.Count; i++)
         {
+            List<Transform> spawnPoints = i == 0 ? _startSpawnPoints : _spawnPoints;
+
             spawnDelay = new WaitForSeconds(_currentWave.DelayBetweenSpawn);
             for (int j = 0; j < _currentWave.ZombieCount; j++)
             {
-                SpawnZombie(_spawnPoints);
+                SpawnZombie(spawnPoints);
                 yield return spawnDelay;
             }
             yield return waveDelay;
