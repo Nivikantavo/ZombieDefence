@@ -106,6 +106,7 @@ public class SaveSystem : MonoBehaviour
     {
         if(stageNumber <= _playerData.ComplitedStages)
         {
+            Debug.Log("stageNumber > _playerData.ComplitedStages");
             return;
         }
         _playerData.ComplitedLevelsOnStage = complitedLevelNumber;

@@ -8,6 +8,11 @@ public class DifficultyChoicer : MonoBehaviour
     public LevelWaves CurrentLevel { get; private set; }
     public bool SurvivalMode { get; private set; }
 
+    [SerializeField] private ZombieSpawner _spawner;
+
+    [SerializeField] private List<Transform> _spawnPoints;
+    [SerializeField] private List<Transform> _startSpawnPoints;
+
     public int CurrentLevelNumber => _currentLevelNumber;
     private int _currentLevelNumber;
 
@@ -17,6 +22,8 @@ public class DifficultyChoicer : MonoBehaviour
     private void Awake()
     {
         PlayerData data = SaveSystem.Instance.GetData();
+
+        _spawner.SetSpawnPoints(_spawnPoints, _startSpawnPoints);
 
         if(data.SurvivalMode == true)
         SurvivalMode = data.SurvivalMode;

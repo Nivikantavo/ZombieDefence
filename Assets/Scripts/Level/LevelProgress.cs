@@ -10,12 +10,13 @@ public class LevelProgress : MonoBehaviour
     [SerializeField] private Player _player;
     [SerializeField] private ZombieSpawner _zombieSpawner;
     [SerializeField] private EndLevelPanel _endLevelPanel;
-    [SerializeField] private DifficultyChoicer _levelChoicer;
+    [SerializeField] private LevelChoicer _levelChoicer;
     [SerializeField] private LevelEndZone _endZone;
     [SerializeField] private Character _charachter;
     [SerializeField] private GameObject _mobileInput;
     [SerializeField] private EducationPanel _educationPanel;
 
+    private DifficultyChoicer _difficultyChoicer;
     private bool _levelComplited = false;
 
     private void Awake()
@@ -25,7 +26,7 @@ public class LevelProgress : MonoBehaviour
 
     private void Start()
     {
-        if (_levelChoicer.CurrentLevelNumber == 0 && SaveSystem.Instance.GetData().TrainingCompleted == false)
+        if (_difficultyChoicer.CurrentLevelNumber == 0 && SaveSystem.Instance.GetData().TrainingCompleted == false)
         {
             _educationPanel.gameObject.SetActive(true);
         }
@@ -47,6 +48,11 @@ public class LevelProgress : MonoBehaviour
         _zombieSpawner.AllZombieDied -= PlayerWin;
     }
 
+    public void SetCurrentLevel(DifficultyChoicer difficultyChoicer)
+    {
+        _difficultyChoicer = difficultyChoicer;
+    }
+
     private void LevelEnd()
     {
         LevelEnded = true;
@@ -61,7 +67,7 @@ public class LevelProgress : MonoBehaviour
 
     private void PlayerWin()
     {
-        if(_levelChoicer.SurvivalMode == false)
+        if(_difficultyChoicer.SurvivalMode == false)
         {
             _levelComplited = true;
             _endZone.gameObject.SetActive(true);
@@ -77,7 +83,7 @@ public class LevelProgress : MonoBehaviour
 
     private void SaveProgress()
     {
-        int stageNumber = SceneManager.GetActiveScene().buildIndex;
-        SaveSystem.Instance.SetProgress(_levelChoicer.CurrentLevelNumber + 1, stageNumber);
+        int stageNumber = SaveSystem.Instance.GetData().SelectedStage;
+        SaveSystem.Instance.SetProgress(_difficultyChoicer.CurrentLevelNumber + 1, stageNumber);
     }
 }
