@@ -11,6 +11,7 @@ public class EndLevelPanel : Element
     [SerializeField] private MoneyCollecter _moneyCollecter;
     [SerializeField] private LoadingScreen _loadingScreen;
     [SerializeField] private SurviveTimer _surviveTimer;
+    [SerializeField] private Track _track;
 
     [SerializeField] private SurviveScorePanel _surviveScorePanel;
     [SerializeField] private LevelScorePanel _levelScorePanel;
@@ -70,8 +71,9 @@ public class EndLevelPanel : Element
     {
         _surviveScorePanel.gameObject.SetActive(false);
         _levelScorePanel.gameObject.SetActive(true);
-        _levelBonus = levelComplited ? _difficultyChoicer.CurrentLevel.LevelBonus : 0;
-
+        
+        float trackHealthInPercent = Mathf.InverseLerp(0 , _track.MaxHealth, _track.CurrentHealth);
+        _levelBonus = levelComplited ? Mathf.RoundToInt(_difficultyChoicer.CurrentLevel.LevelBonus * trackHealthInPercent) : 0;
         _levelScorePanel.SetScore(_moneyCollecter.Money - _moneyCollecter.StartMoney, _levelBonus);
         _moneyCollecter.AddMoney(_levelBonus);
     }

@@ -61,7 +61,6 @@ public class LanguageChanger : MonoBehaviour
 
     public void SetNextLanguage()
     {
-        Debug.Log(1);
         if (_localizator.CurrentLanguage == "English")
         {
             _localizator.SetCurrentLanguage("Russian");

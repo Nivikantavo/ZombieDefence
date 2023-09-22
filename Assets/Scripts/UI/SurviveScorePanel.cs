@@ -1,16 +1,18 @@
 using Agava.YandexGames;
 using System.Collections;
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
 public class SurviveScorePanel : MonoBehaviour
 {
-    [SerializeField] private string _leaderboardName;
+    [SerializeField] private List<string> _leaderboardNames;
     [SerializeField] private TMP_Text _surviveText;
     [SerializeField] private TMP_Text _surviveRecord;
 
-    private int _currentRecord = 0;
+    private string _currentLeaderboardName;
 
+    private int _currentRecord = 0;
     private int _millisecondsInSecond = 1000;
 
     private IEnumerator Start()
@@ -26,10 +28,15 @@ public class SurviveScorePanel : MonoBehaviour
         if(_currentRecord < time)
         {
             _currentRecord = Mathf.FloorToInt(time);
-            Leaderboard.SetScore(_leaderboardName, _currentRecord * _millisecondsInSecond, OnSetScoreSuccess);
+            Leaderboard.SetScore(_currentLeaderboardName, _currentRecord * _millisecondsInSecond, OnSetScoreSuccess);
         }
 
         ViewSurviveResult(_currentRecord, _surviveRecord);
+    }
+
+    public void SetLeaderboard(int leaderboardId)
+    {
+        _currentLeaderboardName = _leaderboardNames[leaderboardId];
     }
 
     private void ViewSurviveResult(float time, TMP_Text text)
@@ -46,7 +53,7 @@ public class SurviveScorePanel : MonoBehaviour
 
     private void SetCurrentScore()
     {
-        Leaderboard.GetPlayerEntry(_leaderboardName, (result) =>
+        Leaderboard.GetPlayerEntry(_currentLeaderboardName, (result) =>
         {
             if (result != null)
                 _currentRecord = result.score;
@@ -55,9 +62,9 @@ public class SurviveScorePanel : MonoBehaviour
 
     private void OnSetScoreSuccess()
     {
-        Debug.Log(_leaderboardName);
+        Debug.Log(_currentLeaderboardName);
 
-        Leaderboard.GetPlayerEntry(_leaderboardName, (result) =>
+        Leaderboard.GetPlayerEntry(_currentLeaderboardName, (result) =>
         {
             if (result != null)
             {

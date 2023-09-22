@@ -83,7 +83,7 @@ public class LevelsPanel : MonoBehaviour, ILoadable
         _difficultyPanel.gameObject.SetActive(true);
         _difficultyPanel.Initialize(stage.ComplitedLevels);
         SelectedStage = stage;
-        SaveSystem.Instance.SetSelectedStage(SelectedStage.Number - 1);
+        SaveSystem.Instance.SetSelectedStage(SelectedStage.Number);
         StageSelected?.Invoke();
     }
 
