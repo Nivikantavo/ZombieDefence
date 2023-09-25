@@ -20,18 +20,25 @@ public class SurviveScorePanel : MonoBehaviour
         yield return YandexGamesSdk.Initialize();
     }
 
-    public void SetScore(float time)
+    private void OnEnable()
     {
         SetCurrentScore();
-        ViewSurviveResult(time, _surviveText);
+    }
 
+    public void SetScore(float time)
+    {
+        ViewSurviveResult(time, _surviveText);
+        Debug.Log($"Старый рекорд: {_currentRecord}, Новый: {time}, после преобразования:");
         if(_currentRecord < time)
         {
             _currentRecord = Mathf.FloorToInt(time);
-            Leaderboard.SetScore(_currentLeaderboardName, _currentRecord * _millisecondsInSecond, OnSetScoreSuccess);
+            Debug.Log(_currentRecord);
+#if UNITY_WEBGL && !UNITY_EDITOR
+            Leaderboard.SetScore(_currentLeaderboardName, _currentRecord);
+#endif
         }
 
-        ViewSurviveResult(_currentRecord, _surviveRecord);
+        ViewSurviveResult((float)_currentRecord, _surviveRecord);
     }
 
     public void SetLeaderboard(int leaderboardId)
@@ -41,11 +48,12 @@ public class SurviveScorePanel : MonoBehaviour
 
     private void ViewSurviveResult(float time, TMP_Text text)
     {
+        Debug.Log(time);
         float[] timersValue = new float[]
         { 
-            Mathf.FloorToInt(time / 60),
-            Mathf.FloorToInt(time % 60),
-            Mathf.FloorToInt((time * _millisecondsInSecond) % 100)
+            Mathf.FloorToInt((time / _millisecondsInSecond) / 60),
+            Mathf.FloorToInt((time / _millisecondsInSecond) % 60),
+            Mathf.FloorToInt((time / 10) % 100)
         };
 
         text.text = string.Format("{00:00}:{1:00}:{2:00}", timersValue[0], timersValue[1], timersValue[2]);
@@ -53,24 +61,16 @@ public class SurviveScorePanel : MonoBehaviour
 
     private void SetCurrentScore()
     {
-        Leaderboard.GetPlayerEntry(_currentLeaderboardName, (result) =>
-        {
-            if (result != null)
-                _currentRecord = result.score;
-        });
-    }
-
-    private void OnSetScoreSuccess()
-    {
-        Debug.Log(_currentLeaderboardName);
-
+#if UNITY_WEBGL && !UNITY_EDITOR
         Leaderboard.GetPlayerEntry(_currentLeaderboardName, (result) =>
         {
             if (result != null)
             {
-                Debug.Log($"Player: {result.player.publicName}, Score: {result.score}");
+                Debug.Log("result.scoer = " + result.score);
+                _currentRecord = result.score;
             }
                 
         });
+#endif
     }
 }

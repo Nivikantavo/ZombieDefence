@@ -106,7 +106,6 @@ public class SaveSystem : MonoBehaviour
     {
         if(stageNumber <= _playerData.ComplitedStages)
         {
-            Debug.Log("stageNumber > _playerData.ComplitedStages");
             return;
         }
         _playerData.ComplitedLevelsOnStage = complitedLevelNumber;
@@ -133,30 +132,35 @@ public class SaveSystem : MonoBehaviour
 
     public void SetWeaponsArrey(string[] weapons)
     {
+        Debug.Log("SetWeaponsArrey");
         _playerData.Weapons = weapons;
         Save();
     }
 
     public void SetWeaponsUpgradeArrey(string[] upgradeWeapons)
     {
+        Debug.Log("SetWeaponsUpgradeArrey");
         _playerData.UpgradeWeapons = upgradeWeapons;
         Save();
     }
 
     public void SetForcesArrey(string[] forces)
     {
+        Debug.Log("SetForcesArrey");
         _playerData.Forces = forces;
         Save();
     }
 
     public void SetGranadesCount(int granadesCount)
     {
+        Debug.Log("SetGranadesCount");
         _playerData.GranadesCount = granadesCount;
         Save();
     }
 
     public void SetTruckHealth(int truckHealth)
     {
+        Debug.Log("SetTruckHealth");
         _playerData.TruckHealth = truckHealth;
         Save();
     }
@@ -172,6 +176,7 @@ public class SaveSystem : MonoBehaviour
 
     public void SetSurvivelRecord(float newRecord)
     {
+        Debug.Log("SetSurvivelRecord");
         _playerData.SurviveTimeRecord = newRecord;
         Save();
     }
@@ -208,12 +213,14 @@ public class SaveSystem : MonoBehaviour
 
     public void SetTrainingCompleted(bool complited)
     {
+        Debug.Log("SetTrainingCompleted");
         _playerData.TrainingCompleted = complited;
         Save();
     }
 
     public void SetSoundsValue(float musicVolume, float soundVolume)
     {
+        Debug.Log("SetSoundsValue");
         _playerData.MusicVolume = musicVolume;
         _playerData.SoundsVolume = soundVolume;
     }
