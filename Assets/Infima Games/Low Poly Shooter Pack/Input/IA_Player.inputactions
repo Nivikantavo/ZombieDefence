@@ -258,9 +258,20 @@
                 {
                     "name": "",
                     "id": "a128453c-0569-4fee-b047-ca9ef3414cab",
-                    "path": "<Pointer>/delta",
+                    "path": "<Mouse>/delta",
                     "interactions": "",
                     "processors": "ScaleVector2(x=0.05,y=0.05)",
+                    "groups": "",
+                    "action": "Look",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "e2077c08-ec08-46a9-83eb-b62699ed0c13",
+                    "path": "<Touchscreen>/delta",
+                    "interactions": "",
+                    "processors": "ScaleVector2(x=0.5,y=0.5)",
                     "groups": "",
                     "action": "Look",
                     "isComposite": false,
@@ -395,17 +406,6 @@
                     "processors": "",
                     "groups": "",
                     "action": "Inspect",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "64767df0-dd96-438b-878e-fe24248339dd",
-                    "path": "<Keyboard>/q",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Inventory Next",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },

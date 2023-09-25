@@ -12,7 +12,7 @@ public class PlayerEntryView : MonoBehaviour
     public void Initialize(int rank, int score, string nickname, Sprite background)
     {
         _rank.text = rank.ToString();
-        SetRecordInFormat(score, _score);
+        SetRecordInFormat((float)score, _score);
         _background.sprite = background;
         if (string.IsNullOrEmpty(nickname))
         {
