@@ -116,6 +116,7 @@ public class EndLevelPanel : Element
     private void OnRewardCallback()
     {
         _moneyCollecter.AddMoney(_moneyCollecter.Money - _moneyCollecter.StartMoney);
+        _rewardButton.interactable = false;
         _wasRewarded = true;
     }
 
