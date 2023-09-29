@@ -8271,7 +8271,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _target: {fileID: 0}
-  _maxHealth: 25
+  _maxHealth: 20
   _stunState: {fileID: 6211429000256134780}
   _animation: {fileID: 6211429000256134772}
   _mapSign: {fileID: 4095318977541289570}

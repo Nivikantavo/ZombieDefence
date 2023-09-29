@@ -389,6 +389,11 @@ namespace InfimaGames.LowPolyShooterPack
             damage = upgradeDamage;
         }
 
+        public void SetMobileSpread()
+        {
+            spread = 0;
+        }
+
         /// <summary>
         /// FillAmmunition.
         /// </summary>
