@@ -62,4 +62,12 @@ public class InventorySetter : MonoBehaviour
             }
         }
     }
+
+    public void RemoveWeaponsSpread()
+    {
+        foreach (var weapon in _weaponList)
+        {
+            weapon.SetMobileSpread();
+        }
+    }
 }

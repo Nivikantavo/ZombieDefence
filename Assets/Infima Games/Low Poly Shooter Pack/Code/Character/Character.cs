@@ -6,6 +6,8 @@ using System.Collections;
 using UnityEngine.InputSystem;
 using Vector2 = UnityEngine.Vector2;
 using Vector3 = UnityEngine.Vector3;
+using UnityEngine.EventSystems;
+using UnityEngine.InputSystem.EnhancedTouch;
 
 namespace InfimaGames.LowPolyShooterPack
 {
@@ -20,6 +22,7 @@ namespace InfimaGames.LowPolyShooterPack
 
 		[SerializeField] private Player _player;
 		private float _lookSensetive;
+		private bool _mobileInput = false;
 
 		[Title(label: "References")]
 
@@ -487,6 +490,8 @@ namespace InfimaGames.LowPolyShooterPack
 			
 			//Save Aiming Value.
 			wasAiming = aiming;
+
+			
 		}
 
 		/// <summary>
@@ -727,6 +732,13 @@ namespace InfimaGames.LowPolyShooterPack
 		/// <summary>
 		/// Updates all the animator properties for this frame.
 		/// </summary>
+		/// 
+
+		public void SetMobileInput(bool isMobileInput)
+		{
+			_mobileInput = isMobileInput;
+		}
+
 		private void UpdateAnimator()
 		{
 			#region Reload Stop
@@ -1626,11 +1638,22 @@ namespace InfimaGames.LowPolyShooterPack
 			//Read.
 			axisMovement = cursorLocked ? context.ReadValue<Vector2>() : default;
 		}
-		/// <summary>
-		/// Look.
-		/// </summary>
+        /// <summary>
+        /// Look.
+        /// </summary>
 		public void OnLook(InputAction.CallbackContext context)
 		{
+			if(_mobileInput)
+			{
+                if (Touchscreen.current.touches.Count > 0 && Touchscreen.current.touches[0].isInProgress)
+                {
+                    if (EventSystem.current.IsPointerOverGameObject(Touchscreen.current.touches[0].touchId.ReadValue()))
+                    {
+                        return;
+                    }
+                }
+            }
+
             //Read.
             axisLook = cursorLocked ? context.ReadValue<Vector2>() : default;
 

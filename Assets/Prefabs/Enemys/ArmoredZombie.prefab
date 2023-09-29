@@ -1044,7 +1044,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _target: {fileID: 0}
-  _maxHealth: 100
+  _maxHealth: 60
   _stunState: {fileID: 8442072147314796562}
   _animation: {fileID: 8442072147314796570}
   _mapSign: {fileID: 72621344977375226}
