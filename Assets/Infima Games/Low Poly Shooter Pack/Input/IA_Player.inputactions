@@ -345,28 +345,6 @@
                 },
                 {
                     "name": "",
-                    "id": "6ab3c0c1-413c-4596-93a8-b92c2eb0157b",
-                    "path": "<Keyboard>/e",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Melee",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "7dd98274-256a-4623-973f-5995b0f261fa",
-                    "path": "<Gamepad>/buttonEast",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Melee",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "ecd92882-b998-42f9-9dda-9d89419dd7c5",
                     "path": "<Keyboard>/leftShift",
                     "interactions": "",
