@@ -386,10 +386,20 @@ namespace InfimaGames.LowPolyShooterPack
 			SetSavedSensetive();
         }
 
-		/// <summary>
-		/// Start.
-		/// </summary>
-		protected override void Start()
+        private void OnEnable()
+        {
+			_player.PushForceUsed += OnPushForceUsed;
+        }
+
+        private void OnDisable()
+        {
+            _player.PushForceUsed -= OnPushForceUsed;
+        }
+
+        /// <summary>
+        /// Start.
+        /// </summary>
+        protected override void Start()
 		{
 			//Max out the grenades.
 			grenadeCount = grenadeTotal;
@@ -1479,6 +1489,12 @@ namespace InfimaGames.LowPolyShooterPack
 					break;
 			}
 		}
+
+		private void OnPushForceUsed()
+		{
+            if (CanPlayAnimationMelee())
+                PlayMelee();
+        }
 		/// <summary>
 		/// Run. 
 		/// </summary>

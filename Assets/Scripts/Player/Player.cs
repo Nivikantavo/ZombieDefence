@@ -1,6 +1,7 @@
 using InfimaGames.LowPolyShooterPack;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Player : Target
 {
@@ -8,10 +9,22 @@ public class Player : Target
     [SerializeField] private List<Force> _forces;
     [SerializeField] private List<ForceUIView> _forcesViews;
 
+    public event UnityAction PushForceUsed;
+
     protected override void Awake()
     {
         base.Awake();
         SetForces();
+    }
+
+    private void OnEnable()
+    {
+        _pushForce.ForceUsed += OnForceUsed;
+    }
+
+    private void OnDisable()
+    {
+        _pushForce.ForceUsed -= OnForceUsed;
     }
 
     public void TryUsePushForce()
@@ -40,5 +53,10 @@ public class Player : Target
                 }
             }
         }
+    }
+
+    private void OnForceUsed()
+    {
+        PushForceUsed?.Invoke();
     }
 }

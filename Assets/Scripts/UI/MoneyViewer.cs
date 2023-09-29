@@ -37,13 +37,14 @@ public class MoneyViewer : MonoBehaviour
 
     private IEnumerator SetValueSmoothly(int newValue)
     {
-        float difference = newValue - _currentValue;
-        WaitForSecondsRealtime delaye = new WaitForSecondsRealtime(_settingTime / Mathf.Abs(difference));
-        for (int i = 0; i < Mathf.Abs(difference) / _addingMultiplayer; i ++)
+        float step = 0.1f;
+        WaitForSecondsRealtime delay = new WaitForSecondsRealtime(step);
+
+        for (float i = 0; i < 1; i += step)
         {
-            _currentValue += Mathf.Sign(difference) * _addingMultiplayer;
+            _currentValue = Mathf.Round(Mathf.Lerp(_currentValue, newValue, i));
             _moneyText.text = _currentValue.ToString();
-            yield return delaye;
+            yield return delay;
         }
     }
 

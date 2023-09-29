@@ -33,7 +33,6 @@ public class Force : MonoBehaviour
 
     public virtual void UseForce()
     {
-
         if(LastUseTime > Cooldown)
         {
             ForceUsed?.Invoke();

@@ -105,6 +105,11 @@ public class EndLevelPanel : Element
 #if UNITY_WEBGL && !UNITY_EDITOR
         VideoAd.Show(OnAdOpen, OnRewardCallback, OnRewardAdClose);
 #endif
+#if UNITY_EDITOR
+Debug.Log($"Money = {_moneyCollecter.Money}, start money = {_moneyCollecter.StartMoney}, reward = {_moneyCollecter.Money - _moneyCollecter.StartMoney}");
+_moneyCollecter.AddMoney(_moneyCollecter.Money - _moneyCollecter.StartMoney);
+#endif
+
     }
 
     private void OnAdOpen()
