@@ -893,9 +893,8 @@ namespace InfimaGames.LowPolyShooterPack
 			//Get the name of the animation state to play, which depends on weapon settings, and ammunition!
 			string stateName = equippedWeapon.HasCycledReload() ? "Reload Open" :
 				(equippedWeapon.HasAmmunition() ? "Reload" : "Reload Empty");
-			
-			//Play the animation state!
-			characterAnimator.Play(stateName, layerActions, 0.0f);
+            //Play the animation state!
+            characterAnimator.Play(stateName, layerActions, 0.0f);
 
 			#endregion
 
@@ -1643,31 +1642,34 @@ namespace InfimaGames.LowPolyShooterPack
         /// </summary>
 		public void OnLook(InputAction.CallbackContext context)
 		{
+            if (context.canceled)
+            {
+                axisLook = Vector2.zero;
+            }
+            Debug.Log(context.ReadValue<Vector2>());
 			if(_mobileInput)
 			{
-                if (Touchscreen.current.touches.Count > 0 && Touchscreen.current.touches[0].isInProgress)
+                if (EventSystem.current.IsPointerOverGameObject(Touchscreen.current.touches[0].touchId.ReadValue()))
                 {
-                    if (EventSystem.current.IsPointerOverGameObject(Touchscreen.current.touches[0].touchId.ReadValue()))
-                    {
-                        return;
-                    }
+					return;
                 }
             }
-
             //Read.
             axisLook = cursorLocked ? context.ReadValue<Vector2>() : default;
 
-			//Make sure that we have a weapon.
-			if (equippedWeapon == null)
-				return;
+            //Make sure that we have a weapon.
+            if (equippedWeapon == null)
+                return;
 
-			//Make sure that we have a scope.
-			if (equippedWeaponScope == null)
-				return;
+            //Make sure that we have a scope.
+            if (equippedWeaponScope == null)
+                return;
 
-			//If we're aiming, multiply by the mouse sensitivity multiplier of the equipped weapon's scope!
-			axisLook *= aiming ? equippedWeaponScope.GetMultiplierMouseSensitivity() : 1.0f;
-			axisLook *= _lookSensetive;
+            //If we're aiming, multiply by the mouse sensitivity multiplier of the equipped weapon's scope!
+            axisLook *= aiming ? equippedWeaponScope.GetMultiplierMouseSensitivity() : 1.0f;
+            axisLook *= _lookSensetive;
+
+			
 		}
 
 		/// <summary>
