@@ -271,7 +271,7 @@
                     "id": "e2077c08-ec08-46a9-83eb-b62699ed0c13",
                     "path": "<Touchscreen>/delta",
                     "interactions": "",
-                    "processors": "ScaleVector2",
+                    "processors": "ScaleVector2(x=0.5,y=0.5)",
                     "groups": "",
                     "action": "Look",
                     "isComposite": false,
