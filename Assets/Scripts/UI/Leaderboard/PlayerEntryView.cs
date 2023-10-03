@@ -28,7 +28,7 @@ public class PlayerEntryView : MonoBehaviour
         {
             Mathf.FloorToInt(time / 60),
             Mathf.FloorToInt(time % 60),
-            Mathf.FloorToInt((time * 1000) % 100)
+            Mathf.FloorToInt((time / 10) % 100)
         };
 
         text.text = string.Format("{00:00}:{1:00}:{2:00}", timersValue[0], timersValue[1], timersValue[2]);

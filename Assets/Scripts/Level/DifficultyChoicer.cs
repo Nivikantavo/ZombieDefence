@@ -1,3 +1,4 @@
+using Agava.YandexGames;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,6 +13,7 @@ public class DifficultyChoicer : MonoBehaviour
 
     [SerializeField] private List<Transform> _spawnPoints;
     [SerializeField] private List<Transform> _startSpawnPoints;
+    [SerializeField] private SurviveScorePanel _surviveScorePanel;
 
     public int CurrentLevelNumber => _currentLevelNumber;
     private int _currentLevelNumber;
@@ -25,7 +27,6 @@ public class DifficultyChoicer : MonoBehaviour
 
         _spawner.SetSpawnPoints(_spawnPoints, _startSpawnPoints);
 
-        if(data.SurvivalMode == true)
         SurvivalMode = data.SurvivalMode;
         if (SurvivalMode)
         {
@@ -47,5 +48,29 @@ public class DifficultyChoicer : MonoBehaviour
                 }
             }
         }
+    }
+
+    private void Start()
+    {
+        if (SurvivalMode)
+        {
+            SetCurrentScore();
+        }
+    }
+
+    private void SetCurrentScore()
+    {
+        Debug.Log(_surviveScorePanel.CurrentLeaderboardName);
+#if UNITY_WEBGL && !UNITY_EDITOR
+        Leaderboard.GetPlayerEntry(_surviveScorePanel.CurrentLeaderboardName, (result) =>
+        {
+            if (result != null)
+            {
+                Debug.Log("result.scoer = " + result.score);
+                _surviveScorePanel.SetCurrentRecord(result.score);
+            }
+                
+        });
+#endif
     }
 }

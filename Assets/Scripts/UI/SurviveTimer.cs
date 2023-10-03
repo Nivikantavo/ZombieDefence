@@ -41,7 +41,6 @@ public class SurviveTimer : MonoBehaviour
 
     private void Timer(float time)
     {
-        Debug.Log(time);
         _surviveTime += Time.deltaTime;
         
         _minutes = Mathf.FloorToInt((time) / 60);

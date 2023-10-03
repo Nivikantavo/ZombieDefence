@@ -8,6 +8,7 @@ using Vector2 = UnityEngine.Vector2;
 using Vector3 = UnityEngine.Vector3;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem.EnhancedTouch;
+using UnityEngine.InputSystem.Controls;
 
 namespace InfimaGames.LowPolyShooterPack
 {
@@ -1643,18 +1644,18 @@ namespace InfimaGames.LowPolyShooterPack
         /// </summary>
 		public void OnLook(InputAction.CallbackContext context)
 		{
-			if(_mobileInput)
+			if (context.canceled)
 			{
-                if (Touchscreen.current.touches.Count > 0 && Touchscreen.current.touches[0].isInProgress)
-                {
-                    if (EventSystem.current.IsPointerOverGameObject(Touchscreen.current.touches[0].touchId.ReadValue()))
-                    {
-                        return;
-                    }
-                }
-            }
+				axisLook = Vector2.zero;
+			}
 
-            //Read.
+			if (_mobileInput)
+			{
+				if (EventSystem.current.IsPointerOverGameObject(Touchscreen.current.touches[0].touchId.ReadValue()))
+				{
+					return;
+				}
+			}
             axisLook = cursorLocked ? context.ReadValue<Vector2>() : default;
 
 			//Make sure that we have a weapon.

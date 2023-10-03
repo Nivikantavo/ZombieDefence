@@ -1,3 +1,5 @@
+using Agava.YandexGames;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.UI;
@@ -14,11 +16,17 @@ public class SoundsPanel : MonoBehaviour
     private float _musicVolume;
     private float _soundVolume;
 
-    private void Awake()
+    private IEnumerator Start()
     {
+#if UNITY_WEBGL && !UNITY_EDITOR
+        yield return YandexGamesSdk.Initialize();
+#endif
         PlayerData data = SaveSystem.Instance.GetData();
         OnMusicSliderValueChanged(data.MusicVolume);
         OnSoundSliderValueChanged(data.SoundsVolume);
+        gameObject.SetActive(false);
+
+        yield return null;
     }
 
     private void OnEnable()

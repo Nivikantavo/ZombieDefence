@@ -6,6 +6,8 @@ using UnityEngine;
 
 public class SurviveScorePanel : MonoBehaviour
 {
+    public string CurrentLeaderboardName => _currentLeaderboardName;
+
     [SerializeField] private List<string> _leaderboardNames;
     [SerializeField] private TMP_Text _surviveText;
     [SerializeField] private TMP_Text _surviveRecord;
@@ -18,11 +20,6 @@ public class SurviveScorePanel : MonoBehaviour
     private IEnumerator Start()
     {
         yield return YandexGamesSdk.Initialize();
-    }
-
-    private void OnEnable()
-    {
-        SetCurrentScore();
     }
 
     public void SetScore(float time)
@@ -43,7 +40,13 @@ public class SurviveScorePanel : MonoBehaviour
 
     public void SetLeaderboard(int leaderboardId)
     {
+        Debug.Log("SetLeaderboard");
         _currentLeaderboardName = _leaderboardNames[leaderboardId];
+    }
+
+    public void SetCurrentRecord(int currentRecord)
+    {
+        _currentRecord = currentRecord;
     }
 
     private void ViewSurviveResult(float time, TMP_Text text)
@@ -57,20 +60,5 @@ public class SurviveScorePanel : MonoBehaviour
         };
 
         text.text = string.Format("{00:00}:{1:00}:{2:00}", timersValue[0], timersValue[1], timersValue[2]);
-    }
-
-    private void SetCurrentScore()
-    {
-#if UNITY_WEBGL && !UNITY_EDITOR
-        Leaderboard.GetPlayerEntry(_currentLeaderboardName, (result) =>
-        {
-            if (result != null)
-            {
-                Debug.Log("result.scoer = " + result.score);
-                _currentRecord = result.score;
-            }
-                
-        });
-#endif
     }
 }
