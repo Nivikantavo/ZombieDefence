@@ -19,7 +19,6 @@ public class SoundsPanel : MonoBehaviour
         PlayerData data = SaveSystem.Instance.GetData();
         OnMusicSliderValueChanged(data.MusicVolume);
         OnSoundSliderValueChanged(data.SoundsVolume);
-        gameObject.SetActive(false);
     }
 
     private void OnEnable()

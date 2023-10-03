@@ -358,7 +358,7 @@ MonoBehaviour:
     crouchingRotation: {x: 0, y: -5, z: 0}
     actionLocation: {x: 0, y: 0, z: 0}
     actionRotation: {x: 0, y: 0, z: 0}
-  swaySmoothValue: 0
+  swaySmoothValue: 20
   sway:
     look:
       location:

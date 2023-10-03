@@ -962,8 +962,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 965555d451af4a2299927c4e3dd7ee09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ammunitionTotal: 5
-  upgradeAmmunitionTotal: 6
+  ammunitionTotal: 7
+  upgradeAmmunitionTotal: 10
   sprite: {fileID: 0}
 --- !u!4 &2657098032119006043 stripped
 Transform:

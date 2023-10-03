@@ -238,7 +238,6 @@ MonoBehaviour:
   _itemIcon: {fileID: 21300000, guid: 439064e3b227a48b8837382d75dc779b, type: 3}
   _backgroundImage: {fileID: 4348820710371150216}
   _itemImage: {fileID: 4348820711187099354}
-  _upgradeImage: {fileID: 0}
   _priceText: {fileID: 4348820710607470244}
   _priceLable: {fileID: 4348820711261528596}
   _item: {fileID: 6562300396693418196}
@@ -257,9 +256,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Price: 500
   ItemName: Granade
-  BoughtCount: 0
-  ItemsCount: 0
-  _improveStep: 0
+  Bought: 0
 --- !u!1 &4348820710607470250
 GameObject:
   m_ObjectHideFlags: 0
@@ -293,10 +290,10 @@ RectTransform:
   m_Father: {fileID: 4348820711261528597}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.22140948, y: 0.27041006}
-  m_AnchorMax: {x: 0.7864095, y: 0.78676987}
-  m_AnchoredPosition: {x: -0.7227402, y: -1.4999981}
-  m_SizeDelta: {x: 1, y: -4.7974}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4348820710607470245
 CanvasRenderer:
@@ -353,10 +350,10 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 32
+  m_fontSize: 30.5
   m_fontSizeBase: 30.5
   m_fontWeight: 400
-  m_enableAutoSizing: 1
+  m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
@@ -482,6 +479,8 @@ GameObject:
   - component: {fileID: 4348820711261528597}
   - component: {fileID: 4348820711261528594}
   - component: {fileID: 4348820711261528593}
+  - component: {fileID: 4348820711261528592}
+  - component: {fileID: 4348820711261528599}
   - component: {fileID: 4348820711261528598}
   m_Layer: 5
   m_Name: 'Price '
@@ -507,10 +506,10 @@ RectTransform:
   m_Father: {fileID: 4348820710371150222}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.113000005, y: 0.83500004}
-  m_AnchorMax: {x: 0.8824568, y: 1}
-  m_AnchoredPosition: {x: 0, y: 12.234291}
-  m_SizeDelta: {x: -0.0000009536743, y: 23.905998}
+  m_AnchorMin: {x: 0, y: 0.5}
+  m_AnchorMax: {x: 1, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 116}
+  m_SizeDelta: {x: 0, y: 81.43738}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4348820711261528594
 CanvasRenderer:
@@ -550,6 +549,46 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &4348820711261528592
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4348820711261528596}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30649d3a9faa99c48a7b1166b86bf2a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Padding:
+    m_Left: 40
+    m_Right: 40
+    m_Top: 0
+    m_Bottom: 0
+  m_ChildAlignment: 4
+  m_Spacing: 0
+  m_ChildForceExpandWidth: 1
+  m_ChildForceExpandHeight: 1
+  m_ChildControlWidth: 1
+  m_ChildControlHeight: 0
+  m_ChildScaleWidth: 0
+  m_ChildScaleHeight: 0
+  m_ReverseArrangement: 0
+--- !u!114 &4348820711261528599
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4348820711261528596}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3245ec927659c4140ac4f8d17403cc18, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_HorizontalFit: 2
+  m_VerticalFit: 0
 --- !u!114 &4348820711261528598
 MonoBehaviour:
   m_ObjectHideFlags: 0
