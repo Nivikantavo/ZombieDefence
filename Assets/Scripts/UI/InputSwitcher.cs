@@ -30,7 +30,7 @@ public class InputSwitcher : MonoBehaviour
             isMobile = false; 
         }
 
-        _mobileUI.SetActive(true);
+        _mobileUI.SetActive(isMobile);
         _character.SetMobileInput(isMobile);
     }
 }
