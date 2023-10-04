@@ -40,7 +40,6 @@ public class SurviveScorePanel : MonoBehaviour
 
     public void SetLeaderboard(int leaderboardId)
     {
-        Debug.Log("SetLeaderboard");
         _currentLeaderboardName = _leaderboardNames[leaderboardId];
     }
 

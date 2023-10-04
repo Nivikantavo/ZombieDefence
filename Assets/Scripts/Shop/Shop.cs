@@ -13,6 +13,7 @@ public class Shop : MonoBehaviour
     [SerializeField] private ImproveItem _granadeItem;
     [SerializeField] private ImproveItem _truckHealthItem;
     [SerializeField] private MoneyCollecter _moneyCollecter;
+    [SerializeField] private GameObject _authorizePanel;
 
     private PlayerData _playerData;
 
@@ -21,7 +22,8 @@ public class Shop : MonoBehaviour
     private void OnEnable()
     {
 #if !UNITY_EDITOR
-        Billing.GetProductCatalog(productCatalogReponse => UpdateProductCatalog(productCatalogReponse.products));
+        if (YandexGamesSdk.IsInitialized)
+            Billing.GetProductCatalog(productCatalogReponse => UpdateProductCatalog(productCatalogReponse.products));
 #endif
         foreach (var itemView in _itemViews)
         {
@@ -51,6 +53,10 @@ public class Shop : MonoBehaviour
 
     private IEnumerator Start()
     {
+        if (YandexGamesSdk.IsInitialized == false)
+        {
+            yield return YandexGamesSdk.Initialize();
+        }
         while (SaveSystem.Instance.DataLoaded == false)
         {
             yield return new WaitForSecondsRealtime(0.25f);
@@ -66,19 +72,22 @@ public class Shop : MonoBehaviour
 
     private void TrySellItem(Item item)
     {
-        if (item is WeaponItem)
+        if(item.Purchases < item.NumberOfItems)
         {
-            TrySellWeapon(item as WeaponItem);
+            if (item is WeaponItem)
+            {
+                TrySellWeapon(item as WeaponItem);
+            }
+            else if (item is ImproveItem)
+            {
+                TrySellImprovment(item as ImproveItem);
+            }
+            else if (item is ForceItem)
+            {
+                TrySellForce(item as ForceItem);
+            }
+            ItemBought?.Invoke();
         }
-        else if(item is ImproveItem)
-        {
-            TrySellImprovment(item as ImproveItem);
-        }
-        else if(item is ForceItem)
-        {
-            TrySellForce(item as ForceItem);
-        }
-        ItemBought?.Invoke();
     }
 
     private void UpdateProductCatalog(CatalogProduct[] products)
@@ -259,6 +268,7 @@ public class Shop : MonoBehaviour
     private void GetBoughtProducts()
     {
         Billing.GetPurchasedProducts(purchasedProductsResponse => MarkBoughtProduct(purchasedProductsResponse.purchasedProducts));
+        
     }
 
     private void MarkBoughtProduct(PurchasedProduct[] products)
