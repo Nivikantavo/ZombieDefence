@@ -7,6 +7,7 @@ using UnityEngine.InputSystem;
 public class UIInput : Element
 {
     [SerializeField] private GameObject _pausePanel;
+    [SerializeField] private DesertirPanel _desertirPanel;
 
     private bool _paused = false;
 
@@ -17,11 +18,14 @@ public class UIInput : Element
 
     public void OnPause(InputAction.CallbackContext context)
     {
-        switch (context)
+        if (_desertirPanel.gameObject.activeSelf == false)
         {
-            case { phase: InputActionPhase.Performed }:
-                SwitchPauseEnabled();
-                break;
+            switch (context)
+            {
+                case { phase: InputActionPhase.Performed }:
+                    SwitchPauseEnabled();
+                    break;
+            }
         }
     }
 

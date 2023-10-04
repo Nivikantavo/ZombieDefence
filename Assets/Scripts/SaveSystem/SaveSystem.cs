@@ -50,9 +50,9 @@ public class SaveSystem : MonoBehaviour
     public void Save()
     {
 #if UNITY_WEBGL && !UNITY_EDITOR
-
         string jsonData = JsonUtility.ToJson(_playerData);
         PlayerAccount.SetCloudSaveData(jsonData);
+
 #endif
 #if UNITY_EDITOR
         string json = JsonUtility.ToJson(_playerData);

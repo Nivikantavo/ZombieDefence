@@ -39,13 +39,15 @@ public class MoneyViewer : MonoBehaviour
     {
         float step = 0.1f;
         WaitForSecondsRealtime delay = new WaitForSecondsRealtime(step);
-
-        for (float i = 0; i < 1; i += step)
+        float startValue = _currentValue;
+        for (float i = 0; i <= 1; i += step)
         {
-            _currentValue = Mathf.Round(Mathf.Lerp(_currentValue, newValue, i));
+            _currentValue = Mathf.Round(Mathf.Lerp(startValue, newValue, i));
             _moneyText.text = _currentValue.ToString();
             yield return delay;
         }
+        _currentValue = newValue;
+        _moneyText.text = _currentValue.ToString();
     }
 
     public void OnMoneyLoaded(int money)

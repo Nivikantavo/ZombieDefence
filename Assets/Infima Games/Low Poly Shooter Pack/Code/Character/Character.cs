@@ -491,8 +491,6 @@ namespace InfimaGames.LowPolyShooterPack
 			
 			//Save Aiming Value.
 			wasAiming = aiming;
-
-			
 		}
 
 		/// <summary>
@@ -1649,14 +1647,30 @@ namespace InfimaGames.LowPolyShooterPack
 				axisLook = Vector2.zero;
 			}
 
-			if (_mobileInput)
+            if (_mobileInput)
 			{
-				if (EventSystem.current.IsPointerOverGameObject(Touchscreen.current.touches[0].touchId.ReadValue()))
+				if (EventSystem.current.IsPointerOverGameObject(Touchscreen.current.touches[0].touchId.ReadValue()) && Touchscreen.current.touches.Count <= 1)
 				{
+					Debug.Log("1 касание но поверх");
 					return;
 				}
-			}
-            axisLook = cursorLocked ? context.ReadValue<Vector2>() : default;
+				if(Touchscreen.current.touches.Count > 1)
+				{
+                    if (EventSystem.current.IsPointerOverGameObject(Touchscreen.current.touches[1].touchId.ReadValue()))
+                    {
+                        Debug.Log("Больше 1 касания но поверх");
+                        return;
+                    }
+					else
+					{
+                        Debug.Log("Больше 1 касания, работает");
+                        axisLook = Touchscreen.current.touches[1].delta.ReadValue();
+                        return;
+                    }
+                }
+            }
+
+			axisLook = cursorLocked ? context.ReadValue<Vector2>() : default;
 
 			//Make sure that we have a weapon.
 			if (equippedWeapon == null)
