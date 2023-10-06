@@ -1,3 +1,4 @@
+using Lean.Localization;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -17,6 +18,8 @@ public class PlayerEntryView : MonoBehaviour
         if (string.IsNullOrEmpty(nickname))
         {
             nickname = "Anonymous";
+            LeanLocalizedTextMeshProUGUI localization = _nickname.gameObject.AddComponent<LeanLocalizedTextMeshProUGUI>();
+            localization.TranslationName = nickname;
         }
 
         _nickname.text = nickname;

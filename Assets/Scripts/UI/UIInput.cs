@@ -18,20 +18,20 @@ public class UIInput : Element
 
     public void OnPause(InputAction.CallbackContext context)
     {
-        if (_desertirPanel.gameObject.activeSelf == false)
+        switch (context)
         {
-            switch (context)
-            {
-                case { phase: InputActionPhase.Performed }:
-                    SwitchPauseEnabled();
-                    break;
-            }
+            case { phase: InputActionPhase.Performed }:
+                SwitchPauseEnabled();
+                break;
         }
     }
 
     public void SwitchPauseEnabled()
     {
-        _paused = !_paused;
-        _pausePanel.SetActive(_paused);
+        if (_desertirPanel.gameObject.activeSelf == false)
+        {
+            _paused = !_paused;
+            _pausePanel.SetActive(_paused);
+        }
     }
 }
