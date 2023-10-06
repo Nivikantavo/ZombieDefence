@@ -299,6 +299,5 @@ public class Shop : MonoBehaviour
 
             });
         }
-        
     }
 }

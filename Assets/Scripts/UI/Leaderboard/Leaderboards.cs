@@ -25,7 +25,7 @@ public class Leaderboards : MonoBehaviour
 
     public void ShowLeaderboards()
     {
-//#if UNITY_WEBGL && !UNITY_EDITOR
+#if UNITY_WEBGL && !UNITY_EDITOR
         if (YandexGamesSdk.IsInitialized)
         {
             if (PlayerAccount.IsAuthorized == false)
@@ -37,7 +37,7 @@ public class Leaderboards : MonoBehaviour
                 ShowLevelLeaderbord();
             }
         }
-//#endif
+#endif
     }
 
     public void Authorize()

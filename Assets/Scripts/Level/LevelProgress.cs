@@ -1,6 +1,6 @@
 using InfimaGames.LowPolyShooterPack;
 using UnityEngine;
-using UnityEngine.SceneManagement;
+using UnityEngine.InputSystem;
 
 public class LevelProgress : MonoBehaviour
 {
@@ -18,10 +18,13 @@ public class LevelProgress : MonoBehaviour
 
     private DifficultyChoicer _difficultyChoicer;
     private bool _levelComplited = false;
+    private PlayerInput _playerInput;
+
 
     private void Awake()
     {
         LevelEnded = false;
+        _playerInput = _player.GetComponent<PlayerInput>();
     }
 
     private void Start()
@@ -63,6 +66,7 @@ public class LevelProgress : MonoBehaviour
         _mobileInput.SetActive(false);
         _endLevelPanel.gameObject.SetActive(true);
         _endLevelPanel.Initialize(_levelComplited);
+        _playerInput.enabled = false;
     }
 
     private void PlayerWin()
@@ -79,6 +83,7 @@ public class LevelProgress : MonoBehaviour
         _mobileInput.SetActive(false);
         _endLevelPanel.gameObject.SetActive(true);
         _endLevelPanel.Initialize(_levelComplited);
+        _playerInput.enabled = false;
     }
 
     private void SaveProgress()

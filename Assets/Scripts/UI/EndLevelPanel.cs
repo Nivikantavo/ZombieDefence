@@ -1,14 +1,17 @@
 using Agava.YandexGames;
 using InfimaGames.LowPolyShooterPack.Interface;
-using System.Collections;
-using TMPro;
+using Lean.Localization;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class EndLevelPanel : Element
 {
+    private const string WinText = "LevelEnd";
+    private const string LostText = "LevelLost";
+
     [SerializeField] private MoneyCollecter _moneyCollecter;
     [SerializeField] private LoadingScreen _loadingScreen;
     [SerializeField] private SurviveTimer _surviveTimer;
@@ -20,11 +23,13 @@ public class EndLevelPanel : Element
     [SerializeField] private Button _inMenuButton;
     [SerializeField] private Button _restartButton;
     [SerializeField] private Button _rewardButton;
+    [SerializeField] private LeanLocalizedTextMeshProUGUI _labelText;
     [SerializeField] private float _settingScoreDelay;
 
     private DifficultyChoicer _difficultyChoicer;
     private int _levelBonus;
     private bool _wasRewarded = false;
+    
 
     public event UnityAction RewardAdClose;
 
@@ -52,6 +57,7 @@ public class EndLevelPanel : Element
         }
         else
         {
+            _labelText.TranslationName = levelComplited ? WinText : LostText;
             OpenScorePanel(levelComplited);
         }
     }
@@ -116,6 +122,7 @@ _moneyCollecter.AddMoney(_moneyCollecter.Money - _moneyCollecter.StartMoney);
 
     private void OnAdOpen()
     {
+        InputSystem.DisableDevice(Keyboard.current);
         AudioListener.pause = true;
         AudioListener.volume = 0f;
     }
@@ -129,12 +136,14 @@ _moneyCollecter.AddMoney(_moneyCollecter.Money - _moneyCollecter.StartMoney);
 
     private void OnInterstitialAdClose(bool wasShown = true)
     {
+        InputSystem.EnableDevice(Keyboard.current);
         AudioListener.pause = false;
         AudioListener.volume = 1f;
     }
 
     private void OnRewardAdClose()
     {
+        InputSystem.EnableDevice(Keyboard.current);
         AudioListener.pause = false;
         AudioListener.volume = 1f;
         RewardAdClose?.Invoke();

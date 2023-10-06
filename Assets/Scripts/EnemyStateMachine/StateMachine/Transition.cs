@@ -9,7 +9,6 @@ public abstract class Transition : MonoBehaviour
 
     public void Init()
     {
-
     }
 
     protected virtual void OnEnable()

@@ -30,6 +30,10 @@ public class SoundsPanel : MonoBehaviour
 
     private void OnEnable()
     {
+        PlayerData data = SaveSystem.Instance.GetData();
+        OnMusicSliderValueChanged(data.MusicVolume);
+        OnSoundSliderValueChanged(data.SoundsVolume);
+
         _musicSlider.value = _musicVolume;
         _soundSlider.value = _soundVolume;
 

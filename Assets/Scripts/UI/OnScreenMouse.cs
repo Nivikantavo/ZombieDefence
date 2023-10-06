@@ -15,14 +15,12 @@ public class OnScreenMouse : OnScreenControl, IDragHandler, IPointerDownHandler,
 
     public void OnPointerDown(PointerEventData eventData)
     {
-        Debug.Log("Down");
         delta = eventData.delta;
         hasDrag = true;
     }
 
     public void OnPointerUp(PointerEventData eventData)
     {
-        Debug.Log("up");
         hasDrag = false;
     }
 

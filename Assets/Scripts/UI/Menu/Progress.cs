@@ -28,7 +28,6 @@ public class Progress : MonoBehaviour, ILoadable
     {
         CurrentLevel = data.ComplitedLevelsOnStage;
         _currentStage = _stages[data.ComplitedStages - 1];
-        Debug.Log("Progress DataLoaded");
         DataLoaded?.Invoke(data);
     }
 }

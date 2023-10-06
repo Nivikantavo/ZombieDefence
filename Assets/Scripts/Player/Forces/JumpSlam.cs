@@ -20,6 +20,7 @@ public class JumpSlam : Force
     private List<Zombie> _zombies = new List<Zombie>();
 
     private bool _jumpImproved = false;
+    private bool _corutineStarted = false;
 
     protected override void Awake()
     {
@@ -54,7 +55,10 @@ public class JumpSlam : Force
         {
             if (_zombies.Contains(zombie) == false)
             {
-                _zombies.Add(zombie);
+                if (_corutineStarted == false)
+                {
+                    _zombies.Add(zombie);
+                }
             }
         }
     }
@@ -65,7 +69,10 @@ public class JumpSlam : Force
         {
             if (_zombies.Contains(zombie) == true)
             {
-                _zombies.Remove(zombie);
+                if(_corutineStarted == false)
+                {
+                    _zombies.Remove(zombie);
+                }
             }
         }
     }
@@ -78,7 +85,8 @@ public class JumpSlam : Force
 
     private IEnumerator Slam()
     {
-        if(LastUseTime > Cooldown)
+        _corutineStarted = true;
+        if (LastUseTime > Cooldown)
         {
             foreach (var zombie in _zombies)
             {
@@ -93,7 +101,9 @@ public class JumpSlam : Force
             SetJumpForce(_standartJumpForce);
             _jumpImproved = false;
             Instantiate(_explosion, _explosionPoint.transform);
+            _zombies.Clear();
         }
+        _corutineStarted = false;
     }
     
 
