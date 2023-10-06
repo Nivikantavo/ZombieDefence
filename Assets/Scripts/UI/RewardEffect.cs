@@ -1,6 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -59,7 +57,6 @@ public class RewardEffect : ObjectPool
             coin.transform.position = Vector3.Lerp(coin.transform.position, position, i);
             yield return delay;
         }
-        
         coin.SetActive(false);
         CoinDelivered?.Invoke();
     }

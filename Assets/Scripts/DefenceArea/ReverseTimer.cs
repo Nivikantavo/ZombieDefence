@@ -13,7 +13,6 @@ public class ReverseTimer : MonoBehaviour
         _timeToLose = 5f;
         _timerText.text = _timeToLose.ToString();
     }
-
      
     private void Update()
     {

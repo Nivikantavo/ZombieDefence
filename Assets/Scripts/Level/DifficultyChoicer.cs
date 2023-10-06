@@ -1,5 +1,4 @@
 using Agava.YandexGames;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -60,13 +59,11 @@ public class DifficultyChoicer : MonoBehaviour
 
     private void SetCurrentScore()
     {
-        Debug.Log(_surviveScorePanel.CurrentLeaderboardName);
 #if UNITY_WEBGL && !UNITY_EDITOR
         Leaderboard.GetPlayerEntry(_surviveScorePanel.CurrentLeaderboardName, (result) =>
         {
             if (result != null)
             {
-                Debug.Log("result.scoer = " + result.score);
                 _surviveScorePanel.SetCurrentRecord(result.score);
             }
                 

@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 
 public class Repulse : Force
@@ -12,13 +11,18 @@ public class Repulse : Force
 
     private List<Zombie> _zombies = new List<Zombie>();
 
+    private bool _corutineStarted = false;
+
     private void OnTriggerEnter(Collider other)
     {
         if(other.TryGetComponent<Zombie>(out Zombie zombie))
         {
             if (_zombies.Contains(zombie) == false)
             {
-                _zombies.Add(zombie);
+                if(_corutineStarted == false)
+                {
+                    _zombies.Add(zombie);
+                }
             }
         }
     }
@@ -29,7 +33,10 @@ public class Repulse : Force
         {
             if (_zombies.Contains(zombie) == true)
             {
-                _zombies.Remove(zombie);
+                if (_corutineStarted == false)
+                {
+                    _zombies.Remove(zombie);
+                }
             }
         }
     }
@@ -42,7 +49,8 @@ public class Repulse : Force
 
     private IEnumerator ReleasePulse()
     {
-        if(LastUseTime > Cooldown)
+        _corutineStarted = true;
+        if (LastUseTime > Cooldown)
         {
             foreach (var zombie in _zombies)
             {
@@ -56,6 +64,8 @@ public class Repulse : Force
                 rigidbody.AddForce(forceDirection * _forsePower, ForceMode.Impulse);
             }
             Instantiate(_projectile, _projectilePoint.transform);
+            _zombies.Clear();
         }
+        _corutineStarted = false;
     }
 }

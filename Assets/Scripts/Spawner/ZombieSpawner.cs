@@ -22,7 +22,6 @@ public class ZombieSpawner : MonoBehaviour
     private int _currentWaveNumber = 0;
     private int _deadZombie = 0;
     private int _defaultRangeZombieCount = 30;
-
     private bool _survivalMode = false;
     private bool _startWaveSpawned = false;
 
@@ -140,7 +139,6 @@ public class ZombieSpawner : MonoBehaviour
             {
                 rangeSeekState.SetMissilePool(_missilePool);
             }
-
             enemy.gameObject.SetActive(true);
             AddInList(enemy);
         }

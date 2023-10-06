@@ -19,7 +19,7 @@ public class LevelLeaderboard : MonoBehaviour
 
     public void FillEntryesData(LeaderboardGetEntriesResponse entryesData, int lenth)
     {
-//#if UNITY_WEBGL && !UNITY_EDITOR
+#if UNITY_WEBGL && !UNITY_EDITOR
 
         for (int i = 0; i < entryesData.entries.Length; i++)
         {
@@ -33,9 +33,8 @@ public class LevelLeaderboard : MonoBehaviour
             _entryViews.Add(emptySlot.gameObject);
             FillView(playerEntry, _backgrounds[_backgrounds.Count - 1]);
         }
-
         _entryesLoaded = true;
-//#endif
+#endif
     }
 
 
@@ -56,7 +55,6 @@ public class LevelLeaderboard : MonoBehaviour
                 playerEntry = result;
             }
         });
-
         return playerEntry;
     }
 }

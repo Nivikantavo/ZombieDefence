@@ -1,6 +1,4 @@
 using Agava.WebUtility;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class InBackgroundCheker : MonoBehaviour
