@@ -9,7 +9,6 @@ public class Backpack : MonoBehaviour
 {
     private const string PushForce = "ForwardDash";
     private const string SlamForce = "JumpDash";
-    private const string ShieldForce = "Shield";
 
     [SerializeField] private Shop _shop;
     [SerializeField] private TMP_Text _granagesCountText;
@@ -19,13 +18,11 @@ public class Backpack : MonoBehaviour
 
     [SerializeField] private Image _pushForce;
     [SerializeField] private Image _slamForce;
-    [SerializeField] private Image _shieldForce;
 
     private int _granadesCount;
     private int _truckHealth;
     private bool _hasPushForce;
     private bool _hasSlamForce;
-    private bool _hasShieldForce;
 
     private IEnumerator Start()
     {
@@ -73,10 +70,6 @@ public class Backpack : MonoBehaviour
         {
             _hasSlamForce = true;
         }
-        if (playerData.Forces.Contains(ShieldForce))
-        {
-            _hasShieldForce = true;
-        }
 
         Renderer();
     }
@@ -88,6 +81,5 @@ public class Backpack : MonoBehaviour
 
         _pushForce.color = _hasPushForce ? _normalColor : _disabledColor;
         _slamForce.color = _hasSlamForce ? _normalColor : _disabledColor;
-        _shieldForce.color = _hasShieldForce ? _normalColor : _disabledColor;
     }
 }

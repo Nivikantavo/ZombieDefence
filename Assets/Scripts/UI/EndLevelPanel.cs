@@ -3,6 +3,7 @@ using InfimaGames.LowPolyShooterPack.Interface;
 using System.Collections;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -24,6 +25,8 @@ public class EndLevelPanel : Element
     private DifficultyChoicer _difficultyChoicer;
     private int _levelBonus;
     private bool _wasRewarded = false;
+
+    public event UnityAction RewardAdClose;
 
     private void OnEnable()
     {
@@ -109,7 +112,6 @@ public class EndLevelPanel : Element
 Debug.Log($"Money = {_moneyCollecter.Money}, start money = {_moneyCollecter.StartMoney}, reward = {_moneyCollecter.Money - _moneyCollecter.StartMoney}");
 _moneyCollecter.AddMoney(_moneyCollecter.Money - _moneyCollecter.StartMoney);
 #endif
-
     }
 
     private void OnAdOpen()
@@ -135,5 +137,6 @@ _moneyCollecter.AddMoney(_moneyCollecter.Money - _moneyCollecter.StartMoney);
     {
         AudioListener.pause = false;
         AudioListener.volume = 1f;
+        RewardAdClose?.Invoke();
     }
 }
