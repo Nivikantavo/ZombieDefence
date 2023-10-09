@@ -7,6 +7,7 @@ public class AdAsk : MonoBehaviour
     [SerializeField] private int _reward;
     [SerializeField] private Button _adStartButton;
     [SerializeField] private MoneyCollecter _moneyCollecter;
+    [SerializeField] private InBackgroundCheker _backgroundCheker;
 
     private void OnEnable()
     {
@@ -27,6 +28,7 @@ public class AdAsk : MonoBehaviour
     {
         AudioListener.pause = true;
         AudioListener.volume = 0f;
+        _backgroundCheker.SetAdsShown(true);
     }
 
     private void OnRewardCallback()
@@ -37,6 +39,7 @@ public class AdAsk : MonoBehaviour
     private void OnVideoAdClose()
     {
         gameObject.SetActive(false);
+        _backgroundCheker.SetAdsShown(false);
         AudioListener.pause = false;
         AudioListener.volume = 1f;
     }

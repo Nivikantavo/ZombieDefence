@@ -16,6 +16,7 @@ public class EndLevelPanel : Element
     [SerializeField] private LoadingScreen _loadingScreen;
     [SerializeField] private SurviveTimer _surviveTimer;
     [SerializeField] private Track _track;
+    [SerializeField] private InBackgroundCheker _backgroundCheker;
 
     [SerializeField] private SurviveScorePanel _surviveScorePanel;
     [SerializeField] private LevelScorePanel _levelScorePanel;
@@ -89,31 +90,31 @@ public class EndLevelPanel : Element
 
     private void OnRestartLevelButtonClick()
     {
-#if UNITY_WEBGL && !UNITY_EDITOR
+//#if UNITY_WEBGL && !UNITY_EDITOR
         if(_wasRewarded == false)
         {
-            InterstitialAd.Show();
+            InterstitialAd.Show(OnAdOpen, OnAdClose);
         }
-#endif
+//#endif
         _loadingScreen.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     private void OnInMenuButtonClick()
     {
-#if UNITY_WEBGL && !UNITY_EDITOR
+//#if UNITY_WEBGL && !UNITY_EDITOR
         if(_wasRewarded == false)
         {
-            InterstitialAd.Show(OnAdOpen, OnInterstitialAdClose);
+            InterstitialAd.Show(OnAdOpen, OnAdClose);
         }
-#endif
+//#endif
         _loadingScreen.LoadScene(0);
     }
 
     private void OnRewardButtonClick()
     {
-#if UNITY_WEBGL && !UNITY_EDITOR
+//#if UNITY_WEBGL && !UNITY_EDITOR
         VideoAd.Show(OnAdOpen, OnRewardCallback, OnRewardAdClose);
-#endif
+//#endif
 #if UNITY_EDITOR
 Debug.Log($"Money = {_moneyCollecter.Money}, start money = {_moneyCollecter.StartMoney}, reward = {_moneyCollecter.Money - _moneyCollecter.StartMoney}");
 _moneyCollecter.AddMoney(_moneyCollecter.Money - _moneyCollecter.StartMoney);
@@ -122,6 +123,7 @@ _moneyCollecter.AddMoney(_moneyCollecter.Money - _moneyCollecter.StartMoney);
 
     private void OnAdOpen()
     {
+        _backgroundCheker.SetAdsShown(true);
         InputSystem.DisableDevice(Keyboard.current);
         AudioListener.pause = true;
         AudioListener.volume = 0f;
@@ -134,8 +136,9 @@ _moneyCollecter.AddMoney(_moneyCollecter.Money - _moneyCollecter.StartMoney);
         _wasRewarded = true;
     }
 
-    private void OnInterstitialAdClose(bool wasShown = true)
+    private void OnAdClose(bool wasShown = true)
     {
+        _backgroundCheker.SetAdsShown(false);
         InputSystem.EnableDevice(Keyboard.current);
         AudioListener.pause = false;
         AudioListener.volume = 1f;
@@ -143,9 +146,7 @@ _moneyCollecter.AddMoney(_moneyCollecter.Money - _moneyCollecter.StartMoney);
 
     private void OnRewardAdClose()
     {
-        InputSystem.EnableDevice(Keyboard.current);
-        AudioListener.pause = false;
-        AudioListener.volume = 1f;
+        OnAdClose();
         RewardAdClose?.Invoke();
     }
 }

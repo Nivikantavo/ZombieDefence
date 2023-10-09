@@ -1649,25 +1649,10 @@ namespace InfimaGames.LowPolyShooterPack
 
             if (_mobileInput)
 			{
-				if (EventSystem.current.IsPointerOverGameObject(Touchscreen.current.touches[0].touchId.ReadValue()) && Touchscreen.current.touches.Count <= 1)
+				if (EventSystem.current.IsPointerOverGameObject(Touchscreen.current.touches[0].touchId.ReadValue()))
 				{
-					Debug.Log("1 касание но поверх");
 					return;
 				}
-				if(Touchscreen.current.touches.Count > 1)
-				{
-                    if (EventSystem.current.IsPointerOverGameObject(Touchscreen.current.touches[1].touchId.ReadValue()))
-                    {
-                        Debug.Log("Больше 1 касания но поверх");
-                        return;
-                    }
-					else
-					{
-                        Debug.Log("Больше 1 касания, работает");
-                        axisLook = Touchscreen.current.touches[1].delta.ReadValue();
-                        return;
-                    }
-                }
             }
 
 			axisLook = cursorLocked ? context.ReadValue<Vector2>() : default;

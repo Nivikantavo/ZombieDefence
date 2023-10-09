@@ -6862,6 +6862,7 @@ MonoBehaviour:
   _reward: 500
   _adStartButton: {fileID: 1711065029}
   _moneyCollecter: {fileID: 17077671}
+  _backgroundCheker: {fileID: 1819280381}
 --- !u!1 &754047518
 GameObject:
   m_ObjectHideFlags: 0
@@ -16074,6 +16075,17 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1797851040}
   m_CullTransparentMesh: 1
+--- !u!114 &1819280381 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1870904673203623744, guid: 30bf215cd794fba4f8e243ecbaecb752, type: 3}
+  m_PrefabInstance: {fileID: 1870904672903931878}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a5636a4bc0ce6c4e8bcad612403e528, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1873857017
 GameObject:
   m_ObjectHideFlags: 0
