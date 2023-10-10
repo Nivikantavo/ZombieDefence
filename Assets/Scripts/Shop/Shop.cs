@@ -8,6 +8,9 @@ using UnityEngine.Events;
 
 public class Shop : MonoBehaviour
 {
+    private const string TruckHealth = "TruckHealth";
+    private const string Granade = "Granade";
+
     [SerializeField] private List<ItemView> _itemViews;
     [SerializeField] private List<ProductView> _productsView;
     [SerializeField] private ImproveItem _granadeItem;
@@ -16,6 +19,9 @@ public class Shop : MonoBehaviour
     [SerializeField] private GameObject _authorizePanel;
 
     private PlayerData _playerData;
+    private int _startTruckHealth = 300;
+    private int _startGranadeCount = 1;
+    private float _checkDataDelay = 0.25f;
 
     public event UnityAction ItemBought;
 
@@ -59,7 +65,7 @@ public class Shop : MonoBehaviour
         }
         while (SaveSystem.Instance.DataLoaded == false)
         {
-            yield return new WaitForSecondsRealtime(0.25f);
+            yield return new WaitForSecondsRealtime(_checkDataDelay);
         }
         UpdateData();
     }
@@ -166,13 +172,13 @@ public class Shop : MonoBehaviour
 
     private void AddBoughtImprovement(ImproveItem improveItem)
     {
-        if(improveItem.Name == "TruckHealth")
+        if(improveItem.Name == TruckHealth)
         {
             int truckHealth = _playerData.TruckHealth;
             truckHealth += improveItem.ImproveStep;
             SaveSystem.Instance.SetTruckHealth(truckHealth);
         }
-        else if(improveItem.Name == "Granade")
+        else if(improveItem.Name == Granade)
         {
             int granadesCount = _playerData.GranadesCount;
             granadesCount += improveItem.ImproveStep;
@@ -248,8 +254,8 @@ public class Shop : MonoBehaviour
 
     private void MarkBoughtImpruvment()
     {
-        int granadeBought = (_playerData.GranadesCount - 1) / _granadeItem.ImproveStep;
-        int truckHealthBiught = (_playerData.TruckHealth - 300) / _truckHealthItem.ImproveStep;
+        int granadeBought = (_playerData.GranadesCount - _startGranadeCount) / _granadeItem.ImproveStep;
+        int truckHealthBiught = (_playerData.TruckHealth - _startTruckHealth) / _truckHealthItem.ImproveStep;
 
         foreach (var view in _itemViews)
         {
