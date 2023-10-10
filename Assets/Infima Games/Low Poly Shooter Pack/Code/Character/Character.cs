@@ -20,9 +20,10 @@ namespace InfimaGames.LowPolyShooterPack
 	public sealed class Character : CharacterBehaviour
 	{
 		#region FIELDS SERIALIZED
-
+		[SerializeField] private FixedTouchField _touchField;
 		[SerializeField] private Player _player;
 		private float _lookSensetive;
+		private float _lookMultiplayer = 0.1f;
 		private bool _mobileInput = false;
 
 		[Title(label: "References")]
@@ -491,7 +492,12 @@ namespace InfimaGames.LowPolyShooterPack
 			
 			//Save Aiming Value.
 			wasAiming = aiming;
-		}
+
+			if (_mobileInput)
+			{
+                OnLook();
+            }
+        }
 
 		/// <summary>
 		/// Late Update.
@@ -1642,18 +1648,19 @@ namespace InfimaGames.LowPolyShooterPack
         /// </summary>
 		public void OnLook(InputAction.CallbackContext context)
 		{
-			if (context.canceled)
+            if (_mobileInput)
+            {
+                //if (EventSystem.current.IsPointerOverGameObject(Touchscreen.current.touches[0].touchId.ReadValue()))
+                //{
+                //	return;
+                //}
+                return;
+            }
+
+            if (context.canceled)
 			{
 				axisLook = Vector2.zero;
 			}
-
-            if (_mobileInput)
-			{
-				if (EventSystem.current.IsPointerOverGameObject(Touchscreen.current.touches[0].touchId.ReadValue()))
-				{
-					return;
-				}
-            }
 
 			axisLook = cursorLocked ? context.ReadValue<Vector2>() : default;
 
@@ -1669,6 +1676,13 @@ namespace InfimaGames.LowPolyShooterPack
 			axisLook *= aiming ? equippedWeaponScope.GetMultiplierMouseSensitivity() : 1.0f;
 			axisLook *= _lookSensetive;
 		}
+
+		private void OnLook()
+		{
+            axisLook = _touchField.TouchDist * _lookMultiplayer;
+            axisLook *= aiming ? equippedWeaponScope.GetMultiplierMouseSensitivity() : 1.0f;
+            axisLook *= _lookSensetive;
+        }
 
 		/// <summary>
 		/// Called in order to update the tutorial text value.
