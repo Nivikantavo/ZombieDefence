@@ -14,7 +14,7 @@ public class JumpSlam : Force
     [SerializeField] private float _stunDuration;
     [SerializeField] private Movement _playerMovment;
     [SerializeField] private JumpSlam _explosionPoint;
-    [SerializeField] private GameObject _explosion;
+    [SerializeField] private ParticleSystem _jumpSlamEffect;
 
     private CapsuleCollider _explosionCollider;
     private List<Zombie> _zombies = new List<Zombie>();
@@ -100,7 +100,8 @@ public class JumpSlam : Force
             }
             SetJumpForce(_standartJumpForce);
             _jumpImproved = false;
-            Instantiate(_explosion, _explosionPoint.transform);
+            _jumpSlamEffect.gameObject.SetActive(true);
+            _jumpSlamEffect.Play();
             _zombies.Clear();
         }
         _corutineStarted = false;

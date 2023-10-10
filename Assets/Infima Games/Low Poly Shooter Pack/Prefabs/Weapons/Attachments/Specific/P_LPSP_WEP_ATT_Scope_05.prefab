@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 8573649849630266149}
   - component: {fileID: 7295795339477665212}
-  - component: {fileID: 8078389598300230548}
   m_Layer: 9
   m_Name: Render Camera
   m_TagString: Untagged
@@ -28,6 +27,7 @@ Transform:
   m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3884917451540348133}
   m_RootOrder: 0
@@ -41,7 +41,7 @@ Camera:
   m_GameObject: {fileID: 3883352853822600124}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 1
+  m_ClearFlags: 4
   m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
@@ -56,7 +56,7 @@ Camera:
     width: 1
     height: 1
   near clip plane: 0.01
-  far clip plane: 1000
+  far clip plane: 50
   field of view: 4.25
   orthographic: 0
   orthographic size: 5
@@ -75,66 +75,6 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
---- !u!114 &8078389598300230548
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3883352853822600124}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 948f4100a11a5c24981795d21301da5c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  volumeTrigger: {fileID: 8573649849630266149}
-  volumeLayer:
-    serializedVersion: 2
-    m_Bits: 8192
-  stopNaNPropagation: 1
-  finalBlitToCameraTarget: 0
-  antialiasingMode: 0
-  temporalAntialiasing:
-    jitterSpread: 0.75
-    sharpness: 0.25
-    stationaryBlending: 0.95
-    motionBlending: 0.85
-  subpixelMorphologicalAntialiasing:
-    quality: 2
-  fastApproximateAntialiasing:
-    fastMode: 0
-    keepAlpha: 0
-  fog:
-    enabled: 1
-    excludeSkybox: 1
-  debugLayer:
-    lightMeter:
-      width: 512
-      height: 256
-      showCurves: 1
-    histogram:
-      width: 512
-      height: 256
-      channel: 3
-    waveform:
-      exposure: 0.12
-      height: 256
-    vectorscope:
-      size: 256
-      exposure: 0.12
-    overlaySettings:
-      linearDepth: 0
-      motionColorIntensity: 4
-      motionGridSize: 64
-      colorBlindnessType: 0
-      colorBlindnessStrength: 1
-  m_Resources: {fileID: 11400000, guid: d82512f9c8e5d4a4d938b575d47f88d4, type: 2}
-  m_ShowToolkit: 0
-  m_ShowCustomSorter: 0
-  breakBeforeColorGrading: 0
-  m_BeforeTransparentBundles: []
-  m_BeforeStackBundles: []
-  m_AfterStackBundles: []
 --- !u!1 &4840233239652816165
 GameObject:
   m_ObjectHideFlags: 0
@@ -162,6 +102,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3884917451540348135}
   m_Father: {fileID: 0}
@@ -259,6 +200,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2300000, guid: fc2eb113b4247a34cb781d00e063c175, type: 3}
+      propertyPath: m_ReceiveShadows
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: fc2eb113b4247a34cb781d00e063c175, type: 3}
       propertyPath: m_Materials.Array.data[2]
       value: 
       objectReference: {fileID: 2100000, guid: a0d4ff787bd9b3947bc197f5ae854608, type: 2}
@@ -272,15 +217,13 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 40933edcd467d0e4fad3d8d48e3af809, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fc2eb113b4247a34cb781d00e063c175, type: 3}
---- !u!4 &3884917451540348135 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 400000, guid: fc2eb113b4247a34cb781d00e063c175,
-    type: 3}
-  m_PrefabInstance: {fileID: 3884917451539949159}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &3884917451540348133 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 400002, guid: fc2eb113b4247a34cb781d00e063c175,
-    type: 3}
+  m_CorrespondingSourceObject: {fileID: 400002, guid: fc2eb113b4247a34cb781d00e063c175, type: 3}
+  m_PrefabInstance: {fileID: 3884917451539949159}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &3884917451540348135 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 400000, guid: fc2eb113b4247a34cb781d00e063c175, type: 3}
   m_PrefabInstance: {fileID: 3884917451539949159}
   m_PrefabAsset: {fileID: 0}
