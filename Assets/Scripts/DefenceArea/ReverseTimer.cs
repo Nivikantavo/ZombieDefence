@@ -6,11 +6,13 @@ public class ReverseTimer : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI _timerText;
     [SerializeField] private DesertirPanel _DesertirPanel;
+
+    private float _timeForComeback = 5f;
     private float _timeToLose;
 
     private void OnEnable()
     {
-        _timeToLose = 5f;
+        _timeToLose = _timeForComeback;
         _timerText.text = _timeToLose.ToString();
     }
      
