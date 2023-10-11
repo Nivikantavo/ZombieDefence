@@ -252,7 +252,7 @@ MonoBehaviour:
   - {fileID: 1201910349185342244}
   laserIndex: -1
   laserIndexRandom: 1
-  upgradeLaserIndex: 0
+  upgradeLaserIndex: -1
   laserArray:
   - {fileID: 3808128651002874644}
   - {fileID: 6628202729322830246}

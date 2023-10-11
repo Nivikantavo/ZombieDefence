@@ -6,7 +6,6 @@ public class StartScreen : MonoBehaviour
 {
     private void Awake()
     {
-        YandexGamesSdk.CallbackLogging = true;
 #if !UNITY_WEBGL || UNITY_EDITOR
         return;
 #endif
