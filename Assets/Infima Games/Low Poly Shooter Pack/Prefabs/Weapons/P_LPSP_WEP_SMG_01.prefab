@@ -417,7 +417,7 @@ MonoBehaviour:
   - {fileID: 6952686933382682844}
   laserIndex: -1
   laserIndexRandom: 0
-  upgradeLaserIndex: 0
+  upgradeLaserIndex: -1
   laserArray:
   - {fileID: 3630894888444754565}
   - {fileID: 6721248879272765495}
