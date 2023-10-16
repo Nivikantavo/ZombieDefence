@@ -68,6 +68,7 @@ public class MoneyCollecter : MonoBehaviour, ILoadable
         }
         _money -= cost;
         MoneyCountChanged?.Invoke(_money);
+        SaveSystem.Instance.SetMoneyValue(_money);
         return true;
     }
 
@@ -75,6 +76,7 @@ public class MoneyCollecter : MonoBehaviour, ILoadable
     {
         _money += money;
         MoneyCountChanged?.Invoke(_money);
+        SaveSystem.Instance.SetMoneyValue(_money);
     }
 
     private void CollectCoin(Coin coin)

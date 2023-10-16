@@ -1151,6 +1151,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: abd5b66a9ca30ee42ba93392201adf78, type: 2}
+    - target: {fileID: 1844990876334002323, guid: c472be678311843468e98214f36dec77, type: 3}
+      propertyPath: m_ClearFlags
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2609072361052009066, guid: c472be678311843468e98214f36dec77, type: 3}
       propertyPath: sprite
       value: 
@@ -1242,6 +1246,14 @@ PrefabInstance:
     - target: {fileID: 4428515403314268477, guid: c472be678311843468e98214f36dec77, type: 3}
       propertyPath: m_Name
       value: P_LPSP_WEP_ATT_Scopes
+      objectReference: {fileID: 0}
+    - target: {fileID: 4520409633662410888, guid: c472be678311843468e98214f36dec77, type: 3}
+      propertyPath: m_ClearFlags
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5335687081646436659, guid: c472be678311843468e98214f36dec77, type: 3}
+      propertyPath: m_ClearFlags
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6164686463225531250, guid: c472be678311843468e98214f36dec77, type: 3}
       propertyPath: m_IsActive
