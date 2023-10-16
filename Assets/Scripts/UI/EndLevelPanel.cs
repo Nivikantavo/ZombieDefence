@@ -93,10 +93,9 @@ public class EndLevelPanel : Element
 //#if UNITY_WEBGL && !UNITY_EDITOR
         if(_wasRewarded == false)
         {
-            InterstitialAd.Show(OnAdOpen, OnAdClose);
+            InterstitialAd.Show(OnAdOpen, OnRestartAdClose, OnRestartAdError);
         }
 //#endif
-        _loadingScreen.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     private void OnInMenuButtonClick()
@@ -138,6 +137,24 @@ _moneyCollecter.AddMoney(_moneyCollecter.Money - _moneyCollecter.StartMoney);
 
     private void OnAdClose(bool wasShown = true)
     {
+        _backgroundCheker.SetAdsShown(false);
+        InputSystem.EnableDevice(Keyboard.current);
+        AudioListener.pause = false;
+        AudioListener.volume = 1f;
+    }
+
+    private void OnRestartAdClose(bool wasShown = true)
+    {
+        _loadingScreen.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        _backgroundCheker.SetAdsShown(false);
+        InputSystem.EnableDevice(Keyboard.current);
+        AudioListener.pause = false;
+        AudioListener.volume = 1f;
+    }
+
+    private void OnRestartAdError(string error)
+    {
+        _loadingScreen.LoadScene(SceneManager.GetActiveScene().buildIndex);
         _backgroundCheker.SetAdsShown(false);
         InputSystem.EnableDevice(Keyboard.current);
         AudioListener.pause = false;
