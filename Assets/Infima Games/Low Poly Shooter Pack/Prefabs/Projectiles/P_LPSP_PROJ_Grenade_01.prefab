@@ -195,7 +195,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: Space
+  m_Text: 
 --- !u!114 &5655372482505099797
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -209,7 +209,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   translationName: Granade
-  FallbackText: GRENADE
+  FallbackText: 
 --- !u!1 &1554143779791216
 GameObject:
   m_ObjectHideFlags: 0
