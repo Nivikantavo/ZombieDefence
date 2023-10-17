@@ -962,8 +962,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 965555d451af4a2299927c4e3dd7ee09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ammunitionTotal: 7
-  upgradeAmmunitionTotal: 10
+  ammunitionTotal: 4
+  upgradeAmmunitionTotal: 6
   sprite: {fileID: 0}
 --- !u!4 &2657098032119006043 stripped
 Transform:
@@ -1123,6 +1123,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: abd5b66a9ca30ee42ba93392201adf78, type: 2}
+    - target: {fileID: 241158883578473607, guid: c472be678311843468e98214f36dec77, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1145889618073004828, guid: c472be678311843468e98214f36dec77, type: 3}
       propertyPath: sprite
       value: 
@@ -1154,6 +1158,10 @@ PrefabInstance:
     - target: {fileID: 1844990876334002323, guid: c472be678311843468e98214f36dec77, type: 3}
       propertyPath: m_ClearFlags
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1844990876334002323, guid: c472be678311843468e98214f36dec77, type: 3}
+      propertyPath: m_CullingMask.m_Bits
+      value: 15679
       objectReference: {fileID: 0}
     - target: {fileID: 2609072361052009066, guid: c472be678311843468e98214f36dec77, type: 3}
       propertyPath: sprite
@@ -1251,9 +1259,17 @@ PrefabInstance:
       propertyPath: m_ClearFlags
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4520409633662410888, guid: c472be678311843468e98214f36dec77, type: 3}
+      propertyPath: m_CullingMask.m_Bits
+      value: 15679
+      objectReference: {fileID: 0}
     - target: {fileID: 5335687081646436659, guid: c472be678311843468e98214f36dec77, type: 3}
       propertyPath: m_ClearFlags
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5335687081646436659, guid: c472be678311843468e98214f36dec77, type: 3}
+      propertyPath: m_CullingMask.m_Bits
+      value: 15679
       objectReference: {fileID: 0}
     - target: {fileID: 6164686463225531250, guid: c472be678311843468e98214f36dec77, type: 3}
       propertyPath: m_IsActive
