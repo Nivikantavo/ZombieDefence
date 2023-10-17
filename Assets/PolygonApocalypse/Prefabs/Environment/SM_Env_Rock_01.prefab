@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4059559679900616}
   - component: {fileID: 33992034398346410}
   - component: {fileID: 23421567071832740}
-  - component: {fileID: 1753742625}
+  - component: {fileID: 7578129732460215951}
   m_Layer: 0
   m_Name: SM_Env_Rock_01
   m_TagString: Untagged
@@ -84,8 +84,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &1753742625
-MeshCollider:
+--- !u!65 &7578129732460215951
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -94,7 +94,6 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300000, guid: 78981a0855c47dc49aaabde278b08b1e, type: 3}
+  serializedVersion: 2
+  m_Size: {x: 1.3457637, y: 0.9291985, z: 1.5590496}
+  m_Center: {x: -0.16755773, y: 0.2817435, z: -0.15315972}
