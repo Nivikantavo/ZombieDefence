@@ -51,24 +51,6 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Holster",
-                    "type": "Button",
-                    "id": "4989ad3b-04e9-4d5d-8aeb-d8f00ab4550b",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "Hold",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "Lower Weapon",
-                    "type": "Button",
-                    "id": "48620936-869d-449d-a2b8-144b256bad4a",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
                     "name": "Jump",
                     "type": "Button",
                     "id": "6bf74daf-8a98-48de-b071-9a4f6efdc3f3",
@@ -99,15 +81,6 @@
                     "name": "Run",
                     "type": "Button",
                     "id": "779a6091-f045-4535-8635-505915368372",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "Inspect",
-                    "type": "Button",
-                    "id": "f2d17bd7-8d54-496b-99fd-8cb954650514",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -279,28 +252,6 @@
                 },
                 {
                     "name": "",
-                    "id": "dc3a03f5-a9b8-4f03-a059-0934bff25be3",
-                    "path": "<Keyboard>/h",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Holster",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "5f849bc7-a9ec-4751-9161-18b41a439450",
-                    "path": "<Gamepad>/rightShoulder",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Holster",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "150d2785-d381-47b7-aa2c-661f91c5e2f7",
                     "path": "<Keyboard>/space",
                     "interactions": "",
@@ -362,28 +313,6 @@
                     "processors": "",
                     "groups": "",
                     "action": "Run",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "73bd4a0a-ac64-41bf-8aca-a24b63708590",
-                    "path": "<Keyboard>/t",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Inspect",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "a0382ae6-6ecc-441e-a0a6-05fbc67523bb",
-                    "path": "<Gamepad>/dpad/left",
-                    "interactions": "Hold",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Inspect",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -549,28 +478,6 @@
                     "processors": "",
                     "groups": "",
                     "action": "Crouch",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "3a228bb0-edfd-47a8-9460-9bfd27c254ae",
-                    "path": "<Keyboard>/h",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Lower Weapon",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "9ba79389-e708-44b5-8bcd-b41de23140f5",
-                    "path": "<Gamepad>/rightShoulder",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Lower Weapon",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },

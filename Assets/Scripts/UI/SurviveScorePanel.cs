@@ -25,11 +25,9 @@ public class SurviveScorePanel : MonoBehaviour
     public void SetScore(float time)
     {
         ViewSurviveResult(time, _surviveText);
-        Debug.Log($"Старый рекорд: {_currentRecord}, Новый: {time}, после преобразования:");
         if(_currentRecord < time)
         {
             _currentRecord = Mathf.FloorToInt(time);
-            Debug.Log(_currentRecord);
 #if UNITY_WEBGL && !UNITY_EDITOR
             Leaderboard.SetScore(_currentLeaderboardName, _currentRecord);
 #endif
@@ -50,7 +48,6 @@ public class SurviveScorePanel : MonoBehaviour
 
     private void ViewSurviveResult(float time, TMP_Text text)
     {
-        Debug.Log(time);
         float[] timersValue = new float[]
         { 
             Mathf.FloorToInt((time / _millisecondsInSecond) / 60),

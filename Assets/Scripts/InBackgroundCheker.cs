@@ -1,5 +1,6 @@
 using Agava.WebUtility;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class InBackgroundCheker : MonoBehaviour
 {
@@ -28,5 +29,6 @@ public class InBackgroundCheker : MonoBehaviour
         }
         AudioListener.pause = inBackground;
         AudioListener.volume = inBackground ? 0f : 1f;
+        EventSystem.current.UpdateModules();
     }
 }
