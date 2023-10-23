@@ -9,6 +9,7 @@ using UnityEngine.UI;
 public class ProductView : MonoBehaviour
 {
     public string ProductID => _product.id;
+    public string ProductName => _item.Name;
 
     [SerializeField] private RawImage _productImage;
     [SerializeField] private TMP_Text _priceText;
@@ -56,6 +57,7 @@ public class ProductView : MonoBehaviour
 
     public void OnPurchaseButtonClick()
     {
+        Debug.Log("Куплено = " + _bought);
         if(_bought == false)
         {
             PoductViewClick?.Invoke(_item, ProductID);
@@ -65,6 +67,7 @@ public class ProductView : MonoBehaviour
     public void OnSellSuccessfully()
     {
         _bought = true;
+        Debug.Log("OnSellSuccessfully " + _bought);
         Renderer();
     }
 

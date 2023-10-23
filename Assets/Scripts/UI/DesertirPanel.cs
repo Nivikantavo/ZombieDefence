@@ -3,12 +3,14 @@ using Agava.YandexGames;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using UnityEngine.InputSystem;
 
 public class DesertirPanel : Element
 {
     [SerializeField] private Button _inMenuButton;
     [SerializeField] private Button _restartButton;
     [SerializeField] private LoadingScreen _loadingScreen;
+    [SerializeField] private InBackgroundCheker _backgroundCheker;
 
     private void OnEnable()
     {
@@ -27,16 +29,50 @@ public class DesertirPanel : Element
     private void OnRestartLevelButtonClick()
     {
 #if UNITY_WEBGL && !UNITY_EDITOR
-        InterstitialAd.Show();
+        InterstitialAd.Show(OnAdOpen, OnRestartAdClose, OnRestartAdError);
 #endif
-        _loadingScreen.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     private void OnInMenuButtonClick()
     {
 #if UNITY_WEBGL && !UNITY_EDITOR
-        InterstitialAd.Show();
+        InterstitialAd.Show(OnAdOpen, OnAdClose, OnAdError);
 #endif
         _loadingScreen.LoadScene(0);
+    }
+
+    private void OnAdOpen()
+    {
+        _backgroundCheker.SetAdsShown(true);
+        InputSystem.DisableDevice(Keyboard.current);
+        AudioListener.pause = true;
+        AudioListener.volume = 0f;
+    }
+
+    private void OnAdClose(bool wasShown = true)
+    {
+        _backgroundCheker.SetAdsShown(false);
+        InputSystem.EnableDevice(Keyboard.current);
+        AudioListener.pause = false;
+        AudioListener.volume = 1f;
+    }
+
+    private void OnRestartAdClose(bool wasShown = true)
+    {
+        OnAdClose(wasShown);
+        _loadingScreen.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
+
+    private void OnRestartAdError(string error)
+    {
+        OnAdClose();
+        _loadingScreen.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
+    private void OnAdError(string error)
+    {
+        OnAdClose();
+        Debug.Log(error);
     }
 }

@@ -11,6 +11,7 @@ public class AdAsk : MonoBehaviour
 
     private void OnEnable()
     {
+        _adStartButton.interactable = true;
         _adStartButton.onClick.AddListener(ShowVideoAd);
     }
 
@@ -21,7 +22,8 @@ public class AdAsk : MonoBehaviour
 
     private void ShowVideoAd()
     {
-        VideoAd.Show(OnVideoAdOpen, OnRewardCallback, OnVideoAdClose);
+        _adStartButton.interactable = false;
+        VideoAd.Show(OnVideoAdOpen, OnRewardCallback, OnVideoAdClose, OnErrorCallback);
     }
 
     private void OnVideoAdOpen()
@@ -42,5 +44,11 @@ public class AdAsk : MonoBehaviour
         _backgroundCheker.SetAdsShown(false);
         AudioListener.pause = false;
         AudioListener.volume = 1f;
+    }
+
+    private void OnErrorCallback(string error)
+    {
+        OnVideoAdClose();
+        Debug.LogError(error);
     }
 }

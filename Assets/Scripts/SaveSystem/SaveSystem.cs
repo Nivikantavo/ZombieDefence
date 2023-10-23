@@ -9,6 +9,9 @@ using UnityEngine.Events;
 
 public class SaveSystem : MonoBehaviour
 {
+    private const string ProductARName = "Assault Rifle 03";
+    private const string ProductRPGName = "Rocket Launcher 01";
+
     public bool DataLoaded { get; private set; }
 
     private PlayerData _playerData;
@@ -62,10 +65,10 @@ public class SaveSystem : MonoBehaviour
 
     public void Load()
     {
-#if UNITY_WEBGL && !UNITY_EDITOR
+//#if UNITY_WEBGL && !UNITY_EDITOR
         PlayerAccount.GetCloudSaveData(OnLoadDataSuccess, OnLoadDataError);
         DataUpdated?.Invoke();
-#endif
+//#endif
 #if UNITY_EDITOR
         _playerData = new PlayerData();
         string json = ReadFromFile(file);
@@ -133,6 +136,12 @@ public class SaveSystem : MonoBehaviour
     public void SetWeaponsArrey(string[] weapons)
     {
         _playerData.Weapons = weapons;
+
+        foreach(string weapon in weapons)
+        {
+            Debug.Log(weapon);
+        }
+
         Save();
     }
 
@@ -230,8 +239,39 @@ public class SaveSystem : MonoBehaviour
         else
         {
             _playerData = JsonUtility.FromJson<PlayerData>(data);
+            GetBoughtProducts();
         }
         DataLoaded = true;
+    }
+
+    private void GetBoughtProducts()
+    {
+        Billing.GetPurchasedProducts(purchasedProductsResponse => CheckBoughtProduct(purchasedProductsResponse.purchasedProducts));
+    }
+
+    private void CheckBoughtProduct(PurchasedProduct[] products)
+    {
+        List<string> weapons = _playerData.Weapons.ToList();
+
+        foreach (var product in products)
+        {
+            if(product.productID == "rpg")
+            {
+                if (weapons.Contains(ProductRPGName) == false)
+                {
+                    weapons.Add(ProductRPGName);
+                    SetWeaponsArrey(weapons.ToArray());
+                }
+            }
+            if (product.productID == "ar")
+            {
+                if (weapons.Contains(ProductARName) == false)
+                {
+                    weapons.Add(ProductARName);
+                    SetWeaponsArrey(weapons.ToArray());
+                }
+            }
+        }
     }
 
     private void OnLoadDataError(string errorMessage)

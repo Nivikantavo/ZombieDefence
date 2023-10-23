@@ -110,13 +110,14 @@ public class Shop : MonoBehaviour
         Billing.PurchaseProduct(id, (purchaseProduct) =>
         {
             SaveSystem.Instance.SetBoughtProduct(purchaseProduct.purchaseData.productID);
+            AddBoughtWeapon(item as WeaponItem);
+            Debug.Log("weapon added");
 
             foreach (ProductView view in _productsView)
             {
                 if (view.ProductID == purchaseProduct.purchaseData.productID)
                 {
                     view.OnSellSuccessfully();
-                    AddBoughtWeapon(item as WeaponItem);
                 }
             }
         });
@@ -271,7 +272,6 @@ public class Shop : MonoBehaviour
     private void GetBoughtProducts()
     {
         Billing.GetPurchasedProducts(purchasedProductsResponse => MarkBoughtProduct(purchasedProductsResponse.purchasedProducts));
-        
     }
 
     private void MarkBoughtProduct(PurchasedProduct[] products)

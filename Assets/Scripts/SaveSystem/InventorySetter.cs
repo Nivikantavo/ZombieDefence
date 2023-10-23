@@ -23,6 +23,12 @@ public class InventorySetter : MonoBehaviour
     public void TakeExtraWeapons()
     {
         string[] equipedWeapons = SaveSystem.Instance.GetData().Weapons;
+
+        foreach (var item in equipedWeapons)
+        {
+            Debug.Log(item);
+        }
+
         bool inList = false;
         foreach (var weapon in _weaponList)
         {
