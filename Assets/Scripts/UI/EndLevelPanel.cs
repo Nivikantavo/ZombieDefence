@@ -25,6 +25,7 @@ public class EndLevelPanel : Element
     [SerializeField] private Button _restartButton;
     [SerializeField] private Button _rewardButton;
     [SerializeField] private LeanLocalizedTextMeshProUGUI _labelText;
+    [SerializeField] private GameObject _adErrorPanel;
     [SerializeField] private float _settingScoreDelay;
 
     private DifficultyChoicer _difficultyChoicer;
@@ -107,7 +108,7 @@ public class EndLevelPanel : Element
 //#if UNITY_WEBGL && !UNITY_EDITOR
         if(_wasRewarded == false)
         {
-            InterstitialAd.Show(OnAdOpen, OnAdClose);
+            InterstitialAd.Show(OnAdOpen, OnAdClose, OnAdError);
         }
 //#endif
         _loadingScreen.LoadScene(0);
@@ -116,7 +117,8 @@ public class EndLevelPanel : Element
     private void OnRewardButtonClick()
     {
 //#if UNITY_WEBGL && !UNITY_EDITOR
-        VideoAd.Show(OnAdOpen, OnRewardCallback, OnRewardAdClose);
+        _rewardButton.interactable = false;
+        VideoAd.Show(OnAdOpen, OnRewardCallback, OnRewardAdClose, OnRewardAdError);
 //#endif
     }
 
@@ -145,25 +147,33 @@ public class EndLevelPanel : Element
 
     private void OnRestartAdClose(bool wasShown = true)
     {
+        OnAdClose(wasShown);
         _loadingScreen.LoadScene(SceneManager.GetActiveScene().buildIndex);
-        _backgroundCheker.SetAdsShown(false);
-        InputSystem.EnableDevice(Keyboard.current);
-        AudioListener.pause = false;
-        AudioListener.volume = 1f;
     }
 
     private void OnRestartAdError(string error)
     {
+        OnAdClose();
         _loadingScreen.LoadScene(SceneManager.GetActiveScene().buildIndex);
-        _backgroundCheker.SetAdsShown(false);
-        InputSystem.EnableDevice(Keyboard.current);
-        AudioListener.pause = false;
-        AudioListener.volume = 1f;
     }
 
     private void OnRewardAdClose()
     {
         OnAdClose();
         RewardAdClose?.Invoke();
+    }
+
+    private void OnRewardAdError(string error)
+    {
+        OnAdClose();
+        _adErrorPanel.gameObject.SetActive(true);
+        _rewardButton.interactable = false;
+        Debug.Log(error);
+    }
+
+    private void OnAdError(string error)
+    {
+        OnAdClose();
+        Debug.Log(error);
     }
 }
