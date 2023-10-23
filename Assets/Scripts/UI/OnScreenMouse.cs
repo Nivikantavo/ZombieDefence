@@ -39,7 +39,6 @@ public class OnScreenMouse : OnScreenControl, IDragHandler, IPointerDownHandler,
 
     void IDragHandler.OnDrag(PointerEventData eventData)
     {
-        Debug.Log("OnDrug");
         delta = eventData.delta;
         hasDrag = true;
     }

@@ -1,5 +1,6 @@
 using Agava.YandexGames;
 using Agava.YandexGames.Samples;
+using InfimaGames.LowPolyShooterPack;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -115,7 +116,7 @@ public class Shop : MonoBehaviour
                 if (view.ProductID == purchaseProduct.purchaseData.productID)
                 {
                     view.OnSellSuccessfully();
-                    TrySellItem(item);
+                    AddBoughtWeapon(item as WeaponItem);
                 }
             }
         });
@@ -190,10 +191,6 @@ public class Shop : MonoBehaviour
     {
         List<string> forces = _playerData.Forces.ToList();
         forces.Add(forceItem.ForceName);
-        for (int i = 0; i < forces.Count; i++)
-        {
-            Debug.Log(forces[i]);
-        }
         SaveSystem.Instance.SetForcesArrey(forces.ToArray());
     }
 

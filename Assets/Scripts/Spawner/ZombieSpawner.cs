@@ -24,6 +24,7 @@ public class ZombieSpawner : MonoBehaviour
     private int _defaultRangeZombieCount = 30;
     private bool _survivalMode = false;
     private bool _startWaveSpawned = false;
+    private int _spawnedZombie = 0;
 
     public event UnityAction AllZombieDied;
     public event UnityAction ZombyCounted;
@@ -132,6 +133,7 @@ public class ZombieSpawner : MonoBehaviour
         int spawnPointNumber = Random.Range(0, spawnPoints.Count);
         if (_currentWave.TryGetObject(out GameObject enemy))
         {
+            _spawnedZombie++;
             enemy.transform.position = spawnPoints[spawnPointNumber].position;
             enemy.GetComponent<TargetSwitcher>().Initialize(_player, _track);
             enemy.GetComponent<Zombie>().Initialize();

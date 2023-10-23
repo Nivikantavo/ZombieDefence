@@ -95,6 +95,10 @@ public class EndLevelPanel : Element
         {
             InterstitialAd.Show(OnAdOpen, OnRestartAdClose, OnRestartAdError);
         }
+        else
+        {
+            _loadingScreen.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        }
 //#endif
     }
 

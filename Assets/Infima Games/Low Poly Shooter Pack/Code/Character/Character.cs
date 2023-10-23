@@ -971,7 +971,6 @@ namespace InfimaGames.LowPolyShooterPack
 			//Make sure we have a weapon. We don't want errors!
 			if ((equippedWeapon = inventory.GetEquipped()) == null)
 			{
-				Debug.Log("inventory.GetEquipped()) == null");
                 return;
             }
 				
