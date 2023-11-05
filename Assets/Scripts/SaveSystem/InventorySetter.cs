@@ -24,11 +24,6 @@ public class InventorySetter : MonoBehaviour
     {
         string[] equipedWeapons = SaveSystem.Instance.GetData().Weapons;
 
-        foreach (var item in equipedWeapons)
-        {
-            Debug.Log(item);
-        }
-
         bool inList = false;
         foreach (var weapon in _weaponList)
         {

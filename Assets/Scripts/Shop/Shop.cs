@@ -111,7 +111,6 @@ public class Shop : MonoBehaviour
         {
             SaveSystem.Instance.SetBoughtProduct(purchaseProduct.purchaseData.productID);
             AddBoughtWeapon(item as WeaponItem);
-            Debug.Log("weapon added");
 
             foreach (ProductView view in _productsView)
             {
