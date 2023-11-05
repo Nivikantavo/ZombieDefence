@@ -65,10 +65,10 @@ public class SaveSystem : MonoBehaviour
 
     public void Load()
     {
-//#if UNITY_WEBGL && !UNITY_EDITOR
+#if UNITY_WEBGL && !UNITY_EDITOR
         PlayerAccount.GetCloudSaveData(OnLoadDataSuccess, OnLoadDataError);
         DataUpdated?.Invoke();
-//#endif
+#endif
 #if UNITY_EDITOR
         _playerData = new PlayerData();
         string json = ReadFromFile(file);
@@ -136,11 +136,6 @@ public class SaveSystem : MonoBehaviour
     public void SetWeaponsArrey(string[] weapons)
     {
         _playerData.Weapons = weapons;
-
-        foreach(string weapon in weapons)
-        {
-            Debug.Log(weapon);
-        }
 
         Save();
     }

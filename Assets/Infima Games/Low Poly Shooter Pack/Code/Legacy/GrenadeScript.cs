@@ -91,7 +91,10 @@ namespace InfimaGames.LowPolyShooterPack.Legacy
 
                 if (hit.TryGetComponent<Idamageable>(out Idamageable damageable))
                 {
-                    damageable.TakeDamage(_damage);
+					if(hit.TryGetComponent<Target>(out Target target) == false)
+					{
+                        damageable.TakeDamage(_damage);
+                    }
                 }
             }
 

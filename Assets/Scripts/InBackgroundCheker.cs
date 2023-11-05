@@ -4,7 +4,11 @@ using UnityEngine.EventSystems;
 
 public class InBackgroundCheker : MonoBehaviour
 {
+    [SerializeField] private GameObject _mobileUI;
+    [SerializeField] private UIInput _ui;
+
     private bool _adsBeingShown = false;
+
 
     private void OnEnable()
     {
@@ -27,6 +31,18 @@ public class InBackgroundCheker : MonoBehaviour
         {
             return;
         }
+        if (Device.IsMobile)
+        {
+            if(_mobileUI != null)
+            {
+                _mobileUI.SetActive(!inBackground);
+            }
+        }
+        if(_ui != null)
+        {
+            _ui.SetPaused(true);
+        }
+
         AudioListener.pause = inBackground;
         AudioListener.volume = inBackground ? 0f : 1f;
         EventSystem.current.UpdateModules();

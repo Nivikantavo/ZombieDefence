@@ -7,6 +7,7 @@ public class UIInput : Element
     [SerializeField] private GameObject _pausePanel;
     [SerializeField] private DesertirPanel _desertirPanel;
     [SerializeField] private EndLevelPanel _endLevelPanel;
+    [SerializeField] private EducationPanel _educationPanel;
 
     private bool _paused = false;
 
@@ -27,9 +28,18 @@ public class UIInput : Element
 
     public void SwitchPauseEnabled()
     {
-        if (_desertirPanel.gameObject.activeSelf == false && _endLevelPanel.gameObject.activeSelf == false)
+        if (_desertirPanel.gameObject.activeSelf == false && _endLevelPanel.gameObject.activeSelf == false && _educationPanel.gameObject.activeSelf == false)
         {
             _paused = !_paused;
+            _pausePanel.SetActive(_paused);
+        }
+    }
+
+    public void SetPaused(bool paused)
+    {
+        if (_desertirPanel.gameObject.activeSelf == false && _endLevelPanel.gameObject.activeSelf == false && _educationPanel.gameObject.activeSelf == false)
+        {
+            _paused = paused;
             _pausePanel.SetActive(_paused);
         }
     }
