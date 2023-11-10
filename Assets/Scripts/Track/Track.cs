@@ -1,3 +1,4 @@
+using Plugins.Audio.Core;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
@@ -14,12 +15,15 @@ public class Track : Target
     [SerializeField] private AudioClip _hitClip;
     [SerializeField] private AudioSource _audioSource;
 
+    private SourceAudio _sourceAudioYB;
+
     private float _currentFuel;
 
     public event UnityAction<float> FuelUpdate;
 
     protected override void Awake()
     {
+        _sourceAudioYB = GetComponent<SourceAudio>();
         SetMaxHealth();
         base.Awake();
         _currentFuel = 0;
@@ -60,7 +64,7 @@ public class Track : Target
     private void PlayHitSound()
     {
         _audioSource.pitch = Random.Range(1f, 2f);
-
-        _audioSource.PlayOneShot(_hitClip);
+        _sourceAudioYB.Play();
+        //_audioSource.PlayOneShot(_hitClip);
     }
 }

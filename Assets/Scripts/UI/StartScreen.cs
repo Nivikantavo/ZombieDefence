@@ -7,6 +7,7 @@ public class StartScreen : MonoBehaviour
     private void Awake()
     {
 #if !UNITY_WEBGL || UNITY_EDITOR
+        gameObject.SetActive(false);
         return;
 #endif
         StartCoroutine(CheckGameReady());

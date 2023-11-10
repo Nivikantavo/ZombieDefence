@@ -1,3 +1,4 @@
+using Plugins.Audio.Core;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -9,8 +10,7 @@ public class Force : MonoBehaviour
 
     [SerializeField] protected float Cooldown;
     [SerializeField] private string _name;
-    [SerializeField] private AudioClip _forceSound;
-    [SerializeField] private AudioSource _forceSource;
+    private SourceAudio _sourceAudio;
 
     protected float LastUseTime;
 
@@ -18,6 +18,7 @@ public class Force : MonoBehaviour
 
     protected virtual void Awake()
     {
+        _sourceAudio = GetComponent<SourceAudio>();
         LastUseTime = Cooldown;
     }
 
@@ -34,7 +35,7 @@ public class Force : MonoBehaviour
         if(LastUseTime > Cooldown)
         {
             ForceUsed?.Invoke();
-            _forceSource.PlayOneShot(_forceSound);
+            _sourceAudio.Play();
             LastUseTime = 0;
         }
     }

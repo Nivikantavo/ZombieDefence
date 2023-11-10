@@ -4,7 +4,7 @@ using UnityEngine;
 using System.Collections;
 using UnityEngine.Audio;
 using Agava.YandexGames;
-using Unity.VisualScripting;
+using Plugins.Audio.Core;
 
 namespace InfimaGames.LowPolyShooterPack
 {
@@ -86,7 +86,6 @@ namespace InfimaGames.LowPolyShooterPack
             //Make sure we still have a source!
             if (source == null)
                 return false;
-
             //Return.
             return source.isPlaying;
         }
@@ -98,10 +97,19 @@ namespace InfimaGames.LowPolyShooterPack
         {
             //Wait for the audio source to complete playing the clip.
             yield return new WaitWhile(() => IsPlayingSource(source));
-            
             //Destroy the audio game object, since we're not using it anymore.
             //This isn't really too great for performance, but it works, for now.
-            if(source != null)
+            if (source != null)
+                DestroyImmediate(source.gameObject);
+        }
+
+        private IEnumerator DestroySourceWhenFinished(AudioSource source, float time)
+        {
+            //Wait for the audio source to complete playing the clip.
+            yield return new WaitForSeconds(time);
+            //Destroy the audio game object, since we're not using it anymore.
+            //This isn't really too great for performance, but it works, for now.
+            if (source != null)
                 DestroyImmediate(source.gameObject);
         }
 
@@ -127,20 +135,22 @@ namespace InfimaGames.LowPolyShooterPack
             
             //Spawn a game object for the audio source.
             var newSourceObject = new GameObject($"Audio Source -> {clip.name}");
+            Debug.Log(newSourceObject);
             //Add an audio source component to that object.
             var newAudioSource = newSourceObject.AddComponent<AudioSource>();
+            var audioYB = newSourceObject.AddComponent<SourceAudio>();
             newAudioSource.outputAudioMixerGroup = _soundsGroup;
             _audioMixer.GetFloat(Sounds, out float volume);
             //newAudioSource.volume = volume;
             //Set spatial blend.
             newAudioSource.spatialBlend = settings.SpatialBlend;
-
             //Play the clip!
-            newAudioSource.PlayOneShot(clip);
+            //newAudioSource.PlayOneShot(clip, volume);
+            audioYB.Play(clip.name);
             
             //Start a coroutine that will destroy the whole object once it is done!
             if(settings.AutomaticCleanup)
-                StartCoroutine(nameof(DestroySourceWhenFinished), newAudioSource);
+                StartCoroutine(DestroySourceWhenFinished(newAudioSource, clip.length));
         }
 
         #region Audio Manager Service Interface

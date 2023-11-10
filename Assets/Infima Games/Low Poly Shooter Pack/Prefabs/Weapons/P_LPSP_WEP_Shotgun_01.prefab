@@ -639,15 +639,15 @@ MonoBehaviour:
   prefabProjectile: {fileID: 1086664671600574, guid: 5953171a59c27394e9ad5cbb564affa8, type: 3}
   controller: {fileID: 22100000, guid: 1faa6b60e979ab943acaba86b74a23b7, type: 2}
   spriteBody: {fileID: 21300000, guid: d046e191cca72234f808841e75fb8720, type: 3}
-  audioClipHolster: {fileID: 8300000, guid: 8c4ede782a70c6e4b9e515d40d6e6e69, type: 3}
-  audioClipUnholster: {fileID: 8300000, guid: 4aaa78b2722c0344cb0363a3980adf64, type: 3}
+  audioClipHolster: {fileID: 8300000, guid: 4710b5065ecd92548b0622e7c9fef094, type: 3}
+  audioClipUnholster: {fileID: 8300000, guid: 482327c75a4c4ef498a9f4023b48fba4, type: 3}
   audioClipReload: {fileID: 0}
   audioClipReloadEmpty: {fileID: 0}
-  audioClipReloadOpen: {fileID: 8300000, guid: ec06dc574549bf3489863bcb54a19eb9, type: 3}
-  audioClipReloadInsert: {fileID: 8300000, guid: 5a5dbd4bf74e33f44be53fc1abe63678, type: 3}
-  audioClipReloadClose: {fileID: 8300000, guid: f26af1e6395c82741bbc18ad9c76286c, type: 3}
-  audioClipFireEmpty: {fileID: 8300000, guid: 0c187ee2790c74c4e9985aa1ee1a12d5, type: 3}
-  audioClipBoltAction: {fileID: 8300000, guid: 3d9765feb01e6a34c8a4d33e43d9e5ac, type: 3}
+  audioClipReloadOpen: {fileID: 8300000, guid: d45d3d3d76facee489163dd6811a6958, type: 3}
+  audioClipReloadInsert: {fileID: 8300000, guid: 4422704ee6a2b9f48b098965ce0a8cf6, type: 3}
+  audioClipReloadClose: {fileID: 8300000, guid: 11b6ed4595bd0b842a540e1251718521, type: 3}
+  audioClipFireEmpty: {fileID: 8300000, guid: 7754b042456cdd547be321d3fa0c5a45, type: 3}
+  audioClipBoltAction: {fileID: 8300000, guid: 89eec9ef4399d1345b21b2f33f7f0895, type: 3}
 --- !u!114 &8578661464601570599
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -995,6 +995,10 @@ PrefabInstance:
       propertyPath: sprite
       value: 
       objectReference: {fileID: 21300000, guid: e2ea63887f5e5bd4dbc4b4307243b3bf, type: 3}
+    - target: {fileID: 9988663984994097, guid: 613eeb9dc59c9934392391ae63fffa9d, type: 3}
+      propertyPath: audioClipFire
+      value: 
+      objectReference: {fileID: 8300000, guid: ff9029834f6c7d14fbcd7f8da76b45c4, type: 3}
     - target: {fileID: 262358538803143606, guid: 613eeb9dc59c9934392391ae63fffa9d, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -1002,7 +1006,7 @@ PrefabInstance:
     - target: {fileID: 1103329891092828159, guid: 613eeb9dc59c9934392391ae63fffa9d, type: 3}
       propertyPath: audioClipFire
       value: 
-      objectReference: {fileID: 8300000, guid: 9725f166fab506e45a16924306480f26, type: 3}
+      objectReference: {fileID: 8300000, guid: 2310640837ca43d419c531aedfdf2470, type: 3}
     - target: {fileID: 1157167080681653570, guid: 613eeb9dc59c9934392391ae63fffa9d, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -1063,6 +1067,10 @@ PrefabInstance:
       propertyPath: sprite
       value: 
       objectReference: {fileID: 21300000, guid: ba861f619a440934ea403e41b3bd41a1, type: 3}
+    - target: {fileID: 4359136084285236088, guid: 613eeb9dc59c9934392391ae63fffa9d, type: 3}
+      propertyPath: audioClipFire
+      value: 
+      objectReference: {fileID: 8300000, guid: ff9029834f6c7d14fbcd7f8da76b45c4, type: 3}
     - target: {fileID: 5367789600872443889, guid: 613eeb9dc59c9934392391ae63fffa9d, type: 3}
       propertyPath: m_Name
       value: P_LPSP_WEP_ATT_Muzzles

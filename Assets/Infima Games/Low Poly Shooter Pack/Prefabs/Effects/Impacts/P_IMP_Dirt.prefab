@@ -4894,6 +4894,7 @@ GameObject:
   - component: {fileID: 4522298916909980}
   - component: {fileID: 114621607885325238}
   - component: {fileID: 82312109674525934}
+  - component: {fileID: -511879367563065971}
   m_Layer: 0
   m_Name: P_IMP_Dirt
   m_TagString: Untagged
@@ -5033,6 +5034,19 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
+--- !u!114 &-511879367563065971
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1186432685672840}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d2aac60583676c44b528663f59f134d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _pausa: 0
 --- !u!1 &1220454345124782
 GameObject:
   m_ObjectHideFlags: 0

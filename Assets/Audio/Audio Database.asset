@@ -1,0 +1,627 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4645132edefd4c74968a0c941a98fb89, type: 3}
+  m_Name: Audio Database
+  m_EditorClassIdentifier: 
+  _items:
+  - Clip: {fileID: 8300000, guid: 20d57ec93b158dc469072d09f014a272, type: 3}
+    Key: S_WEP_GL_01_Reload.wav
+    FolderPath: Audio\
+    Name: S_WEP_GL_01_Reload.wav.mp3
+    Preload: 1
+    _id: 6a2be6ff-29e4-4524-b68f-da76f4fcfed3
+  - Clip: {fileID: 8300000, guid: 30c4f468596901c458d8e90fd35525cc, type: 3}
+    Key: RepulseSound
+    FolderPath: Audio\
+    Name: RepulseSound.mp3
+    Preload: 1
+    _id: fdfec47c-2860-4958-a456-10fc76f9eb05
+  - Clip: {fileID: 8300000, guid: 70e4a5a02df7e1a4e90039e74d31da01, type: 3}
+    Key: vzryiv-sredney-moschnosti-27950-_mp3cut.net_
+    FolderPath: Audio\
+    Name: vzryiv-sredney-moschnosti-27950-_mp3cut.net_.mp3
+    Preload: 1
+    _id: 5192f815-f948-42cb-8ef9-255578a0f2a8
+  - Clip: {fileID: 8300000, guid: 70ee73ea949b0494e8c09a2b6cfdb302, type: 3}
+    Key: S_WEP_Handgun_Reload.wav
+    FolderPath: Audio\
+    Name: S_WEP_Handgun_Reload.wav.mp3
+    Preload: 1
+    _id: 0fdb7858-d323-4f31-8bbf-85c29037489f
+  - Clip: {fileID: 8300000, guid: 8044c2ebd63f59e438e50205d8ea9d80, type: 3}
+    Key: S_CH_Grenade_Throw_01
+    FolderPath: Audio\
+    Name: S_CH_Grenade_Throw_01.mp3
+    Preload: 1
+    _id: 0ab112d1-ec4f-418a-ae41-1e401d447471
+  - Clip: {fileID: 8300000, guid: d05a881522c86f246b6c2b783c649777, type: 3}
+    Key: S_CH_Jump_Start_06
+    FolderPath: Audio\
+    Name: S_CH_Jump_Start_06.mp3
+    Preload: 1
+    _id: 1308d51c-5940-4333-9411-74e95353a4b8
+  - Clip: {fileID: 8300000, guid: 11b6ed4595bd0b842a540e1251718521, type: 3}
+    Key: S_WEP_Shotgun_Reload_Close.wav
+    FolderPath: Audio\
+    Name: S_WEP_Shotgun_Reload_Close.wav.mp3
+    Preload: 1
+    _id: cae8bc66-1be9-42d3-9f14-7e588d7b1a2e
+  - Clip: {fileID: 8300000, guid: 21e6ccf1c14d37a438c8807d5df6b761, type: 3}
+    Key: TruckHit
+    FolderPath: Audio\
+    Name: TruckHit.mp3
+    Preload: 1
+    _id: b5f5df70-37b1-44dd-b0bc-f182c4d92df9
+  - Clip: {fileID: 8300000, guid: 51733c5b4c007c34095b07516fe5ae7f, type: 3}
+    Key: S_CH_Jump_Start_03
+    FolderPath: Audio\
+    Name: S_CH_Jump_Start_03.mp3
+    Preload: 1
+    _id: 5d3307c1-2acc-4ef1-88e2-0185a89aa843
+  - Clip: {fileID: 8300000, guid: 610615fae985eba449913d0397ec35e7, type: 3}
+    Key: S_WEP_Casing_05.wav
+    FolderPath: Audio\
+    Name: S_WEP_Casing_05.wav.mp3
+    Preload: 1
+    _id: 911786fc-7725-4b88-addd-00ad143f2175
+  - Clip: {fileID: 8300000, guid: 71db3e6eae1d95148abe7cb5c4750ee3, type: 3}
+    Key: S_WEP_Fire_003.wav
+    FolderPath: Audio\
+    Name: S_WEP_Fire_003.wav.mp3
+    Preload: 1
+    _id: 2958f254-567a-4d6b-9704-a8e01a6482f8
+  - Clip: {fileID: 8300000, guid: 91a4a2855f36fed4585c819ae6f4f192, type: 3}
+    Key: S_WEP_SMG_03_Reload
+    FolderPath: Audio\
+    Name: S_WEP_SMG_03_Reload.mp3
+    Preload: 1
+    _id: 888bb0d4-8237-4b9e-ba1a-a8cfc80ff895
+  - Clip: {fileID: 8300000, guid: a1e9a5348492d394d8957c70964b5a28, type: 3}
+    Key: S_WEP_Flashlight_Click.wav
+    FolderPath: Audio\
+    Name: S_WEP_Flashlight_Click.wav.mp3
+    Preload: 1
+    _id: bd566997-8270-4284-81b2-72bca187010d
+  - Clip: {fileID: 8300000, guid: c1bfb8064cb70f44db64886887101389, type: 3}
+    Key: S_WEP_Impact_Bullet_03.wav
+    FolderPath: Audio\
+    Name: S_WEP_Impact_Bullet_03.wav.mp3
+    Preload: 1
+    _id: 3e05de7d-8c66-4a20-8ca6-d782cbd85bd2
+  - Clip: {fileID: 8300000, guid: d1275d38cd6321f479cbdbfd8f6c90e3, type: 3}
+    Key: S_WEP_Sniper_03_Reload
+    FolderPath: Audio\
+    Name: S_WEP_Sniper_03_Reload.mp3
+    Preload: 1
+    _id: 8bee9e44-aa10-4142-9ca6-610c716ea6ef
+  - Clip: {fileID: 8300000, guid: f11739a5d2c1c87488a50497f8523615, type: 3}
+    Key: S_CH_Footstep_002
+    FolderPath: Audio\
+    Name: S_CH_Footstep_002.mp3
+    Preload: 1
+    _id: 07346faf-bf07-4437-b5a3-5757d3570c8b
+  - Clip: {fileID: 8300000, guid: 92be4459d4d5cc34e80223a7e63c720c, type: 3}
+    Key: S_Debris_Metal_03
+    FolderPath: Audio\
+    Name: S_Debris_Metal_03.mp3
+    Preload: 1
+    _id: 108b1002-c8bc-404f-97c2-f9cc9ee9c86d
+  - Clip: {fileID: 8300000, guid: a2685b6c40e96344ab4fe3c9a832550a, type: 3}
+    Key: S_WEP_Fire_004.wav.
+    FolderPath: Audio\
+    Name: S_WEP_Fire_004.wav.mp3
+    Preload: 1
+    _id: 5c0a9573-a939-4937-aba7-da5bf57b38f0
+  - Clip: {fileID: 8300000, guid: a2ce66770fc177e4791df91c0215e637, type: 3}
+    Key: S_WEP_SMG_04_Reload
+    FolderPath: Audio\
+    Name: S_WEP_SMG_04_Reload.mp3
+    Preload: 1
+    _id: 73fe1db7-8d14-4b51-a476-d658907a8ca7
+  - Clip: {fileID: 8300000, guid: 2310640837ca43d419c531aedfdf2470, type: 3}
+    Key: S_WEP_Fire_008.wav
+    FolderPath: Audio\
+    Name: S_WEP_Fire_008.wav.mp3
+    Preload: 1
+    _id: 2ddbcf30-5f0b-46cc-982f-e751b9d0926f
+  - Clip: {fileID: 8300000, guid: 2338b4e73033b9448b98c4e4a46f2bbb, type: 3}
+    Key: S_Debris_Metal_01
+    FolderPath: Audio\
+    Name: S_Debris_Metal_01.mp3
+    Preload: 1
+    _id: 09cbb0f5-2944-4440-94d5-adce4366af95
+  - Clip: {fileID: 8300000, guid: 33e84898224588c45b83c9b1478c153d, type: 3}
+    Key: S_WEP_Fire_Launcher.wav
+    FolderPath: Audio\
+    Name: S_WEP_Fire_Launcher.wav.mp3
+    Preload: 1
+    _id: afbeb5b3-63df-4e71-8a6a-634caa32eb83
+  - Clip: {fileID: 8300000, guid: 53308a1a62e0b2b4a8291dfc974bb892, type: 3}
+    Key: S_WEP_Fire_005.wav
+    FolderPath: Audio\
+    Name: S_WEP_Fire_005.wav.mp3
+    Preload: 1
+    _id: 529d6be8-4ce2-49b9-9a4f-930504210073
+  - Clip: {fileID: 8300000, guid: 73ea10b5ec6e355439c28a3fc41b939d, type: 3}
+    Key: S_CH_Jump_Start
+    FolderPath: Audio\
+    Name: S_CH_Jump_Start.mp3
+    Preload: 1
+    _id: 30b4dedb-c9fd-4e96-9005-6d0a5d54a56e
+  - Clip: {fileID: 8300000, guid: 73db21717a4e15d4d8482df6160501ba, type: 3}
+    Key: S_WEP_Sniper_01_Reload_Insert
+    FolderPath: Audio\
+    Name: S_WEP_Sniper_01_Reload_Insert.mp3
+    Preload: 1
+    _id: a2f5aaf2-c9bf-408a-94ec-02b064898047
+  - Clip: {fileID: 8300000, guid: 836943cf586a7cb449b4661059d55683, type: 3}
+    Key: S_Explosion_01
+    FolderPath: Audio\
+    Name: S_Explosion_01.mp3
+    Preload: 1
+    _id: 7899c257-efb5-48d2-ae23-743ee261556f
+  - Clip: {fileID: 8300000, guid: 93671f670fc02524889c33ad186a7e4b, type: 3}
+    Key: S_WEP_Fire_002.wav
+    FolderPath: Audio\
+    Name: S_WEP_Fire_002.wav.mp3
+    Preload: 1
+    _id: 9e249fd7-082d-4391-ba27-6410dc0df3bf
+  - Clip: {fileID: 8300000, guid: a3ef1808b7eabcc42840485d9e5eadcc, type: 3}
+    Key: S_CH_Footstep_004
+    FolderPath: Audio\
+    Name: S_CH_Footstep_004.mp3
+    Preload: 1
+    _id: 06c35ef7-d583-4f8c-b3af-2ce44394b2ec
+  - Clip: {fileID: 8300000, guid: 040e93466f372ea4fbc14584cd5f8f53, type: 3}
+    Key: S_WEP_SMG_02_Reload_Empty
+    FolderPath: Audio\
+    Name: S_WEP_SMG_02_Reload_Empty.mp3
+    Preload: 1
+    _id: 9ebc3dfa-bd4a-444f-adf5-298fe42085ad
+  - Clip: {fileID: 8300000, guid: 1454fb0d8c0b18a438663ccc5d842dec, type: 3}
+    Key: MenuMusic
+    FolderPath: Audio\
+    Name: MenuMusic.mp3
+    Preload: 1
+    _id: 20f9c4a6-12e3-4e1c-a933-7e0463c7a58a
+  - Clip: {fileID: 8300000, guid: 4422704ee6a2b9f48b098965ce0a8cf6, type: 3}
+    Key: S_WEP_Shotgun_Reload_Insert.wav
+    FolderPath: Audio\
+    Name: S_WEP_Shotgun_Reload_Insert.wav.mp3
+    Preload: 1
+    _id: 6e623c2f-9a38-4acd-ac0a-7f49ed6473c4
+  - Clip: {fileID: 8300000, guid: 5431cf01b0e6ece4891ca7ada3cdd1b1, type: 3}
+    Key: S_WEP_SMG_05_Reload_Empty
+    FolderPath: Audio\
+    Name: S_WEP_SMG_05_Reload_Empty.mp3
+    Preload: 1
+    _id: 01c07da7-408e-436e-8908-aaba2297244c
+  - Clip: {fileID: 8300000, guid: 548ac962a10f3da4094229265166bc51, type: 3}
+    Key: S_WEP_Sniper_01_Reload_Close
+    FolderPath: Audio\
+    Name: S_WEP_Sniper_01_Reload_Close.mp3
+    Preload: 1
+    _id: d402bfbb-7be9-41f4-903b-a3c219e33e8e
+  - Clip: {fileID: 8300000, guid: 8444d4ac0985c1f4aaf22cb0f84bcc7a, type: 3}
+    Key: S_WEP_AR_01_Reload_Empty.wav
+    FolderPath: Audio\
+    Name: S_WEP_AR_01_Reload_Empty.wav.mp3
+    Preload: 1
+    _id: 03eb8824-0b95-4d10-ad19-9df920f3d31c
+  - Clip: {fileID: 8300000, guid: 847760cf44f7b4d48928620c7b1f84d4, type: 3}
+    Key: S_WEP_Sniper_03_Reload_Empty
+    FolderPath: Audio\
+    Name: S_WEP_Sniper_03_Reload_Empty.mp3
+    Preload: 1
+    _id: a26bec34-ade5-406b-9900-98465b896b04
+  - Clip: {fileID: 8300000, guid: b4e53d025d0d2f848bf6437feff092e4, type: 3}
+    Key: S_Tank_Flame
+    FolderPath: Audio\
+    Name: S_Tank_Flame.mp3
+    Preload: 1
+    _id: a678eb9a-59b1-4127-9891-e28c37885b3c
+  - Clip: {fileID: 8300000, guid: d45d3d3d76facee489163dd6811a6958, type: 3}
+    Key: S_WEP_Shotgun_Reload_Open.wav
+    FolderPath: Audio\
+    Name: S_WEP_Shotgun_Reload_Open.wav.mp3
+    Preload: 1
+    _id: 7a3792dd-0e86-486c-a760-946f1a22b021
+  - Clip: {fileID: 8300000, guid: e435bf4f443a10b4ab24745d07e3a501, type: 3}
+    Key: S_WEP_Casing_04.wav
+    FolderPath: Audio\
+    Name: S_WEP_Casing_04.wav.mp3
+    Preload: 1
+    _id: a5a1b779-5384-4073-a212-f7f49f295a39
+  - Clip: {fileID: 8300000, guid: e4275d818c3a4e347b4a01f0e5ebbdd2, type: 3}
+    Key: LevelMusic
+    FolderPath: Audio\
+    Name: LevelMusic.mp3
+    Preload: 1
+    _id: 43c97cfe-7784-4844-ab83-0384c284ad08
+  - Clip: {fileID: 8300000, guid: 15db9342b3ee81b45ab23b9376e84b89, type: 3}
+    Key: S_CH_Loop_Walking
+    FolderPath: Audio\
+    Name: S_CH_Loop_Walking.mp3
+    Preload: 1
+    _id: 96cde470-98e8-45a6-a462-b7cc06d78fa9
+  - Clip: {fileID: 8300000, guid: 258c5b5ac9c72204ab5439bc577a50b7, type: 3}
+    Key: S_CH_Jump_Start_01
+    FolderPath: Audio\
+    Name: S_CH_Jump_Start_01.mp3
+    Preload: 1
+    _id: c94959f7-4266-434d-9a0d-4c5c43d99312
+  - Clip: {fileID: 8300000, guid: 45cb342f52a3773448b9359a6f521705, type: 3}
+    Key: S_WEP_SMG_05_Reload
+    FolderPath: Audio\
+    Name: S_WEP_SMG_05_Reload.mp3
+    Preload: 1
+    _id: a67052c0-1fdc-47de-82d6-a43447288cc8
+  - Clip: {fileID: 8300000, guid: 65a4d873c91d51f47ba488086375be50, type: 3}
+    Key: S_WEP_SMG_04_Reload_Empty
+    FolderPath: Audio\
+    Name: S_WEP_SMG_04_Reload_Empty.mp3
+    Preload: 1
+    _id: 1b953803-2e86-43c9-b1fa-3ab5dd5e66ac
+  - Clip: {fileID: 8300000, guid: c5330382ec2d4b04db05ac44196df26f, type: 3}
+    Key: S_CH_Footstep_003
+    FolderPath: Audio\
+    Name: S_CH_Footstep_003.mp3
+    Preload: 1
+    _id: 25d0eb46-b9c7-4586-b8df-88575d5f3ba4
+  - Clip: {fileID: 8300000, guid: f59d3b6e8cd4d43489be3a7bdecdf7f3, type: 3}
+    Key: S_WEP_Sniper_01_Reload_Open
+    FolderPath: Audio\
+    Name: S_WEP_Sniper_01_Reload_Open.mp3
+    Preload: 1
+    _id: d8bd18b0-27a5-41b9-b802-571486a264a9
+  - Clip: {fileID: 8300000, guid: 36875a75df298574eb7d290716be7b17, type: 3}
+    Key: S_Thunder_01
+    FolderPath: Audio\
+    Name: S_Thunder_01.mp3
+    Preload: 1
+    _id: 1b07e03d-e319-47a2-8891-cd82ed9c4952
+  - Clip: {fileID: 8300000, guid: 36588c91b45b8ac468ad43b0152eb730, type: 3}
+    Key: S_CH_Loop_Running
+    FolderPath: Audio\
+    Name: S_CH_Loop_Running.mp3
+    Preload: 1
+    _id: 6f521225-64c7-4241-a6a4-21a2402a0307
+  - Clip: {fileID: 8300000, guid: 76532eef67e1e6544b94dcc3c02bea6a, type: 3}
+    Key: S_CH_Jump_Land
+    FolderPath: Audio\
+    Name: S_CH_Jump_Land.mp3
+    Preload: 1
+    _id: b417e88f-f0b2-4756-b6c5-3ede586649bb
+  - Clip: {fileID: 8300000, guid: 96ce58d7ec5e0fb40b5fd85acbb2c594, type: 3}
+    Key: S_WEP_Sniper_02_Reload
+    FolderPath: Audio\
+    Name: S_WEP_Sniper_02_Reload.mp3
+    Preload: 1
+    _id: 102a4545-0f95-44c6-af21-95e31aaa758c
+  - Clip: {fileID: 8300000, guid: e66aadaa6ccddcd41b61052f22a32392, type: 3}
+    Key: S_WEP_Sniper_02_Reload_Empty
+    FolderPath: Audio\
+    Name: S_WEP_Sniper_02_Reload_Empty.mp3
+    Preload: 1
+    _id: de0ebe49-9909-4a32-a742-fb8c4cb6aaeb
+  - Clip: {fileID: 8300000, guid: f62d93dd57f61994b8e74893074aa16e, type: 3}
+    Key: S_TargetGoUp
+    FolderPath: Audio\
+    Name: S_TargetGoUp.mp3
+    Preload: 1
+    _id: 6f24d408-9f47-404d-a4ac-baed4cbbb871
+  - Clip: {fileID: 8300000, guid: 0713c786f48b83b449532a04c5e63c9a, type: 3}
+    Key: S_Debris_Metal_02
+    FolderPath: Audio\
+    Name: S_Debris_Metal_02.mp3
+    Preload: 1
+    _id: 03ecce82-cd83-4b77-ba21-07c444295e27
+  - Clip: {fileID: 8300000, guid: 17d7647d8775e364c896701433b98e06, type: 3}
+    Key: S_WEP_SMG_01_Reload_Empty
+    FolderPath: Audio\
+    Name: S_WEP_SMG_01_Reload_Empty.mp3
+    Preload: 1
+    _id: b76fafe0-3cc4-4109-9358-b9e7659e4ba4
+  - Clip: {fileID: 8300000, guid: 272dc3abdb456ab419213abba86584c5, type: 3}
+    Key: S_WEP_Aim_In
+    FolderPath: Audio\
+    Name: S_WEP_Aim_In.mp3
+    Preload: 1
+    _id: 2c068615-74d8-4414-828a-321d4198b590
+  - Clip: {fileID: 8300000, guid: 4710b5065ecd92548b0622e7c9fef094, type: 3}
+    Key: S_WEP_Holster.wav
+    FolderPath: Audio\
+    Name: S_WEP_Holster.wav.mp3
+    Preload: 1
+    _id: 5426f688-ee59-4f9c-b092-184108162cc8
+  - Clip: {fileID: 8300000, guid: 579be510c89cce545884440824d82bcc, type: 3}
+    Key: S_WEP_SMG_01_Reload
+    FolderPath: Audio\
+    Name: S_WEP_SMG_01_Reload.mp3
+    Preload: 1
+    _id: 16f8914d-ae67-450d-a27f-634debf923a1
+  - Clip: {fileID: 8300000, guid: 67d08cde4cb19054196b5c3192f8d8b7, type: 3}
+    Key: S_Explosion_06
+    FolderPath: Audio\
+    Name: S_Explosion_06.mp3
+    Preload: 1
+    _id: 931a0913-62f2-4115-a1e9-93f8b95f2698
+  - Clip: {fileID: 8300000, guid: 7754b042456cdd547be321d3fa0c5a45, type: 3}
+    Key: S_WEP_Fire_Empty.wav
+    FolderPath: Audio\
+    Name: S_WEP_Fire_Empty.wav.mp3
+    Preload: 1
+    _id: bd2c07ba-9c8b-4191-b577-fbc447764442
+  - Clip: {fileID: 8300000, guid: b7f89c8a245970045959022a6649cb6c, type: 3}
+    Key: S_WEP_Impact_Bullet_01.wav
+    FolderPath: Audio\
+    Name: S_WEP_Impact_Bullet_01.wav.mp3
+    Preload: 1
+    _id: 23088f13-cc62-4db9-88dd-de078d1c3d40
+  - Clip: {fileID: 8300000, guid: b7ae1d6a41e84ce468a301c8b2aa9b2c, type: 3}
+    Key: S_WEP_AR_03_Reload.wav
+    FolderPath: Audio\
+    Name: S_WEP_AR_03_Reload.wav.mp3
+    Preload: 1
+    _id: 3af21ae2-d576-43f5-9876-59d5dd946827
+  - Clip: {fileID: 8300000, guid: c72417a11f83fed4ab254ff31ec72f37, type: 3}
+    Key: S_WEP_Impact_Bullet_02.wav
+    FolderPath: Audio\
+    Name: S_WEP_Impact_Bullet_02.wav.mp3
+    Preload: 1
+    _id: fa8bc2c5-0b45-410f-b5ec-9390fe8b902e
+  - Clip: {fileID: 8300000, guid: c7ba75577ae0d70439cf33a2303744a8, type: 3}
+    Key: S_WEP_Swish_01
+    FolderPath: Audio\
+    Name: S_WEP_Swish_01.mp3
+    Preload: 1
+    _id: f6147c78-e8a6-4077-aa16-4fa6453772cf
+  - Clip: {fileID: 8300000, guid: 181a795eac33d564e8fc2139532cb4e3, type: 3}
+    Key: S_WEP_Casing_03.wav
+    FolderPath: Audio\
+    Name: S_WEP_Casing_03.wav.mp3
+    Preload: 1
+    _id: 13670990-83b0-4c15-8fe8-081ff42e9728
+  - Clip: {fileID: 8300000, guid: 482327c75a4c4ef498a9f4023b48fba4, type: 3}
+    Key: S_WEP_Unholster
+    FolderPath: Audio\
+    Name: S_WEP_Unholster.mp3
+    Preload: 1
+    _id: 9dd2bdc5-6b34-465e-97f1-647a06281c8e
+  - Clip: {fileID: 8300000, guid: b8e09fb3a15f25246b928d97845e1929, type: 3}
+    Key: S_Debris_Metal_04
+    FolderPath: Audio\
+    Name: S_Debris_Metal_04.mp3
+    Preload: 1
+    _id: b94ede93-2d08-4e6f-8893-29a6b3304d09
+  - Clip: {fileID: 8300000, guid: d8c9414315f6fe045a39db4dd8297ffe, type: 3}
+    Key: S_WEP_Shell_01.wav
+    FolderPath: Audio\
+    Name: S_WEP_Shell_01.wav.mp3
+    Preload: 1
+    _id: 8cfc407d-7250-4cd1-a307-aea8c5a2ab2c
+  - Clip: {fileID: 8300000, guid: 09b93a0e09115034fb6175efbf272e53, type: 3}
+    Key: S_WEP_Casing_02.wav
+    FolderPath: Audio\
+    Name: S_WEP_Casing_02.wav.mp3
+    Preload: 1
+    _id: 846f5002-7473-4cca-8ebe-993caf40f97a
+  - Clip: {fileID: 8300000, guid: 692993f8d1ea5044c9bc749776a7131c, type: 3}
+    Key: S_Tank_Impact
+    FolderPath: Audio\
+    Name: S_Tank_Impact.mp3
+    Preload: 1
+    _id: 55b06b32-6808-4dea-8ede-4141004c92d9
+  - Clip: {fileID: 8300000, guid: 693b4f30aebb45f458730373ef4096fd, type: 3}
+    Key: S_Explosion_04
+    FolderPath: Audio\
+    Name: S_Explosion_04.mp3
+    Preload: 1
+    _id: c4c48161-9c82-4490-90ad-1ab11da44d7d
+  - Clip: {fileID: 8300000, guid: 89eec9ef4399d1345b21b2f33f7f0895, type: 3}
+    Key: S_WEP_Shotgun_Bolt_Open.wav
+    FolderPath: Audio\
+    Name: S_WEP_Shotgun_Bolt_Open.wav.mp3
+    Preload: 1
+    _id: 46feed41-8f51-4594-94c3-06d97f416ec9
+  - Clip: {fileID: 8300000, guid: 9970cc5e2e699754190b298b90e29db0, type: 3}
+    Key: S_CH_Jump_Start_04
+    FolderPath: Audio\
+    Name: S_CH_Jump_Start_04.mp3
+    Preload: 1
+    _id: 34abfe42-bf0c-4f61-9f29-8e662f0059de
+  - Clip: {fileID: 8300000, guid: a957b747affd8ec4bbd0bf23a951fb44, type: 3}
+    Key: S_WEP_Fire_006.wav
+    FolderPath: Audio\
+    Name: S_WEP_Fire_006.wav.mp3
+    Preload: 1
+    _id: e2a3737d-ef97-4f01-929d-c69c2921fbcf
+  - Clip: {fileID: 8300000, guid: c9854a460f8242b48a047b58e54a7cab, type: 3}
+    Key: S_WEP_SMG_03_Reload_Empty
+    FolderPath: Audio\
+    Name: S_WEP_SMG_03_Reload_Empty.mp3
+    Preload: 1
+    _id: f7208c0f-eb9c-4d74-a42f-53456eac4632
+  - Clip: {fileID: 8300000, guid: c9b99ff1d2688374da50ad550a6747aa, type: 3}
+    Key: S_WEP_Impact_Bullet_04.wav
+    FolderPath: Audio\
+    Name: S_WEP_Impact_Bullet_04.wav.mp3
+    Preload: 1
+    _id: 788b0ee1-33b8-45cb-b4b7-9f9dbae471e1
+  - Clip: {fileID: 8300000, guid: 6a5ae03fd7c7f774b9acf06dde3f50a6, type: 3}
+    Key: S_Explosion_05
+    FolderPath: Audio\
+    Name: S_Explosion_05.mp3
+    Preload: 1
+    _id: 9b7b8879-3e1b-4bc8-abde-a307d955de66
+  - Clip: {fileID: 8300000, guid: ca0faad1fc2e022448fccf3178399fa5, type: 3}
+    Key: S_WEP_RL_01_Reload.wav
+    FolderPath: Audio\
+    Name: S_WEP_RL_01_Reload.wav.mp3
+    Preload: 1
+    _id: fa524bd0-15e1-4293-bf3e-1dfd36bad067
+  - Clip: {fileID: 8300000, guid: eae600a8575420640858519a52f51ab6, type: 3}
+    Key: S_WEP_AR_01_Reload.wav
+    FolderPath: Audio\
+    Name: S_WEP_AR_01_Reload.wav.mp3
+    Preload: 1
+    _id: c1c701c2-8b09-4a8f-8533-2a233c732590
+  - Clip: {fileID: 8300000, guid: fa74232fea96d6c439653b08af5d477d, type: 3}
+    Key: S_CH_Jump_Start_02
+    FolderPath: Audio\
+    Name: S_CH_Jump_Start_02.mp3
+    Preload: 1
+    _id: c140aa9e-6a90-4bf7-8d97-33e99dbbece9
+  - Clip: {fileID: 8300000, guid: 2c447bf01d6785045876056a4404f0b6, type: 3}
+    Key: S_WEP_Knife_Attack_01.wav
+    FolderPath: Audio\
+    Name: S_WEP_Knife_Attack_01.wav.mp3
+    Preload: 1
+    _id: 24a060d5-8b59-49db-ab91-126eecc660bf
+  - Clip: {fileID: 8300000, guid: 7c2422d1372ba864b852138fc9b64a0e, type: 3}
+    Key: S_CH_Jump_Start_05
+    FolderPath: Audio\
+    Name: S_CH_Jump_Start_05.mp3
+    Preload: 1
+    _id: 6ef775d4-6067-419d-94d5-c1cac471d3a5
+  - Clip: {fileID: 8300000, guid: 7ccf51bb04f72b94c83cd8b98f97572b, type: 3}
+    Key: S_WEP_Handgun_Reload_Empty.wav
+    FolderPath: Audio\
+    Name: S_WEP_Handgun_Reload_Empty.wav.mp3
+    Preload: 1
+    _id: db6c882a-2a0d-41cc-8b05-520a095a31fa
+  - Clip: {fileID: 8300000, guid: 8c0e452b566be9e4d8938c1c3acba1c3, type: 3}
+    Key: S_CH_Footstep_001
+    FolderPath: Audio\
+    Name: S_CH_Footstep_001.mp3
+    Preload: 1
+    _id: d6115ded-b90e-4fed-90c1-3d01d7997fcc
+  - Clip: {fileID: 8300000, guid: 9c76711b9aeacac4fb1fe7f5098051f2, type: 3}
+    Key: S_Explosion_03
+    FolderPath: Audio\
+    Name: S_Explosion_03.mp3
+    Preload: 1
+    _id: 127b4ec5-80cd-4142-96b3-afcb4a8b9541
+  - Clip: {fileID: 8300000, guid: dca6d389f8767e44bb0f2cd92c7f0c70, type: 3}
+    Key: S_Debris_Metal_05
+    FolderPath: Audio\
+    Name: S_Debris_Metal_05.mp3
+    Preload: 1
+    _id: de4f86cd-5009-4f30-980f-26e0c0c89105
+  - Clip: {fileID: 8300000, guid: dc8a9b5d29a1eed40996d4446170a628, type: 3}
+    Key: S_CH_Grenade_Throw_02
+    FolderPath: Audio\
+    Name: S_CH_Grenade_Throw_02.mp3
+    Preload: 1
+    _id: 98262954-805b-4a08-8d25-4a00cd9671ce
+  - Clip: {fileID: 8300000, guid: 0ded5de5d782a0b4bbe130acbe86df5b, type: 3}
+    Key: S_WEP_Fire_007.wav
+    FolderPath: Audio\
+    Name: S_WEP_Fire_007.wav.mp3
+    Preload: 1
+    _id: 10ec5699-a731-4f0d-bd87-2e95bddd7d3b
+  - Clip: {fileID: 8300000, guid: 5d733a0780370fc4ea58e34786b93b60, type: 3}
+    Key: S_WEP_Fire_001.wav
+    FolderPath: Audio\
+    Name: S_WEP_Fire_001.wav.mp3
+    Preload: 1
+    _id: 0ffa0ed9-c913-4682-98ac-9fecf4e4a60f
+  - Clip: {fileID: 8300000, guid: 8d71a0097b0efb74aa09de807c13a9a5, type: 3}
+    Key: S_Thud
+    FolderPath: Audio\
+    Name: S_Thud.mp3
+    Preload: 1
+    _id: 54027cb1-841e-4705-a293-fe3d109050b2
+  - Clip: {fileID: 8300000, guid: bd0921c4c61445840970919661947416, type: 3}
+    Key: S_CH_Footstep_005
+    FolderPath: Audio\
+    Name: S_CH_Footstep_005.mp3
+    Preload: 1
+    _id: 53431156-8ece-47a6-bca9-f850b57008d0
+  - Clip: {fileID: 8300000, guid: cdd5c1ee18e28ca458e14782b004a7b1, type: 3}
+    Key: S_CH_Grenade_Throw_04
+    FolderPath: Audio\
+    Name: S_CH_Grenade_Throw_04.mp3
+    Preload: 1
+    _id: 86c1d3bd-84a7-48b6-b2b0-376760c5d2b6
+  - Clip: {fileID: 8300000, guid: ed559c2a9a4d8044c90f77a71ee04a23, type: 3}
+    Key: S_WEP_Shotgun_Bolt_Close.wav
+    FolderPath: Audio\
+    Name: S_WEP_Shotgun_Bolt_Close.wav.mp3
+    Preload: 1
+    _id: c3c80bd0-7cf1-4669-9c4d-764f94734870
+  - Clip: {fileID: 8300000, guid: 3e8309a6918d99647b26c7324f63980b, type: 3}
+    Key: S_Explosion_02
+    FolderPath: Audio\
+    Name: S_Explosion_02.mp3
+    Preload: 1
+    _id: 9198835b-1300-48b4-b69f-def779596ac4
+  - Clip: {fileID: 8300000, guid: 1f330460e665d0c478c0e288130eb9a3, type: 3}
+    Key: S_WEP_Casing_01.wav
+    FolderPath: Audio\
+    Name: S_WEP_Casing_01.wav.mp3
+    Preload: 1
+    _id: b6823c09-46f5-46b5-bd33-fdf1d44ac699
+  - Clip: {fileID: 8300000, guid: 1f7935188c1dec14a9a23dcf1d3414da, type: 3}
+    Key: S_PROJ_Rocket_Launch
+    FolderPath: Audio\
+    Name: S_PROJ_Rocket_Launch.mp3
+    Preload: 1
+    _id: db26fe85-ab67-4753-a505-840958092afd
+  - Clip: {fileID: 8300000, guid: 2f1a6947bb7638148889f44891a90dfa, type: 3}
+    Key: S_CH_Grenade_Throw_03
+    FolderPath: Audio\
+    Name: S_CH_Grenade_Throw_03.mp3
+    Preload: 1
+    _id: acea3816-ea01-48a6-9e20-43ed697d25e9
+  - Clip: {fileID: 8300000, guid: 6f3b9958a81ae9043a0290f9f74f3385, type: 3}
+    Key: S_TargetGoDown
+    FolderPath: Audio\
+    Name: S_TargetGoDown.mp3
+    Preload: 1
+    _id: eaae0d24-9728-4bf9-8f46-9549d71cfb00
+  - Clip: {fileID: 8300000, guid: af73b7b326a46c24f8103357096e34bd, type: 3}
+    Key: S_WEP_AR_03_Reload_Empty.wav
+    FolderPath: Audio\
+    Name: S_WEP_AR_03_Reload_Empty.wav.mp3
+    Preload: 1
+    _id: 53594e7d-3119-4a37-837d-ea51aac53d1f
+  - Clip: {fileID: 8300000, guid: af6c63b3fc47ec844bb2559b69fcb252, type: 3}
+    Key: S_WEP_Shell_03.wav
+    FolderPath: Audio\
+    Name: S_WEP_Shell_03.wav.mp3
+    Preload: 1
+    _id: 47814211-85ce-4e45-8011-ec0d9661b587
+  - Clip: {fileID: 8300000, guid: cf65a7f9e8deecc41a3d07a6f1152787, type: 3}
+    Key: S_WEP_SMG_02_Reload
+    FolderPath: Audio\
+    Name: S_WEP_SMG_02_Reload.mp3
+    Preload: 1
+    _id: 7424599a-276c-4f05-9a96-8dc650589de6
+  - Clip: {fileID: 8300000, guid: dfa66dd6c44428f40a397828dc66cad5, type: 3}
+    Key: S_WEP_Shell_02
+    FolderPath: Audio\
+    Name: S_WEP_Shell_02.wav.mp3
+    Preload: 1
+    _id: 67ae139b-1b38-454e-b50f-6b8269c99d9d
+  - Clip: {fileID: 8300000, guid: ef2eab99abe43a642ba965e6e69bd10e, type: 3}
+    Key: S_WEP_Swish_02
+    FolderPath: Audio\
+    Name: S_WEP_Swish_02.mp3
+    Preload: 1
+    _id: 726158a4-7141-4347-b551-c5f966bc8954
+  - Clip: {fileID: 8300000, guid: ff9029834f6c7d14fbcd7f8da76b45c4, type: 3}
+    Key: S_WEP_Fire_Silencer.wav
+    FolderPath: Audio\
+    Name: S_WEP_Fire_Silencer.wav.mp3
+    Preload: 1
+    _id: 8ba635b4-9a68-4ebc-9979-43bc2a7b4296

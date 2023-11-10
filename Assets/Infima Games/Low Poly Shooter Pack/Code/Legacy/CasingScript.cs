@@ -2,6 +2,7 @@
 
 using UnityEngine;
 using System.Collections;
+using Plugins.Audio.Core;
 
 namespace InfimaGames.LowPolyShooterPack.Legacy
 {
@@ -44,6 +45,7 @@ namespace InfimaGames.LowPolyShooterPack.Legacy
 		public AudioClip[] casingSounds;
 
 		public AudioSource audioSource;
+        public SourceAudio Source;
 
 		[Header("Spin Settings")]
 		//How fast the casing spins
@@ -64,7 +66,7 @@ namespace InfimaGames.LowPolyShooterPack.Legacy
 			GetComponent<Rigidbody>().AddRelativeForce(
 				Random.Range(minimumXForce, maximumXForce), //X Axis
 				Random.Range(minimumYForce, maximumYForce), //Y Axis
-				Random.Range(minimumZForce, maximumZForce)); //Z Axis		     
+				Random.Range(minimumZForce, maximumZForce)); //Z Axis
 		}
 
 		private void Start()
@@ -91,8 +93,8 @@ namespace InfimaGames.LowPolyShooterPack.Legacy
 			//Get a random casing sound from the array 
 			audioSource.clip = casingSounds
 				[Random.Range(0, casingSounds.Length)];
-			//Play the random casing sound
-			audioSource.Play();
+            //Play the random casing sound
+            Source.Play(audioSource.clip.name);
 		}
 
 		private IEnumerator RemoveCasing()
