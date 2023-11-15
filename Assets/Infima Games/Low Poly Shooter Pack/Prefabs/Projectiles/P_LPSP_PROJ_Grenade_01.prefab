@@ -195,7 +195,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: 
+  m_Text: "\u0413\u0440\u0430\u043D\u0430\u0442\u0430"
 --- !u!114 &5655372482505099797
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -209,7 +209,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   translationName: Granade
-  FallbackText: 
+  FallbackText: "\u0413\u0440\u0430\u043D\u0430\u0442\u0430"
 --- !u!1 &1554143779791216
 GameObject:
   m_ObjectHideFlags: 0
@@ -301,6 +301,7 @@ GameObject:
   - component: {fileID: 65949159058896134}
   - component: {fileID: 82305533685823640}
   - component: {fileID: 114853094415237424}
+  - component: {fileID: 3028086651340861943}
   m_Layer: 15
   m_Name: P_LPSP_PROJ_Grenade_01
   m_TagString: Untagged
@@ -413,7 +414,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: -1267146077257105210, guid: 1fdb037c27a94ee48a9ce29a2beea848, type: 2}
-  m_audioClip: {fileID: 8300000, guid: 3ba5e26ab3bf72d4697e4b3b1e340933, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 8d71a0097b0efb74aa09de807c13a9a5, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 0.4
   m_Pitch: 1
@@ -519,3 +520,17 @@ MonoBehaviour:
   minimumForce: 2500
   maximumForce: 3000
   impactSound: {fileID: 82305533685823640}
+  impactSoundYB: {fileID: 3028086651340861943}
+--- !u!114 &3028086651340861943
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1948591290861370}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c896f32ca6a24109b8311345ab6aae6c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Loop: 0

@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 54238244902362926}
   - component: {fileID: 114121961160874846}
   - component: {fileID: 82444821930212418}
+  - component: {fileID: -4947989827490806095}
   m_Layer: 9
   m_Name: P_LPSP_Casing_Small
   m_TagString: Untagged
@@ -124,12 +125,9 @@ MonoBehaviour:
   maximumRotation: 360
   despawnTime: 1
   casingSounds:
-  - {fileID: 8300000, guid: 82fd1b9495a6b2045bbeabe4b7c168da, type: 3}
-  - {fileID: 8300000, guid: 9900c91b18eff614bb5654ec3471c41a, type: 3}
-  - {fileID: 8300000, guid: 978c88d300d39be41bc7eba2331d1c4c, type: 3}
-  - {fileID: 8300000, guid: 1715c914ea52a9f4ebac3ad860573e80, type: 3}
-  - {fileID: 8300000, guid: b8431057c404b004db076407851e3ede, type: 3}
+  - {fileID: 8300000, guid: 1f330460e665d0c478c0e288130eb9a3, type: 3}
   audioSource: {fileID: 82444821930212418}
+  Source: {fileID: -4947989827490806095}
   speed: 2500
 --- !u!82 &82444821930212418
 AudioSource:
@@ -227,3 +225,16 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
+--- !u!114 &-4947989827490806095
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1492315059354262}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c896f32ca6a24109b8311345ab6aae6c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Loop: 0

@@ -24543,6 +24543,7 @@ GameObject:
   - component: {fileID: 4105048232667012}
   - component: {fileID: 82205955150813466}
   - component: {fileID: 114907282554163928}
+  - component: {fileID: 6254894802637285228}
   m_Layer: 0
   m_Name: P_EXP_GasTank
   m_TagString: Untagged
@@ -24683,10 +24684,24 @@ MonoBehaviour:
   lightDuration: 0.0325
   lightFlash: {fileID: 108220769910619314}
   explosionSounds:
-  - {fileID: 8300000, guid: 75f8e14a4e177484a92f318e46c9fa34, type: 3}
-  - {fileID: 8300000, guid: 4172b95278d0adf468a43413cb25c266, type: 3}
-  - {fileID: 8300000, guid: fac766d719e16e847b956d1433580c9d, type: 3}
-  - {fileID: 8300000, guid: aace929ff231c2c44b11cb9d81e49f80, type: 3}
-  - {fileID: 8300000, guid: 8ab79e12da1853c4f9c1b131df2b9c68, type: 3}
-  - {fileID: 8300000, guid: 739db4952129f0242b7aa842bd022a17, type: 3}
+  - {fileID: 8300000, guid: 836943cf586a7cb449b4661059d55683, type: 3}
+  - {fileID: 8300000, guid: 3e8309a6918d99647b26c7324f63980b, type: 3}
+  - {fileID: 8300000, guid: 9c76711b9aeacac4fb1fe7f5098051f2, type: 3}
+  - {fileID: 8300000, guid: 693b4f30aebb45f458730373ef4096fd, type: 3}
+  - {fileID: 8300000, guid: 6a5ae03fd7c7f774b9acf06dde3f50a6, type: 3}
+  - {fileID: 8300000, guid: 67d08cde4cb19054196b5c3192f8d8b7, type: 3}
   audioSource: {fileID: 82205955150813466}
+  source: {fileID: 6254894802637285228}
+--- !u!114 &6254894802637285228
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1924146031275744}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c896f32ca6a24109b8311345ab6aae6c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Loop: 0

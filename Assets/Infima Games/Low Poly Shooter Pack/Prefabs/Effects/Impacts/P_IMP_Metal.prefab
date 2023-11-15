@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4458509032938956}
   - component: {fileID: 114337268109799594}
   - component: {fileID: 82203014209977960}
+  - component: {fileID: -529654236114957986}
   m_Layer: 0
   m_Name: P_IMP_Metal
   m_TagString: Untagged
@@ -150,6 +151,19 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
+--- !u!114 &-529654236114957986
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1133313454119596}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d2aac60583676c44b528663f59f134d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _pausa: 0
 --- !u!1 &1388083885036476
 GameObject:
   m_ObjectHideFlags: 0

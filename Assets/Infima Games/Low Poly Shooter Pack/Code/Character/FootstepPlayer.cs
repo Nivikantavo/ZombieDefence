@@ -1,5 +1,6 @@
 //Copyright 2022, Infima Games. All Rights Reserved.
 
+using Plugins.Audio.Core;
 using UnityEngine;
 
 namespace InfimaGames.LowPolyShooterPack
@@ -11,6 +12,7 @@ namespace InfimaGames.LowPolyShooterPack
     /// </summary>
     public class FootstepPlayer : MonoBehaviour
     {
+        private SourceAudio _source;
         #region FIELDS SERIALIZED
         
         [Title(label: "References")]
@@ -52,6 +54,7 @@ namespace InfimaGames.LowPolyShooterPack
         /// </summary>
         private void Awake()
         {
+            _source = GetComponent<SourceAudio>();
             //Make sure we have an Audio Source assigned.
             if (audioSource != null)
             {
@@ -83,11 +86,11 @@ namespace InfimaGames.LowPolyShooterPack
                 audioSource.clip = characterAnimator.GetBool(AHashes.Running) ? audioClipRunning : audioClipWalking;
                 //Play it!
                 if (!audioSource.isPlaying)
-                    audioSource.Play();
+                    _source.Play();
             }
             //Pause it if we're doing something like flying, or not moving!
             else if (audioSource.isPlaying)
-                audioSource.Pause();
+                _source.Stop();
         }
         
         #endregion

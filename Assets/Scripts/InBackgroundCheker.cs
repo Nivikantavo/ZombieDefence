@@ -31,6 +31,7 @@ public class InBackgroundCheker : MonoBehaviour
         {
             return;
         }
+        
         if (Device.IsMobile)
         {
             if(_mobileUI != null)
@@ -42,9 +43,8 @@ public class InBackgroundCheker : MonoBehaviour
         {
             _ui.SetPaused(true);
         }
-
+        EventSystem.current.UpdateModules();
         AudioListener.pause = inBackground;
         AudioListener.volume = inBackground ? 0f : 1f;
-        EventSystem.current.UpdateModules();
     }
 }

@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4587651611338842}
   - component: {fileID: 114777204554752142}
   - component: {fileID: 82763957066427458}
+  - component: {fileID: -7837300940973563582}
   m_Layer: 0
   m_Name: P_IMP_Concrete
   m_TagString: Untagged
@@ -151,6 +152,19 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
+--- !u!114 &-7837300940973563582
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1067471869909948}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d2aac60583676c44b528663f59f134d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _pausa: 0
 --- !u!1 &1192667920482426
 GameObject:
   m_ObjectHideFlags: 0

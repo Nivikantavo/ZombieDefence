@@ -2,6 +2,7 @@
 
 using UnityEngine;
 using System.Collections;
+using Plugins.Audio.Core;
 
 namespace InfimaGames.LowPolyShooterPack.Legacy
 {
@@ -38,8 +39,10 @@ namespace InfimaGames.LowPolyShooterPack.Legacy
 
 		[Header("Audio")]
 		public AudioSource impactSound;
+		public SourceAudio impactSoundYB;
 
-		private void Awake()
+
+        private void Awake()
 		{
 			//Generate random throw force
 			//based on min and max values
@@ -65,7 +68,7 @@ namespace InfimaGames.LowPolyShooterPack.Legacy
 
 		private void OnCollisionEnter(Collision collision)
 		{
-			impactSound.Play();
+            impactSoundYB.Play();
 		}
 
 		private IEnumerator ExplosionTimer()

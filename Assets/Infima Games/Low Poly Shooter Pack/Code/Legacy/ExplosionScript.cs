@@ -2,6 +2,7 @@
 
 using UnityEngine;
 using System.Collections;
+using Plugins.Audio.Core;
 
 namespace InfimaGames.LowPolyShooterPack.Legacy
 {
@@ -18,6 +19,7 @@ namespace InfimaGames.LowPolyShooterPack.Legacy
     	[Header("Audio")]
     	public AudioClip[] explosionSounds;
     	public AudioSource audioSource;
+        public SourceAudio source;
     
     	private void Start () {
     		//Start the coroutines
@@ -25,10 +27,10 @@ namespace InfimaGames.LowPolyShooterPack.Legacy
     		StartCoroutine (LightFlash ());
     
     		//Get a random impact sound from the array
-    		audioSource.clip = explosionSounds
+    		AudioClip clip = explosionSounds
     			[Random.Range(0, explosionSounds.Length)];
-    		//Play the random explosion sound
-    		audioSource.Play();
+            //Play the random explosion sound
+            source.Play(clip.name);
     	}
     
     	private IEnumerator LightFlash () {
