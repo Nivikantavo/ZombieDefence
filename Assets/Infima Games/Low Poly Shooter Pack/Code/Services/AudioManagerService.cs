@@ -135,7 +135,6 @@ namespace InfimaGames.LowPolyShooterPack
             
             //Spawn a game object for the audio source.
             var newSourceObject = new GameObject($"Audio Source -> {clip.name}");
-            Debug.Log(newSourceObject);
             //Add an audio source component to that object.
             var newAudioSource = newSourceObject.AddComponent<AudioSource>();
             var audioYB = newSourceObject.AddComponent<SourceAudio>();

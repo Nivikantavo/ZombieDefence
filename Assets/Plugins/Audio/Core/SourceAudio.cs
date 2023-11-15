@@ -110,8 +110,6 @@ namespace Plugins.Audio.Core
             _lastTime = 0;
 
             _loadClip = false;
-            
-            Debug.Log("Start play audio: " + key);
         }
 
         public void Play()
@@ -127,8 +125,6 @@ namespace Plugins.Audio.Core
                 _audioSource.Play();
                 _isPlaying = true;
                 _lastTime = 0;
-
-                Debug.Log("Start play audio: " + _key);
             }
             else
             {

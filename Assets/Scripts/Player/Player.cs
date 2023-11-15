@@ -6,7 +6,6 @@ public class Player : Target
 {
     [SerializeField] private Force _pushForce;
     [SerializeField] private List<Force> _forces;
-    [SerializeField] private List<ForceUIView> _forcesViews;
 
     public event UnityAction PushForceUsed;
 
@@ -45,10 +44,6 @@ public class Player : Target
                 if(force == _forces[i].Name)
                 {
                     _forces[i].gameObject.SetActive(true);
-                }
-                if(force == _forcesViews[i].ForceName)
-                {
-                    _forcesViews[i].gameObject.SetActive(true);
                 }
             }
         }
