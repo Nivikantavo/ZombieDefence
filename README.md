@@ -1,0 +1,1 @@
+A first-person shooter where the main character must fight off waves of zombies using an arsenal of assault rifles, submachine guns, sniper rifles and even RPGs, as well as superpowers in the form of a repulsive wave and super jump. The game was released for the web platforms Yandex Games and CrazyGames.
