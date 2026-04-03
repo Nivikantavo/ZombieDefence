@@ -4,6 +4,7 @@ using UnityEngine;
 public class SurvivalMode : MonoBehaviour
 {
     [SerializeField] private GameObject _surviveTimer;
+    [SerializeField] private WaveProgressBar _waveProgressBar;
 
     [SerializeField] private List<Wave> _easy;
     [SerializeField] private List<Wave> _medium;
@@ -40,6 +41,7 @@ public class SurvivalMode : MonoBehaviour
     private void OnEnable()
     {
         _surviveTimer.SetActive(true);
+        _waveProgressBar.gameObject.SetActive(false);
     }
 
     private void Update()

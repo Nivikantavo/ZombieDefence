@@ -12,12 +12,12 @@ public class MissilePool : ObjectPool
 
     private void OnEnable()
     {
-        _zombieSpawner.ZombyCounted += Init;
+        _zombieSpawner.ZombiesCounted += Init;
     }
 
     private void OnDisable()
     {
-        _zombieSpawner.ZombyCounted -= Init;
+        _zombieSpawner.ZombiesCounted -= Init;
     }
 
     private void Init()

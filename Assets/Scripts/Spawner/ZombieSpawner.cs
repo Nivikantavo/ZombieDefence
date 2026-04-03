@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -27,7 +28,8 @@ public class ZombieSpawner : MonoBehaviour
     private int _spawnedZombie = 0;
 
     public event UnityAction AllZombieDied;
-    public event UnityAction ZombyCounted;
+    public event UnityAction ZombiesCounted;
+    public event Action<float> ZombieDied;
 
     private void Start()
     {
@@ -47,7 +49,7 @@ public class ZombieSpawner : MonoBehaviour
                 }
             }
         }
-        ZombyCounted?.Invoke();
+        ZombiesCounted?.Invoke();
 
         if (_survivalMode)
         {
@@ -130,7 +132,7 @@ public class ZombieSpawner : MonoBehaviour
 
     private void SpawnZombie(List<Transform> spawnPoints)
     {
-        int spawnPointNumber = Random.Range(0, spawnPoints.Count);
+        int spawnPointNumber = UnityEngine.Random.Range(0, spawnPoints.Count);
         if (_currentWave.TryGetObject(out GameObject enemy))
         {
             _spawnedZombie++;
@@ -173,6 +175,7 @@ public class ZombieSpawner : MonoBehaviour
         _deadZombie++;
         if (_survivalMode == false)
         {
+            ZombieDied?.Invoke(_deadZombie);
             if (_deadZombie >= ZombieCount)
             {
                 AllZombieDied?.Invoke();

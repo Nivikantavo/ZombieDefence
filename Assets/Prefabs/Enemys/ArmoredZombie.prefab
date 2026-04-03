@@ -1044,7 +1044,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _target: {fileID: 0}
-  _maxHealth: 60
+  _maxHealth: 600
   _stunState: {fileID: 8442072147314796562}
   _animation: {fileID: 8442072147314796570}
   _mapSign: {fileID: 72621344977375226}
@@ -10313,7 +10313,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6983742b60434b4a909a202d1cb9f66, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxHealth: 25
+  _maxHealth: 150
 --- !u!4 &3417845180271265161 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4120715626345144, guid: cfe86ff67def9cd4bb8dc14105e1b710, type: 3}

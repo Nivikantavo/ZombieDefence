@@ -1,5 +1,6 @@
 using Agava.YandexGames;
 using Agava.YandexGames.Samples;
+using GameAnalyticsSDK;
 using InfimaGames.LowPolyShooterPack;
 using System.Collections;
 using System.Collections.Generic;
@@ -60,10 +61,12 @@ public class Shop : MonoBehaviour
 
     private IEnumerator Start()
     {
+#if !UNITY_EDITOR
         if (YandexGamesSdk.IsInitialized == false)
         {
             yield return YandexGamesSdk.Initialize();
         }
+#endif
         while (SaveSystem.Instance.DataLoaded == false)
         {
             yield return new WaitForSecondsRealtime(_checkDataDelay);
@@ -117,6 +120,7 @@ public class Shop : MonoBehaviour
                 if (view.ProductID == purchaseProduct.purchaseData.productID)
                 {
                     view.OnSellSuccessfully();
+                    GameAnalytics.NewResourceEvent(GAResourceFlowType.Source, item.Name, 1, item.Name, purchaseProduct.purchaseData.productID);
                 }
             }
         });

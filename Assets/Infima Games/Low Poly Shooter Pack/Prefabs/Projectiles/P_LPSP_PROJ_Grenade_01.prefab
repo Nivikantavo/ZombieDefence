@@ -512,7 +512,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 077210c8970fd2b418f3ecd3191ef5d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _damage: 50
+  _damage: 500
   grenadeTimer: 1.2
   explosionPrefab: {fileID: 4811645123968692, guid: 301583a5af63a494298d60cd9f296909, type: 3}
   radius: 5

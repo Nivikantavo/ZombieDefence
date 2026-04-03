@@ -25,7 +25,7 @@ public class Force : MonoBehaviour
         LastUseTime = Cooldown;
     }
 
-    private void OnEnable()
+    protected virtual void OnEnable()
     {
         _forcesViews.gameObject.SetActive(true);
         _forcesButton.gameObject.SetActive(true);
