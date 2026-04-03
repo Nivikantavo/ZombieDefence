@@ -7,6 +7,7 @@ public class Bomb : MonoBehaviour, Idamageable
     [SerializeField] private float _power;
     [SerializeField] private float _damage;
     [SerializeField] private float _maxHealth;
+    [SerializeField] private float _zombieDamadeMultiplier;
 
     private float _currentHealth;
 
@@ -43,7 +44,14 @@ public class Bomb : MonoBehaviour, Idamageable
         {
             if(hit.TryGetComponent<Idamageable>(out Idamageable damageable))
             {
-                damageable.TakeDamage(_damage);
+                if(damageable is Zombie)
+                {
+                    damageable.TakeDamage(_damage * _zombieDamadeMultiplier);
+                }
+                else
+                {
+                    damageable.TakeDamage(_damage);
+                }
             }
 
             Rigidbody rb = hit.GetComponent<Rigidbody>();

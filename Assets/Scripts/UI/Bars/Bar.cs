@@ -21,7 +21,7 @@ public class Bar : MonoBehaviour
 
     protected virtual IEnumerator SetBarValue(float newValue)
     {
-        WaitForSeconds delay = new WaitForSeconds(_setValueDelay);
+        WaitForSecondsRealtime delay = new WaitForSecondsRealtime(_setValueDelay);
 
         float currentValue = Slider.value;
         float percentage = 0;

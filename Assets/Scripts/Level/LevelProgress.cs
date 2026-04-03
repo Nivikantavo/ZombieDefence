@@ -1,9 +1,12 @@
 using InfimaGames.LowPolyShooterPack;
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class LevelProgress : MonoBehaviour
 {
+    private const string Level = "level-";
+    private const string Map = "map-";
     public bool LevelEnded { get; private set; }
 
     [SerializeField] private Track _track;
@@ -20,6 +23,7 @@ public class LevelProgress : MonoBehaviour
     private bool _levelComplited = false;
     private PlayerInput _playerInput;
 
+    public event Action<bool> LevelComplited;
 
     private void Awake()
     {
@@ -75,6 +79,8 @@ public class LevelProgress : MonoBehaviour
         {
             _levelComplited = true;
             _endZone.gameObject.SetActive(true);
+
+            LevelComplited?.Invoke(_levelComplited);
         }
     }
 
@@ -84,6 +90,8 @@ public class LevelProgress : MonoBehaviour
         _endLevelPanel.gameObject.SetActive(true);
         _endLevelPanel.Initialize(_levelComplited);
         _playerInput.enabled = false;
+
+        LevelComplited?.Invoke(_levelComplited);
     }
 
     private void SaveProgress()

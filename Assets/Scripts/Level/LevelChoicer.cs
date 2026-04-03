@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
@@ -14,7 +15,6 @@ public class LevelChoicer : MonoBehaviour
     private void Awake()
     {
         int currentLevel = SaveSystem.Instance.GetData().SelectedStage - 1;
-
         _levels[currentLevel].gameObject.SetActive(true);
         _levelsEnvironments[currentLevel].gameObject.SetActive(true);
         _endLevelPanel.SetCurrentLevel(_levels[currentLevel]);

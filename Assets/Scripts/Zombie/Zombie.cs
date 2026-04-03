@@ -42,6 +42,7 @@ public class Zombie : MonoBehaviour, Idamageable
         {
             _currentHealth -= damage;
             _animation.SetHit();
+            DamageTextPool.Instance.SpawnDamageText(transform.position, damage);
             Hit?.Invoke();
         }
     }

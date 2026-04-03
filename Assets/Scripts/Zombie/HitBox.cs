@@ -13,6 +13,7 @@ public class HitBox : MonoBehaviour
 
     public void OnHit(float damage)
     {
-        HitTarget.TakeDamage(damage * _damageRatio);
+        float recivedDamage = _damageRatio * damage;
+        HitTarget.TakeDamage(recivedDamage);
     }
 }

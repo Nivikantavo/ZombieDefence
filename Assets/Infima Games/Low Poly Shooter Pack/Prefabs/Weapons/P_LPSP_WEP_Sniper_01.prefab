@@ -546,7 +546,7 @@ MonoBehaviour:
   automatic: 0
   boltAction: 1
   shotCount: 1
-  damage: 70
+  damage: 700
   upgradeDamage: 100
   spread: 0.25
   projectileImpulse: 400

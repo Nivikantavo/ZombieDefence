@@ -10,12 +10,12 @@ public class CoinsPool : ObjectPool
 
     private void OnEnable()
     {
-        _spawner.ZombyCounted += Init;
+        _spawner.ZombiesCounted += Init;
     }
 
     private void OnDisable()
     {
-        _spawner.ZombyCounted -= Init;
+        _spawner.ZombiesCounted -= Init;
     }
 
     private void Init()

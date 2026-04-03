@@ -83,8 +83,7 @@ public class EndLevelPanel : Element
         _surviveScorePanel.gameObject.SetActive(false);
         _levelScorePanel.gameObject.SetActive(true);
         
-        float trackHealthInPercent = Mathf.InverseLerp(0 , _track.MaxHealth, _track.CurrentHealth);
-        _levelBonus = levelComplited ? Mathf.RoundToInt(_difficultyChoicer.CurrentLevel.LevelBonus * trackHealthInPercent) : 0;
+        _levelBonus = levelComplited ? _difficultyChoicer.CurrentLevel.LevelBonus : 0;
         _levelScorePanel.SetScore(_moneyCollecter.Money - _moneyCollecter.StartMoney, _levelBonus);
         _moneyCollecter.AddMoney(_levelBonus);
     }
