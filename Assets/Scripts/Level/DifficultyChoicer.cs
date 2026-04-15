@@ -1,4 +1,3 @@
-using Agava.YandexGames;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -60,7 +59,9 @@ public class DifficultyChoicer : MonoBehaviour
 
     private void SetCurrentScore()
     {
-#if UNITY_WEBGL && !UNITY_EDITOR
+        //#if UNITY_WEBGL && !UNITY_EDITOR
+        var leaderboardId = "YOUR_LEADERBOARD_ID"; // id that you specified in the config file
+        Bridge.leaderboards.GetEntries(leaderboardId, OnGetEntriesCompleted);
         Leaderboard.GetPlayerEntry(_surviveScorePanel.CurrentLeaderboardName, (result) =>
         {
             if (result != null)
@@ -69,6 +70,6 @@ public class DifficultyChoicer : MonoBehaviour
             }
                 
         });
-#endif
+//#endif
     }
 }

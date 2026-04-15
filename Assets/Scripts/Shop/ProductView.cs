@@ -1,4 +1,3 @@
-using Agava.YandexGames;
 using System;
 using System.Collections;
 using TMPro;

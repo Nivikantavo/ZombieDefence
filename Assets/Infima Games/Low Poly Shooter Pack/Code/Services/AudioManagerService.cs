@@ -1,10 +1,6 @@
-﻿//Copyright 2022, Infima Games. All Rights Reserved.
-
-using UnityEngine;
+﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.Audio;
-using Agava.YandexGames;
-using Plugins.Audio.Core;
 
 namespace InfimaGames.LowPolyShooterPack
 {
@@ -31,13 +27,8 @@ namespace InfimaGames.LowPolyShooterPack
             _soundsGroup = _audioMixer.FindMatchingGroups(Sounds)[0];
         }
 
-        private IEnumerator Start()
+        private void Start()
         {
-#if !UNITY_WEBGL || UNITY_EDITOR
-
-            yield break;
-#endif
-            yield return YandexGamesSdk.Initialize();
             SetStartSoundsSettings();
         }
 
@@ -137,15 +128,15 @@ namespace InfimaGames.LowPolyShooterPack
             var newSourceObject = new GameObject($"Audio Source -> {clip.name}");
             //Add an audio source component to that object.
             var newAudioSource = newSourceObject.AddComponent<AudioSource>();
-            var audioYB = newSourceObject.AddComponent<SourceAudio>();
+            //var audioYB = newSourceObject.AddComponent<SourceAudio>();
             newAudioSource.outputAudioMixerGroup = _soundsGroup;
             _audioMixer.GetFloat(Sounds, out float volume);
-            //newAudioSource.volume = volume;
+            newAudioSource.volume = volume;
             //Set spatial blend.
             newAudioSource.spatialBlend = settings.SpatialBlend;
             //Play the clip!
-            //newAudioSource.PlayOneShot(clip, volume);
-            audioYB.Play(clip.name);
+            newAudioSource.PlayOneShot(clip, volume);
+            //audioYB.Play(clip.name);
             
             //Start a coroutine that will destroy the whole object once it is done!
             if(settings.AutomaticCleanup)

@@ -1,5 +1,3 @@
-using Agava.YandexGames;
-using InfimaGames.LowPolyShooterPack;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;

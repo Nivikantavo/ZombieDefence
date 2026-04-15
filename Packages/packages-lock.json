@@ -7,12 +7,12 @@
       "dependencies": {},
       "hash": "8b3ff533346e27727613880171be328b15cb4e84"
     },
-    "com.agava.yandexgames": {
-      "version": "https://github.com/forcepusher/com.agava.yandexgames.git#15.0.0",
+    "com.playgama.bridge": {
+      "version": "https://github.com/playgama/bridge-unity.git",
       "depth": 0,
       "source": "git",
       "dependencies": {},
-      "hash": "f68ebcb5e983959239896b60db5952bdf9447c72"
+      "hash": "ee01742082cdef2795799bcc0986b9eeadb22cd1"
     },
     "com.unity.ai.navigation": {
       "version": "1.1.6",
