@@ -1,6 +1,8 @@
 {
   "dependencies": {
     "com.agava.webutility": "https://github.com/forcepusher/com.agava.webutility.git#3.0.0",
+    "com.besty.unity-skills": "https://github.com/Besty0728/Unity-Skills.git?path=/SkillsForUnity",
+    "com.boxqkrtm.ide.cursor": "https://github.com/boxqkrtm/com.unity.ide.cursor.git",
     "com.playgama.bridge": "https://github.com/playgama/bridge-unity.git",
     "com.unity.ai.navigation": "1.1.6",
     "com.unity.collab-proxy": "2.7.1",
@@ -46,5 +48,8 @@
     "com.unity.modules.vr": "1.0.0",
     "com.unity.modules.wind": "1.0.0",
     "com.unity.modules.xr": "1.0.0"
-  }
+  },
+  "testables": [
+    "com.besty.unity-skills"
+  ]
 }

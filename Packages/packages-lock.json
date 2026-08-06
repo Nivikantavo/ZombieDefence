@@ -7,12 +7,31 @@
       "dependencies": {},
       "hash": "8b3ff533346e27727613880171be328b15cb4e84"
     },
+    "com.besty.unity-skills": {
+      "version": "https://github.com/Besty0728/Unity-Skills.git?path=/SkillsForUnity",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {
+        "com.unity.nuget.newtonsoft-json": "3.0.2",
+        "com.unity.timeline": "1.7.7"
+      },
+      "hash": "abb170bfa4cdd2ec384af4e055d96148432ff013"
+    },
+    "com.boxqkrtm.ide.cursor": {
+      "version": "https://github.com/boxqkrtm/com.unity.ide.cursor.git",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {
+        "com.unity.test-framework": "1.1.9"
+      },
+      "hash": "fd8ff1fb700caf062eb5cce364c1d0a85f99ebe6"
+    },
     "com.playgama.bridge": {
       "version": "https://github.com/playgama/bridge-unity.git",
       "depth": 0,
       "source": "git",
       "dependencies": {},
-      "hash": "ee01742082cdef2795799bcc0986b9eeadb22cd1"
+      "hash": "fa34e39fcde5100ccc7f8d963adea543f536d515"
     },
     "com.unity.ai.navigation": {
       "version": "1.1.6",
@@ -90,6 +109,13 @@
       "dependencies": {
         "com.unity.modules.uielements": "1.0.0"
       },
+      "url": "https://packages.unity.com"
+    },
+    "com.unity.nuget.newtonsoft-json": {
+      "version": "3.2.1",
+      "depth": 1,
+      "source": "registry",
+      "dependencies": {},
       "url": "https://packages.unity.com"
     },
     "com.unity.performance.profile-analyzer": {
