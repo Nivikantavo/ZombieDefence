@@ -45,25 +45,13 @@ public class LevelsPanel : MonoBehaviour, ILoadable
 
     public void SetData(PlayerData data)
     {
-        bool locked = true;
+        data.EnsureProgressArrays();
+
         for (int i = 0; i < _stages.Count; i++)
         {
-            if(i < data.ComplitedStages)
-            {
-                _stages[i].SetProgress(_stages[i].LevelsCount);
-                locked = false;
-            }
-            else if(i == data.ComplitedStages)
-            {
-                _stages[i].SetProgress(data.ComplitedLevelsOnStage);
-                locked = false;
-            }
-            else
-            {
-                _stages[i].SetProgress(0);
-                locked = true;
-            }
-            _levelViews[i].Initialize(_stages[i], locked);
+            int completedLevels = data.GetCompletedLevelsOnStage(i);
+            _stages[i].SetProgress(completedLevels);
+            _levelViews[i].Initialize(_stages[i], locked: false);
         }
     }
 
@@ -71,7 +59,7 @@ public class LevelsPanel : MonoBehaviour, ILoadable
     {
         for (int i = 0; i < _levelViews.Count; i++)
         {
-            if(view == _levelViews[i])
+            if (view == _levelViews[i])
             {
                 SelectLevel(_stages[i]);
             }

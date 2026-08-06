@@ -1,4 +1,3 @@
-using Agava.YandexGames;
 using InfimaGames.LowPolyShooterPack.Interface;
 using Lean.Localization;
 using UnityEngine;
@@ -90,35 +89,29 @@ public class EndLevelPanel : Element
 
     private void OnRestartLevelButtonClick()
     {
-//#if UNITY_WEBGL && !UNITY_EDITOR
         if(_wasRewarded == false)
         {
-            InterstitialAd.Show(OnAdOpen, OnRestartAdClose, OnRestartAdError);
+            PlaygamaAds.ShowInterstitial(OnAdOpen, OnRestartAdClose, OnRestartAdError);
         }
         else
         {
             _loadingScreen.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
-//#endif
     }
 
     private void OnInMenuButtonClick()
     {
-//#if UNITY_WEBGL && !UNITY_EDITOR
         if(_wasRewarded == false)
         {
-            InterstitialAd.Show(OnAdOpen, OnAdClose, OnAdError);
+            PlaygamaAds.ShowInterstitial(OnAdOpen, OnAdClose, OnAdError);
         }
-//#endif
         _loadingScreen.LoadScene(0);
     }
 
     private void OnRewardButtonClick()
     {
-//#if UNITY_WEBGL && !UNITY_EDITOR
         _rewardButton.interactable = false;
-        VideoAd.Show(OnAdOpen, OnRewardCallback, OnRewardAdClose, OnRewardAdError);
-//#endif
+        PlaygamaAds.ShowRewarded(OnAdOpen, OnRewardCallback, OnRewardAdClose, OnRewardAdError);
     }
 
     private void OnAdOpen()

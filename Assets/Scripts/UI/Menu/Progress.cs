@@ -16,7 +16,7 @@ public class Progress : MonoBehaviour, ILoadable
 
     private IEnumerator Start()
     {
-        while(SaveSystem.Instance.DataLoaded == false)
+        while (SaveSystem.Instance.DataLoaded == false)
         {
             yield return new WaitForSecondsRealtime(0.25f);
         }
@@ -26,8 +26,29 @@ public class Progress : MonoBehaviour, ILoadable
 
     public void SetData(PlayerData data)
     {
-        CurrentLevel = data.ComplitedLevelsOnStage;
-        _currentStage = _stages[data.ComplitedStages - 1];
+        data.EnsureProgressArrays();
+
+        int stageIndex = 0;
+        if (data.SelectedStage > 0 && data.SelectedStage <= _stages.Count)
+        {
+            stageIndex = data.SelectedStage - 1;
+        }
+        else
+        {
+            for (int i = 0; i < _stages.Count; i++)
+            {
+                if (data.GetCompletedLevelsOnStage(i) < Stage.LevelsPerStage)
+                {
+                    stageIndex = i;
+                    break;
+                }
+
+                stageIndex = i;
+            }
+        }
+
+        _currentStage = _stages[stageIndex];
+        CurrentLevel = data.GetCompletedLevelsOnStage(stageIndex);
         DataLoaded?.Invoke(data);
     }
 }

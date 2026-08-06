@@ -1,8 +1,10 @@
-using Agava.YandexGames;
 using Lean.Localization;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
+#if UNITY_WEBGL
+using Playgama;
+#endif
 
 public class LanguageChanger : MonoBehaviour
 {
@@ -37,9 +39,11 @@ public class LanguageChanger : MonoBehaviour
     {
 #if !UNITY_WEBGL || UNITY_EDITOR
         yield break;
-#endif
-        yield return YandexGamesSdk.Initialize();
-        string language = YandexGamesSdk.Environment.i18n.lang;
+#else
+        while (Bridge.instance == null)
+            yield return null;
+
+        string language = Bridge.platform.language;
 
         if (language == "ru")
         {
@@ -57,6 +61,7 @@ public class LanguageChanger : MonoBehaviour
             _flagIndex = 0;
         }
         _currentLanguage.image.sprite = _flags[_flagIndex];
+#endif
     }
 
     public void SetNextLanguage()

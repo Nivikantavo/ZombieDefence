@@ -1,4 +1,3 @@
-using Agava.YandexGames;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Audio;
@@ -18,18 +17,19 @@ public class SoundsPanel : MonoBehaviour
 
     private IEnumerator Start()
     {
-#if UNITY_WEBGL && !UNITY_EDITOR
-        yield return YandexGamesSdk.Initialize();
-#endif
+        while (SaveSystem.Instance == null || SaveSystem.Instance.DataLoaded == false)
+            yield return null;
+
         PlayerData data = SaveSystem.Instance.GetData();
         OnMusicSliderValueChanged(data.MusicVolume);
         OnSoundSliderValueChanged(data.SoundsVolume);
-
-        yield return null;
     }
 
     private void OnEnable()
     {
+        if (SaveSystem.Instance == null || SaveSystem.Instance.DataLoaded == false)
+            return;
+
         PlayerData data = SaveSystem.Instance.GetData();
         OnMusicSliderValueChanged(data.MusicVolume);
         OnSoundSliderValueChanged(data.SoundsVolume);
@@ -50,6 +50,9 @@ public class SoundsPanel : MonoBehaviour
 
     private void SaveSoundsParameters()
     {
+        if (SaveSystem.Instance == null)
+            return;
+
         SaveSystem.Instance.SetSoundsValue(_musicVolume, _soundVolume);
     }
 

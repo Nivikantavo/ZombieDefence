@@ -1,12 +1,5 @@
 {
   "dependencies": {
-    "com.agava.webutility": {
-      "version": "https://github.com/forcepusher/com.agava.webutility.git#3.0.0",
-      "depth": 0,
-      "source": "git",
-      "dependencies": {},
-      "hash": "8b3ff533346e27727613880171be328b15cb4e84"
-    },
     "com.besty.unity-skills": {
       "version": "https://github.com/Besty0728/Unity-Skills.git?path=/SkillsForUnity",
       "depth": 0,

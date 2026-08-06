@@ -10,7 +10,28 @@
         "useBuiltInErrorPopup": true,
         "backfillId": ""
     },
-    "payments": [],
-    "leaderboards": [],
+    "payments": [
+        {
+            "id": "ar"
+        },
+        {
+            "id": "rpg"
+        }
+    ],
+    "leaderboards": [
+        {
+            "id": "Crossroads",
+            "isMain": true
+        },
+        {
+            "id": "Parking"
+        },
+        {
+            "id": "Deadlock"
+        },
+        {
+            "id": "TrailerPark"
+        }
+    ],
     "sendAnalyticsEvents": true
 }

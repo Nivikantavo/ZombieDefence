@@ -1,8 +1,10 @@
-using Agava.YandexGames;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+#if UNITY_WEBGL
+using Playgama;
+#endif
 
 public class Leaderboards : MonoBehaviour
 {
@@ -15,34 +17,29 @@ public class Leaderboards : MonoBehaviour
 
     private float _delay = 0.01f;
 
-    private IEnumerator Start()
-    {
-#if UNITY_WEBGL && !UNITY_EDITOR
-        yield return YandexGamesSdk.Initialize();
-#endif
-        yield return null;
-    }
-
     public void ShowLeaderboards()
     {
 #if UNITY_WEBGL && !UNITY_EDITOR
-        if (YandexGamesSdk.IsInitialized)
+        if (Bridge.player.isAuthorized == false)
         {
-            if (PlayerAccount.IsAuthorized == false)
-            {
-                _authorizePanel.SetActive(true);
-            }
-            else
-            {
-                ShowLevelLeaderbord();
-            }
+            _authorizePanel.SetActive(true);
+        }
+        else
+        {
+            ShowLevelLeaderbord();
         }
 #endif
     }
 
     public void Authorize()
     {
-        PlayerAccount.Authorize(OnAuthotizeSuccess, null);
+#if UNITY_WEBGL
+        Bridge.player.Authorize(new Dictionary<string, object>(), success =>
+        {
+            if (success)
+                OnAuthotizeSuccess();
+        });
+#endif
     }
 
     private void OnAuthotizeSuccess()
@@ -93,11 +90,21 @@ public class Leaderboards : MonoBehaviour
     private void FillLeaderboard(LevelLeaderboard leaderboard)
     {
         leaderboard.gameObject.SetActive(true);
-        Leaderboard.GetEntries(leaderboard.Name, (result) =>
+#if UNITY_WEBGL
+        Bridge.leaderboards.GetEntries(leaderboard.Name, (success, entries) =>
         {
-            leaderboard.FillEntryesData(result, _leaderboardsLenth);
-            
-        }, OnGetEntriesError, _leaderboardsLenth);
+            if (success == false || entries == null)
+            {
+                OnGetEntriesError("Failed to load leaderboard entries");
+                leaderboard.MarkEntriesFailed();
+                return;
+            }
+
+            leaderboard.FillEntryesData(entries, _leaderboardsLenth);
+        });
+#else
+        leaderboard.MarkEntriesFailed();
+#endif
     }
 
     private void OnGetEntriesError(string error)

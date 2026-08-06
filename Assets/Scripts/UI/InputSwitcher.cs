@@ -1,9 +1,6 @@
-using Agava.WebUtility;
-using Agava.YandexGames;
 using InfimaGames.LowPolyShooterPack;
 using System.Collections;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 public class InputSwitcher : MonoBehaviour
 {
@@ -15,22 +12,17 @@ public class InputSwitcher : MonoBehaviour
     {
 #if !UNITY_WEBGL || UNITY_EDITOR
         yield break;
-#endif
-        yield return YandexGamesSdk.Initialize();
+#else
+        bool isMobile = PlaygamaAds.IsMobileDevice();
 
-        bool isMobile;
-
-        if (Device.IsMobile)
+        if (isMobile)
         {
-            isMobile = true;
             _inventorySetter.RemoveWeaponsSpread();
-        }
-        else
-        {
-            isMobile = false; 
         }
 
         _mobileUI.SetActive(isMobile);
         _character.SetMobileInput(isMobile);
+        yield break;
+#endif
     }
 }

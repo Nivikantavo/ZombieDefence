@@ -1,5 +1,3 @@
-using Agava.YandexGames;
-using Agava.YandexGames.Samples;
 using GameAnalyticsSDK;
 using InfimaGames.LowPolyShooterPack;
 using System.Collections;
@@ -7,6 +5,9 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.Events;
+#if UNITY_WEBGL
+using Playgama;
+#endif
 
 public class Shop : MonoBehaviour
 {
@@ -29,9 +30,9 @@ public class Shop : MonoBehaviour
 
     private void OnEnable()
     {
-#if !UNITY_EDITOR
-        if (YandexGamesSdk.IsInitialized)
-            Billing.GetProductCatalog(productCatalogReponse => UpdateProductCatalog(productCatalogReponse.products));
+#if UNITY_WEBGL && !UNITY_EDITOR
+        if (Bridge.payments.isSupported)
+            Bridge.payments.GetCatalog(OnGetCatalogCompleted);
 #endif
         foreach (var itemView in _itemViews)
         {
@@ -61,12 +62,6 @@ public class Shop : MonoBehaviour
 
     private IEnumerator Start()
     {
-#if !UNITY_EDITOR
-        if (YandexGamesSdk.IsInitialized == false)
-        {
-            yield return YandexGamesSdk.Initialize();
-        }
-#endif
         while (SaveSystem.Instance.DataLoaded == false)
         {
             yield return new WaitForSecondsRealtime(_checkDataDelay);
@@ -100,9 +95,9 @@ public class Shop : MonoBehaviour
         }
     }
 
-    private void UpdateProductCatalog(CatalogProduct[] products)
+    private void UpdateProductCatalog(List<CatalogProduct> products)
     {
-        for (int i = 0; i < products.Length; i++)
+        for (int i = 0; i < products.Count && i < _productsView.Count; i++)
         {
             _productsView[i].Product = products[i];
         }
@@ -110,20 +105,26 @@ public class Shop : MonoBehaviour
 
     private void TrySellProduct(Item item, string id)
     {
-        Billing.PurchaseProduct(id, (purchaseProduct) =>
+#if UNITY_WEBGL
+        Bridge.payments.Purchase(id, (success, purchase) =>
         {
-            SaveSystem.Instance.SetBoughtProduct(purchaseProduct.purchaseData.productID);
+            if (success == false || purchase == null)
+                return;
+
+            string productId = purchase.TryGetValue("id", out string value) ? value : id;
+            SaveSystem.Instance.SetBoughtProduct(productId);
             AddBoughtWeapon(item as WeaponItem);
 
             foreach (ProductView view in _productsView)
             {
-                if (view.ProductID == purchaseProduct.purchaseData.productID)
+                if (view.ProductID == productId)
                 {
                     view.OnSellSuccessfully();
-                    GameAnalytics.NewResourceEvent(GAResourceFlowType.Source, item.Name, 1, item.Name, purchaseProduct.purchaseData.productID);
+                    GameAnalytics.NewResourceEvent(GAResourceFlowType.Source, item.Name, 1, item.Name, productId);
                 }
             }
         });
+#endif
     }
 
     private void TrySellWeapon(WeaponItem weapon)
@@ -203,7 +204,7 @@ public class Shop : MonoBehaviour
         MarkBoughtWeapon();
         MarkBoughtForces();
         MarkBoughtImpruvment();
-#if !UNITY_EDITOR
+#if UNITY_WEBGL && !UNITY_EDITOR
         GetBoughtProducts();
 #endif
     }
@@ -272,38 +273,70 @@ public class Shop : MonoBehaviour
         }
     }
 
-    private void GetBoughtProducts()
+#if UNITY_WEBGL
+    private void OnGetCatalogCompleted(bool success, List<Dictionary<string, string>> catalog)
     {
-        Billing.GetPurchasedProducts(purchasedProductsResponse => MarkBoughtProduct(purchasedProductsResponse.purchasedProducts));
+        if (success == false || catalog == null)
+            return;
+
+        List<CatalogProduct> products = new List<CatalogProduct>();
+        foreach (var item in catalog)
+        {
+            CatalogProduct product = CatalogProduct.FromDictionary(item);
+            if (product != null)
+                products.Add(product);
+        }
+
+        UpdateProductCatalog(products);
     }
 
-    private void MarkBoughtProduct(PurchasedProduct[] products)
+    private void GetBoughtProducts()
+    {
+        Bridge.payments.GetPurchases((success, purchases) =>
+        {
+            if (success && purchases != null)
+                MarkBoughtProduct(purchases);
+        });
+    }
+
+    private void MarkBoughtProduct(List<Dictionary<string, string>> products)
     {
         foreach (ProductView view in _productsView)
         {
-            foreach(var product in products)
+            foreach (var product in products)
             {
-                if(product.productID == view.ProductID)
+                string productId = product.TryGetValue("id", out string id) ? id : null;
+                if (productId == view.ProductID)
                 {
                     view.OnSellSuccessfully();
                 }
             }
         }
     }
+#endif
 
     public void DeleteProducts()
     {
-        Billing.GetPurchasedProducts(purchasedProductsResponse => DeleteAllPurchasedProducts(purchasedProductsResponse.purchasedProducts));
+#if UNITY_WEBGL
+        Bridge.payments.GetPurchases((success, purchases) =>
+        {
+            if (success && purchases != null)
+                DeleteAllPurchasedProducts(purchases);
+        });
+#endif
     }
 
-    private void DeleteAllPurchasedProducts(PurchasedProduct[] products)
+#if UNITY_WEBGL
+    private void DeleteAllPurchasedProducts(List<Dictionary<string, string>> products)
     {
         foreach (var product in products)
         {
-            Billing.ConsumeProduct(product.purchaseToken, () =>
+            string productId = product.TryGetValue("id", out string id) ? id : null;
+            if (string.IsNullOrEmpty(productId) == false)
             {
-
-            });
+                Bridge.payments.ConsumePurchase(productId, null);
+            }
         }
     }
+#endif
 }

@@ -1,6 +1,9 @@
-using Agava.YandexGames;
 using System.Collections;
 using UnityEngine;
+#if UNITY_WEBGL
+using Playgama;
+using Playgama.Modules.Platform;
+#endif
 
 public class StartScreen : MonoBehaviour
 {
@@ -13,21 +16,16 @@ public class StartScreen : MonoBehaviour
         StartCoroutine(CheckGameReady());
     }
 
-    private IEnumerator Start()
-    {
-#if !UNITY_WEBGL || UNITY_EDITOR
-        yield break;
-#endif
-        yield return YandexGamesSdk.Initialize();
-    }
-
     private IEnumerator CheckGameReady() 
     {
-        while(YandexGamesSdk.IsInitialized == false && SaveSystem.Instance.DataLoaded == false)
+        while (SaveSystem.Instance == null || SaveSystem.Instance.DataLoaded == false)
         {
             yield return null;
         }
-        YandexGamesSdk.GameReady();
+
+#if UNITY_WEBGL && !UNITY_EDITOR
+        Bridge.platform.SendMessage(PlatformMessage.GameReady);
+#endif
         gameObject.SetActive(false);
     }
 }

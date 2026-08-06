@@ -1,7 +1,10 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.RegularExpressions;
 using UnityEngine;
+#if UNITY_WEBGL
+using Playgama;
+#endif
 
 public class DifficultyChoicer : MonoBehaviour
 {
@@ -34,7 +37,9 @@ public class DifficultyChoicer : MonoBehaviour
         }
         else
         {
-            _levels = transform.GetComponentsInChildren<LevelWaves>(true).ToList();
+            _levels = transform.GetComponentsInChildren<LevelWaves>(true)
+                .OrderBy(level => GetLevelOrder(level.name))
+                .ToList();
 
             _currentLevelNumber = data.SelectedLevel;
 
@@ -49,6 +54,17 @@ public class DifficultyChoicer : MonoBehaviour
         }
     }
 
+    private static int GetLevelOrder(string levelName)
+    {
+        Match match = Regex.Match(levelName, @"\d+");
+        if (match.Success && int.TryParse(match.Value, out int number))
+        {
+            return number;
+        }
+
+        return int.MaxValue;
+    }
+
     private void Start()
     {
         if (SurvivalMode)
@@ -59,17 +75,49 @@ public class DifficultyChoicer : MonoBehaviour
 
     private void SetCurrentScore()
     {
-        //#if UNITY_WEBGL && !UNITY_EDITOR
-        var leaderboardId = "YOUR_LEADERBOARD_ID"; // id that you specified in the config file
+#if UNITY_WEBGL && !UNITY_EDITOR
+        string leaderboardId = _surviveScorePanel.CurrentLeaderboardName;
+        if (string.IsNullOrEmpty(leaderboardId))
+            return;
+
         Bridge.leaderboards.GetEntries(leaderboardId, OnGetEntriesCompleted);
-        Leaderboard.GetPlayerEntry(_surviveScorePanel.CurrentLeaderboardName, (result) =>
-        {
-            if (result != null)
-            {
-                _surviveScorePanel.SetCurrentRecord(result.score);
-            }
-                
-        });
-//#endif
+#endif
     }
+
+#if UNITY_WEBGL
+    private void OnGetEntriesCompleted(bool success, List<Dictionary<string, string>> entries)
+    {
+        if (success == false || entries == null)
+            return;
+
+        foreach (var entry in entries)
+        {
+            bool isCurrentPlayer = false;
+
+            if (entry.TryGetValue("id", out string entryId)
+                && string.IsNullOrEmpty(Bridge.player.id) == false
+                && entryId == Bridge.player.id)
+            {
+                isCurrentPlayer = true;
+            }
+            else if (entry.TryGetValue("name", out string entryName)
+                && string.IsNullOrEmpty(Bridge.player.name) == false
+                && entryName == Bridge.player.name)
+            {
+                isCurrentPlayer = true;
+            }
+
+            if (isCurrentPlayer == false)
+                continue;
+
+            if (entry.TryGetValue("score", out string scoreValue)
+                && int.TryParse(scoreValue, out int score))
+            {
+                _surviveScorePanel.SetCurrentRecord(score);
+            }
+
+            break;
+        }
+    }
+#endif
 }

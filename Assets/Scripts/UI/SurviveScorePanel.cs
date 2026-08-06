@@ -1,8 +1,9 @@
-using Agava.YandexGames;
-using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+#if UNITY_WEBGL
+using Playgama;
+#endif
 
 public class SurviveScorePanel : MonoBehaviour
 {
@@ -17,11 +18,6 @@ public class SurviveScorePanel : MonoBehaviour
     private int _currentRecord = 0;
     private int _millisecondsInSecond = 1000;
 
-    private IEnumerator Start()
-    {
-        yield return YandexGamesSdk.Initialize();
-    }
-
     public void SetScore(float time)
     {
         ViewSurviveResult(time, _surviveText);
@@ -29,7 +25,8 @@ public class SurviveScorePanel : MonoBehaviour
         {
             _currentRecord = Mathf.FloorToInt(time);
 #if UNITY_WEBGL && !UNITY_EDITOR
-            Leaderboard.SetScore(_currentLeaderboardName, _currentRecord);
+            if (string.IsNullOrEmpty(_currentLeaderboardName) == false)
+                Bridge.leaderboards.SetScore(_currentLeaderboardName, _currentRecord);
 #endif
         }
 

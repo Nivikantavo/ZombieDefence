@@ -1,6 +1,3 @@
-using Agava.WebUtility;
-using Agava.YandexGames;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -11,7 +8,7 @@ public class HowToPlayPanel : MonoBehaviour
 
     private void Start()
     {
-        if (Device.IsMobile)
+        if (PlaygamaAds.IsMobileDevice())
         {
             foreach (var image in MobileInputImages)
             {

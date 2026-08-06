@@ -1,6 +1,8 @@
-using Agava.WebUtility;
 using UnityEngine;
 using UnityEngine.EventSystems;
+#if UNITY_WEBGL
+using Playgama;
+#endif
 
 public class InBackgroundCheker : MonoBehaviour
 {
@@ -12,12 +14,17 @@ public class InBackgroundCheker : MonoBehaviour
 
     private void OnEnable()
     {
-        WebApplication.InBackgroundChangeEvent += OnInBackgroundChange;
+#if UNITY_WEBGL
+        Bridge.platform.pauseStateChanged += OnInBackgroundChange;
+#endif
     }
 
     private void OnDisable()
     {
-        WebApplication.InBackgroundChangeEvent -= OnInBackgroundChange;
+#if UNITY_WEBGL
+        if (Bridge.instance != null)
+            Bridge.platform.pauseStateChanged -= OnInBackgroundChange;
+#endif
     }
 
     public void SetAdsShown(bool adsShown)
@@ -32,7 +39,7 @@ public class InBackgroundCheker : MonoBehaviour
             return;
         }
         
-        if (Device.IsMobile)
+        if (PlaygamaAds.IsMobileDevice())
         {
             if(_mobileUI != null)
             {

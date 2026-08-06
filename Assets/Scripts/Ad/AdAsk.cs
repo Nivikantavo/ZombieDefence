@@ -22,7 +22,7 @@ public class AdAsk : MonoBehaviour
     private void ShowVideoAd()
     {
         _adStartButton.interactable = false;
-        VideoAd.Show(OnVideoAdOpen, OnRewardCallback, OnVideoAdClose, OnErrorCallback);
+        PlaygamaAds.ShowRewarded(OnVideoAdOpen, OnRewardCallback, OnVideoAdClose, OnErrorCallback);
     }
 
     private void OnVideoAdOpen()

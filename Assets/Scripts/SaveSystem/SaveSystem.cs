@@ -4,11 +4,15 @@ using System.IO;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.Events;
+#if UNITY_WEBGL
+using Playgama;
+#endif
 
 public class SaveSystem : MonoBehaviour
 {
     private const string ProductARName = "Assault Rifle 03";
     private const string ProductRPGName = "Rocket Launcher 01";
+    private const string PlayerDataKey = "player_data";
 
     public bool DataLoaded { get; private set; }
 
@@ -41,19 +45,20 @@ public class SaveSystem : MonoBehaviour
     private IEnumerator Start()
     {
 #if !UNITY_WEBGL || UNITY_EDITOR
-        
         yield break;
-#endif
-        yield return YandexGamesSdk.Initialize();
+#else
+        while (Bridge.instance == null)
+            yield return null;
+
         Load();
+#endif
     }
 
     public void Save()
     {
 #if UNITY_WEBGL && !UNITY_EDITOR
         string jsonData = JsonUtility.ToJson(_playerData);
-        PlayerAccount.SetCloudSaveData(jsonData);
-
+        Bridge.storage.Set(PlayerDataKey, jsonData);
 #endif
 #if UNITY_EDITOR
         string json = JsonUtility.ToJson(_playerData);
@@ -64,23 +69,25 @@ public class SaveSystem : MonoBehaviour
     public void Load()
     {
 #if UNITY_WEBGL && !UNITY_EDITOR
-        PlayerAccount.GetCloudSaveData(OnLoadDataSuccess, OnLoadDataError);
-        DataUpdated?.Invoke();
+        Bridge.storage.Get(PlayerDataKey, OnStorageGetCompleted);
 #endif
 #if UNITY_EDITOR
         _playerData = new PlayerData();
         string json = ReadFromFile(file);
         JsonUtility.FromJsonOverwrite(json, _playerData);
+        _playerData.EnsureProgressArrays();
         DataLoaded = true;
+        DataUpdated?.Invoke();
 #endif
     }
 
     public PlayerData GetData()
     {
-#if UNITY_WEBGL && !UNITY_EDITOR
-        if (YandexGamesSdk.IsInitialized == false)
-            return null;
-#endif
+        if (_playerData != null)
+        {
+            _playerData.EnsureProgressArrays();
+        }
+
         return _playerData;
     }
 
@@ -105,20 +112,30 @@ public class SaveSystem : MonoBehaviour
 
     public void SetProgress(int complitedLevelNumber, int stageNumber)
     {
-        if(stageNumber <= _playerData.ComplitedStages)
+        _playerData.EnsureProgressArrays();
+
+        int stageIndex = stageNumber - 1;
+        if (stageIndex < 0 || stageIndex >= _playerData.CompletedLevelsPerStage.Length)
         {
             return;
         }
+
+        if (complitedLevelNumber <= _playerData.CompletedLevelsPerStage[stageIndex])
+        {
+            return;
+        }
+
+        _playerData.CompletedLevelsPerStage[stageIndex] = complitedLevelNumber;
         _playerData.ComplitedLevelsOnStage = complitedLevelNumber;
 
-        if (complitedLevelNumber == 3)
+        if (complitedLevelNumber >= Stage.LevelsPerStage)
         {
             if (stageNumber > _playerData.ComplitedStages)
             {
                 _playerData.ComplitedStages = stageNumber;
-                _playerData.ComplitedLevelsOnStage = 0;
             }
         }
+
         Save();
     }
 
@@ -223,6 +240,23 @@ public class SaveSystem : MonoBehaviour
         }
     }
 
+#if UNITY_WEBGL
+    private void OnStorageGetCompleted(bool success, string data)
+    {
+        if (success == false)
+        {
+            OnLoadDataError("Failed to load player data from Playgama storage");
+            _playerData = new PlayerData();
+            DataLoaded = true;
+            DataUpdated?.Invoke();
+            return;
+        }
+
+        OnLoadDataSuccess(data);
+        DataUpdated?.Invoke();
+    }
+#endif
+
     private void OnLoadDataSuccess(string data)
     {
         if (string.IsNullOrEmpty(data))
@@ -232,6 +266,7 @@ public class SaveSystem : MonoBehaviour
         else
         {
             _playerData = JsonUtility.FromJson<PlayerData>(data);
+            _playerData.EnsureProgressArrays();
             GetBoughtProducts();
         }
         DataLoaded = true;
@@ -239,16 +274,23 @@ public class SaveSystem : MonoBehaviour
 
     private void GetBoughtProducts()
     {
-        Billing.GetPurchasedProducts(purchasedProductsResponse => CheckBoughtProduct(purchasedProductsResponse.purchasedProducts));
+#if UNITY_WEBGL && !UNITY_EDITOR
+        Bridge.payments.GetPurchases((success, purchases) =>
+        {
+            if (success && purchases != null)
+                CheckBoughtProduct(purchases);
+        });
+#endif
     }
 
-    private void CheckBoughtProduct(PurchasedProduct[] products)
+    private void CheckBoughtProduct(List<Dictionary<string, string>> products)
     {
         List<string> weapons = _playerData.Weapons.ToList();
 
         foreach (var product in products)
         {
-            if(product.productID == "rpg")
+            string productId = product.TryGetValue("id", out string id) ? id : null;
+            if (productId == "rpg")
             {
                 if (weapons.Contains(ProductRPGName) == false)
                 {
@@ -256,7 +298,7 @@ public class SaveSystem : MonoBehaviour
                     SetWeaponsArrey(weapons.ToArray());
                 }
             }
-            if (product.productID == "ar")
+            if (productId == "ar")
             {
                 if (weapons.Contains(ProductARName) == false)
                 {

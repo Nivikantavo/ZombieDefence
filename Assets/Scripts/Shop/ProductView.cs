@@ -3,11 +3,12 @@ using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.Networking;
 using UnityEngine.UI;
 
 public class ProductView : MonoBehaviour
 {
-    public string ProductID => _product.id;
+    public string ProductID => _product?.id;
     public string ProductName => _item.Name;
 
     [SerializeField] private RawImage _productImage;
@@ -18,6 +19,7 @@ public class ProductView : MonoBehaviour
 
     private CatalogProduct _product;
     private bool _bought = false;
+    private Coroutine _downloadImageCoroutine;
 
     public event UnityAction<Item, string> PoductViewClick;
 
@@ -26,9 +28,21 @@ public class ProductView : MonoBehaviour
         set
         {
             _product = value;
-            _priceText.text = _product.priceValue.ToString();
-            if (Uri.IsWellFormedUriString(value.imageURI, UriKind.Absolute))
-                StartCoroutine(DownloadAndSetProductImage(value.imageURI));
+            if (_product == null)
+                return;
+
+            _priceText.text = string.IsNullOrEmpty(_product.priceValue) == false
+                ? _product.priceValue
+                : _product.price;
+
+            if (string.IsNullOrEmpty(value.imageURI) == false
+                && Uri.IsWellFormedUriString(value.imageURI, UriKind.Absolute))
+            {
+                if (_downloadImageCoroutine != null)
+                    StopCoroutine(_downloadImageCoroutine);
+
+                _downloadImageCoroutine = StartCoroutine(DownloadAndSetProductImage(value.imageURI));
+            }
         }
     }
 
@@ -44,19 +58,20 @@ public class ProductView : MonoBehaviour
 
     private IEnumerator DownloadAndSetProductImage(string imageUrl)
     {
-        var remoteImage = new RemoteImage(imageUrl);
-        remoteImage.Download();
+        using (UnityWebRequest request = UnityWebRequestTexture.GetTexture(imageUrl))
+        {
+            yield return request.SendWebRequest();
 
-        while (!remoteImage.IsDownloadFinished)
-            yield return null;
+            if (request.result == UnityWebRequest.Result.Success)
+                _productImage.texture = DownloadHandlerTexture.GetContent(request);
+        }
 
-        if (remoteImage.IsDownloadSuccessful)
-            _productImage.texture = remoteImage.Texture;
+        _downloadImageCoroutine = null;
     }
 
     public void OnPurchaseButtonClick()
     {
-        if(_bought == false)
+        if(_bought == false && string.IsNullOrEmpty(ProductID) == false)
         {
             PoductViewClick?.Invoke(_item, ProductID);
         }
