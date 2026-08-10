@@ -13,11 +13,4 @@ public class ZombieHitEffect : HitEffect
     {
         _zombie.Hit -= OnHitEffect;
     }
-
-    protected override void Update()
-    {
-        base.Update();
-        SetSkinEffect(CurrentIntensity);
-        SetAttachEffect(CurrentIntensity);
-    }
 }

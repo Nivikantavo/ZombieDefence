@@ -26,10 +26,16 @@ namespace Plugins.Audio.Core
         private void Awake()
         {
             _configuration = AudioConfiguration.GetInstance();
-            _database = _configuration.GetDatabase();
-            _database.Initialize();
-            
-            PreloadAudio();
+            if (_configuration != null && _configuration.HasDatabase())
+            {
+                _database = _configuration.GetDatabase();
+                _database.Initialize();
+                PreloadAudio();
+            }
+            else
+            {
+                Debug.LogError("Audio Management: AudioDatabase is not assigned in AudioManagementSettings.");
+            }
         }
 
         public IEnumerator GetClip(string key, Action<AudioClip> result)
@@ -37,18 +43,56 @@ namespace Plugins.Audio.Core
             if (_cechAudio.TryGetValue(key, out AudioClip clip))
             {
                 result.Invoke(clip);
+                yield break;
             }
-            else 
+
+            if (_database == null)
             {
-                AudioData audioData = _database.GetData(key);
+                Debug.LogError("Audio Management: database is null. Cannot load clip: " + key);
+                result?.Invoke(null);
+                yield break;
+            }
+
+            AudioData audioData = null;
+            try
+            {
+                audioData = _database.GetData(key);
+            }
+            catch (Exception exception)
+            {
+                Debug.LogError(exception.Message);
+                result?.Invoke(null);
+                yield break;
+            }
+
+            if (audioData == null)
+            {
+                Debug.LogError("Audio Management: clip is missing for key: " + key);
+                result?.Invoke(null);
+                yield break;
+            }
                 
 #if UNITY_EDITOR || !UNITY_WEBGL
-                result.Invoke(audioData.Clip);
+            if (audioData.Clip == null)
+            {
+                Debug.LogError("Audio Management: clip is missing for key: " + key);
+                result?.Invoke(null);
                 yield break;
-#endif
-                string path = Application.streamingAssetsPath + "/Audio/" + audioData.FolderPath + audioData.Name;
-                yield return LoadClip(path, audioData.Key, result);
             }
+
+            result.Invoke(audioData.Clip);
+            yield break;
+#else
+            if (string.IsNullOrEmpty(audioData.Name))
+            {
+                Debug.LogError("Audio Management: clip name is missing for key: " + key);
+                result?.Invoke(null);
+                yield break;
+            }
+
+            string path = Application.streamingAssetsPath + "/Audio/" + audioData.FolderPath + audioData.Name;
+            yield return LoadClip(path, audioData.Key, result);
+#endif
         }
 
         private void PreloadAudio()
@@ -70,8 +114,7 @@ namespace Plugins.Audio.Core
             }
             
             return;
-#endif
-
+#else
             foreach (AudioData audioData in _database.Items)
             {
                 if (audioData.Preload == false)
@@ -82,6 +125,7 @@ namespace Plugins.Audio.Core
                 string path = Application.streamingAssetsPath + "/Audio/" + audioData.FolderPath + audioData.Name;
                 StartCoroutine(LoadClip(path, audioData.Key));
             }
+#endif
         }
 
         private IEnumerator LoadClip(string path, string key, Action<AudioClip> result = null)

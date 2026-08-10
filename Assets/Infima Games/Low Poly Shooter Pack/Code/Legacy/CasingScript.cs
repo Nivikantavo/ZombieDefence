@@ -8,7 +8,6 @@ namespace InfimaGames.LowPolyShooterPack.Legacy
 {
 	public class CasingScript : MonoBehaviour
 	{
-
 		[Header("Force X")]
 		[Tooltip("Minimum force on X axis")]
 		public float minimumXForce;
@@ -45,64 +44,64 @@ namespace InfimaGames.LowPolyShooterPack.Legacy
 		public AudioClip[] casingSounds;
 
 		public AudioSource audioSource;
-        public SourceAudio Source;
+		public SourceAudio Source;
 
 		[Header("Spin Settings")]
-		//How fast the casing spins
 		[Tooltip("How fast the casing spins over time")]
 		public float speed = 2500.0f;
 
-		//Launch the casing at start
+		private Rigidbody _rigidbody;
+
 		private void Awake()
 		{
-			//Random rotation of the casing
-			GetComponent<Rigidbody>().AddRelativeTorque(
-				Random.Range(minimumRotation, maximumRotation), //X Axis
-				Random.Range(minimumRotation, maximumRotation), //Y Axis
-				Random.Range(minimumRotation, maximumRotation) //Z Axis
-				* Time.deltaTime);
-
-			//Random direction the casing will be ejected in
-			GetComponent<Rigidbody>().AddRelativeForce(
-				Random.Range(minimumXForce, maximumXForce), //X Axis
-				Random.Range(minimumYForce, maximumYForce), //Y Axis
-				Random.Range(minimumZForce, maximumZForce)); //Z Axis
+			_rigidbody = GetComponent<Rigidbody>();
 		}
 
-		private void Start()
+		private void OnEnable()
 		{
-			//Start the remove/destroy coroutine
-			StartCoroutine(RemoveCasing());
-			//Set random rotation at start
 			transform.rotation = Random.rotation;
-			//Start play sound coroutine
+
+			_rigidbody.velocity = Vector3.zero;
+			_rigidbody.angularVelocity = Vector3.zero;
+
+			_rigidbody.AddRelativeTorque(
+				Random.Range(minimumRotation, maximumRotation),
+				Random.Range(minimumRotation, maximumRotation),
+				Random.Range(minimumRotation, maximumRotation)
+				* Time.deltaTime);
+
+			_rigidbody.AddRelativeForce(
+				Random.Range(minimumXForce, maximumXForce),
+				Random.Range(minimumYForce, maximumYForce),
+				Random.Range(minimumZForce, maximumZForce));
+
+			StopAllCoroutines();
+			StartCoroutine(RemoveCasing());
 			StartCoroutine(PlaySound());
 		}
 
 		private void FixedUpdate()
 		{
-			//Spin the casing based on speed value
 			transform.Rotate(Vector3.right, speed * Time.deltaTime);
 			transform.Rotate(Vector3.down, speed * Time.deltaTime);
 		}
 
 		private IEnumerator PlaySound()
 		{
-			//Wait for random time before playing sound clip
 			yield return new WaitForSeconds(Random.Range(0.25f, 0.85f));
-			//Get a random casing sound from the array 
-			audioSource.clip = casingSounds
-				[Random.Range(0, casingSounds.Length)];
-            //Play the random casing sound
-            Source.Play(audioSource.clip.name);
+			if (casingSounds == null || casingSounds.Length == 0 || audioSource == null || Source == null)
+				yield break;
+
+			audioSource.clip = casingSounds[Random.Range(0, casingSounds.Length)];
+			Source.Play(audioSource.clip.name);
 		}
 
 		private IEnumerator RemoveCasing()
 		{
-			//Destroy the casing after set amount of seconds
 			yield return new WaitForSeconds(despawnTime);
-			//Destroy casing object
-			Destroy(gameObject);
+			_rigidbody.velocity = Vector3.zero;
+			_rigidbody.angularVelocity = Vector3.zero;
+			PrefabPool.Release(gameObject);
 		}
 	}
 }

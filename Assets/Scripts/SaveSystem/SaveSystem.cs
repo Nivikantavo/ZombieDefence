@@ -98,6 +98,27 @@ public class SaveSystem : MonoBehaviour
         Save();
     }
 
+    [ContextMenu("Unlock All Levels")]
+    public void UnlockAllLevels()
+    {
+        if (_playerData == null)
+        {
+            _playerData = new PlayerData();
+        }
+
+        _playerData.EnsureProgressArrays();
+
+        for (int i = 0; i < _playerData.CompletedLevelsPerStage.Length; i++)
+        {
+            _playerData.CompletedLevelsPerStage[i] = Stage.LevelsPerStage;
+        }
+
+        _playerData.ComplitedStages = PlayerData.StagesCount;
+        _playerData.ComplitedLevelsOnStage = Stage.LevelsPerStage;
+        Save();
+        DataUpdated?.Invoke();
+    }
+
     public void SetMoneyValue(int money)
     {
         if(money != _playerData.Money)

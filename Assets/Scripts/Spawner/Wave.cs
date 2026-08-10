@@ -16,5 +16,6 @@ public class Wave : ObjectPool
     public void SetCount(int count)
     {
         ZombieCount = count;
+        EnsureCapacity(count);
     }
 }

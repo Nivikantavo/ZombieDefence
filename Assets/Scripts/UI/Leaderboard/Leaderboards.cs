@@ -19,16 +19,14 @@ public class Leaderboards : MonoBehaviour
 
     public void ShowLeaderboards()
     {
-#if UNITY_WEBGL && !UNITY_EDITOR
+#if UNITY_WEBGL
         if (Bridge.player.isAuthorized == false)
         {
             _authorizePanel.SetActive(true);
-        }
-        else
-        {
-            ShowLevelLeaderbord();
+            return;
         }
 #endif
+        ShowLevelLeaderbord();
     }
 
     public void Authorize()

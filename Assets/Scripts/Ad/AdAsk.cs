@@ -29,7 +29,15 @@ public class AdAsk : MonoBehaviour
     {
         AudioListener.pause = true;
         AudioListener.volume = 0f;
-        _backgroundCheker.SetAdsShown(true);
+        if (_backgroundCheker == null)
+        {
+            _backgroundCheker = FindObjectOfType<InBackgroundCheker>();
+        }
+
+        if (_backgroundCheker != null)
+        {
+            _backgroundCheker.SetAdsShown(true);
+        }
     }
 
     private void OnRewardCallback()
@@ -40,7 +48,16 @@ public class AdAsk : MonoBehaviour
     private void OnVideoAdClose()
     {
         gameObject.SetActive(false);
-        _backgroundCheker.SetAdsShown(false);
+        if (_backgroundCheker == null)
+        {
+            _backgroundCheker = FindObjectOfType<InBackgroundCheker>();
+        }
+
+        if (_backgroundCheker != null)
+        {
+            _backgroundCheker.SetAdsShown(false);
+        }
+
         AudioListener.pause = false;
         AudioListener.volume = 1f;
     }

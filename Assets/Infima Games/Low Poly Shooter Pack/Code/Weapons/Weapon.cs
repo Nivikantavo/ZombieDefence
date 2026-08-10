@@ -1,7 +1,6 @@
 ﻿//Copyright 2022, Infima Games. All Rights Reserved.
 
 using InfimaGames.LowPolyShooterPack.Legacy;
-using UnityEditor;
 using UnityEngine;
 
 namespace InfimaGames.LowPolyShooterPack
@@ -373,13 +372,11 @@ namespace InfimaGames.LowPolyShooterPack
                 //Convert to world space.
                 spreadValue = playerCamera.TransformDirection(spreadValue);
 
-                //Spawn projectile from the projectile spawn point.
-                GameObject projectile = Instantiate(prefabProjectile, playerCamera.position, Quaternion.Euler(playerCamera.eulerAngles + spreadValue));
+                GameObject projectile = PrefabPool.Get(prefabProjectile, playerCamera.position, Quaternion.Euler(playerCamera.eulerAngles + spreadValue));
 
-                if(projectile.TryGetComponent<Projectile>(out Projectile projectileScript))
+                if (projectile.TryGetComponent(out Projectile projectileScript))
                     projectileScript.SetDamage(damage);
 
-                //Add velocity to the projectile.
                 projectile.GetComponent<Rigidbody>().velocity = projectile.transform.forward * projectileImpulse;
             }
         }
@@ -418,9 +415,8 @@ namespace InfimaGames.LowPolyShooterPack
         /// </summary>
         public override void EjectCasing()
         {
-            //Spawn casing prefab at spawn point.
-            if(prefabCasing != null && socketEjection != null)
-                Instantiate(prefabCasing, socketEjection.position, socketEjection.rotation);
+            if (prefabCasing != null && socketEjection != null)
+                PrefabPool.Get(prefabCasing, socketEjection.position, socketEjection.rotation);
         }
 
         #endregion

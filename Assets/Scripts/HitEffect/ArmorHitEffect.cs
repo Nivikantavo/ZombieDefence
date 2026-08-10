@@ -14,9 +14,8 @@ public class ArmorHitEffect : HitEffect
         _armor.Hit -= OnHitEffect;
     }
 
-    protected override void Update()
+    protected override void ApplyEffects(float intensity)
     {
-        base.Update();
-        SetAttachEffect(CurrentIntensity);
+        SetAttachEffect(intensity);
     }
 }

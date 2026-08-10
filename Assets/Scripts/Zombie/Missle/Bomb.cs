@@ -18,46 +18,47 @@ public class Bomb : MonoBehaviour, Idamageable
 
     public void TakeDamage(float damage)
     {
-        if(_currentHealth > 0)
+        if (_currentHealth > 0)
         {
             _currentHealth -= damage;
             if (_currentHealth <= 0)
-            {
                 BlowUp();
-            }
         }
     }
 
     public void BlowUp()
     {
-        RaycastHit checkGround;
-        if (Physics.Raycast(transform.position, Vector3.down, out checkGround, 50))
+        if (Physics.Raycast(transform.position, Vector3.down, out RaycastHit checkGround, 50f))
         {
-            Instantiate(_explosionPrefab, checkGround.point,
+            GameObject explosion = PrefabPool.Get(_explosionPrefab, checkGround.point,
                 Quaternion.FromToRotation(Vector3.forward, checkGround.normal));
+
+            if (explosion != null &&
+                explosion.GetComponent<InfimaGames.LowPolyShooterPack.Legacy.ImpactScript>() == null &&
+                explosion.GetComponent<PooledExplosionAutoRelease>() == null)
+            {
+                explosion.AddComponent<PooledExplosionAutoRelease>();
+            }
         }
 
         Vector3 explosionPos = transform.position;
-
         Collider[] colliders = Physics.OverlapSphere(explosionPos, _radius);
-        foreach (Collider hit in colliders)
+        for (int i = 0; i < colliders.Length; i++)
         {
-            if(hit.TryGetComponent<Idamageable>(out Idamageable damageable))
+            Collider hit = colliders[i];
+            if (hit.TryGetComponent(out Idamageable damageable))
             {
-                if(damageable is Zombie)
-                {
+                if (damageable is Zombie)
                     damageable.TakeDamage(_damage * _zombieDamadeMultiplier);
-                }
                 else
-                {
                     damageable.TakeDamage(_damage);
-                }
             }
 
             Rigidbody rb = hit.GetComponent<Rigidbody>();
             if (rb != null)
-                rb.AddExplosionForce(_power * 5, explosionPos, _radius, 3.0F);
+                rb.AddExplosionForce(_power * 5f, explosionPos, _radius, 3.0f);
         }
+
         gameObject.SetActive(false);
     }
 }

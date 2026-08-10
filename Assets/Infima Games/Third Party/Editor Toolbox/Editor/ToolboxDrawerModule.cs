@@ -255,9 +255,44 @@ namespace Toolbox.Editor
         /// </summary>
         internal static bool HasNativeTypeDrawer(Type type)
         {
-            var parameters = new object[] { type };
-            var result = getDrawerTypeForTypeMethod.Invoke(null, parameters) as Type;
-            return result != null && typeof(PropertyDrawer).IsAssignableFrom(result);
+            // Unity 2022.3.22+ changed GetDrawerTypeForType(Type) to
+            // GetDrawerTypeForType(Type, bool). Later versions add more args.
+            // MethodInfo.Invoke does not fill optional parameters — match arity explicitly.
+            // Never throw: exceptions here flood the Inspector and can break Build Settings UI.
+            try
+            {
+                if (getDrawerTypeForTypeMethod == null)
+                    return false;
+
+                var parameterInfos = getDrawerTypeForTypeMethod.GetParameters();
+                object[] parameters;
+                switch (parameterInfos.Length)
+                {
+                    case 1:
+                        parameters = new object[] { type };
+                        break;
+                    case 2:
+                        // 2022.3.62: (Type propertyType, bool isPropertyTypeAManagedReference)
+                        parameters = new object[] { type, false };
+                        break;
+                    case 3:
+                        // Unity 6+: (Type, Type[] renderPipelineAssetTypes, bool isManagedReference)
+                        parameters = new object[] { type, null, false };
+                        break;
+                    case 4:
+                        parameters = new object[] { type, null, false, false };
+                        break;
+                    default:
+                        return false;
+                }
+
+                var result = getDrawerTypeForTypeMethod.Invoke(null, parameters) as Type;
+                return result != null && typeof(PropertyDrawer).IsAssignableFrom(result);
+            }
+            catch
+            {
+                return false;
+            }
         }
 
         /// <summary>
@@ -412,8 +447,43 @@ namespace Toolbox.Editor
 
         //TODO:
         //NOTE: unfortunately there is no valid, non-reflection way to check if property has a custom native drawer
-        private readonly static MethodInfo getDrawerTypeForTypeMethod =
-            ReflectionUtility.GetEditorMethod("UnityEditor.ScriptAttributeUtility", "GetDrawerTypeForType",
-                BindingFlags.NonPublic | BindingFlags.Static);
+        private readonly static MethodInfo getDrawerTypeForTypeMethod = ResolveGetDrawerTypeForTypeMethod();
+
+        private static MethodInfo ResolveGetDrawerTypeForTypeMethod()
+        {
+            var utilityType = typeof(UnityEditor.Editor).Assembly.GetType("UnityEditor.ScriptAttributeUtility");
+            if (utilityType == null)
+                return null;
+
+            // Prefer the (Type, bool) overload used by Unity 2022.3.22+.
+            var method = utilityType.GetMethod(
+                "GetDrawerTypeForType",
+                BindingFlags.NonPublic | BindingFlags.Static,
+                null,
+                new[] { typeof(Type), typeof(bool) },
+                null);
+
+            if (method != null)
+                return method;
+
+            // Fallbacks for older/newer Unity versions.
+            method = utilityType.GetMethod(
+                "GetDrawerTypeForType",
+                BindingFlags.NonPublic | BindingFlags.Static,
+                null,
+                new[] { typeof(Type) },
+                null);
+            if (method != null)
+                return method;
+
+            var methods = utilityType.GetMethods(BindingFlags.NonPublic | BindingFlags.Static);
+            for (int i = 0; i < methods.Length; i++)
+            {
+                if (methods[i].Name == "GetDrawerTypeForType")
+                    return methods[i];
+            }
+
+            return null;
+        }
     }
 }

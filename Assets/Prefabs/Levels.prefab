@@ -829,7 +829,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _zombieSpawner: {fileID: 0}
   _levelBonus: 500
-  _startWave: {fileID: 0}
+  _startWave: {fileID: 9054680078111347050}
 --- !u!1 &8730612989438480907
 GameObject:
   m_ObjectHideFlags: 0
@@ -933,7 +933,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _zombieSpawner: {fileID: 0}
   _levelBonus: 1000
-  _startWave: {fileID: 0}
+  _startWave: {fileID: 9054680078111347050}
 --- !u!1 &8730612989483974261
 GameObject:
   m_ObjectHideFlags: 0
@@ -1560,7 +1560,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _zombieSpawner: {fileID: 0}
   _levelBonus: 1900
-  _startWave: {fileID: 0}
+  _startWave: {fileID: 9054680078111347050}
 --- !u!1 &9054680078111347258
 GameObject:
   m_ObjectHideFlags: 0
@@ -2007,7 +2007,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _zombieSpawner: {fileID: 0}
   _levelBonus: 1800
-  _startWave: {fileID: 0}
+  _startWave: {fileID: 9054680078111347050}
 --- !u!1 &9054680078111347231
 GameObject:
   m_ObjectHideFlags: 0
@@ -2454,7 +2454,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _zombieSpawner: {fileID: 0}
   _levelBonus: 1600
-  _startWave: {fileID: 0}
+  _startWave: {fileID: 9054680078111347050}
 --- !u!1 &9054680078111347204
 GameObject:
   m_ObjectHideFlags: 0
@@ -2901,7 +2901,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _zombieSpawner: {fileID: 0}
   _levelBonus: 1400
-  _startWave: {fileID: 0}
+  _startWave: {fileID: 9054680078111347050}
 --- !u!1 &9054680078111347177
 GameObject:
   m_ObjectHideFlags: 0
@@ -3348,7 +3348,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _zombieSpawner: {fileID: 0}
   _levelBonus: 1200
-  _startWave: {fileID: 0}
+  _startWave: {fileID: 9054680078111347050}
 --- !u!1 &9054680078111347150
 GameObject:
   m_ObjectHideFlags: 0
@@ -3840,7 +3840,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _zombieSpawner: {fileID: 0}
   _levelBonus: 2000
-  _startWave: {fileID: 0}
+  _startWave: {fileID: 9054680078111347050}
 --- !u!1 &8730612990103649949
 GameObject:
   m_ObjectHideFlags: 0
@@ -3992,7 +3992,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _zombieSpawner: {fileID: 0}
   _levelBonus: 900
-  _startWave: {fileID: 0}
+  _startWave: {fileID: 9054680078111347050}
 --- !u!1 &9054680078111347126
 GameObject:
   m_ObjectHideFlags: 0
@@ -4389,7 +4389,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _zombieSpawner: {fileID: 0}
   _levelBonus: 800
-  _startWave: {fileID: 0}
+  _startWave: {fileID: 9054680078111347050}
 --- !u!1 &9054680078111347102
 GameObject:
   m_ObjectHideFlags: 0
@@ -4786,7 +4786,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _zombieSpawner: {fileID: 0}
   _levelBonus: 700
-  _startWave: {fileID: 0}
+  _startWave: {fileID: 9054680078111347050}
 --- !u!1 &9054680078111347078
 GameObject:
   m_ObjectHideFlags: 0
@@ -5183,7 +5183,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _zombieSpawner: {fileID: 0}
   _levelBonus: 600
-  _startWave: {fileID: 0}
+  _startWave: {fileID: 9054680078111347050}
 --- !u!1 &9054680078111347054
 GameObject:
   m_ObjectHideFlags: 0

@@ -52,9 +52,34 @@ namespace Plugins.Audio.Core
 
         public AudioData GetData(string key)
         {
-            if (_data.TryGetValue(key, out AudioData data))
+            if (string.IsNullOrEmpty(key) == false)
             {
-                return data;
+                if (_data.TryGetValue(key, out AudioData data))
+                {
+                    return data;
+                }
+
+                // SourceAudio often passes AudioClip.name (without extension),
+                // while database keys may include ".wav".
+                if (_data.TryGetValue(key + ".wav", out data))
+                {
+                    return data;
+                }
+
+                foreach (KeyValuePair<string, AudioData> pair in _data)
+                {
+                    string entryKey = pair.Key;
+                    if (entryKey == key)
+                    {
+                        return pair.Value;
+                    }
+
+                    int dot = entryKey.LastIndexOf('.');
+                    if (dot > 0 && entryKey.Substring(0, dot) == key)
+                    {
+                        return pair.Value;
+                    }
+                }
             }
 
             throw new Exception("Audio Database not found data at key: " + key);

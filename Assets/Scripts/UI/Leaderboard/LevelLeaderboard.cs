@@ -20,7 +20,12 @@ public class LevelLeaderboard : MonoBehaviour
 
     public void FillEntryesData(List<Dictionary<string, string>> entries, int length)
     {
-#if UNITY_WEBGL && !UNITY_EDITOR
+        if (entries == null)
+        {
+            _entryesLoaded = true;
+            return;
+        }
+
         int count = Mathf.Min(entries.Count, length);
         Dictionary<string, string> playerEntry = null;
 
@@ -49,9 +54,6 @@ public class LevelLeaderboard : MonoBehaviour
         }
 
         _entryesLoaded = true;
-#else
-        _entryesLoaded = true;
-#endif
     }
 
     public void MarkEntriesFailed()

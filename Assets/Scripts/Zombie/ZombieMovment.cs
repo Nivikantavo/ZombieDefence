@@ -3,6 +3,9 @@ using UnityEngine.AI;
 
 public class ZombieMovment : MonoBehaviour
 {
+    private const float DestinationUpdateInterval = 0.25f;
+    private const float DestinationMoveThresholdSqr = 0.25f;
+
     [SerializeField] private ZombieAnimation _animation;
     [SerializeField] private NavMeshAgent _agent;
     [SerializeField] private float _minSpeed;
@@ -13,31 +16,47 @@ public class ZombieMovment : MonoBehaviour
     [SerializeField] private int _maxPrioryty;
     [SerializeField] private bool _running;
 
+    private float _nextDestinationTime;
+    private Vector3 _lastDestination;
+    private bool _hasDestination;
+
     private void Awake()
     {
         _agent.speed = Random.Range(_minSpeed, _maxSpeed);
         _agent.radius = Random.Range(_minAvoidanceRadius, _maxAvoidanceRadius);
         _agent.avoidancePriority = Random.Range(_minPrioryty, _maxPrioryty);
+
+#if UNITY_WEBGL
+        _agent.obstacleAvoidanceType = ObstacleAvoidanceType.LowQualityObstacleAvoidance;
+#endif
     }
 
     public void MoveToTarget(Vector3 targetPosition)
     {
         _agent.isStopped = false;
-        _agent.SetDestination(targetPosition);
+
+        bool intervalElapsed = Time.time >= _nextDestinationTime;
+        bool targetMoved = !_hasDestination ||
+            (targetPosition - _lastDestination).sqrMagnitude >= DestinationMoveThresholdSqr;
+
+        if (intervalElapsed || targetMoved)
+        {
+            _agent.SetDestination(targetPosition);
+            _lastDestination = targetPosition;
+            _hasDestination = true;
+            _nextDestinationTime = Time.time + DestinationUpdateInterval;
+        }
 
         if (_running)
-        {
             _animation.SetRun();
-        }
         else
-        {
             _animation.SetWalk();
-        }
     }
 
     public void Stop()
     {
         _agent.isStopped = true;
+        _hasDestination = false;
     }
 
     public void SetStoppingDistance(float newDistance)
@@ -49,6 +68,7 @@ public class ZombieMovment : MonoBehaviour
     {
         Vector3 targetDirection = target.position - transform.position;
         Vector3 forward = new Vector3(targetDirection.x, transform.position.y, targetDirection.z);
-        transform.rotation = Quaternion.LookRotation(forward, Vector3.up);
+        if (forward.sqrMagnitude > 0.001f)
+            transform.rotation = Quaternion.LookRotation(forward, Vector3.up);
     }
 }

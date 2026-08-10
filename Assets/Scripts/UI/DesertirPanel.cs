@@ -44,16 +44,34 @@ public class DesertirPanel : Element
 
     private void OnAdOpen()
     {
-        _backgroundCheker.SetAdsShown(true);
-        InputSystem.DisableDevice(Keyboard.current);
+        EnsureBackgroundChecker();
+        if (_backgroundCheker != null)
+        {
+            _backgroundCheker.SetAdsShown(true);
+        }
+
+        if (Keyboard.current != null)
+        {
+            InputSystem.DisableDevice(Keyboard.current);
+        }
+
         AudioListener.pause = true;
         AudioListener.volume = 0f;
     }
 
     private void OnAdClose(bool wasShown = true)
     {
-        _backgroundCheker.SetAdsShown(false);
-        InputSystem.EnableDevice(Keyboard.current);
+        EnsureBackgroundChecker();
+        if (_backgroundCheker != null)
+        {
+            _backgroundCheker.SetAdsShown(false);
+        }
+
+        if (Keyboard.current != null)
+        {
+            InputSystem.EnableDevice(Keyboard.current);
+        }
+
         AudioListener.pause = false;
         AudioListener.volume = 1f;
     }
@@ -75,5 +93,13 @@ public class DesertirPanel : Element
     {
         OnAdClose();
         Debug.Log(error);
+    }
+
+    private void EnsureBackgroundChecker()
+    {
+        if (_backgroundCheker == null)
+        {
+            _backgroundCheker = FindObjectOfType<InBackgroundCheker>();
+        }
     }
 }
