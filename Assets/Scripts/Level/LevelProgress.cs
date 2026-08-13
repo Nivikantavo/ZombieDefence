@@ -24,6 +24,7 @@ public class LevelProgress : MonoBehaviour
     private PlayerInput _playerInput;
 
     public event Action<bool> LevelComplited;
+    public event Action LevelFinished;
 
     private void Awake()
     {
@@ -71,6 +72,8 @@ public class LevelProgress : MonoBehaviour
         _endLevelPanel.gameObject.SetActive(true);
         _endLevelPanel.Initialize(_levelComplited);
         _playerInput.enabled = false;
+
+        LevelFinished?.Invoke();
     }
 
     private void PlayerWin()

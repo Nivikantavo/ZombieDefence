@@ -25,11 +25,30 @@ public class Warning : MonoBehaviour
 
     public void Show()
     {
-        if(_coroutine != null)
+        StopFade();
+        _coroutine = StartCoroutine(Fade());
+    }
+
+    public void ShowPersistent()
+    {
+        StopFade();
+        gameObject.SetActive(true);
+        SetAlpha(_startImageColor.a, _startTextColor.a);
+    }
+
+    public void Hide()
+    {
+        StopFade();
+        gameObject.SetActive(false);
+    }
+
+    private void StopFade()
+    {
+        if (_coroutine != null)
         {
             StopCoroutine(_coroutine);
+            _coroutine = null;
         }
-        _coroutine = StartCoroutine(Fade());
     }
 
     private IEnumerator Fade()
@@ -62,17 +81,22 @@ public class Warning : MonoBehaviour
 
     private void SetStartColor()
     {
+        SetAlpha(_maxColorValue, _maxColorValue);
+    }
+
+    private void SetAlpha(float imageAlpha, float textAlpha)
+    {
         foreach (var image in _images)
         {
             Color color = image.color;
-            color.a = _maxColorValue;
+            color.a = imageAlpha;
             image.color = color;
         }
 
         foreach (var text in _texts)
         {
             Color color = text.color;
-            color.a = _maxColorValue;
+            color.a = textAlpha;
             text.color = color;
         }
     }

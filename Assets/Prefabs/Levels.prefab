@@ -46,8 +46,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _conteiter: {fileID: 0}
   ZombieCount: 5
-  DelayBetweenSpawn: 1
-  DelayAfterWave: 1
+  DelayBetweenSpawn: 0.8
+  DelayAfterWave: 2
   EnemyTemplate: {fileID: 5633919890731990331, guid: 756cf7b1f633c254680d06a4315aa5c8, type: 3}
 --- !u!1 &8730612988127592594
 GameObject:
@@ -126,10 +126,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _conteiter: {fileID: 0}
-  ZombieCount: 5
-  DelayBetweenSpawn: 1
-  DelayAfterWave: 1
-  EnemyTemplate: {fileID: 5633919890731990331, guid: 756cf7b1f633c254680d06a4315aa5c8, type: 3}
+  ZombieCount: 6
+  DelayBetweenSpawn: 0.89
+  DelayAfterWave: 3.2
+  EnemyTemplate: {fileID: 5633919890731990331, guid: a202ad9a81f3e164c882a070bf69eb3f, type: 3}
 --- !u!1 &8730612988330208782
 GameObject:
   m_ObjectHideFlags: 0
@@ -175,9 +175,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _conteiter: {fileID: 0}
-  ZombieCount: 5
-  DelayBetweenSpawn: 0.5
-  DelayAfterWave: 1
+  ZombieCount: 4
+  DelayBetweenSpawn: 0.84
+  DelayAfterWave: 2.95
   EnemyTemplate: {fileID: 1950201464240969781, guid: 2984b4e26c11be84ebf98bf967b6381a, type: 3}
 --- !u!1 &8730612988398388558
 GameObject:
@@ -225,8 +225,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _conteiter: {fileID: 0}
   ZombieCount: 5
-  DelayBetweenSpawn: 1
-  DelayAfterWave: 1
+  DelayBetweenSpawn: 0.8
+  DelayAfterWave: 2.95
   EnemyTemplate: {fileID: 5633919890731990331, guid: 756cf7b1f633c254680d06a4315aa5c8, type: 3}
 --- !u!1 &8730612988550819015
 GameObject:
@@ -336,10 +336,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _conteiter: {fileID: 0}
-  ZombieCount: 5
-  DelayBetweenSpawn: 0.5
-  DelayAfterWave: 1
-  EnemyTemplate: {fileID: 1950201464240969781, guid: 2984b4e26c11be84ebf98bf967b6381a, type: 3}
+  ZombieCount: 8
+  DelayBetweenSpawn: 0.82
+  DelayAfterWave: 2.95
+  EnemyTemplate: {fileID: 5633919890731990331, guid: a202ad9a81f3e164c882a070bf69eb3f, type: 3}
 --- !u!1 &8730612988837356459
 GameObject:
   m_ObjectHideFlags: 0
@@ -420,9 +420,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _conteiter: {fileID: 0}
-  ZombieCount: 5
-  DelayBetweenSpawn: 0.5
-  DelayAfterWave: 1
+  ZombieCount: 4
+  DelayBetweenSpawn: 0.81
+  DelayAfterWave: 1.48
   EnemyTemplate: {fileID: 1950201464240969781, guid: 2984b4e26c11be84ebf98bf967b6381a, type: 3}
 --- !u!1 &8730612988979276918
 GameObject:
@@ -469,10 +469,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _conteiter: {fileID: 0}
-  ZombieCount: 7
-  DelayBetweenSpawn: 0.5
-  DelayAfterWave: 1
-  EnemyTemplate: {fileID: 1950201464240969781, guid: 2984b4e26c11be84ebf98bf967b6381a, type: 3}
+  ZombieCount: 6
+  DelayBetweenSpawn: 0.85
+  DelayAfterWave: 2.65
+  EnemyTemplate: {fileID: 6207982866044808240, guid: 1acfa4d44c9f70945b65e5a657b61fd7, type: 3}
 --- !u!1 &8730612989103703053
 GameObject:
   m_ObjectHideFlags: 0
@@ -616,10 +616,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _conteiter: {fileID: 0}
-  ZombieCount: 5
-  DelayBetweenSpawn: 1
-  DelayAfterWave: 1
-  EnemyTemplate: {fileID: 5633919890731990331, guid: 756cf7b1f633c254680d06a4315aa5c8, type: 3}
+  ZombieCount: 10
+  DelayBetweenSpawn: 0.76
+  DelayAfterWave: 2.95
+  EnemyTemplate: {fileID: 5633919890731990331, guid: a202ad9a81f3e164c882a070bf69eb3f, type: 3}
 --- !u!1 &8730612989192031787
 GameObject:
   m_ObjectHideFlags: 0
@@ -665,10 +665,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _conteiter: {fileID: 0}
-  ZombieCount: 10
-  DelayBetweenSpawn: 0.5
-  DelayAfterWave: 1
-  EnemyTemplate: {fileID: 1950201464240969781, guid: 2984b4e26c11be84ebf98bf967b6381a, type: 3}
+  ZombieCount: 9
+  DelayBetweenSpawn: 0.86
+  DelayAfterWave: 1.33
+  EnemyTemplate: {fileID: 5633919890731990331, guid: 11e68f90de9415e4ea93e26a6654a5d2, type: 3}
 --- !u!1 &8730612989269980116
 GameObject:
   m_ObjectHideFlags: 0
@@ -714,9 +714,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _conteiter: {fileID: 0}
-  ZombieCount: 5
-  DelayBetweenSpawn: 1
-  DelayAfterWave: 2
+  ZombieCount: 4
+  DelayBetweenSpawn: 0.9
+  DelayAfterWave: 2.95
   EnemyTemplate: {fileID: 5633919890731990331, guid: 756cf7b1f633c254680d06a4315aa5c8, type: 3}
 --- !u!1 &8730612989272973630
 GameObject:
@@ -932,7 +932,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _zombieSpawner: {fileID: 0}
-  _levelBonus: 1000
+  _levelBonus: 580
   _startWave: {fileID: 9054680078111347050}
 --- !u!1 &8730612989483974261
 GameObject:
@@ -1077,9 +1077,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _conteiter: {fileID: 0}
-  ZombieCount: 5
-  DelayBetweenSpawn: 0.5
-  DelayAfterWave: 1
+  ZombieCount: 3
+  DelayBetweenSpawn: 0.9
+  DelayAfterWave: 2.95
   EnemyTemplate: {fileID: 1950201464240969781, guid: 2984b4e26c11be84ebf98bf967b6381a, type: 3}
 --- !u!1 &8730612989621696848
 GameObject:
@@ -1126,9 +1126,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _conteiter: {fileID: 0}
-  ZombieCount: 5
-  DelayBetweenSpawn: 1
-  DelayAfterWave: 1
+  ZombieCount: 4
+  DelayBetweenSpawn: 0.9
+  DelayAfterWave: 3.2
   EnemyTemplate: {fileID: 5633919890731990331, guid: 756cf7b1f633c254680d06a4315aa5c8, type: 3}
 --- !u!1 &8730612989648294540
 GameObject:
@@ -1224,10 +1224,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _conteiter: {fileID: 0}
-  ZombieCount: 5
-  DelayBetweenSpawn: 1
-  DelayAfterWave: 1
-  EnemyTemplate: {fileID: 5633919890731990331, guid: 756cf7b1f633c254680d06a4315aa5c8, type: 3}
+  ZombieCount: 10
+  DelayBetweenSpawn: 0.77
+  DelayAfterWave: 3.2
+  EnemyTemplate: {fileID: 5633919890731990331, guid: a202ad9a81f3e164c882a070bf69eb3f, type: 3}
 --- !u!1 &8730612989764926513
 GameObject:
   m_ObjectHideFlags: 0
@@ -1273,10 +1273,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _conteiter: {fileID: 0}
-  ZombieCount: 5
-  DelayBetweenSpawn: 1
-  DelayAfterWave: 1
-  EnemyTemplate: {fileID: 5633919890731990331, guid: 756cf7b1f633c254680d06a4315aa5c8, type: 3}
+  ZombieCount: 9
+  DelayBetweenSpawn: 0.82
+  DelayAfterWave: 3.2
+  EnemyTemplate: {fileID: 5633919890731990331, guid: a202ad9a81f3e164c882a070bf69eb3f, type: 3}
 --- !u!1 &8730612989839590067
 GameObject:
   m_ObjectHideFlags: 0
@@ -1323,8 +1323,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _conteiter: {fileID: 0}
   ZombieCount: 5
-  DelayBetweenSpawn: 1
-  DelayAfterWave: 1
+  DelayBetweenSpawn: 0.86
+  DelayAfterWave: 3.2
   EnemyTemplate: {fileID: 5633919890731990331, guid: 756cf7b1f633c254680d06a4315aa5c8, type: 3}
 --- !u!1 &8730612989843904421
 GameObject:
@@ -1371,10 +1371,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _conteiter: {fileID: 0}
-  ZombieCount: 10
-  DelayBetweenSpawn: 0.5
-  DelayAfterWave: 5
-  EnemyTemplate: {fileID: 6207982866044808240, guid: 1acfa4d44c9f70945b65e5a657b61fd7, type: 3}
+  ZombieCount: 22
+  DelayBetweenSpawn: 0.74
+  DelayAfterWave: 2.65
+  EnemyTemplate: {fileID: 5633919890731990331, guid: a202ad9a81f3e164c882a070bf69eb3f, type: 3}
 --- !u!1 &8730612989847468703
 GameObject:
   m_ObjectHideFlags: 0
@@ -1502,9 +1502,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _conteiter: {fileID: 0}
-  ZombieCount: 5
-  DelayBetweenSpawn: 1
-  DelayAfterWave: 1
+  ZombieCount: 4
+  DelayBetweenSpawn: 0.86
+  DelayAfterWave: 2.95
   EnemyTemplate: {fileID: 5633919890731990331, guid: 756cf7b1f633c254680d06a4315aa5c8, type: 3}
 --- !u!1 &9054680078111347255
 GameObject:
@@ -1559,7 +1559,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _zombieSpawner: {fileID: 0}
-  _levelBonus: 1900
+  _levelBonus: 680
   _startWave: {fileID: 9054680078111347050}
 --- !u!1 &9054680078111347258
 GameObject:
@@ -1606,10 +1606,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _conteiter: {fileID: 0}
-  ZombieCount: 5
-  DelayBetweenSpawn: 0.55
-  DelayAfterWave: 1.1
-  EnemyTemplate: {fileID: 5633919890731990331, guid: 2984b4e26c11be84ebf98bf967b6381a, type: 3}
+  ZombieCount: 9
+  DelayBetweenSpawn: 0.79
+  DelayAfterWave: 2.7
+  EnemyTemplate: {fileID: 5633919890731990331, guid: a202ad9a81f3e164c882a070bf69eb3f, type: 3}
 --- !u!1 &9054680078111347261
 GameObject:
   m_ObjectHideFlags: 0
@@ -1655,9 +1655,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _conteiter: {fileID: 0}
-  ZombieCount: 5
-  DelayBetweenSpawn: 0.5
-  DelayAfterWave: 1.0
+  ZombieCount: 3
+  DelayBetweenSpawn: 0.88
+  DelayAfterWave: 2.7
   EnemyTemplate: {fileID: 1950201464240969781, guid: 2984b4e26c11be84ebf98bf967b6381a, type: 3}
 --- !u!1 &9054680078111347264
 GameObject:
@@ -1704,10 +1704,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _conteiter: {fileID: 0}
-  ZombieCount: 5
-  DelayBetweenSpawn: 0.55
-  DelayAfterWave: 1.0
-  EnemyTemplate: {fileID: 5633919890731990331, guid: 2984b4e26c11be84ebf98bf967b6381a, type: 3}
+  ZombieCount: 10
+  DelayBetweenSpawn: 0.75
+  DelayAfterWave: 2.7
+  EnemyTemplate: {fileID: 5633919890731990331, guid: a202ad9a81f3e164c882a070bf69eb3f, type: 3}
 --- !u!1 &9054680078111347267
 GameObject:
   m_ObjectHideFlags: 0
@@ -1753,9 +1753,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _conteiter: {fileID: 0}
-  ZombieCount: 5
-  DelayBetweenSpawn: 0.5
-  DelayAfterWave: 1.0
+  ZombieCount: 4
+  DelayBetweenSpawn: 0.84
+  DelayAfterWave: 2.7
   EnemyTemplate: {fileID: 1950201464240969781, guid: 2984b4e26c11be84ebf98bf967b6381a, type: 3}
 --- !u!1 &9054680078111347270
 GameObject:
@@ -1802,10 +1802,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _conteiter: {fileID: 0}
-  ZombieCount: 5
-  DelayBetweenSpawn: 0.55
-  DelayAfterWave: 1.0
-  EnemyTemplate: {fileID: 5633919890731990331, guid: 2984b4e26c11be84ebf98bf967b6381a, type: 3}
+  ZombieCount: 3
+  DelayBetweenSpawn: 0.88
+  DelayAfterWave: 2.7
+  EnemyTemplate: {fileID: 6207982866044808240, guid: 1acfa4d44c9f70945b65e5a657b61fd7, type: 3}
 --- !u!1 &9054680078111347273
 GameObject:
   m_ObjectHideFlags: 0
@@ -1851,10 +1851,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _conteiter: {fileID: 0}
-  ZombieCount: 3
-  DelayBetweenSpawn: 0.55
-  DelayAfterWave: 1.0
-  EnemyTemplate: {fileID: 5633919890731990331, guid: 2984b4e26c11be84ebf98bf967b6381a, type: 3}
+  ZombieCount: 4
+  DelayBetweenSpawn: 0.81
+  DelayAfterWave: 2.7
+  EnemyTemplate: {fileID: 1950201464240969781, guid: 2984b4e26c11be84ebf98bf967b6381a, type: 3}
 --- !u!1 &9054680078111347276
 GameObject:
   m_ObjectHideFlags: 0
@@ -1900,10 +1900,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _conteiter: {fileID: 0}
-  ZombieCount: 5
-  DelayBetweenSpawn: 0.5
-  DelayAfterWave: 0.1
-  EnemyTemplate: {fileID: 1950201464240969781, guid: 756cf7b1f633c254680d06a4315aa5c8, type: 3}
+  ZombieCount: 3
+  DelayBetweenSpawn: 0.84
+  DelayAfterWave: 2.7
+  EnemyTemplate: {fileID: 6207982866044808240, guid: 1acfa4d44c9f70945b65e5a657b61fd7, type: 3}
 --- !u!1 &9054680078111347279
 GameObject:
   m_ObjectHideFlags: 0
@@ -1949,10 +1949,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _conteiter: {fileID: 0}
-  ZombieCount: 5
-  DelayBetweenSpawn: 0.5
-  DelayAfterWave: 4.6
-  EnemyTemplate: {fileID: 1950201464240969781, guid: 1acfa4d44c9f70945b65e5a657b61fd7, type: 3}
+  ZombieCount: 6
+  DelayBetweenSpawn: 0.87
+  DelayAfterWave: 1.35
+  EnemyTemplate: {fileID: 5633919890731990331, guid: 11e68f90de9415e4ea93e26a6654a5d2, type: 3}
 --- !u!1 &9054680078111347228
 GameObject:
   m_ObjectHideFlags: 0
@@ -2006,7 +2006,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _zombieSpawner: {fileID: 0}
-  _levelBonus: 1800
+  _levelBonus: 660
   _startWave: {fileID: 9054680078111347050}
 --- !u!1 &9054680078111347231
 GameObject:
@@ -2053,10 +2053,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _conteiter: {fileID: 0}
-  ZombieCount: 5
-  DelayBetweenSpawn: 0.6
-  DelayAfterWave: 1.2
-  EnemyTemplate: {fileID: 5633919890731990331, guid: 2984b4e26c11be84ebf98bf967b6381a, type: 3}
+  ZombieCount: 8
+  DelayBetweenSpawn: 0.8
+  DelayAfterWave: 2.75
+  EnemyTemplate: {fileID: 5633919890731990331, guid: a202ad9a81f3e164c882a070bf69eb3f, type: 3}
 --- !u!1 &9054680078111347234
 GameObject:
   m_ObjectHideFlags: 0
@@ -2102,10 +2102,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _conteiter: {fileID: 0}
-  ZombieCount: 5
-  DelayBetweenSpawn: 0.5
-  DelayAfterWave: 1.0
-  EnemyTemplate: {fileID: 1950201464240969781, guid: 2984b4e26c11be84ebf98bf967b6381a, type: 3}
+  ZombieCount: 4
+  DelayBetweenSpawn: 0.84
+  DelayAfterWave: 2.75
+  EnemyTemplate: {fileID: 5633919890731990331, guid: 756cf7b1f633c254680d06a4315aa5c8, type: 3}
 --- !u!1 &9054680078111347237
 GameObject:
   m_ObjectHideFlags: 0
@@ -2151,10 +2151,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _conteiter: {fileID: 0}
-  ZombieCount: 5
-  DelayBetweenSpawn: 0.6
-  DelayAfterWave: 1.0
-  EnemyTemplate: {fileID: 5633919890731990331, guid: 2984b4e26c11be84ebf98bf967b6381a, type: 3}
+  ZombieCount: 3
+  DelayBetweenSpawn: 0.87
+  DelayAfterWave: 2.75
+  EnemyTemplate: {fileID: 1950201464240969781, guid: 2984b4e26c11be84ebf98bf967b6381a, type: 3}
 --- !u!1 &9054680078111347240
 GameObject:
   m_ObjectHideFlags: 0
@@ -2201,9 +2201,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _conteiter: {fileID: 0}
   ZombieCount: 5
-  DelayBetweenSpawn: 0.5
-  DelayAfterWave: 1.0
-  EnemyTemplate: {fileID: 1950201464240969781, guid: 2984b4e26c11be84ebf98bf967b6381a, type: 3}
+  DelayBetweenSpawn: 0.8
+  DelayAfterWave: 2.75
+  EnemyTemplate: {fileID: 5633919890731990331, guid: 756cf7b1f633c254680d06a4315aa5c8, type: 3}
 --- !u!1 &9054680078111347243
 GameObject:
   m_ObjectHideFlags: 0
@@ -2249,10 +2249,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _conteiter: {fileID: 0}
-  ZombieCount: 5
-  DelayBetweenSpawn: 0.6
-  DelayAfterWave: 1.0
-  EnemyTemplate: {fileID: 5633919890731990331, guid: 2984b4e26c11be84ebf98bf967b6381a, type: 3}
+  ZombieCount: 4
+  DelayBetweenSpawn: 0.84
+  DelayAfterWave: 2.75
+  EnemyTemplate: {fileID: 1950201464240969781, guid: 2984b4e26c11be84ebf98bf967b6381a, type: 3}
 --- !u!1 &9054680078111347246
 GameObject:
   m_ObjectHideFlags: 0
@@ -2298,10 +2298,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _conteiter: {fileID: 0}
-  ZombieCount: 4
-  DelayBetweenSpawn: 0.6
-  DelayAfterWave: 1.0
-  EnemyTemplate: {fileID: 5633919890731990331, guid: 2984b4e26c11be84ebf98bf967b6381a, type: 3}
+  ZombieCount: 6
+  DelayBetweenSpawn: 0.93
+  DelayAfterWave: 2.75
+  EnemyTemplate: {fileID: 5633919890731990331, guid: 11e68f90de9415e4ea93e26a6654a5d2, type: 3}
 --- !u!1 &9054680078111347249
 GameObject:
   m_ObjectHideFlags: 0
@@ -2347,10 +2347,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _conteiter: {fileID: 0}
-  ZombieCount: 5
-  DelayBetweenSpawn: 0.5
-  DelayAfterWave: 0.2
-  EnemyTemplate: {fileID: 1950201464240969781, guid: 756cf7b1f633c254680d06a4315aa5c8, type: 3}
+  ZombieCount: 4
+  DelayBetweenSpawn: 0.8
+  DelayAfterWave: 2.75
+  EnemyTemplate: {fileID: 1950201464240969781, guid: 2984b4e26c11be84ebf98bf967b6381a, type: 3}
 --- !u!1 &9054680078111347252
 GameObject:
   m_ObjectHideFlags: 0
@@ -2396,10 +2396,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _conteiter: {fileID: 0}
-  ZombieCount: 5
-  DelayBetweenSpawn: 0.5
-  DelayAfterWave: 4.2
-  EnemyTemplate: {fileID: 1950201464240969781, guid: 1acfa4d44c9f70945b65e5a657b61fd7, type: 3}
+  ZombieCount: 3
+  DelayBetweenSpawn: 0.89
+  DelayAfterWave: 1.38
+  EnemyTemplate: {fileID: 5633919890731990331, guid: 11e68f90de9415e4ea93e26a6654a5d2, type: 3}
 --- !u!1 &9054680078111347201
 GameObject:
   m_ObjectHideFlags: 0
@@ -2453,7 +2453,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _zombieSpawner: {fileID: 0}
-  _levelBonus: 1600
+  _levelBonus: 640
   _startWave: {fileID: 9054680078111347050}
 --- !u!1 &9054680078111347204
 GameObject:
@@ -2500,10 +2500,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _conteiter: {fileID: 0}
-  ZombieCount: 5
-  DelayBetweenSpawn: 0.7
-  DelayAfterWave: 1.4
-  EnemyTemplate: {fileID: 5633919890731990331, guid: 2984b4e26c11be84ebf98bf967b6381a, type: 3}
+  ZombieCount: 4
+  DelayBetweenSpawn: 0.87
+  DelayAfterWave: 2.8
+  EnemyTemplate: {fileID: 5633919890731990331, guid: 756cf7b1f633c254680d06a4315aa5c8, type: 3}
 --- !u!1 &9054680078111347207
 GameObject:
   m_ObjectHideFlags: 0
@@ -2549,10 +2549,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _conteiter: {fileID: 0}
-  ZombieCount: 5
-  DelayBetweenSpawn: 0.5
-  DelayAfterWave: 1.0
-  EnemyTemplate: {fileID: 1950201464240969781, guid: 2984b4e26c11be84ebf98bf967b6381a, type: 3}
+  ZombieCount: 9
+  DelayBetweenSpawn: 0.79
+  DelayAfterWave: 2.8
+  EnemyTemplate: {fileID: 5633919890731990331, guid: a202ad9a81f3e164c882a070bf69eb3f, type: 3}
 --- !u!1 &9054680078111347210
 GameObject:
   m_ObjectHideFlags: 0
@@ -2599,9 +2599,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _conteiter: {fileID: 0}
   ZombieCount: 5
-  DelayBetweenSpawn: 0.7
-  DelayAfterWave: 1.0
-  EnemyTemplate: {fileID: 5633919890731990331, guid: 2984b4e26c11be84ebf98bf967b6381a, type: 3}
+  DelayBetweenSpawn: 0.83
+  DelayAfterWave: 2.8
+  EnemyTemplate: {fileID: 5633919890731990331, guid: 756cf7b1f633c254680d06a4315aa5c8, type: 3}
 --- !u!1 &9054680078111347213
 GameObject:
   m_ObjectHideFlags: 0
@@ -2647,9 +2647,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _conteiter: {fileID: 0}
-  ZombieCount: 5
-  DelayBetweenSpawn: 0.5
-  DelayAfterWave: 1.0
+  ZombieCount: 3
+  DelayBetweenSpawn: 0.87
+  DelayAfterWave: 2.8
   EnemyTemplate: {fileID: 1950201464240969781, guid: 2984b4e26c11be84ebf98bf967b6381a, type: 3}
 --- !u!1 &9054680078111347216
 GameObject:
@@ -2697,9 +2697,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _conteiter: {fileID: 0}
   ZombieCount: 5
-  DelayBetweenSpawn: 0.7
-  DelayAfterWave: 1.0
-  EnemyTemplate: {fileID: 5633919890731990331, guid: 2984b4e26c11be84ebf98bf967b6381a, type: 3}
+  DelayBetweenSpawn: 0.79
+  DelayAfterWave: 2.8
+  EnemyTemplate: {fileID: 5633919890731990331, guid: 756cf7b1f633c254680d06a4315aa5c8, type: 3}
 --- !u!1 &9054680078111347219
 GameObject:
   m_ObjectHideFlags: 0
@@ -2746,9 +2746,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _conteiter: {fileID: 0}
   ZombieCount: 4
-  DelayBetweenSpawn: 0.7
-  DelayAfterWave: 1.0
-  EnemyTemplate: {fileID: 5633919890731990331, guid: 2984b4e26c11be84ebf98bf967b6381a, type: 3}
+  DelayBetweenSpawn: 0.83
+  DelayAfterWave: 2.8
+  EnemyTemplate: {fileID: 1950201464240969781, guid: 2984b4e26c11be84ebf98bf967b6381a, type: 3}
 --- !u!1 &9054680078111347222
 GameObject:
   m_ObjectHideFlags: 0
@@ -2795,9 +2795,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _conteiter: {fileID: 0}
   ZombieCount: 5
-  DelayBetweenSpawn: 0.5
-  DelayAfterWave: 0.4
-  EnemyTemplate: {fileID: 1950201464240969781, guid: 756cf7b1f633c254680d06a4315aa5c8, type: 3}
+  DelayBetweenSpawn: 0.92
+  DelayAfterWave: 2.8
+  EnemyTemplate: {fileID: 5633919890731990331, guid: 11e68f90de9415e4ea93e26a6654a5d2, type: 3}
 --- !u!1 &9054680078111347225
 GameObject:
   m_ObjectHideFlags: 0
@@ -2843,10 +2843,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _conteiter: {fileID: 0}
-  ZombieCount: 5
-  DelayBetweenSpawn: 0.5
-  DelayAfterWave: 3.4
-  EnemyTemplate: {fileID: 1950201464240969781, guid: 1acfa4d44c9f70945b65e5a657b61fd7, type: 3}
+  ZombieCount: 3
+  DelayBetweenSpawn: 0.9
+  DelayAfterWave: 1.4
+  EnemyTemplate: {fileID: 5633919890731990331, guid: 11e68f90de9415e4ea93e26a6654a5d2, type: 3}
 --- !u!1 &9054680078111347174
 GameObject:
   m_ObjectHideFlags: 0
@@ -2900,7 +2900,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _zombieSpawner: {fileID: 0}
-  _levelBonus: 1400
+  _levelBonus: 620
   _startWave: {fileID: 9054680078111347050}
 --- !u!1 &9054680078111347177
 GameObject:
@@ -2947,10 +2947,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _conteiter: {fileID: 0}
-  ZombieCount: 5
-  DelayBetweenSpawn: 0.8
-  DelayAfterWave: 1.6
-  EnemyTemplate: {fileID: 5633919890731990331, guid: 756cf7b1f633c254680d06a4315aa5c8, type: 3}
+  ZombieCount: 8
+  DelayBetweenSpawn: 0.82
+  DelayAfterWave: 2.85
+  EnemyTemplate: {fileID: 5633919890731990331, guid: a202ad9a81f3e164c882a070bf69eb3f, type: 3}
 --- !u!1 &9054680078111347180
 GameObject:
   m_ObjectHideFlags: 0
@@ -2996,10 +2996,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _conteiter: {fileID: 0}
-  ZombieCount: 5
-  DelayBetweenSpawn: 0.5
-  DelayAfterWave: 1.0
-  EnemyTemplate: {fileID: 1950201464240969781, guid: 2984b4e26c11be84ebf98bf967b6381a, type: 3}
+  ZombieCount: 4
+  DelayBetweenSpawn: 0.86
+  DelayAfterWave: 2.85
+  EnemyTemplate: {fileID: 5633919890731990331, guid: 756cf7b1f633c254680d06a4315aa5c8, type: 3}
 --- !u!1 &9054680078111347183
 GameObject:
   m_ObjectHideFlags: 0
@@ -3045,10 +3045,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _conteiter: {fileID: 0}
-  ZombieCount: 5
-  DelayBetweenSpawn: 0.8
-  DelayAfterWave: 1.0
-  EnemyTemplate: {fileID: 5633919890731990331, guid: 756cf7b1f633c254680d06a4315aa5c8, type: 3}
+  ZombieCount: 9
+  DelayBetweenSpawn: 0.78
+  DelayAfterWave: 2.85
+  EnemyTemplate: {fileID: 5633919890731990331, guid: a202ad9a81f3e164c882a070bf69eb3f, type: 3}
 --- !u!1 &9054680078111347186
 GameObject:
   m_ObjectHideFlags: 0
@@ -3095,9 +3095,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _conteiter: {fileID: 0}
   ZombieCount: 5
-  DelayBetweenSpawn: 0.5
-  DelayAfterWave: 1.0
-  EnemyTemplate: {fileID: 1950201464240969781, guid: 2984b4e26c11be84ebf98bf967b6381a, type: 3}
+  DelayBetweenSpawn: 0.82
+  DelayAfterWave: 2.85
+  EnemyTemplate: {fileID: 5633919890731990331, guid: 756cf7b1f633c254680d06a4315aa5c8, type: 3}
 --- !u!1 &9054680078111347189
 GameObject:
   m_ObjectHideFlags: 0
@@ -3143,10 +3143,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _conteiter: {fileID: 0}
-  ZombieCount: 5
-  DelayBetweenSpawn: 0.8
-  DelayAfterWave: 1.0
-  EnemyTemplate: {fileID: 5633919890731990331, guid: 756cf7b1f633c254680d06a4315aa5c8, type: 3}
+  ZombieCount: 3
+  DelayBetweenSpawn: 0.98
+  DelayAfterWave: 2.85
+  EnemyTemplate: {fileID: 5633919890731990331, guid: 11e68f90de9415e4ea93e26a6654a5d2, type: 3}
 --- !u!1 &9054680078111347192
 GameObject:
   m_ObjectHideFlags: 0
@@ -3192,9 +3192,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _conteiter: {fileID: 0}
-  ZombieCount: 4
-  DelayBetweenSpawn: 0.8
-  DelayAfterWave: 1.0
+  ZombieCount: 6
+  DelayBetweenSpawn: 0.78
+  DelayAfterWave: 2.85
   EnemyTemplate: {fileID: 5633919890731990331, guid: 756cf7b1f633c254680d06a4315aa5c8, type: 3}
 --- !u!1 &9054680078111347195
 GameObject:
@@ -3241,10 +3241,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _conteiter: {fileID: 0}
-  ZombieCount: 5
-  DelayBetweenSpawn: 0.5
-  DelayAfterWave: 0.6
-  EnemyTemplate: {fileID: 1950201464240969781, guid: 2984b4e26c11be84ebf98bf967b6381a, type: 3}
+  ZombieCount: 3
+  DelayBetweenSpawn: 0.93
+  DelayAfterWave: 2.85
+  EnemyTemplate: {fileID: 5633919890731990331, guid: 11e68f90de9415e4ea93e26a6654a5d2, type: 3}
 --- !u!1 &9054680078111347198
 GameObject:
   m_ObjectHideFlags: 0
@@ -3290,10 +3290,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _conteiter: {fileID: 0}
-  ZombieCount: 5
-  DelayBetweenSpawn: 0.5
-  DelayAfterWave: 2.6
-  EnemyTemplate: {fileID: 1950201464240969781, guid: 2984b4e26c11be84ebf98bf967b6381a, type: 3}
+  ZombieCount: 3
+  DelayBetweenSpawn: 0.91
+  DelayAfterWave: 1.42
+  EnemyTemplate: {fileID: 5633919890731990331, guid: 11e68f90de9415e4ea93e26a6654a5d2, type: 3}
 --- !u!1 &9054680078111347147
 GameObject:
   m_ObjectHideFlags: 0
@@ -3347,7 +3347,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _zombieSpawner: {fileID: 0}
-  _levelBonus: 1200
+  _levelBonus: 600
   _startWave: {fileID: 9054680078111347050}
 --- !u!1 &9054680078111347150
 GameObject:
@@ -3394,10 +3394,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _conteiter: {fileID: 0}
-  ZombieCount: 5
-  DelayBetweenSpawn: 0.9
-  DelayAfterWave: 1.8
-  EnemyTemplate: {fileID: 5633919890731990331, guid: 756cf7b1f633c254680d06a4315aa5c8, type: 3}
+  ZombieCount: 7
+  DelayBetweenSpawn: 0.83
+  DelayAfterWave: 2.9
+  EnemyTemplate: {fileID: 5633919890731990331, guid: a202ad9a81f3e164c882a070bf69eb3f, type: 3}
 --- !u!1 &9054680078111347153
 GameObject:
   m_ObjectHideFlags: 0
@@ -3443,10 +3443,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _conteiter: {fileID: 0}
-  ZombieCount: 5
-  DelayBetweenSpawn: 0.5
-  DelayAfterWave: 1.0
-  EnemyTemplate: {fileID: 1950201464240969781, guid: 2984b4e26c11be84ebf98bf967b6381a, type: 3}
+  ZombieCount: 8
+  DelayBetweenSpawn: 0.81
+  DelayAfterWave: 2.9
+  EnemyTemplate: {fileID: 5633919890731990331, guid: a202ad9a81f3e164c882a070bf69eb3f, type: 3}
 --- !u!1 &9054680078111347156
 GameObject:
   m_ObjectHideFlags: 0
@@ -3492,10 +3492,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _conteiter: {fileID: 0}
-  ZombieCount: 5
-  DelayBetweenSpawn: 0.9
-  DelayAfterWave: 1.0
-  EnemyTemplate: {fileID: 5633919890731990331, guid: 756cf7b1f633c254680d06a4315aa5c8, type: 3}
+  ZombieCount: 3
+  DelayBetweenSpawn: 0.91
+  DelayAfterWave: 2.9
+  EnemyTemplate: {fileID: 1950201464240969781, guid: 2984b4e26c11be84ebf98bf967b6381a, type: 3}
 --- !u!1 &9054680078111347159
 GameObject:
   m_ObjectHideFlags: 0
@@ -3541,10 +3541,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _conteiter: {fileID: 0}
-  ZombieCount: 5
-  DelayBetweenSpawn: 0.5
-  DelayAfterWave: 1.0
-  EnemyTemplate: {fileID: 1950201464240969781, guid: 2984b4e26c11be84ebf98bf967b6381a, type: 3}
+  ZombieCount: 9
+  DelayBetweenSpawn: 0.77
+  DelayAfterWave: 2.9
+  EnemyTemplate: {fileID: 5633919890731990331, guid: a202ad9a81f3e164c882a070bf69eb3f, type: 3}
 --- !u!1 &9054680078111347162
 GameObject:
   m_ObjectHideFlags: 0
@@ -3590,10 +3590,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _conteiter: {fileID: 0}
-  ZombieCount: 5
-  DelayBetweenSpawn: 0.9
-  DelayAfterWave: 1.0
-  EnemyTemplate: {fileID: 5633919890731990331, guid: 756cf7b1f633c254680d06a4315aa5c8, type: 3}
+  ZombieCount: 3
+  DelayBetweenSpawn: 0.87
+  DelayAfterWave: 2.9
+  EnemyTemplate: {fileID: 1950201464240969781, guid: 2984b4e26c11be84ebf98bf967b6381a, type: 3}
 --- !u!1 &9054680078111347165
 GameObject:
   m_ObjectHideFlags: 0
@@ -3639,10 +3639,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _conteiter: {fileID: 0}
-  ZombieCount: 4
-  DelayBetweenSpawn: 0.9
-  DelayAfterWave: 1.0
-  EnemyTemplate: {fileID: 5633919890731990331, guid: 756cf7b1f633c254680d06a4315aa5c8, type: 3}
+  ZombieCount: 3
+  DelayBetweenSpawn: 0.96
+  DelayAfterWave: 2.9
+  EnemyTemplate: {fileID: 5633919890731990331, guid: 11e68f90de9415e4ea93e26a6654a5d2, type: 3}
 --- !u!1 &9054680078111347168
 GameObject:
   m_ObjectHideFlags: 0
@@ -3688,9 +3688,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _conteiter: {fileID: 0}
-  ZombieCount: 5
-  DelayBetweenSpawn: 0.5
-  DelayAfterWave: 0.8
+  ZombieCount: 4
+  DelayBetweenSpawn: 0.83
+  DelayAfterWave: 2.9
   EnemyTemplate: {fileID: 1950201464240969781, guid: 2984b4e26c11be84ebf98bf967b6381a, type: 3}
 --- !u!1 &9054680078111347171
 GameObject:
@@ -3737,10 +3737,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _conteiter: {fileID: 0}
-  ZombieCount: 5
-  DelayBetweenSpawn: 0.5
-  DelayAfterWave: 1.8
-  EnemyTemplate: {fileID: 1950201464240969781, guid: 2984b4e26c11be84ebf98bf967b6381a, type: 3}
+  ZombieCount: 3
+  DelayBetweenSpawn: 0.92
+  DelayAfterWave: 1.45
+  EnemyTemplate: {fileID: 5633919890731990331, guid: 11e68f90de9415e4ea93e26a6654a5d2, type: 3}
 --- !u!1 &8730612989997234530
 GameObject:
   m_ObjectHideFlags: 0
@@ -3786,10 +3786,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _conteiter: {fileID: 0}
-  ZombieCount: 5
-  DelayBetweenSpawn: 1
-  DelayAfterWave: 1
-  EnemyTemplate: {fileID: 5633919890731990331, guid: 756cf7b1f633c254680d06a4315aa5c8, type: 3}
+  ZombieCount: 7
+  DelayBetweenSpawn: 0.86
+  DelayAfterWave: 3.2
+  EnemyTemplate: {fileID: 5633919890731990331, guid: a202ad9a81f3e164c882a070bf69eb3f, type: 3}
 --- !u!1 &8730612990003833640
 GameObject:
   m_ObjectHideFlags: 0
@@ -3839,7 +3839,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _zombieSpawner: {fileID: 0}
-  _levelBonus: 2000
+  _levelBonus: 710
   _startWave: {fileID: 9054680078111347050}
 --- !u!1 &8730612990103649949
 GameObject:
@@ -3886,9 +3886,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _conteiter: {fileID: 0}
-  ZombieCount: 10
-  DelayBetweenSpawn: 0.5
-  DelayAfterWave: 0
+  ZombieCount: 9
+  DelayBetweenSpawn: 0.83
+  DelayAfterWave: 2.65
   EnemyTemplate: {fileID: 5633919890731990331, guid: 756cf7b1f633c254680d06a4315aa5c8, type: 3}
 --- !u!1 &8730612990158481407
 GameObject:
@@ -3936,8 +3936,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _conteiter: {fileID: 0}
   ZombieCount: 5
-  DelayBetweenSpawn: 1
-  DelayAfterWave: 1
+  DelayBetweenSpawn: 0.81
+  DelayAfterWave: 1.6
   EnemyTemplate: {fileID: 5633919890731990331, guid: 756cf7b1f633c254680d06a4315aa5c8, type: 3}
 --- !u!1 &9054680078111347123
 GameObject:
@@ -3991,7 +3991,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _zombieSpawner: {fileID: 0}
-  _levelBonus: 900
+  _levelBonus: 560
   _startWave: {fileID: 9054680078111347050}
 --- !u!1 &9054680078111347126
 GameObject:
@@ -4038,10 +4038,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _conteiter: {fileID: 0}
-  ZombieCount: 6
-  DelayBetweenSpawn: 0.6
-  DelayAfterWave: 1.0
-  EnemyTemplate: {fileID: 5633919890731990331, guid: 2984b4e26c11be84ebf98bf967b6381a, type: 3}
+  ZombieCount: 8
+  DelayBetweenSpawn: 0.85
+  DelayAfterWave: 3
+  EnemyTemplate: {fileID: 5633919890731990331, guid: a202ad9a81f3e164c882a070bf69eb3f, type: 3}
 --- !u!1 &9054680078111347129
 GameObject:
   m_ObjectHideFlags: 0
@@ -4087,9 +4087,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _conteiter: {fileID: 0}
-  ZombieCount: 6
-  DelayBetweenSpawn: 1.0
-  DelayAfterWave: 1.0
+  ZombieCount: 4
+  DelayBetweenSpawn: 0.89
+  DelayAfterWave: 3
   EnemyTemplate: {fileID: 5633919890731990331, guid: 756cf7b1f633c254680d06a4315aa5c8, type: 3}
 --- !u!1 &9054680078111347132
 GameObject:
@@ -4136,10 +4136,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _conteiter: {fileID: 0}
-  ZombieCount: 6
-  DelayBetweenSpawn: 1.0
-  DelayAfterWave: 1.0
-  EnemyTemplate: {fileID: 5633919890731990331, guid: 756cf7b1f633c254680d06a4315aa5c8, type: 3}
+  ZombieCount: 9
+  DelayBetweenSpawn: 0.8
+  DelayAfterWave: 3
+  EnemyTemplate: {fileID: 5633919890731990331, guid: a202ad9a81f3e164c882a070bf69eb3f, type: 3}
 --- !u!1 &9054680078111347135
 GameObject:
   m_ObjectHideFlags: 0
@@ -4185,10 +4185,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _conteiter: {fileID: 0}
-  ZombieCount: 6
-  DelayBetweenSpawn: 0.6
-  DelayAfterWave: 1.0
-  EnemyTemplate: {fileID: 5633919890731990331, guid: 2984b4e26c11be84ebf98bf967b6381a, type: 3}
+  ZombieCount: 5
+  DelayBetweenSpawn: 0.84
+  DelayAfterWave: 3
+  EnemyTemplate: {fileID: 5633919890731990331, guid: 756cf7b1f633c254680d06a4315aa5c8, type: 3}
 --- !u!1 &9054680078111347138
 GameObject:
   m_ObjectHideFlags: 0
@@ -4234,10 +4234,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _conteiter: {fileID: 0}
-  ZombieCount: 6
-  DelayBetweenSpawn: 1.0
-  DelayAfterWave: 1.0
-  EnemyTemplate: {fileID: 5633919890731990331, guid: 756cf7b1f633c254680d06a4315aa5c8, type: 3}
+  ZombieCount: 4
+  DelayBetweenSpawn: 0.87
+  DelayAfterWave: 3
+  EnemyTemplate: {fileID: 1950201464240969781, guid: 2984b4e26c11be84ebf98bf967b6381a, type: 3}
 --- !u!1 &9054680078111347141
 GameObject:
   m_ObjectHideFlags: 0
@@ -4284,9 +4284,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _conteiter: {fileID: 0}
   ZombieCount: 6
-  DelayBetweenSpawn: 0.6
-  DelayAfterWave: 1.0
-  EnemyTemplate: {fileID: 5633919890731990331, guid: 2984b4e26c11be84ebf98bf967b6381a, type: 3}
+  DelayBetweenSpawn: 0.79
+  DelayAfterWave: 3
+  EnemyTemplate: {fileID: 5633919890731990331, guid: 756cf7b1f633c254680d06a4315aa5c8, type: 3}
 --- !u!1 &9054680078111347144
 GameObject:
   m_ObjectHideFlags: 0
@@ -4332,10 +4332,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _conteiter: {fileID: 0}
-  ZombieCount: 6
-  DelayBetweenSpawn: 0.6
-  DelayAfterWave: 1.0
-  EnemyTemplate: {fileID: 5633919890731990331, guid: 2984b4e26c11be84ebf98bf967b6381a, type: 3}
+  ZombieCount: 4
+  DelayBetweenSpawn: 0.82
+  DelayAfterWave: 1.5
+  EnemyTemplate: {fileID: 1950201464240969781, guid: 2984b4e26c11be84ebf98bf967b6381a, type: 3}
 --- !u!1 &9054680078111347099
 GameObject:
   m_ObjectHideFlags: 0
@@ -4388,7 +4388,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _zombieSpawner: {fileID: 0}
-  _levelBonus: 800
+  _levelBonus: 550
   _startWave: {fileID: 9054680078111347050}
 --- !u!1 &9054680078111347102
 GameObject:
@@ -4435,10 +4435,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _conteiter: {fileID: 0}
-  ZombieCount: 5
-  DelayBetweenSpawn: 0.7
-  DelayAfterWave: 1.0
-  EnemyTemplate: {fileID: 5633919890731990331, guid: 2984b4e26c11be84ebf98bf967b6381a, type: 3}
+  ZombieCount: 7
+  DelayBetweenSpawn: 0.86
+  DelayAfterWave: 3.05
+  EnemyTemplate: {fileID: 5633919890731990331, guid: a202ad9a81f3e164c882a070bf69eb3f, type: 3}
 --- !u!1 &9054680078111347105
 GameObject:
   m_ObjectHideFlags: 0
@@ -4484,10 +4484,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _conteiter: {fileID: 0}
-  ZombieCount: 5
-  DelayBetweenSpawn: 1.0
-  DelayAfterWave: 1.0
-  EnemyTemplate: {fileID: 5633919890731990331, guid: 756cf7b1f633c254680d06a4315aa5c8, type: 3}
+  ZombieCount: 8
+  DelayBetweenSpawn: 0.83
+  DelayAfterWave: 3.05
+  EnemyTemplate: {fileID: 5633919890731990331, guid: a202ad9a81f3e164c882a070bf69eb3f, type: 3}
 --- !u!1 &9054680078111347108
 GameObject:
   m_ObjectHideFlags: 0
@@ -4533,10 +4533,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _conteiter: {fileID: 0}
-  ZombieCount: 5
-  DelayBetweenSpawn: 1.0
-  DelayAfterWave: 1.0
-  EnemyTemplate: {fileID: 5633919890731990331, guid: 756cf7b1f633c254680d06a4315aa5c8, type: 3}
+  ZombieCount: 3
+  DelayBetweenSpawn: 0.93
+  DelayAfterWave: 3.05
+  EnemyTemplate: {fileID: 1950201464240969781, guid: 2984b4e26c11be84ebf98bf967b6381a, type: 3}
 --- !u!1 &9054680078111347111
 GameObject:
   m_ObjectHideFlags: 0
@@ -4582,10 +4582,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _conteiter: {fileID: 0}
-  ZombieCount: 5
-  DelayBetweenSpawn: 0.7
-  DelayAfterWave: 1.0
-  EnemyTemplate: {fileID: 5633919890731990331, guid: 2984b4e26c11be84ebf98bf967b6381a, type: 3}
+  ZombieCount: 10
+  DelayBetweenSpawn: 0.79
+  DelayAfterWave: 3.05
+  EnemyTemplate: {fileID: 5633919890731990331, guid: a202ad9a81f3e164c882a070bf69eb3f, type: 3}
 --- !u!1 &9054680078111347114
 GameObject:
   m_ObjectHideFlags: 0
@@ -4632,8 +4632,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _conteiter: {fileID: 0}
   ZombieCount: 5
-  DelayBetweenSpawn: 1.0
-  DelayAfterWave: 1.0
+  DelayBetweenSpawn: 0.83
+  DelayAfterWave: 3.05
   EnemyTemplate: {fileID: 5633919890731990331, guid: 756cf7b1f633c254680d06a4315aa5c8, type: 3}
 --- !u!1 &9054680078111347117
 GameObject:
@@ -4680,10 +4680,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _conteiter: {fileID: 0}
-  ZombieCount: 5
-  DelayBetweenSpawn: 0.7
-  DelayAfterWave: 1.0
-  EnemyTemplate: {fileID: 5633919890731990331, guid: 2984b4e26c11be84ebf98bf967b6381a, type: 3}
+  ZombieCount: 4
+  DelayBetweenSpawn: 0.86
+  DelayAfterWave: 3.05
+  EnemyTemplate: {fileID: 1950201464240969781, guid: 2984b4e26c11be84ebf98bf967b6381a, type: 3}
 --- !u!1 &9054680078111347120
 GameObject:
   m_ObjectHideFlags: 0
@@ -4729,10 +4729,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _conteiter: {fileID: 0}
-  ZombieCount: 5
-  DelayBetweenSpawn: 0.7
-  DelayAfterWave: 1.0
-  EnemyTemplate: {fileID: 5633919890731990331, guid: 2984b4e26c11be84ebf98bf967b6381a, type: 3}
+  ZombieCount: 4
+  DelayBetweenSpawn: 0.83
+  DelayAfterWave: 1.52
+  EnemyTemplate: {fileID: 1950201464240969781, guid: 2984b4e26c11be84ebf98bf967b6381a, type: 3}
 --- !u!1 &9054680078111347075
 GameObject:
   m_ObjectHideFlags: 0
@@ -4785,7 +4785,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _zombieSpawner: {fileID: 0}
-  _levelBonus: 700
+  _levelBonus: 530
   _startWave: {fileID: 9054680078111347050}
 --- !u!1 &9054680078111347078
 GameObject:
@@ -4832,9 +4832,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _conteiter: {fileID: 0}
-  ZombieCount: 5
-  DelayBetweenSpawn: 0.8
-  DelayAfterWave: 1.0
+  ZombieCount: 4
+  DelayBetweenSpawn: 0.93
+  DelayAfterWave: 3.1
   EnemyTemplate: {fileID: 5633919890731990331, guid: 756cf7b1f633c254680d06a4315aa5c8, type: 3}
 --- !u!1 &9054680078111347081
 GameObject:
@@ -4881,10 +4881,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _conteiter: {fileID: 0}
-  ZombieCount: 5
-  DelayBetweenSpawn: 1.0
-  DelayAfterWave: 1.0
-  EnemyTemplate: {fileID: 5633919890731990331, guid: 756cf7b1f633c254680d06a4315aa5c8, type: 3}
+  ZombieCount: 8
+  DelayBetweenSpawn: 0.84
+  DelayAfterWave: 3.1
+  EnemyTemplate: {fileID: 5633919890731990331, guid: a202ad9a81f3e164c882a070bf69eb3f, type: 3}
 --- !u!1 &9054680078111347084
 GameObject:
   m_ObjectHideFlags: 0
@@ -4930,9 +4930,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _conteiter: {fileID: 0}
-  ZombieCount: 5
-  DelayBetweenSpawn: 1.0
-  DelayAfterWave: 1.0
+  ZombieCount: 4
+  DelayBetweenSpawn: 0.88
+  DelayAfterWave: 3.1
   EnemyTemplate: {fileID: 5633919890731990331, guid: 756cf7b1f633c254680d06a4315aa5c8, type: 3}
 --- !u!1 &9054680078111347087
 GameObject:
@@ -4979,10 +4979,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _conteiter: {fileID: 0}
-  ZombieCount: 5
-  DelayBetweenSpawn: 0.8
-  DelayAfterWave: 1.0
-  EnemyTemplate: {fileID: 5633919890731990331, guid: 756cf7b1f633c254680d06a4315aa5c8, type: 3}
+  ZombieCount: 3
+  DelayBetweenSpawn: 0.92
+  DelayAfterWave: 3.1
+  EnemyTemplate: {fileID: 1950201464240969781, guid: 2984b4e26c11be84ebf98bf967b6381a, type: 3}
 --- !u!1 &9054680078111347090
 GameObject:
   m_ObjectHideFlags: 0
@@ -5028,10 +5028,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _conteiter: {fileID: 0}
-  ZombieCount: 5
-  DelayBetweenSpawn: 1.0
-  DelayAfterWave: 1.0
-  EnemyTemplate: {fileID: 5633919890731990331, guid: 756cf7b1f633c254680d06a4315aa5c8, type: 3}
+  ZombieCount: 10
+  DelayBetweenSpawn: 0.78
+  DelayAfterWave: 3.1
+  EnemyTemplate: {fileID: 5633919890731990331, guid: a202ad9a81f3e164c882a070bf69eb3f, type: 3}
 --- !u!1 &9054680078111347093
 GameObject:
   m_ObjectHideFlags: 0
@@ -5077,10 +5077,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _conteiter: {fileID: 0}
-  ZombieCount: 5
-  DelayBetweenSpawn: 0.8
-  DelayAfterWave: 1.0
-  EnemyTemplate: {fileID: 5633919890731990331, guid: 756cf7b1f633c254680d06a4315aa5c8, type: 3}
+  ZombieCount: 4
+  DelayBetweenSpawn: 0.87
+  DelayAfterWave: 3.1
+  EnemyTemplate: {fileID: 1950201464240969781, guid: 2984b4e26c11be84ebf98bf967b6381a, type: 3}
 --- !u!1 &9054680078111347096
 GameObject:
   m_ObjectHideFlags: 0
@@ -5126,10 +5126,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _conteiter: {fileID: 0}
-  ZombieCount: 5
-  DelayBetweenSpawn: 0.8
-  DelayAfterWave: 1.0
-  EnemyTemplate: {fileID: 5633919890731990331, guid: 756cf7b1f633c254680d06a4315aa5c8, type: 3}
+  ZombieCount: 4
+  DelayBetweenSpawn: 0.84
+  DelayAfterWave: 1.55
+  EnemyTemplate: {fileID: 1950201464240969781, guid: 2984b4e26c11be84ebf98bf967b6381a, type: 3}
 --- !u!1 &9054680078111347051
 GameObject:
   m_ObjectHideFlags: 0
@@ -5182,7 +5182,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _zombieSpawner: {fileID: 0}
-  _levelBonus: 600
+  _levelBonus: 520
   _startWave: {fileID: 9054680078111347050}
 --- !u!1 &9054680078111347054
 GameObject:
@@ -5229,10 +5229,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _conteiter: {fileID: 0}
-  ZombieCount: 5
-  DelayBetweenSpawn: 0.9
-  DelayAfterWave: 1.0
-  EnemyTemplate: {fileID: 5633919890731990331, guid: 756cf7b1f633c254680d06a4315aa5c8, type: 3}
+  ZombieCount: 7
+  DelayBetweenSpawn: 0.88
+  DelayAfterWave: 3.15
+  EnemyTemplate: {fileID: 5633919890731990331, guid: a202ad9a81f3e164c882a070bf69eb3f, type: 3}
 --- !u!1 &9054680078111347057
 GameObject:
   m_ObjectHideFlags: 0
@@ -5278,9 +5278,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _conteiter: {fileID: 0}
-  ZombieCount: 5
-  DelayBetweenSpawn: 1.0
-  DelayAfterWave: 1.0
+  ZombieCount: 4
+  DelayBetweenSpawn: 0.92
+  DelayAfterWave: 3.15
   EnemyTemplate: {fileID: 5633919890731990331, guid: 756cf7b1f633c254680d06a4315aa5c8, type: 3}
 --- !u!1 &9054680078111347060
 GameObject:
@@ -5327,10 +5327,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _conteiter: {fileID: 0}
-  ZombieCount: 5
-  DelayBetweenSpawn: 1.0
-  DelayAfterWave: 1.0
-  EnemyTemplate: {fileID: 5633919890731990331, guid: 756cf7b1f633c254680d06a4315aa5c8, type: 3}
+  ZombieCount: 8
+  DelayBetweenSpawn: 0.83
+  DelayAfterWave: 3.15
+  EnemyTemplate: {fileID: 5633919890731990331, guid: a202ad9a81f3e164c882a070bf69eb3f, type: 3}
 --- !u!1 &9054680078111347063
 GameObject:
   m_ObjectHideFlags: 0
@@ -5376,10 +5376,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _conteiter: {fileID: 0}
-  ZombieCount: 5
-  DelayBetweenSpawn: 0.9
-  DelayAfterWave: 1.0
-  EnemyTemplate: {fileID: 5633919890731990331, guid: 756cf7b1f633c254680d06a4315aa5c8, type: 3}
+  ZombieCount: 9
+  DelayBetweenSpawn: 0.81
+  DelayAfterWave: 3.15
+  EnemyTemplate: {fileID: 5633919890731990331, guid: a202ad9a81f3e164c882a070bf69eb3f, type: 3}
 --- !u!1 &9054680078111347066
 GameObject:
   m_ObjectHideFlags: 0
@@ -5426,8 +5426,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _conteiter: {fileID: 0}
   ZombieCount: 5
-  DelayBetweenSpawn: 1.0
-  DelayAfterWave: 1.0
+  DelayBetweenSpawn: 0.85
+  DelayAfterWave: 3.15
   EnemyTemplate: {fileID: 5633919890731990331, guid: 756cf7b1f633c254680d06a4315aa5c8, type: 3}
 --- !u!1 &9054680078111347069
 GameObject:
@@ -5474,10 +5474,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _conteiter: {fileID: 0}
-  ZombieCount: 5
-  DelayBetweenSpawn: 0.9
-  DelayAfterWave: 1.0
-  EnemyTemplate: {fileID: 5633919890731990331, guid: 756cf7b1f633c254680d06a4315aa5c8, type: 3}
+  ZombieCount: 10
+  DelayBetweenSpawn: 0.77
+  DelayAfterWave: 3.15
+  EnemyTemplate: {fileID: 5633919890731990331, guid: a202ad9a81f3e164c882a070bf69eb3f, type: 3}
 --- !u!1 &9054680078111347072
 GameObject:
   m_ObjectHideFlags: 0
@@ -5523,7 +5523,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _conteiter: {fileID: 0}
-  ZombieCount: 5
-  DelayBetweenSpawn: 0.9
-  DelayAfterWave: 1.0
+  ZombieCount: 6
+  DelayBetweenSpawn: 0.8
+  DelayAfterWave: 1.58
   EnemyTemplate: {fileID: 5633919890731990331, guid: 756cf7b1f633c254680d06a4315aa5c8, type: 3}

@@ -10,6 +10,7 @@ public class EndLevelPanel : Element
 {
     private const string WinText = "LevelEnd";
     private const string LostText = "LevelLost";
+    private const int MainMenuSceneId = 0;
 
     [SerializeField] private MoneyCollecter _moneyCollecter;
     [SerializeField] private LoadingScreen _loadingScreen;
@@ -23,16 +24,24 @@ public class EndLevelPanel : Element
     [SerializeField] private Button _inMenuButton;
     [SerializeField] private Button _restartButton;
     [SerializeField] private Button _rewardButton;
+    [SerializeField] private Button _nextLevelButton;
     [SerializeField] private LeanLocalizedTextMeshProUGUI _labelText;
     [SerializeField] private GameObject _adErrorPanel;
     [SerializeField] private float _settingScoreDelay;
 
     private DifficultyChoicer _difficultyChoicer;
+    private NextLevelLauncher _nextLevelLauncher;
     private int _levelBonus;
     private bool _wasRewarded = false;
     
 
     public event UnityAction RewardAdClose;
+
+    protected override void Awake()
+    {
+        base.Awake();
+        _nextLevelLauncher = CreateNextLevelLauncher();
+    }
 
     private void OnEnable()
     {
@@ -41,6 +50,7 @@ public class EndLevelPanel : Element
         _inMenuButton.onClick.AddListener(OnInMenuButtonClick);
         _restartButton.onClick.AddListener(OnRestartLevelButtonClick);
         _rewardButton.onClick.AddListener(OnRewardButtonClick);
+        _nextLevelButton.onClick.AddListener(OnNextLevelButtonClick);
     }
 
     private void OnDisable()
@@ -48,10 +58,13 @@ public class EndLevelPanel : Element
         _inMenuButton.onClick.RemoveListener(OnInMenuButtonClick);
         _restartButton.onClick.RemoveListener(OnRestartLevelButtonClick);
         _rewardButton.onClick.RemoveListener(OnRewardButtonClick);
+        _nextLevelButton.onClick.RemoveListener(OnNextLevelButtonClick);
     }
 
     public void Initialize(bool levelComplited)
     {
+        _nextLevelButton.gameObject.SetActive(CanGoToNextLevel(levelComplited));
+
         if (_difficultyChoicer.SurvivalMode)
         {
             OpenSurvivePanel();
@@ -66,6 +79,29 @@ public class EndLevelPanel : Element
     public void SetCurrentLevel(DifficultyChoicer difficultyChoicer)
     {
         _difficultyChoicer = difficultyChoicer;
+    }
+
+    private NextLevelLauncher CreateNextLevelLauncher()
+    {
+        if (SaveSystem.Instance == null)
+        {
+            Debug.LogError($"{nameof(SaveSystem)} is missing, the next level can not be started.");
+            return null;
+        }
+
+        return new NextLevelLauncher(
+            new LevelSequence(PlayerData.StagesCount, Stage.LevelsPerStage),
+            new SaveSystemLevelSelection(SaveSystem.Instance),
+            _loadingScreen,
+            SceneManager.GetActiveScene().buildIndex);
+    }
+
+    private bool CanGoToNextLevel(bool levelComplited)
+    {
+        return levelComplited
+            && _difficultyChoicer.SurvivalMode == false
+            && _nextLevelLauncher != null
+            && _nextLevelLauncher.HasNextLevel;
     }
 
     private void OpenSurvivePanel()
@@ -99,13 +135,27 @@ public class EndLevelPanel : Element
         }
     }
 
+    private void OnNextLevelButtonClick()
+    {
+        _nextLevelButton.interactable = false;
+
+        if (_wasRewarded == false)
+        {
+            PlaygamaAds.ShowInterstitial(OnAdOpen, OnNextLevelAdClose, OnNextLevelAdError);
+        }
+        else
+        {
+            LoadNextLevel();
+        }
+    }
+
     private void OnInMenuButtonClick()
     {
         if(_wasRewarded == false)
         {
             PlaygamaAds.ShowInterstitial(OnAdOpen, OnAdClose, OnAdError);
         }
-        _loadingScreen.LoadScene(0);
+        _loadingScreen.LoadScene(MainMenuSceneId);
     }
 
     private void OnRewardButtonClick()
@@ -165,6 +215,27 @@ public class EndLevelPanel : Element
     {
         OnAdClose();
         _loadingScreen.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
+    private void OnNextLevelAdClose(bool wasShown = true)
+    {
+        OnAdClose(wasShown);
+        LoadNextLevel();
+    }
+
+    private void OnNextLevelAdError(string error)
+    {
+        OnAdClose();
+        LoadNextLevel();
+    }
+
+    private void LoadNextLevel()
+    {
+        if (_nextLevelLauncher.TryLaunch() == false)
+        {
+            Debug.LogWarning("There is no level after the finished one, returning to the main menu.");
+            _loadingScreen.LoadScene(MainMenuSceneId);
+        }
     }
 
     private void OnRewardAdClose()

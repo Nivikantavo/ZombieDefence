@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class LoadingScreen : MonoBehaviour
+public class LoadingScreen : MonoBehaviour, ISceneLoader
 {
     [SerializeField] private GameObject _loadingPanel;
     [SerializeField] private Slider _loadingBar;

@@ -96,7 +96,6 @@ public class ZombieSpawner : MonoBehaviour
 
     private IEnumerator SpawnWaves()
     {
-        WaitForSeconds waveDelay = new WaitForSeconds(_currentWave.DelayAfterWave);
         WaitForSeconds spawnDelay;
 
         for (int i = 0; i < _waves.Count; i++)
@@ -109,7 +108,7 @@ public class ZombieSpawner : MonoBehaviour
                 SpawnZombie(spawnPoints);
                 yield return spawnDelay;
             }
-            yield return waveDelay;
+            yield return new WaitForSeconds(_currentWave.DelayAfterWave);
             NextWave();
         }
     }

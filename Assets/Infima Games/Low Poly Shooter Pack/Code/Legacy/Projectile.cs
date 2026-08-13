@@ -2,6 +2,7 @@
 
 using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 using InfimaGames.LowPolyShooterPack;
 using Random = UnityEngine.Random;
 
@@ -11,11 +12,13 @@ namespace InfimaGames.LowPolyShooterPack.Legacy
 	{
 		public float Damage => _damage;
 
+		private static readonly List<Collider> PlayerColliders = new List<Collider>();
+		private static Transform _playerRoot;
+
 		private float _damage;
 		private float _hitForce = 20;
 		private Rigidbody _rigidbody;
 		private Collider _collider;
-		private bool _playerCollisionIgnored;
 		private bool _released;
 
 		[Range(5, 100)]
@@ -56,6 +59,14 @@ namespace InfimaGames.LowPolyShooterPack.Legacy
 		{
 			if (_released)
 				return;
+
+			if (IsPlayer(collision.transform))
+			{
+				if (_collider != null)
+					Physics.IgnoreCollision(collision.collider, _collider);
+
+				return;
+			}
 
 			if (collision.gameObject.GetComponent<Projectile>() != null)
 				return;
@@ -136,18 +147,41 @@ namespace InfimaGames.LowPolyShooterPack.Legacy
 				Quaternion.LookRotation(collision.contacts[0].normal));
 		}
 
+		//Physics drops ignored collider pairs as soon as one of them is disabled, so pooled projectiles have to register again on every spawn.
 		private void IgnorePlayerCollision()
 		{
-			if (_playerCollisionIgnored || _collider == null)
+			if (_collider == null || !TryCachePlayer())
 				return;
 
-			var gameModeService = ServiceLocator.Current.Get<IGameModeService>();
-			Collider playerCollider = gameModeService.GetPlayerCharacter().GetComponent<Collider>();
-			if (playerCollider != null)
+			foreach (Collider playerCollider in PlayerColliders)
 			{
-				Physics.IgnoreCollision(playerCollider, _collider);
-				_playerCollisionIgnored = true;
+				if (playerCollider != null && playerCollider.enabled && playerCollider.gameObject.activeInHierarchy)
+					Physics.IgnoreCollision(playerCollider, _collider);
 			}
+		}
+
+		private static bool IsPlayer(Transform hit)
+		{
+			return _playerRoot != null && hit.IsChildOf(_playerRoot);
+		}
+
+		private static bool TryCachePlayer()
+		{
+			if (_playerRoot != null)
+				return true;
+
+			if (ServiceLocator.Current == null)
+				return false;
+
+			CharacterBehaviour playerCharacter = ServiceLocator.Current.Get<IGameModeService>().GetPlayerCharacter();
+			if (playerCharacter == null)
+				return false;
+
+			_playerRoot = playerCharacter.transform.root;
+			PlayerColliders.Clear();
+			_playerRoot.GetComponentsInChildren(true, PlayerColliders);
+
+			return true;
 		}
 
 		private IEnumerator DestroyTimer()
