@@ -1,13 +1,9 @@
-using GameAnalyticsSDK;
 using InfimaGames.LowPolyShooterPack;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.Events;
-#if UNITY_WEBGL
-using Playgama;
-#endif
 
 public class Shop : MonoBehaviour
 {
@@ -20,20 +16,27 @@ public class Shop : MonoBehaviour
     [SerializeField] private ImproveItem _truckHealthItem;
     [SerializeField] private MoneyCollecter _moneyCollecter;
     [SerializeField] private GameObject _authorizePanel;
+    [SerializeField] private Transform _coinsRoot;
+    [SerializeField] private ProductView _currencyItemPrefab;
 
     private PlayerData _playerData;
+    private IapPurchaseService _iap;
+    private bool _currencyViewsCreated;
     private int _startTruckHealth = 300;
     private int _startGranadeCount = 1;
     private float _checkDataDelay = 0.25f;
+
+    private static readonly string[] CurrencyProductIds =
+    {
+        IapProductIds.Coins1000,
+        IapProductIds.Coins7000,
+        IapProductIds.Coins10000
+    };
 
     public event UnityAction ItemBought;
 
     private void OnEnable()
     {
-#if UNITY_WEBGL && !UNITY_EDITOR
-        if (Bridge.payments.isSupported)
-            Bridge.payments.GetCatalog(OnGetCatalogCompleted);
-#endif
         foreach (var itemView in _itemViews)
         {
             itemView.ViewClick += TrySellItem;
@@ -42,7 +45,7 @@ public class Shop : MonoBehaviour
         {
             productView.PoductViewClick += TrySellProduct;
         }
-        if (SaveSystem.Instance.DataLoaded)
+        if (SaveSystem.Instance != null && SaveSystem.Instance.DataLoaded)
         {
             UpdateData();
         }
@@ -62,7 +65,7 @@ public class Shop : MonoBehaviour
 
     private IEnumerator Start()
     {
-        while (SaveSystem.Instance.DataLoaded == false)
+        while (SaveSystem.Instance == null || SaveSystem.Instance.DataLoaded == false)
         {
             yield return new WaitForSecondsRealtime(_checkDataDelay);
         }
@@ -72,7 +75,29 @@ public class Shop : MonoBehaviour
     private void UpdateData()
     {
         _playerData = SaveSystem.Instance.GetData();
+        _iap = SaveSystem.Instance.IapPurchases;
+        if (_iap != null)
+            _iap.Initialize();
         MarkAllBoughtItem();
+        CreateCurrencyViews();
+        RefreshIapViews();
+    }
+
+    private void CreateCurrencyViews()
+    {
+        if (_currencyViewsCreated || _coinsRoot == null || _currencyItemPrefab == null)
+            return;
+
+        for (int i = 0; i < CurrencyProductIds.Length; i++)
+        {
+            ProductView view = Instantiate(_currencyItemPrefab, _coinsRoot);
+            view.gameObject.name = CurrencyProductIds[i];
+            view.Configure(CurrencyProductIds[i]);
+            view.PoductViewClick += TrySellProduct;
+            _productsView.Add(view);
+        }
+
+        _currencyViewsCreated = true;
     }
 
     private void TrySellItem(Item item)
@@ -95,36 +120,29 @@ public class Shop : MonoBehaviour
         }
     }
 
-    private void UpdateProductCatalog(List<CatalogProduct> products)
-    {
-        for (int i = 0; i < products.Count && i < _productsView.Count; i++)
-        {
-            _productsView[i].Product = products[i];
-        }
-    }
-
     private void TrySellProduct(Item item, string id)
     {
-#if UNITY_WEBGL
-        Bridge.payments.Purchase(id, (success, purchase) =>
+        if (_iap == null)
+            return;
+
+        _iap.Purchase(id);
+    }
+
+    private void RefreshIapViews()
+    {
+        bool supported = _iap != null && _iap.IsSupported;
+        foreach (ProductView view in _productsView)
         {
-            if (success == false || purchase == null)
-                return;
+            if (view == null)
+                continue;
 
-            string productId = purchase.TryGetValue("id", out string value) ? value : id;
-            SaveSystem.Instance.SetBoughtProduct(productId);
-            AddBoughtWeapon(item as WeaponItem);
-
-            foreach (ProductView view in _productsView)
+            view.gameObject.SetActive(supported);
+            if (supported)
             {
-                if (view.ProductID == productId)
-                {
-                    view.OnSellSuccessfully();
-                    GameAnalytics.NewResourceEvent(GAResourceFlowType.Source, item.Name, 1, item.Name, productId);
-                }
+                view.SetIapService(_iap);
+                view.Refresh();
             }
-        });
-#endif
+        }
     }
 
     private void TrySellWeapon(WeaponItem weapon)
@@ -137,7 +155,7 @@ public class Shop : MonoBehaviour
                 AddBoughtWeapon(weapon);
             }
         }
-        else if(weapon.Purchases < weapon.NumberOfItems && _moneyCollecter.TrySpendMoney(weapon.SellingPrice))
+        else if(weapon.CanUpgrade && weapon.Purchases < weapon.NumberOfItems && _moneyCollecter.TrySpendMoney(weapon.SellingPrice))
         {
             weapon.Sell();
             AddWeaponUpgrade(weapon);
@@ -171,7 +189,9 @@ public class Shop : MonoBehaviour
 
     private void AddWeaponUpgrade(WeaponItem weaponItem)
     {
-        List<string> upgradeWeapons = _playerData.UpgradeWeapons.ToList();
+        List<string> upgradeWeapons = _playerData.UpgradeWeapons != null
+            ? _playerData.UpgradeWeapons.ToList()
+            : new List<string>();
         upgradeWeapons.Add(weaponItem.Weapon.WeaponName);
         SaveSystem.Instance.SetWeaponsUpgradeArrey(upgradeWeapons.ToArray());
     }
@@ -204,15 +224,16 @@ public class Shop : MonoBehaviour
         MarkBoughtWeapon();
         MarkBoughtForces();
         MarkBoughtImpruvment();
-#if UNITY_WEBGL && !UNITY_EDITOR
-        GetBoughtProducts();
-#endif
     }
 
     private void MarkBoughtWeapon()
     {
-        List<string> boughtWeapons = _playerData.Weapons.ToList();
-        List<string> boughtWeaponsUpgrade = _playerData.UpgradeWeapons.ToList();
+        List<string> boughtWeapons = _playerData.Weapons != null
+            ? _playerData.Weapons.ToList()
+            : new List<string>();
+        List<string> boughtWeaponsUpgrade = _playerData.UpgradeWeapons != null
+            ? _playerData.UpgradeWeapons.ToList()
+            : new List<string>();
 
         int boughtCount;
 
@@ -273,70 +294,9 @@ public class Shop : MonoBehaviour
         }
     }
 
-#if UNITY_WEBGL
-    private void OnGetCatalogCompleted(bool success, List<Dictionary<string, string>> catalog)
-    {
-        if (success == false || catalog == null)
-            return;
-
-        List<CatalogProduct> products = new List<CatalogProduct>();
-        foreach (var item in catalog)
-        {
-            CatalogProduct product = CatalogProduct.FromDictionary(item);
-            if (product != null)
-                products.Add(product);
-        }
-
-        UpdateProductCatalog(products);
-    }
-
-    private void GetBoughtProducts()
-    {
-        Bridge.payments.GetPurchases((success, purchases) =>
-        {
-            if (success && purchases != null)
-                MarkBoughtProduct(purchases);
-        });
-    }
-
-    private void MarkBoughtProduct(List<Dictionary<string, string>> products)
-    {
-        foreach (ProductView view in _productsView)
-        {
-            foreach (var product in products)
-            {
-                string productId = product.TryGetValue("id", out string id) ? id : null;
-                if (productId == view.ProductID)
-                {
-                    view.OnSellSuccessfully();
-                }
-            }
-        }
-    }
-#endif
-
     public void DeleteProducts()
     {
-#if UNITY_WEBGL
-        Bridge.payments.GetPurchases((success, purchases) =>
-        {
-            if (success && purchases != null)
-                DeleteAllPurchasedProducts(purchases);
-        });
-#endif
+        if (_iap != null)
+            _iap.DeleteConsumablePurchases();
     }
-
-#if UNITY_WEBGL
-    private void DeleteAllPurchasedProducts(List<Dictionary<string, string>> products)
-    {
-        foreach (var product in products)
-        {
-            string productId = product.TryGetValue("id", out string id) ? id : null;
-            if (string.IsNullOrEmpty(productId) == false)
-            {
-                Bridge.payments.ConsumePurchase(productId, null);
-            }
-        }
-    }
-#endif
 }

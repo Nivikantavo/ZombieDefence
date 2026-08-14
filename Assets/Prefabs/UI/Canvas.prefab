@@ -13248,6 +13248,7 @@ GameObject:
   - component: {fileID: 6320638713439141545}
   - component: {fileID: 6263141807751830340}
   - component: {fileID: 608769360413414739}
+  - component: {fileID: 608769360413414741}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -13302,7 +13303,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u04252"
+  m_text: "\u0420\u0415\u041A\u041B\u0410\u041C\u0410 \u00d72"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: d47707c1dd1b7d548b253de80fb96f55, type: 2}
   m_sharedMaterial: {fileID: -1138875587505792823, guid: d47707c1dd1b7d548b253de80fb96f55, type: 2}
@@ -13371,6 +13372,20 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &608769360413414741
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4058676410213561439}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbf51be86e70d7941bd40914206e4ddc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  translationName: DoubleRewardAd
+  FallbackText: "\u0420\u0415\u041A\u041B\u0410\u041C\u0410 \u00d72"
 --- !u!1 &4192033955709767621
 GameObject:
   m_ObjectHideFlags: 0
@@ -15351,7 +15366,6 @@ GameObject:
   - component: {fileID: 6611966882769550991}
   - component: {fileID: 6611966882769550988}
   - component: {fileID: 6611966882769550989}
-  - component: {fileID: 6611966882769550986}
   m_Layer: 5
   m_Name: 'SoundButton '
   m_TagString: Untagged
@@ -15472,21 +15486,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
---- !u!114 &6611966882769550986
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6611966882769550984}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 959e1a4644621034aa94ca58ab9396fd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _onOffButton: {fileID: 6611966882769550989}
-  _soundOnIcon: {fileID: 21300000, guid: 0f0c8a37701dd4eca9d31fd7a63f63af, type: 3}
-  _soundOffIcon: {fileID: 21300000, guid: 9c5c53554ced2704f8d69e0043c4a061, type: 3}
 --- !u!1 &6611966882831208643
 GameObject:
   m_ObjectHideFlags: 0

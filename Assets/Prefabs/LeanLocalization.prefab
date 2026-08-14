@@ -2142,6 +2142,7 @@ Transform:
   - {fileID: 976652750}
   - {fileID: 1776124426}
   - {fileID: 4307468919294401704}
+  - {fileID: 4307468919294401801}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1444076413708004641
@@ -2157,10 +2158,65 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentLanguage: Russian
-  detectLanguage: 1
+  detectLanguage: 0
   defaultLanguage: English
-  saveLoad: 1
+  saveLoad: 0
   prefabs: []
+--- !u!1 &4307468919294401800
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4307468919294401801}
+  - component: {fileID: 4307468919294401802}
+  m_Layer: 0
+  m_Name: DoubleRewardAd
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4307468919294401801
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4307468919294401800}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1444076413708004642}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4307468919294401802
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4307468919294401800}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb15fa0e7301ff849bf4d6dcede7c12b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  data: 0
+  entries:
+  - Language: Russian
+    Text: "\u0420\u0415\u041A\u041B\u0410\u041C\u0410 \u00d72"
+    Object: {fileID: 0}
+  - Language: English
+    Text: WATCH AD \u00d72
+    Object: {fileID: 0}
+  - Language: Turkish
+    Text: REKLAM \u00d72
+    Object: {fileID: 0}
 --- !u!1 &1444076413850385650
 GameObject:
   m_ObjectHideFlags: 0

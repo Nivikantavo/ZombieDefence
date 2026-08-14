@@ -16,7 +16,7 @@ namespace InfimaGames.LowPolyShooterPack
         /// <summary>
         /// Returns true if the array is valid.
         /// </summary>
-        public static bool IsValid<T>(this T[] array) => !array.Equals(null) && array.Length > 0;
+        public static bool IsValid<T>(this T[] array) => array != null && array.Length > 0;
         /// <summary>
         /// Returns a random audio clip from an array of clips.
         /// </summary>

@@ -10,11 +10,10 @@ using Playgama;
 
 public class SaveSystem : MonoBehaviour
 {
-    private const string ProductARName = "Assault Rifle 03";
-    private const string ProductRPGName = "Rocket Launcher 01";
     private const string PlayerDataKey = "player_data";
 
     public bool DataLoaded { get; private set; }
+    public IapPurchaseService IapPurchases { get; private set; }
 
     private PlayerData _playerData;
     private string file = "PlayerData.txt";
@@ -30,6 +29,7 @@ public class SaveSystem : MonoBehaviour
         {
             DontDestroyOnLoad(gameObject);
             Instance = this;
+            IapPurchases = GetComponent<IapPurchaseService>();
         }
         else
         {
@@ -75,8 +75,9 @@ public class SaveSystem : MonoBehaviour
         _playerData = new PlayerData();
         string json = ReadFromFile(file);
         JsonUtility.FromJsonOverwrite(json, _playerData);
-        _playerData.EnsureProgressArrays();
+        PersistWeaponUpgradeMigration();
         DataLoaded = true;
+        RestoreIapPurchases();
         DataUpdated?.Invoke();
 #endif
     }
@@ -85,10 +86,32 @@ public class SaveSystem : MonoBehaviour
     {
         if (_playerData != null)
         {
-            _playerData.EnsureProgressArrays();
+            PersistWeaponUpgradeMigration();
         }
 
         return _playerData;
+    }
+
+    private void PersistWeaponUpgradeMigration()
+    {
+        if (_playerData == null)
+        {
+            return;
+        }
+
+        bool migrated = _playerData.MigrateWeaponUpgradesIfNeeded();
+        _playerData.EnsureProgressArrays();
+        _playerData.EnsureIapArrays();
+        if (migrated)
+        {
+            Save();
+        }
+    }
+
+    public void SaveAndNotify()
+    {
+        Save();
+        DataUpdated?.Invoke();
     }
 
     public void DeleteData()
@@ -235,6 +258,7 @@ public class SaveSystem : MonoBehaviour
 
     public void SetBoughtProduct(string productID)
     {
+        _playerData.EnsureIapArrays();
         List<string> products = _playerData.ProductsID.ToList();
 
         if(products.Contains(productID) == false)
@@ -243,6 +267,7 @@ public class SaveSystem : MonoBehaviour
         }
 
         _playerData.ProductsID = products.ToArray();
+        Save();
     }
 
     public void SetTrainingCompleted(bool complited)
@@ -269,6 +294,7 @@ public class SaveSystem : MonoBehaviour
             OnLoadDataError("Failed to load player data from Playgama storage");
             _playerData = new PlayerData();
             DataLoaded = true;
+            RestoreIapPurchases();
             DataUpdated?.Invoke();
             return;
         }
@@ -287,47 +313,23 @@ public class SaveSystem : MonoBehaviour
         else
         {
             _playerData = JsonUtility.FromJson<PlayerData>(data);
-            _playerData.EnsureProgressArrays();
-            GetBoughtProducts();
+            PersistWeaponUpgradeMigration();
         }
         DataLoaded = true;
+        RestoreIapPurchases();
     }
 
-    private void GetBoughtProducts()
+    private void RestoreIapPurchases()
     {
-#if UNITY_WEBGL && !UNITY_EDITOR
-        Bridge.payments.GetPurchases((success, purchases) =>
-        {
-            if (success && purchases != null)
-                CheckBoughtProduct(purchases);
-        });
-#endif
-    }
+        if (IapPurchases == null)
+            IapPurchases = GetComponent<IapPurchaseService>();
 
-    private void CheckBoughtProduct(List<Dictionary<string, string>> products)
-    {
-        List<string> weapons = _playerData.Weapons.ToList();
+        if (IapPurchases == null)
+            return;
 
-        foreach (var product in products)
-        {
-            string productId = product.TryGetValue("id", out string id) ? id : null;
-            if (productId == "rpg")
-            {
-                if (weapons.Contains(ProductRPGName) == false)
-                {
-                    weapons.Add(ProductRPGName);
-                    SetWeaponsArrey(weapons.ToArray());
-                }
-            }
-            if (productId == "ar")
-            {
-                if (weapons.Contains(ProductARName) == false)
-                {
-                    weapons.Add(ProductARName);
-                    SetWeaponsArrey(weapons.ToArray());
-                }
-            }
-        }
+        IapPurchases.Initialize();
+        IapPurchases.LoadCatalog();
+        IapPurchases.RestorePurchases();
     }
 
     private void OnLoadDataError(string errorMessage)

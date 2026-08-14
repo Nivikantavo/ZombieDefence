@@ -14,13 +14,25 @@ public class LevelChoicer : MonoBehaviour
 
     private void Awake()
     {
-        int currentLevel = SaveSystem.Instance.GetData().SelectedStage - 1;
+        int currentLevel = 0;
+        PlayerData data = SaveSystem.Instance != null ? SaveSystem.Instance.GetData() : null;
+        if (data != null)
+            currentLevel = data.SelectedStage - 1;
+
+        if (_levels == null || _levels.Count == 0)
+            return;
+
+        currentLevel = Mathf.Clamp(currentLevel, 0, _levels.Count - 1);
         _levels[currentLevel].gameObject.SetActive(true);
-        _levelsEnvironments[currentLevel].gameObject.SetActive(true);
+        if (_levelsEnvironments != null && currentLevel < _levelsEnvironments.Count)
+            _levelsEnvironments[currentLevel].gameObject.SetActive(true);
         _endLevelPanel.SetCurrentLevel(_levels[currentLevel]);
         _levelProgress.SetCurrentLevel(_levels[currentLevel]);
         _surviveScorePanel.SetLeaderboard(currentLevel);
-        NavMesh.RemoveAllNavMeshData();
-        NavMesh.AddNavMeshData(_levelsData[currentLevel]);
+        if (_levelsData != null && currentLevel < _levelsData.Count && _levelsData[currentLevel] != null)
+        {
+            NavMesh.RemoveAllNavMeshData();
+            NavMesh.AddNavMeshData(_levelsData[currentLevel]);
+        }
     }
 }

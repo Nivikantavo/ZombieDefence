@@ -32,6 +32,7 @@ namespace InfimaGames.LowPolyShooterPack
         protected virtual void LateUpdate(){}
 
         #endregion
+        public virtual void ApplyLevel(int level) { }
         public virtual void SetUpgradeAttachments() { }
         #region GETTERS
 

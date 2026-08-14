@@ -66,6 +66,9 @@ namespace InfimaGames.LowPolyShooterPack
             }
 
             //Try to get a WeaponAnimationDataBehaviour from the equipped weapon.
+            if (inventoryBehaviour.GetEquipped() == null)
+                return;
+
             var recoilBehaviour = inventoryBehaviour.GetEquipped().GetComponent<WeaponAnimationDataBehaviour>();
             //If there's none, then we don't even need to run this script at all, basically.
             if (recoilBehaviour == null)

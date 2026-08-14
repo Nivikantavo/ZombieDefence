@@ -1,0 +1,69 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a20dcb93d654b088ba3f8c2fc0be1c8, type: 3}
+  m_Name: IapCatalog
+  m_EditorClassIdentifier: 
+  _products:
+  - Id: ar
+    Kind: 0
+    WeaponName: Assault Rifle 03
+    UpgradeIndex: 0
+    CoinAmount: 0
+    EditorPriceLabel: 20
+  - Id: ar_upgrade1
+    Kind: 1
+    WeaponName: Assault Rifle 03
+    UpgradeIndex: 1
+    CoinAmount: 0
+    EditorPriceLabel: 10
+  - Id: ar_upgrade2
+    Kind: 1
+    WeaponName: Assault Rifle 03
+    UpgradeIndex: 2
+    CoinAmount: 0
+    EditorPriceLabel: 15
+  - Id: ar_upgrade3
+    Kind: 1
+    WeaponName: Assault Rifle 03
+    UpgradeIndex: 3
+    CoinAmount: 0
+    EditorPriceLabel: 20
+  - Id: ar_upgrade4
+    Kind: 1
+    WeaponName: Assault Rifle 03
+    UpgradeIndex: 4
+    CoinAmount: 0
+    EditorPriceLabel: 25
+  - Id: rpg
+    Kind: 0
+    WeaponName: Rocket Launcher 01
+    UpgradeIndex: 0
+    CoinAmount: 0
+    EditorPriceLabel: 25
+  - Id: coins_1000
+    Kind: 2
+    WeaponName: 
+    UpgradeIndex: 0
+    CoinAmount: 1000
+    EditorPriceLabel: 10
+  - Id: coins_7000
+    Kind: 2
+    WeaponName: 
+    UpgradeIndex: 0
+    CoinAmount: 7000
+    EditorPriceLabel: 40
+  - Id: coins_10000
+    Kind: 2
+    WeaponName: 
+    UpgradeIndex: 0
+    CoinAmount: 10000
+    EditorPriceLabel: 50

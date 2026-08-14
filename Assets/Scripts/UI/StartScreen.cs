@@ -24,6 +24,9 @@ public class StartScreen : MonoBehaviour
         }
 
 #if UNITY_WEBGL && !UNITY_EDITOR
+        while (Bridge.instance == null)
+            yield return null;
+
         Bridge.platform.SendMessage(PlatformMessage.GameReady);
 #endif
         gameObject.SetActive(false);

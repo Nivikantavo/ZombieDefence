@@ -51,7 +51,7 @@ MonoBehaviour:
   EmailGA: nivikantavogd@gmail.com
   IntroScreen: 0
   InfoLogEditor: 1
-  InfoLogBuild: 1
+  InfoLogBuild: 0
   VerboseLogBuild: 0
   UseManualSessionHandling: 0
   SendExampleGameDataToMyGame: 0
@@ -70,7 +70,7 @@ MonoBehaviour:
   ResourceCurrencies: []
   LastCreatedGamePlatform: -1
   Platforms: 11000000
-  CurrentInspectorState: 1
+  CurrentInspectorState: 0
   ClosedHints: 
   DisplayHints: 0
   DisplayHintsScrollState: {x: 0, y: 0}
@@ -89,7 +89,7 @@ MonoBehaviour:
   macIcon: {fileID: 0}
   windowsPhoneIcon: {fileID: 0}
   UsePlayerSettingsBuildNumber: 0
-  SubmitErrors: 1
+  SubmitErrors: 0
   NativeErrorReporting: 0
   MaxErrorCount: 10
   SubmitFpsAverage: 0

@@ -19,7 +19,11 @@ namespace InfimaGames.LowPolyShooterPack
                 return null;
             
             //Deactivate All. This way we don't have to do it manually.
-            array.ForEach(obj => obj.gameObject.SetActive(false));
+            array.ForEach(obj =>
+            {
+                if (obj != null)
+                    obj.gameObject.SetActive(false);
+            });
 
             //Error Check.
             if (!array.IsValidIndex(index)) 

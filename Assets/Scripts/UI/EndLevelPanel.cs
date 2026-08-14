@@ -2,7 +2,6 @@ using InfimaGames.LowPolyShooterPack.Interface;
 using Lean.Localization;
 using UnityEngine;
 using UnityEngine.Events;
-using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -127,7 +126,7 @@ public class EndLevelPanel : Element
     {
         if(_wasRewarded == false)
         {
-            PlaygamaAds.ShowInterstitial(OnAdOpen, OnRestartAdClose, OnRestartAdError);
+            PlaygamaAds.ShowInterstitial(null, OnRestartAdClose, OnRestartAdError, GameAnalyticsAds.Placement.LevelEndRestart);
         }
         else
         {
@@ -141,7 +140,7 @@ public class EndLevelPanel : Element
 
         if (_wasRewarded == false)
         {
-            PlaygamaAds.ShowInterstitial(OnAdOpen, OnNextLevelAdClose, OnNextLevelAdError);
+            PlaygamaAds.ShowInterstitial(null, OnNextLevelAdClose, OnNextLevelAdError, GameAnalyticsAds.Placement.LevelEndNext);
         }
         else
         {
@@ -153,32 +152,17 @@ public class EndLevelPanel : Element
     {
         if(_wasRewarded == false)
         {
-            PlaygamaAds.ShowInterstitial(OnAdOpen, OnAdClose, OnAdError);
+            PlaygamaAds.ShowInterstitial(null, OnMenuAdClose, OnMenuAdError, GameAnalyticsAds.Placement.LevelEndMenu);
+            return;
         }
-        _loadingScreen.LoadScene(MainMenuSceneId);
+
+        LoadMainMenu();
     }
 
     private void OnRewardButtonClick()
     {
         _rewardButton.interactable = false;
-        PlaygamaAds.ShowRewarded(OnAdOpen, OnRewardCallback, OnRewardAdClose, OnRewardAdError);
-    }
-
-    private void OnAdOpen()
-    {
-        EnsureBackgroundChecker();
-        if (_backgroundCheker != null)
-        {
-            _backgroundCheker.SetAdsShown(true);
-        }
-
-        if (Keyboard.current != null)
-        {
-            InputSystem.DisableDevice(Keyboard.current);
-        }
-
-        AudioListener.pause = true;
-        AudioListener.volume = 0f;
+        PlaygamaAds.ShowRewarded(null, OnRewardCallback, OnRewardAdClose, OnRewardAdError, GameAnalyticsAds.Placement.LevelEndDoubleReward);
     }
 
     private void OnRewardCallback()
@@ -188,45 +172,39 @@ public class EndLevelPanel : Element
         _wasRewarded = true;
     }
 
-    private void OnAdClose(bool wasShown = true)
-    {
-        EnsureBackgroundChecker();
-        if (_backgroundCheker != null)
-        {
-            _backgroundCheker.SetAdsShown(false);
-        }
-
-        if (Keyboard.current != null)
-        {
-            InputSystem.EnableDevice(Keyboard.current);
-        }
-
-        AudioListener.pause = false;
-        AudioListener.volume = 1f;
-    }
-
     private void OnRestartAdClose(bool wasShown = true)
     {
-        OnAdClose(wasShown);
         _loadingScreen.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     private void OnRestartAdError(string error)
     {
-        OnAdClose();
         _loadingScreen.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     private void OnNextLevelAdClose(bool wasShown = true)
     {
-        OnAdClose(wasShown);
         LoadNextLevel();
     }
 
     private void OnNextLevelAdError(string error)
     {
-        OnAdClose();
         LoadNextLevel();
+    }
+
+    private void OnMenuAdClose(bool wasShown = true)
+    {
+        LoadMainMenu();
+    }
+
+    private void OnMenuAdError(string error)
+    {
+        LoadMainMenu();
+    }
+
+    private void LoadMainMenu()
+    {
+        _loadingScreen.LoadScene(MainMenuSceneId);
     }
 
     private void LoadNextLevel()
@@ -234,35 +212,20 @@ public class EndLevelPanel : Element
         if (_nextLevelLauncher.TryLaunch() == false)
         {
             Debug.LogWarning("There is no level after the finished one, returning to the main menu.");
-            _loadingScreen.LoadScene(MainMenuSceneId);
+            LoadMainMenu();
         }
     }
 
     private void OnRewardAdClose()
     {
-        OnAdClose();
         RewardAdClose?.Invoke();
     }
 
     private void OnRewardAdError(string error)
     {
-        OnAdClose();
-        _adErrorPanel.gameObject.SetActive(true);
-        _rewardButton.interactable = false;
+        _rewardButton.interactable = true;
+        if (_adErrorPanel != null)
+            _adErrorPanel.SetActive(false);
         Debug.Log(error);
-    }
-
-    private void OnAdError(string error)
-    {
-        OnAdClose();
-        Debug.Log(error);
-    }
-
-    private void EnsureBackgroundChecker()
-    {
-        if (_backgroundCheker == null)
-        {
-            _backgroundCheker = FindObjectOfType<InBackgroundCheker>();
-        }
     }
 }

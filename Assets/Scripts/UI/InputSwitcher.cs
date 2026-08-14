@@ -15,13 +15,15 @@ public class InputSwitcher : MonoBehaviour
 #else
         bool isMobile = PlaygamaAds.IsMobileDevice();
 
-        if (isMobile)
+        if (isMobile && _inventorySetter != null)
         {
             _inventorySetter.RemoveWeaponsSpread();
         }
 
-        _mobileUI.SetActive(isMobile);
-        _character.SetMobileInput(isMobile);
+        if (_mobileUI != null)
+            _mobileUI.SetActive(isMobile);
+        if (_character != null)
+            _character.SetMobileInput(isMobile);
         yield break;
 #endif
     }

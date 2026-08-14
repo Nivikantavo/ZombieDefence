@@ -3,6 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
         <title>{{{ PRODUCT_NAME }}}</title>
         <link rel="preconnect" href="https://bridge.playgama.com">
         <link rel="preload" href="Build/{{{ CODE_FILENAME }}}" as="fetch" type="application/wasm" crossorigin>
@@ -14,6 +15,12 @@
                 height: 100%;
                 padding: 0px;
                 margin: 0px;
+                overflow: hidden;
+                overscroll-behavior: none;
+                user-select: none;
+                -webkit-user-select: none;
+                -webkit-touch-callout: none;
+                touch-action: none;
             }
             .fullscreen-canvas {
                 background: #242424;
@@ -25,7 +32,7 @@
             }
         </style>
     </head>
-    <body>
+    <body oncontextmenu="return false;">
         <canvas id="canvas" class="fullscreen-canvas"></canvas>
         <script src="./playgama-bridge-unity.js"></script>
     </body>

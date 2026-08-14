@@ -33,7 +33,9 @@ namespace InfimaGames.LowPolyShooterPack
         [SerializeField]
         private bool scopeIndexRandom;
 
-        [SerializeField] private int upgradeScopeIndex;
+        [HideInInspector]
+        [SerializeField]
+        private int upgradeScopeIndex;
 
         [Tooltip("All possible Scope Attachments that this Weapon can use!")]
         [SerializeField]
@@ -49,7 +51,9 @@ namespace InfimaGames.LowPolyShooterPack
         [SerializeField]
         private bool muzzleIndexRandom = true;
 
-        [SerializeField] private int upgradeMuzzleIndex;
+        [HideInInspector]
+        [SerializeField]
+        private int upgradeMuzzleIndex;
 
         [Tooltip("All possible Muzzle Attachments that this Weapon can use!")]
         [SerializeField]
@@ -65,7 +69,9 @@ namespace InfimaGames.LowPolyShooterPack
         [SerializeField]
         private bool laserIndexRandom = true;
 
-        [SerializeField] private int upgradeLaserIndex;
+        [HideInInspector]
+        [SerializeField]
+        private int upgradeLaserIndex;
 
         [Tooltip("All possible Laser Attachments that this Weapon can use!")]
         [SerializeField]
@@ -81,7 +87,9 @@ namespace InfimaGames.LowPolyShooterPack
         [SerializeField]
         private bool gripIndexRandom = true;
 
-        [SerializeField] private int upgradeGripIndex;
+        [HideInInspector]
+        [SerializeField]
+        private int upgradeGripIndex;
 
         [Tooltip("All possible Grip Attachments that this Weapon can use!")]
         [SerializeField]
@@ -101,11 +109,15 @@ namespace InfimaGames.LowPolyShooterPack
         [SerializeField]
         private Magazine[] magazineArray;
 
+        [Title(label: "Upgrade Levels")]
+
+        [Tooltip("Attachment indices for weapon levels 1-5. Level 1 is the base loadout. Level 3 matches the old single upgrade. If empty, values are filled from the default and upgrade indices.")]
+        [SerializeField]
+        private WeaponAttachmentLevel[] attachmentLevels;
+
         #endregion
 
         #region FIELDS
-
-        private bool upgraded = false;
 
         /// <summary>
         /// Equipped Scope.
@@ -135,70 +147,136 @@ namespace InfimaGames.LowPolyShooterPack
         /// <summary>
         /// Awake.
         /// </summary>
+        protected override void Awake()
+        {
+            if (magazineBehaviour == null)
+            {
+                SetDefultOrRandomAttachments();
+            }
+        }
+
+        public override void ApplyLevel(int level)
+        {
+            level = WeaponUpgradeLevels.Clamp(level);
+            EnsureAttachmentLevels();
+
+            if (level <= 1)
+            {
+                SetDefultOrRandomAttachments();
+            }
+            else
+            {
+                ApplyAttachmentLevel(attachmentLevels[WeaponUpgradeLevels.ToIndex(level)]);
+            }
+
+            ApplyMagazineLevel(level);
+        }
 
         public override void SetUpgradeAttachments()
         {
-            scopeBehaviour = scopeArray.SelectAndSetActive(upgradeScopeIndex);
+            ApplyLevel(WeaponUpgradeLevels.LegacyMappedLevel);
+        }
+
+        private void ApplyAttachmentLevel(WeaponAttachmentLevel attachmentLevel)
+        {
+            scopeBehaviour = scopeArray.SelectAndSetActive(attachmentLevel.ScopeIndex);
 
             if (scopeBehaviour == null)
             {
-                //Select Default Scope.
                 scopeBehaviour = scopeDefaultBehaviour;
-                //Set Active.
-                scopeBehaviour.gameObject.SetActive(scopeDefaultShow);
+                if (scopeBehaviour != null)
+                    scopeBehaviour.gameObject.SetActive(scopeDefaultShow);
             }
 
-            muzzleBehaviour = muzzleArray.SelectAndSetActive(upgradeMuzzleIndex);
-
-            laserBehaviour = laserArray.SelectAndSetActive(upgradeLaserIndex);
-
-            gripBehaviour = gripArray.SelectAndSetActive(upgradeGripIndex);
-
-            magazineArray[magazineIndex].SetUpgradeAmmunition();
+            muzzleBehaviour = muzzleArray.SelectAndSetActive(attachmentLevel.MuzzleIndex);
+            laserBehaviour = laserArray.SelectAndSetActive(attachmentLevel.LaserIndex);
+            gripBehaviour = gripArray.SelectAndSetActive(attachmentLevel.GripIndex);
 
             magazineBehaviour = magazineArray.SelectAndSetActive(magazineIndex);
-
+            if (magazineBehaviour == null)
+            {
+                magazineBehaviour = magazineArray.SelectAndSetActive(0);
+            }
         }
+
+        private void ApplyMagazineLevel(int level)
+        {
+            Magazine magazine = magazineBehaviour as Magazine;
+            if (magazine == null && magazineArray != null && magazineIndex >= 0 && magazineIndex < magazineArray.Length)
+            {
+                magazine = magazineArray[magazineIndex];
+            }
+
+            magazine?.ApplyLevel(level);
+        }
+
+        private void EnsureAttachmentLevels()
+        {
+            if (WeaponUpgradeLevels.NeedsFill(attachmentLevels) == false)
+            {
+                return;
+            }
+
+            WeaponAttachmentLevel level1 = new WeaponAttachmentLevel
+            {
+                ScopeIndex = scopeIndex,
+                MuzzleIndex = muzzleIndex,
+                LaserIndex = laserIndex,
+                GripIndex = gripIndex
+            };
+
+            WeaponAttachmentLevel level3 = new WeaponAttachmentLevel
+            {
+                ScopeIndex = upgradeScopeIndex,
+                MuzzleIndex = upgradeMuzzleIndex,
+                LaserIndex = upgradeLaserIndex,
+                GripIndex = upgradeGripIndex
+            };
+
+            attachmentLevels = WeaponUpgradeLevels.CreateAttachmentLevels(level1, level3);
+        }
+
+#if UNITY_EDITOR
+        private void OnValidate()
+        {
+            EnsureAttachmentLevels();
+        }
+
+        [ContextMenu("Rebuild Attachment Levels From Legacy")]
+        private void RebuildAttachmentLevelsFromLegacy()
+        {
+            attachmentLevels = null;
+            EnsureAttachmentLevels();
+        }
+#endif
 
 
         public void SetDefultOrRandomAttachments()
         {
-            //Randomize. This allows us to spice things up a little!
-            if (scopeIndexRandom)
+            if (scopeIndexRandom && scopeArray != null && scopeArray.Length > 0)
                 scopeIndex = Random.Range(scopeIndexFirst, scopeArray.Length);
-            //Select Scope!
             scopeBehaviour = scopeArray.SelectAndSetActive(scopeIndex);
-            //Check if we have no scope. This could happen if we have an incorrect index.
             if (scopeBehaviour == null)
             {
-                //Select Default Scope.
                 scopeBehaviour = scopeDefaultBehaviour;
-                //Set Active.
-                scopeBehaviour.gameObject.SetActive(scopeDefaultShow);
+                if (scopeBehaviour != null)
+                    scopeBehaviour.gameObject.SetActive(scopeDefaultShow);
             }
 
-            //Randomize. This allows us to spice things up a little!
-            if (muzzleIndexRandom)
+            if (muzzleIndexRandom && muzzleArray != null && muzzleArray.Length > 0)
                 muzzleIndex = Random.Range(0, muzzleArray.Length);
-            //Select Muzzle!
             muzzleBehaviour = muzzleArray.SelectAndSetActive(muzzleIndex);
 
-            //Randomize. This allows us to spice things up a little!
-            if (laserIndexRandom)
+            if (laserIndexRandom && laserArray != null && laserArray.Length > 0)
                 laserIndex = Random.Range(0, laserArray.Length);
-            //Select Laser!
             laserBehaviour = laserArray.SelectAndSetActive(laserIndex);
 
-            //Randomize. This allows us to spice things up a little!
-            if (gripIndexRandom)
+            if (gripIndexRandom && gripArray != null && gripArray.Length > 0)
                 gripIndex = Random.Range(0, gripArray.Length);
-            //Select Grip!
             gripBehaviour = gripArray.SelectAndSetActive(gripIndex);
 
-            //Randomize. This allows us to spice things up a little!
-            if (magazineIndexRandom)
+            if (magazineIndexRandom && magazineArray != null && magazineArray.Length > 0)
                 magazineIndex = Random.Range(0, magazineArray.Length);
-            //Select Magazine!
             magazineBehaviour = magazineArray.SelectAndSetActive(magazineIndex);
         }
         #endregion

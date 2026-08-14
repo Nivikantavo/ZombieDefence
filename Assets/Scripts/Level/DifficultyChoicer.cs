@@ -25,15 +25,16 @@ public class DifficultyChoicer : MonoBehaviour
 
     private void Awake()
     {
-        PlayerData data = SaveSystem.Instance.GetData();
+        PlayerData data = SaveSystem.Instance != null ? SaveSystem.Instance.GetData() : null;
 
         _spawner.SetSpawnPoints(_spawnPoints, _startSpawnPoints);
 
-        SurvivalMode = data.SurvivalMode;
+        SurvivalMode = data != null && data.SurvivalMode;
         if (SurvivalMode)
         {
             _survivalMode = transform.GetComponentInChildren<SurvivalMode>(true);
-            _survivalMode.gameObject.SetActive(true);
+            if (_survivalMode != null)
+                _survivalMode.gameObject.SetActive(true);
         }
         else
         {
@@ -41,7 +42,7 @@ public class DifficultyChoicer : MonoBehaviour
                 .OrderBy(level => GetLevelOrder(level.name))
                 .ToList();
 
-            _currentLevelNumber = data.SelectedLevel;
+            _currentLevelNumber = data != null ? data.SelectedLevel : 0;
 
             for (int i = 0; i < _levels.Count; i++)
             {

@@ -1,0 +1,10 @@
+﻿id,price,title_en,description_en,title_ru,description_ru
+ar,20,Assault Rifle,Unlock the assault rifle permanently.,Штурмовая винтовка,Открывает штурмовую винтовку навсегда.
+ar_upgrade1,10,Assault Rifle Upgrade 1,Upgrade the assault rifle to level 2.,Улучшение штурмовой винтовки 1,Улучшает штурмовую винтовку до 2 уровня.
+ar_upgrade2,15,Assault Rifle Upgrade 2,Upgrade the assault rifle to level 3.,Улучшение штурмовой винтовки 2,Улучшает штурмовую винтовку до 3 уровня.
+ar_upgrade3,20,Assault Rifle Upgrade 3,Upgrade the assault rifle to level 4.,Улучшение штурмовой винтовки 3,Улучшает штурмовую винтовку до 4 уровня.
+ar_upgrade4,25,Assault Rifle Upgrade 4,Upgrade the assault rifle to level 5.,Улучшение штурмовой винтовки 4,Улучшает штурмовую винтовку до 5 уровня.
+rpg,25,Rocket Launcher,Unlock the rocket launcher permanently.,Гранатомёт,Открывает гранатомёт навсегда.
+coins_1000,10,1000 Coins,Adds 1000 coins to your balance.,1000 монет,Добавляет 1000 монет на баланс.
+coins_7000,40,7000 Coins,Adds 7000 coins to your balance.,7000 монет,Добавляет 7000 монет на баланс.
+coins_10000,50,10000 Coins,Adds 10000 coins to your balance.,10000 монет,Добавляет 10000 монет на баланс.

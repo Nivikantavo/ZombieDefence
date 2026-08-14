@@ -41,8 +41,15 @@ namespace InfimaGames.LowPolyShooterPack
         [SerializeField]
         private float damage = 5f;
 
+        [HideInInspector]
         [SerializeField]
         private float upgradeDamage = 5f;
+
+        [Title(label: "Upgrade Levels")]
+
+        [Tooltip("Damage for weapon levels 1-5. Level 1 is the base weapon. Level 3 matches the old single upgrade. If empty, values are filled from Damage / Upgrade Damage.")]
+        [SerializeField]
+        private float[] damageByLevel;
 
         [Tooltip("How far the weapon can fire from the center of the screen.")]
         [SerializeField]
@@ -158,7 +165,7 @@ namespace InfimaGames.LowPolyShooterPack
 
         #region FIELDS
 
-        private bool upgraded = false;
+        private int currentLevel = 1;
 
         /// <summary>
         /// Weapon Animator.
@@ -235,14 +242,24 @@ namespace InfimaGames.LowPolyShooterPack
         protected override void Start()
         {
             #region Cache Attachment References
-            
 
-            magazineBehaviour = attachmentManager.GetEquippedMagazine();
-            scopeBehaviour = attachmentManager.GetEquippedScope();
-            muzzleBehaviour = attachmentManager.GetEquippedMuzzle();
-            laserBehaviour = attachmentManager.GetEquippedLaser();
-            gripBehaviour = attachmentManager.GetEquippedGrip();
-            ammunitionCurrent = magazineBehaviour.GetAmmunitionTotal();
+            if (attachmentManager == null)
+                attachmentManager = GetComponent<WeaponAttachmentManagerBehaviour>();
+
+            magazineBehaviour = attachmentManager != null ? attachmentManager.GetEquippedMagazine() : null;
+            scopeBehaviour = attachmentManager != null ? attachmentManager.GetEquippedScope() : null;
+            muzzleBehaviour = attachmentManager != null ? attachmentManager.GetEquippedMuzzle() : null;
+            laserBehaviour = attachmentManager != null ? attachmentManager.GetEquippedLaser() : null;
+            gripBehaviour = attachmentManager != null ? attachmentManager.GetEquippedGrip() : null;
+
+            if (magazineBehaviour == null && attachmentManager != null)
+            {
+                attachmentManager.ApplyLevel(currentLevel);
+                magazineBehaviour = attachmentManager.GetEquippedMagazine();
+            }
+
+            if (magazineBehaviour != null)
+                ammunitionCurrent = magazineBehaviour.GetAmmunitionTotal();
             #endregion
         }
 
@@ -375,16 +392,51 @@ namespace InfimaGames.LowPolyShooterPack
                 GameObject projectile = PrefabPool.Get(prefabProjectile, playerCamera.position, Quaternion.Euler(playerCamera.eulerAngles + spreadValue));
 
                 if (projectile.TryGetComponent(out Projectile projectileScript))
-                    projectileScript.SetDamage(damage);
+                    projectileScript.SetDamage(GetCurrentDamage());
 
                 projectile.GetComponent<Rigidbody>().velocity = projectile.transform.forward * projectileImpulse;
             }
         }
 
+        public void ApplyLevel(int level)
+        {
+            EnsureDamageByLevel();
+            currentLevel = WeaponUpgradeLevels.Clamp(level);
+        }
+
         public void SetUpgrades()
         {
-            damage = upgradeDamage;
+            ApplyLevel(WeaponUpgradeLevels.LegacyMappedLevel);
         }
+
+        private float GetCurrentDamage()
+        {
+            EnsureDamageByLevel();
+            return damageByLevel[WeaponUpgradeLevels.ToIndex(currentLevel)];
+        }
+
+        private void EnsureDamageByLevel()
+        {
+            if (WeaponUpgradeLevels.NeedsFill(damageByLevel) == false)
+            {
+                return;
+            }
+
+            damageByLevel = WeaponUpgradeLevels.CreateInterpolated(damage, upgradeDamage);
+        }
+
+#if UNITY_EDITOR
+        private void OnValidate()
+        {
+            EnsureDamageByLevel();
+        }
+
+        [ContextMenu("Rebuild Damage Levels From Legacy")]
+        private void RebuildDamageLevelsFromLegacy()
+        {
+            damageByLevel = WeaponUpgradeLevels.CreateInterpolated(damage, upgradeDamage);
+        }
+#endif
 
         public void SetMobileSpread()
         {

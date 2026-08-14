@@ -2,7 +2,6 @@ using InfimaGames.LowPolyShooterPack.Interface;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
-using UnityEngine.InputSystem;
 
 public class DesertirPanel : Element
 {
@@ -28,7 +27,7 @@ public class DesertirPanel : Element
     private void OnRestartLevelButtonClick()
     {
 #if UNITY_WEBGL && !UNITY_EDITOR
-        PlaygamaAds.ShowInterstitial(OnAdOpen, OnRestartAdClose, OnRestartAdError);
+        PlaygamaAds.ShowInterstitial(null, OnRestartAdClose, OnRestartAdError, GameAnalyticsAds.Placement.DesertirRestart);
 #else
         _loadingScreen.LoadScene(SceneManager.GetActiveScene().buildIndex);
 #endif
@@ -37,69 +36,34 @@ public class DesertirPanel : Element
     private void OnInMenuButtonClick()
     {
 #if UNITY_WEBGL && !UNITY_EDITOR
-        PlaygamaAds.ShowInterstitial(OnAdOpen, OnAdClose, OnAdError);
+        PlaygamaAds.ShowInterstitial(null, OnMenuAdClose, OnMenuAdError, GameAnalyticsAds.Placement.DesertirMenu);
+#else
+        LoadMainMenu();
 #endif
-        _loadingScreen.LoadScene(0);
-    }
-
-    private void OnAdOpen()
-    {
-        EnsureBackgroundChecker();
-        if (_backgroundCheker != null)
-        {
-            _backgroundCheker.SetAdsShown(true);
-        }
-
-        if (Keyboard.current != null)
-        {
-            InputSystem.DisableDevice(Keyboard.current);
-        }
-
-        AudioListener.pause = true;
-        AudioListener.volume = 0f;
-    }
-
-    private void OnAdClose(bool wasShown = true)
-    {
-        EnsureBackgroundChecker();
-        if (_backgroundCheker != null)
-        {
-            _backgroundCheker.SetAdsShown(false);
-        }
-
-        if (Keyboard.current != null)
-        {
-            InputSystem.EnableDevice(Keyboard.current);
-        }
-
-        AudioListener.pause = false;
-        AudioListener.volume = 1f;
     }
 
     private void OnRestartAdClose(bool wasShown = true)
     {
-        OnAdClose(wasShown);
         _loadingScreen.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
-
 
     private void OnRestartAdError(string error)
     {
-        OnAdClose();
         _loadingScreen.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
-    private void OnAdError(string error)
+    private void OnMenuAdClose(bool wasShown = true)
     {
-        OnAdClose();
-        Debug.Log(error);
+        LoadMainMenu();
     }
 
-    private void EnsureBackgroundChecker()
+    private void OnMenuAdError(string error)
     {
-        if (_backgroundCheker == null)
-        {
-            _backgroundCheker = FindObjectOfType<InBackgroundCheker>();
-        }
+        LoadMainMenu();
+    }
+
+    private void LoadMainMenu()
+    {
+        _loadingScreen.LoadScene(0);
     }
 }

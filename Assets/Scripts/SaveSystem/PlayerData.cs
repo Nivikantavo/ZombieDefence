@@ -13,7 +13,9 @@ public class PlayerData
     public float SoundsVolume;
     public string[] Weapons;
     public string[] UpgradeWeapons;
+    public int WeaponUpgradeFormatVersion;
     public string[] ProductsID;
+    public string[] ProcessedPurchaseTokens;
     public int GranadesCount;
     public string[] Forces;
     public int TruckHealth;
@@ -29,8 +31,10 @@ public class PlayerData
         CompletedLevelsPerStage = new int[StagesCount];
         Weapons = new string[1];
         Weapons[0] = "SMG 01";
-        UpgradeWeapons = new string[1];
-        ProductsID = new string[1];
+        UpgradeWeapons = new string[0];
+        WeaponUpgradeFormatVersion = 0;
+        ProductsID = new string[0];
+        ProcessedPurchaseTokens = new string[0];
         GranadesCount = 1;
         Forces = new string[1];
         TruckHealth = 300;
@@ -48,6 +52,79 @@ public class PlayerData
         {
             CompletedLevelsPerStage = new int[StagesCount];
         }
+
+        MigrateWeaponUpgradesIfNeeded();
+        EnsureIapArrays();
+    }
+
+    public void EnsureIapArrays()
+    {
+        if (ProductsID == null)
+            ProductsID = new string[0];
+
+        if (ProcessedPurchaseTokens == null)
+            ProcessedPurchaseTokens = new string[0];
+    }
+
+    public bool MigrateWeaponUpgradesIfNeeded()
+    {
+        if (WeaponUpgradeFormatVersion >= WeaponUpgradeLevels.CurrentFormatVersion)
+        {
+            return false;
+        }
+
+        if (UpgradeWeapons != null)
+        {
+            int validCount = 0;
+            for (int i = 0; i < UpgradeWeapons.Length; i++)
+            {
+                if (string.IsNullOrEmpty(UpgradeWeapons[i]) == false)
+                {
+                    validCount++;
+                }
+            }
+
+            string[] migrated = new string[validCount * 2];
+            int writeIndex = 0;
+            for (int i = 0; i < UpgradeWeapons.Length; i++)
+            {
+                if (string.IsNullOrEmpty(UpgradeWeapons[i]))
+                {
+                    continue;
+                }
+
+                migrated[writeIndex++] = UpgradeWeapons[i];
+                migrated[writeIndex++] = UpgradeWeapons[i];
+            }
+
+            UpgradeWeapons = migrated;
+        }
+        else
+        {
+            UpgradeWeapons = new string[0];
+        }
+
+        WeaponUpgradeFormatVersion = WeaponUpgradeLevels.CurrentFormatVersion;
+        return true;
+    }
+
+    public int GetWeaponUpgradeCount(string weaponName)
+    {
+        if (UpgradeWeapons == null || string.IsNullOrEmpty(weaponName))
+        {
+            return 0;
+        }
+
+        int count = 0;
+        for (int i = 0; i < UpgradeWeapons.Length; i++)
+        {
+            if (UpgradeWeapons[i] == weaponName)
+            {
+                count++;
+            }
+        }
+
+        return count;
     }
 
     public int GetCompletedLevelsOnStage(int stageIndex)

@@ -9,6 +9,7 @@ namespace InfimaGames.LowPolyShooterPack
     /// </summary>
     public abstract class MagazineBehaviour : MonoBehaviour
     {
+        public virtual void ApplyLevel(int level) {}
         public virtual void SetUpgradeAmmunition() {}
         #region GETTERS
 

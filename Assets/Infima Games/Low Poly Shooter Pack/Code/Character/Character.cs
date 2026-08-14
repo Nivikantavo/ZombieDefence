@@ -426,6 +426,9 @@ namespace InfimaGames.LowPolyShooterPack
 		/// </summary>
 		protected override void Update()
 		{
+			if (equippedWeapon == null)
+				return;
+
 			//Match Aim.
 			aiming = holdingButtonAim && CanAim();
 			//Match Run.

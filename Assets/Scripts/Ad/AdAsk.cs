@@ -22,22 +22,7 @@ public class AdAsk : MonoBehaviour
     private void ShowVideoAd()
     {
         _adStartButton.interactable = false;
-        PlaygamaAds.ShowRewarded(OnVideoAdOpen, OnRewardCallback, OnVideoAdClose, OnErrorCallback);
-    }
-
-    private void OnVideoAdOpen()
-    {
-        AudioListener.pause = true;
-        AudioListener.volume = 0f;
-        if (_backgroundCheker == null)
-        {
-            _backgroundCheker = FindObjectOfType<InBackgroundCheker>();
-        }
-
-        if (_backgroundCheker != null)
-        {
-            _backgroundCheker.SetAdsShown(true);
-        }
+        PlaygamaAds.ShowRewarded(null, OnRewardCallback, OnVideoAdClose, OnErrorCallback, GameAnalyticsAds.Placement.AdAskMoney);
     }
 
     private void OnRewardCallback()
@@ -48,18 +33,6 @@ public class AdAsk : MonoBehaviour
     private void OnVideoAdClose()
     {
         gameObject.SetActive(false);
-        if (_backgroundCheker == null)
-        {
-            _backgroundCheker = FindObjectOfType<InBackgroundCheker>();
-        }
-
-        if (_backgroundCheker != null)
-        {
-            _backgroundCheker.SetAdsShown(false);
-        }
-
-        AudioListener.pause = false;
-        AudioListener.volume = 1f;
     }
 
     private void OnErrorCallback(string error)

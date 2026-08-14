@@ -51,6 +51,9 @@ public class ProgressionEvents : MonoBehaviour
 
     private void SetProgressEvent(GAProgressionStatus status, int mapNumber, int levelNumber)
     {
+        if (GameAnalytics.Initialized == false)
+            return;
+
         GameAnalytics.NewProgressionEvent(status, Map + mapNumber, Level + levelNumber);
     }
 }

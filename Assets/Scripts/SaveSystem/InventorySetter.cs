@@ -13,6 +13,9 @@ public class InventorySetter : MonoBehaviour
 
     private void Awake()
     {
+        if (_playerInventory == null || _character == null)
+            return;
+
         _weaponList = _playerInventory.GetComponentsInChildren<Weapon>(true).ToList();
         TakeExtraWeapons();
         UpgradeWeapons();
@@ -22,7 +25,13 @@ public class InventorySetter : MonoBehaviour
 
     public void TakeExtraWeapons()
     {
-        string[] equipedWeapons = SaveSystem.Instance.GetData().Weapons;
+        PlayerData playerData = SaveSystem.Instance != null ? SaveSystem.Instance.GetData() : null;
+        string[] equipedWeapons = playerData != null ? playerData.Weapons : null;
+
+        if (equipedWeapons == null || equipedWeapons.Length == 0)
+        {
+            equipedWeapons = new[] { "SMG 01" };
+        }
 
         bool inList = false;
         foreach (var weapon in _weaponList)
@@ -45,26 +54,32 @@ public class InventorySetter : MonoBehaviour
 
     private void UpgradeWeapons()
     {
-        string[] upgradeWeapons = SaveSystem.Instance.GetData().UpgradeWeapons;
+        PlayerData playerData = SaveSystem.Instance != null ? SaveSystem.Instance.GetData() : null;
+        if (playerData == null)
+        {
+            return;
+        }
 
         foreach (var weapon in _weaponList)
         {
-            WeaponAttachmentManager attachments = weapon.GetComponent<WeaponAttachmentManager>();
+            int level = WeaponUpgradeLevels.GetLevelFromUpgradeCount(
+                playerData.GetWeaponUpgradeCount(weapon.WeaponName));
 
-            if (upgradeWeapons.Contains(weapon.WeaponName))
+            weapon.ApplyLevel(level);
+
+            WeaponAttachmentManager attachments = weapon.GetComponent<WeaponAttachmentManager>();
+            if (attachments != null)
             {
-                attachments.SetUpgradeAttachments();
-                weapon.SetUpgrades();
-            }
-            else
-            {
-                attachments.SetDefultOrRandomAttachments();
+                attachments.ApplyLevel(level);
             }
         }
     }
 
     public void RemoveWeaponsSpread()
     {
+        if (_weaponList == null)
+            return;
+
         foreach (var weapon in _weaponList)
         {
             weapon.SetMobileSpread();

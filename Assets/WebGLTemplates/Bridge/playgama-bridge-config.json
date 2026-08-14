@@ -1,16 +1,77 @@
 {
     "$schema": "https://bridge.playgama.com/v2/stable/schema.json",
     "advertisement": {
+        "minimumDelayBetweenInterstitial": 60,
         "interstitial": {
             "preloadOnStart": true
         },
         "rewarded": {
             "preloadOnStart": true
         },
-        "useBuiltInErrorPopup": true,
+        "useBuiltInErrorPopup": false,
         "backfillId": ""
     },
-    "payments": [],
-    "leaderboards": [],
+    "payments": [
+        {
+            "id": "ar",
+            "playgama": { "amount": 20 },
+            "yandex": { "id": "ar" }
+        },
+        {
+            "id": "ar_upgrade1",
+            "playgama": { "amount": 10 },
+            "yandex": { "id": "ar_upgrade1" }
+        },
+        {
+            "id": "ar_upgrade2",
+            "playgama": { "amount": 15 },
+            "yandex": { "id": "ar_upgrade2" }
+        },
+        {
+            "id": "ar_upgrade3",
+            "playgama": { "amount": 20 },
+            "yandex": { "id": "ar_upgrade3" }
+        },
+        {
+            "id": "ar_upgrade4",
+            "playgama": { "amount": 25 },
+            "yandex": { "id": "ar_upgrade4" }
+        },
+        {
+            "id": "rpg",
+            "playgama": { "amount": 25 },
+            "yandex": { "id": "rpg" }
+        },
+        {
+            "id": "coins_1000",
+            "playgama": { "amount": 10 },
+            "yandex": { "id": "coins_1000" }
+        },
+        {
+            "id": "coins_7000",
+            "playgama": { "amount": 40 },
+            "yandex": { "id": "coins_7000" }
+        },
+        {
+            "id": "coins_10000",
+            "playgama": { "amount": 50 },
+            "yandex": { "id": "coins_10000" }
+        }
+    ],
+    "leaderboards": [
+        {
+            "id": "Crossroads",
+            "isMain": true
+        },
+        {
+            "id": "Parking"
+        },
+        {
+            "id": "Deadlock"
+        },
+        {
+            "id": "TrailerPark"
+        }
+    ],
     "sendAnalyticsEvents": true
 }

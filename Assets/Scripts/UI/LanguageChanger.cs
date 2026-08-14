@@ -20,19 +20,7 @@ public class LanguageChanger : MonoBehaviour
 
     private void Awake()
     {
-        if (_localizator.CurrentLanguage == "English") 
-        {
-            _flagIndex = 0;
-        }
-        else if (_localizator.CurrentLanguage == "Russian")
-        {
-            _flagIndex = 1;
-        }
-        else if (_localizator.CurrentLanguage == "Turkish")
-        {
-            _flagIndex = 2;
-        }
-        _currentLanguage.image.sprite = _flags[_flagIndex];
+        ApplyFlagFromCurrentLanguage();
     }
 
     private IEnumerator Start()
@@ -43,14 +31,18 @@ public class LanguageChanger : MonoBehaviour
         while (Bridge.instance == null)
             yield return null;
 
-        string language = Bridge.platform.language;
+        ApplyPlatformLanguage(Bridge.platform.language);
+#endif
+    }
 
-        if (language == "ru")
+    public void SetNextLanguage()
+    {
+        if (_localizator.CurrentLanguage == En)
         {
             _localizator.SetCurrentLanguage(Ru);
             _flagIndex = 1;
         }
-        else if (language == "tr")
+        else if (_localizator.CurrentLanguage == Ru)
         {
             _localizator.SetCurrentLanguage(Tr);
             _flagIndex = 2;
@@ -60,27 +52,51 @@ public class LanguageChanger : MonoBehaviour
             _localizator.SetCurrentLanguage(En);
             _flagIndex = 0;
         }
+
         _currentLanguage.image.sprite = _flags[_flagIndex];
-#endif
     }
 
-    public void SetNextLanguage()
+    private void ApplyPlatformLanguage(string language)
     {
-        if (_localizator.CurrentLanguage == "English")
+        string code = language == null ? string.Empty : language.ToLowerInvariant();
+
+        if (IsRussianFamily(code))
         {
-            _localizator.SetCurrentLanguage("Russian");
+            _localizator.SetCurrentLanguage(Ru);
             _flagIndex = 1;
         }
-        else if (_localizator.CurrentLanguage == "Russian")
+        else if (code == "tr" || code.StartsWith("tr-"))
         {
-            _localizator.SetCurrentLanguage("Turkish");
+            _localizator.SetCurrentLanguage(Tr);
             _flagIndex = 2;
         }
-        else if (_localizator.CurrentLanguage == "Turkish")
+        else
         {
-            _localizator.SetCurrentLanguage("English");
+            _localizator.SetCurrentLanguage(En);
             _flagIndex = 0;
         }
+
         _currentLanguage.image.sprite = _flags[_flagIndex];
+    }
+
+    private void ApplyFlagFromCurrentLanguage()
+    {
+        if (_localizator.CurrentLanguage == En)
+            _flagIndex = 0;
+        else if (_localizator.CurrentLanguage == Ru)
+            _flagIndex = 1;
+        else if (_localizator.CurrentLanguage == Tr)
+            _flagIndex = 2;
+
+        _currentLanguage.image.sprite = _flags[_flagIndex];
+    }
+
+    private static bool IsRussianFamily(string code)
+    {
+        return code == "ru" || code.StartsWith("ru-")
+            || code == "be" || code.StartsWith("be-")
+            || code == "kk" || code.StartsWith("kk-")
+            || code == "uk" || code.StartsWith("uk-")
+            || code == "uz" || code.StartsWith("uz-");
     }
 }

@@ -1,0 +1,10 @@
+﻿product_id,price,type,title,description
+ar,20,Permanent,Assault Rifle,Unlock the assault rifle permanently.
+ar_upgrade1,10,Permanent,Assault Rifle Upgrade 1,Upgrade the assault rifle to level 2.
+ar_upgrade2,15,Permanent,Assault Rifle Upgrade 2,Upgrade the assault rifle to level 3.
+ar_upgrade3,20,Permanent,Assault Rifle Upgrade 3,Upgrade the assault rifle to level 4.
+ar_upgrade4,25,Permanent,Assault Rifle Upgrade 4,Upgrade the assault rifle to level 5.
+rpg,25,Permanent,Rocket Launcher,Unlock the rocket launcher permanently.
+coins_1000,10,Consumable,1000 Coins,Adds 1000 coins to your balance.
+coins_7000,40,Consumable,7000 Coins,Adds 7000 coins to your balance.
+coins_10000,50,Consumable,10000 Coins,Adds 10000 coins to your balance.
