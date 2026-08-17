@@ -31,6 +31,18 @@ public class ZombieMovment : MonoBehaviour
 #endif
     }
 
+    private void OnEnable()
+    {
+        _hasDestination = false;
+        _nextDestinationTime = 0f;
+
+        if (_agent == null || _agent.enabled == false)
+            return;
+
+        _agent.ResetPath();
+        _agent.Warp(transform.position);
+    }
+
     public void MoveToTarget(Vector3 targetPosition)
     {
         _agent.isStopped = false;

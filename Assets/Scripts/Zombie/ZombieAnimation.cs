@@ -30,10 +30,30 @@ public class ZombieAnimation : MonoBehaviour
     private float _elapsedHitTime;
     private LocomotionState _currentLocomotion = LocomotionState.None;
 
+    private void OnEnable()
+    {
+        ResetLocomotion();
+    }
+
     private void Update()
     {
         if (_elapsedHitTime < _hitReactionDelay)
             _elapsedHitTime += Time.deltaTime;
+    }
+
+    public void ResetLocomotion()
+    {
+        _currentLocomotion = LocomotionState.None;
+        _elapsedHitTime = _hitReactionDelay;
+
+        if (_animator == null)
+            return;
+
+        DisableAll();
+        _animator.ResetTrigger(Attack);
+        _animator.ResetTrigger(Hit);
+        _animator.ResetTrigger(FaceUpStandUp);
+        _animator.ResetTrigger(FaceDownStandUp);
     }
 
     public void SetIdle()

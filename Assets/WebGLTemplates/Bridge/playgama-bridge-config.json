@@ -1,5 +1,6 @@
 {
     "$schema": "https://bridge.playgama.com/v2/stable/schema.json",
+    "disableLoadingLogo": true,
     "advertisement": {
         "minimumDelayBetweenInterstitial": 60,
         "interstitial": {

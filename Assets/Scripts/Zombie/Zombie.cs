@@ -29,11 +29,18 @@ public class Zombie : MonoBehaviour, Idamageable
         _stunState.StunOvered += OnStaneOvered;
     }
 
+    private void OnDisable()
+    {
+        _stunState.StunOvered -= OnStaneOvered;
+    }
+
     public void Initialize()
     {
         Standig = true;
+        _stunDuration = 0;
         _currentHealth = _maxHealth;
         _mapSign.SetActive(true);
+        _animation.ResetLocomotion();
     }
 
     public void TakeDamage(float damage)

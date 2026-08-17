@@ -15,7 +15,8 @@ public class Leaderboards : MonoBehaviour
     [SerializeField] private GameObject _hideButton;
     [SerializeField] private Image _background;
 
-    private float _delay = 0.01f;
+    private Coroutine _loadRoutine;
+    private const float LoadTimeoutSeconds = 8f;
 
     public void ShowLeaderboards()
     {
@@ -49,40 +50,70 @@ public class Leaderboards : MonoBehaviour
 
     public void HideLeaderboards()
     {
+        StopLoading();
         foreach (var leaderboard in _leaderboards)
         {
             leaderboard.gameObject.SetActive(false);
         }
+        _background.enabled = false;
         _showButton.SetActive(true);
         _hideButton.SetActive(false);
     }
 
+    private void OnDisable()
+    {
+        StopLoading();
+    }
+
     private void ShowLevelLeaderbord()
     {
-        StartCoroutine(SetLeaderboardsData());
+        StopLoading();
         _showButton.SetActive(false);
         _hideButton.SetActive(true);
+        _loadRoutine = StartCoroutine(SetLeaderboardsData());
+    }
+
+    private void StopLoading()
+    {
+        if (_loadRoutine == null)
+            return;
+
+        StopCoroutine(_loadRoutine);
+        _loadRoutine = null;
     }
 
     private IEnumerator SetLeaderboardsData()
     {
-        WaitForSeconds delay = new WaitForSeconds(_delay);
         _background.enabled = true;
+
+        foreach (var leaderboard in _leaderboards)
+            leaderboard.gameObject.SetActive(true);
+
         foreach (var leaderboard in _leaderboards)
         {
             if (leaderboard.EntryesLoaded == false)
             {
                 FillLeaderboard(leaderboard);
+                yield return WaitUntilLoaded(leaderboard);
             }
-            else
-            {
-                leaderboard.gameObject.SetActive(true);
-            }
-            while (leaderboard.EntryesLoaded == false)
-            {
-                yield return delay;
-            }
+
+            yield return null;
         }
+
+        _loadRoutine = null;
+    }
+
+    private IEnumerator WaitUntilLoaded(LevelLeaderboard leaderboard)
+    {
+        float elapsed = 0f;
+        while (leaderboard.EntryesLoaded == false && elapsed < LoadTimeoutSeconds)
+        {
+            elapsed += Time.unscaledDeltaTime;
+            yield return null;
+        }
+
+        if (leaderboard.EntryesLoaded == false)
+            leaderboard.MarkEntriesFailed();
     }
 
     private void FillLeaderboard(LevelLeaderboard leaderboard)
@@ -109,5 +140,4 @@ public class Leaderboards : MonoBehaviour
     {
         Debug.Log("ERROR: " + error);
     }
-
 }

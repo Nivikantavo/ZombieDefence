@@ -12,6 +12,11 @@ public class SeekState : State
     private float _lastAttackTime = 0;
     private Vector3 _attackPosition;
 
+    protected virtual void OnEnable()
+    {
+        _lastAttackTime = 0f;
+    }
+
     protected virtual void Update()
     {
         Seek();

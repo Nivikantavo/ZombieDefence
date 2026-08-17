@@ -52,7 +52,29 @@ public class DieState : State
             yield return _fadeStepWait;
         }
 
+        enabled = false;
         gameObject.SetActive(false);
+    }
+
+    private void OnDisable()
+    {
+        ClearFade();
+    }
+
+    private void ClearFade()
+    {
+        if (_skinRenderer != null)
+            _skinRenderer.SetPropertyBlock(null);
+
+        if (_detailsRenderers == null)
+            return;
+
+        for (int i = 0; i < _detailsRenderers.Length; i++)
+        {
+            MeshRenderer detail = _detailsRenderers[i];
+            if (detail != null)
+                detail.SetPropertyBlock(null);
+        }
     }
 
     private void ApplyFadeColor(Color color)

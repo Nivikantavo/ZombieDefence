@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 using UnityEngine.Events;
 
 public class ZombieSpawner : MonoBehaviour
@@ -135,7 +136,8 @@ public class ZombieSpawner : MonoBehaviour
         if (_currentWave.TryGetObject(out GameObject enemy))
         {
             _spawnedZombie++;
-            enemy.transform.position = spawnPoints[spawnPointNumber].position;
+            Vector3 spawnPosition = spawnPoints[spawnPointNumber].position;
+            enemy.transform.position = spawnPosition;
             enemy.GetComponent<TargetSwitcher>().Initialize(_player, _track);
             enemy.GetComponent<Zombie>().Initialize();
             if (enemy.TryGetComponent<RangeSeekState>(out RangeSeekState rangeSeekState))
@@ -143,6 +145,8 @@ public class ZombieSpawner : MonoBehaviour
                 rangeSeekState.SetMissilePool(_missilePool);
             }
             enemy.gameObject.SetActive(true);
+            if (enemy.TryGetComponent(out NavMeshAgent agent) && agent.enabled)
+                agent.Warp(spawnPosition);
             AddInList(enemy);
         }
     }
@@ -150,6 +154,9 @@ public class ZombieSpawner : MonoBehaviour
     private void AddInList(GameObject zombie)
     {
         DieState dieState = zombie.GetComponent<DieState>();
+        if (_zombiesDieStates.Contains(dieState))
+            return;
+
         dieState.NeedSpawnCoin += OnNeedSpawnCoin;
         dieState.ZombieDied += OnZombieDied;
         _zombiesDieStates.Add(dieState);

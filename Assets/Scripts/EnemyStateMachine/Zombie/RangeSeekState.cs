@@ -10,8 +10,9 @@ public class RangeSeekState : SeekState
     private Missile _missile;
     private float _gravityForce = Physics.gravity.y;
 
-    private void OnEnable()
+    protected override void OnEnable()
     {
+        base.OnEnable();
         Movment.SetStoppingDistance(AttackDistance);
     }
 
