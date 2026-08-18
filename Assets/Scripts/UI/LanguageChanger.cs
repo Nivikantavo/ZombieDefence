@@ -1,102 +1,52 @@
 using Lean.Localization;
-using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
-#if UNITY_WEBGL
-using Playgama;
-#endif
 
 public class LanguageChanger : MonoBehaviour
 {
-    private const string En = "English";
-    private const string Ru = "Russian";
-    private const string Tr = "Turkish";
-
     [SerializeField] private Sprite[] _flags;
     [SerializeField] private Button _currentLanguage;
     [SerializeField] private LeanLocalization _localizator;
 
     private int _flagIndex;
 
-    private void Awake()
+    private void OnEnable()
     {
+        LeanLocalization.OnLocalizationChanged += ApplyFlagFromCurrentLanguage;
         ApplyFlagFromCurrentLanguage();
     }
 
-    private IEnumerator Start()
+    private void OnDisable()
     {
-#if !UNITY_WEBGL || UNITY_EDITOR
-        yield break;
-#else
-        while (Bridge.instance == null)
-            yield return null;
-
-        ApplyPlatformLanguage(Bridge.platform.language);
-#endif
+        LeanLocalization.OnLocalizationChanged -= ApplyFlagFromCurrentLanguage;
     }
 
     public void SetNextLanguage()
     {
-        if (_localizator.CurrentLanguage == En)
-        {
-            _localizator.SetCurrentLanguage(Ru);
-            _flagIndex = 1;
-        }
-        else if (_localizator.CurrentLanguage == Ru)
-        {
-            _localizator.SetCurrentLanguage(Tr);
-            _flagIndex = 2;
-        }
+        string nextLanguage;
+        if (_localizator.CurrentLanguage == GameLanguage.English)
+            nextLanguage = GameLanguage.Russian;
+        else if (_localizator.CurrentLanguage == GameLanguage.Russian)
+            nextLanguage = GameLanguage.Turkish;
         else
-        {
-            _localizator.SetCurrentLanguage(En);
-            _flagIndex = 0;
-        }
+            nextLanguage = GameLanguage.English;
 
-        _currentLanguage.image.sprite = _flags[_flagIndex];
-    }
-
-    private void ApplyPlatformLanguage(string language)
-    {
-        string code = language == null ? string.Empty : language.ToLowerInvariant();
-
-        if (IsRussianFamily(code))
-        {
-            _localizator.SetCurrentLanguage(Ru);
-            _flagIndex = 1;
-        }
-        else if (code == "tr" || code.StartsWith("tr-"))
-        {
-            _localizator.SetCurrentLanguage(Tr);
-            _flagIndex = 2;
-        }
-        else
-        {
-            _localizator.SetCurrentLanguage(En);
-            _flagIndex = 0;
-        }
-
-        _currentLanguage.image.sprite = _flags[_flagIndex];
+        GameLanguage.SetManual(nextLanguage);
+        ApplyFlagFromCurrentLanguage();
     }
 
     private void ApplyFlagFromCurrentLanguage()
     {
-        if (_localizator.CurrentLanguage == En)
+        if (_localizator == null || _currentLanguage == null || _flags == null || _flags.Length < 3)
+            return;
+
+        if (_localizator.CurrentLanguage == GameLanguage.English)
             _flagIndex = 0;
-        else if (_localizator.CurrentLanguage == Ru)
+        else if (_localizator.CurrentLanguage == GameLanguage.Russian)
             _flagIndex = 1;
-        else if (_localizator.CurrentLanguage == Tr)
+        else if (_localizator.CurrentLanguage == GameLanguage.Turkish)
             _flagIndex = 2;
 
         _currentLanguage.image.sprite = _flags[_flagIndex];
-    }
-
-    private static bool IsRussianFamily(string code)
-    {
-        return code == "ru" || code.StartsWith("ru-")
-            || code == "be" || code.StartsWith("be-")
-            || code == "kk" || code.StartsWith("kk-")
-            || code == "uk" || code.StartsWith("uk-")
-            || code == "uz" || code.StartsWith("uz-");
     }
 }

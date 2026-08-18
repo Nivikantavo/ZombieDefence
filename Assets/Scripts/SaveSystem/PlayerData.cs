@@ -22,6 +22,7 @@ public class PlayerData
     public bool SurvivalMode;
     public bool TrainingCompleted;
     public float SurviveTimeRecord;
+    public string Language;
 
     public PlayerData()
     {
@@ -44,6 +45,7 @@ public class PlayerData
         MusicVolume = 0f;
         SoundsVolume = 0f;
         SurviveTimeRecord = 0;
+        Language = string.Empty;
     }
 
     public void EnsureProgressArrays()

@@ -286,6 +286,15 @@ public class SaveSystem : MonoBehaviour
         }
     }
 
+    public void SetLanguage(string language)
+    {
+        if (_playerData.Language == language)
+            return;
+
+        _playerData.Language = language;
+        Save();
+    }
+
 #if UNITY_WEBGL
     private void OnStorageGetCompleted(bool success, string data)
     {
