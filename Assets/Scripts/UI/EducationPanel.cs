@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class EducationPanel : Element
 {
+    public event System.Action Closed;
+
     [SerializeField] private List<GameObject> _tips;
     [SerializeField] private Button _nextTipButton;
     [SerializeField] private Button _previousTipButton;
@@ -57,6 +59,7 @@ public class EducationPanel : Element
     {
         SaveSystem.Instance.SetTrainingCompleted(true);
         gameObject.SetActive(false);
+        Closed?.Invoke();
     }
 
     private void Renderer()

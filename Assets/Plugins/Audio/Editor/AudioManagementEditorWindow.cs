@@ -76,6 +76,11 @@ namespace Plugins.Audio.Editor
                 AddAllClips();
             }
 
+            if (GUILayout.Button("Find Unused", EditorStyles.toolbarButton, GUILayout.Width(100)))
+            {
+                AudioUsageWindow.Open();
+            }
+
             EditorGUILayout.Separator();
             _search = EditorGUILayout.TextField(_search, EditorStyles.toolbarSearchField);
 
@@ -298,7 +303,13 @@ namespace Plugins.Audio.Editor
 
         private void AddAllClips()
         {
-            if (EditorUtility.DisplayDialog("Get all clips", "Аll data will be deleted, continue?", "continue", "cancel") == false)
+            if (EditorUtility.DisplayDialog(
+                    "Get all clips",
+                    "All database rows will be replaced with every AudioClip in the project, including unused ones. " +
+                    "That copies unused files into WebGL StreamingAssets and increases build size.\n\n" +
+                    "Prefer Tools → Find Unused Audio. Continue anyway?",
+                    "Replace all",
+                    "Cancel") == false)
             {
                 return;
             }
@@ -310,6 +321,11 @@ namespace Plugins.Audio.Editor
 
             foreach (string assetPath in allPaths)
             {
+                if (AudioUsageScanner.ShouldIgnoreAsset(assetPath) || AudioUsageScanner.IsEditorOnlyPath(assetPath))
+                {
+                    continue;
+                }
+
                 AudioClip audioClip = AssetDatabase.LoadAssetAtPath<AudioClip>(assetPath);
 
                 if (audioClip != null)

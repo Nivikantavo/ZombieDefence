@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
@@ -8,15 +9,21 @@ using UnityEngine.Events;
 using Playgama;
 #endif
 
+[DefaultExecutionOrder(-1000)]
 public class SaveSystem : MonoBehaviour
 {
     private const string PlayerDataKey = "player_data";
+    private const int MaxSaveRetries = 3;
 
     public bool DataLoaded { get; private set; }
     public IapPurchaseService IapPurchases { get; private set; }
 
     private PlayerData _playerData;
     private string file = "PlayerData.txt";
+    private bool _saveInFlight;
+    private bool _saveQueued;
+    private int _saveRetryCount;
+    private readonly List<Action<bool>> _persistCallbacks = new List<Action<bool>>();
 
     public static SaveSystem Instance;
 
@@ -57,8 +64,11 @@ public class SaveSystem : MonoBehaviour
     public void Save()
     {
 #if UNITY_WEBGL && !UNITY_EDITOR
-        string jsonData = JsonUtility.ToJson(_playerData);
-        Bridge.storage.Set(PlayerDataKey, jsonData);
+        if (_playerData == null)
+            return;
+
+        _saveQueued = true;
+        TryFlushSave();
 #endif
 #if UNITY_EDITOR
         string json = JsonUtility.ToJson(_playerData);
@@ -69,7 +79,13 @@ public class SaveSystem : MonoBehaviour
     public void Load()
     {
 #if UNITY_WEBGL && !UNITY_EDITOR
-        Bridge.storage.Get(PlayerDataKey, OnStorageGetCompleted);
+        if (_saveInFlight || _saveQueued)
+        {
+            WhenPersisted(_ => LoadFromStorage());
+            return;
+        }
+
+        LoadFromStorage();
 #endif
 #if UNITY_EDITOR
         _playerData = new PlayerData();
@@ -114,6 +130,24 @@ public class SaveSystem : MonoBehaviour
         DataUpdated?.Invoke();
     }
 
+    public void WhenPersisted(Action<bool> callback)
+    {
+        if (callback == null)
+            return;
+
+#if UNITY_WEBGL && !UNITY_EDITOR
+        if (_saveInFlight == false && _saveQueued == false)
+        {
+            callback(true);
+            return;
+        }
+
+        _persistCallbacks.Add(callback);
+#else
+        callback(true);
+#endif
+    }
+
     public void DeleteData()
     {
         _playerData = new PlayerData();
@@ -142,15 +176,20 @@ public class SaveSystem : MonoBehaviour
         DataUpdated?.Invoke();
     }
 
-    public void SetMoneyValue(int money)
+    public void SetMoneyValue(int money, bool persist = true)
     {
-        if(money != _playerData.Money)
+        if (_playerData == null)
+            return;
+
+        if (money != _playerData.Money)
         {
             if (money >= 0)
             {
                 _playerData.Money = money;
             }
-            Save();
+
+            if (persist)
+                Save();
         }
     }
 
@@ -295,7 +334,82 @@ public class SaveSystem : MonoBehaviour
         Save();
     }
 
+    private void OnApplicationPause(bool pauseStatus)
+    {
+        if (pauseStatus)
+            Save();
+    }
+
+    private void OnApplicationFocus(bool hasFocus)
+    {
+        if (hasFocus == false)
+            Save();
+    }
+
+    private void OnApplicationQuit()
+    {
+        Save();
+    }
+
 #if UNITY_WEBGL
+    private void LoadFromStorage()
+    {
+        Bridge.storage.Get(PlayerDataKey, OnStorageGetCompleted);
+    }
+
+    private void TryFlushSave()
+    {
+        if (_saveInFlight || _saveQueued == false || _playerData == null)
+            return;
+
+        if (Bridge.instance == null)
+            return;
+
+        _saveQueued = false;
+        _saveInFlight = true;
+        string jsonData = JsonUtility.ToJson(_playerData);
+        Bridge.storage.Set(PlayerDataKey, jsonData, OnStorageSetCompleted);
+    }
+
+    private void OnStorageSetCompleted(bool success)
+    {
+        _saveInFlight = false;
+
+        if (success)
+        {
+            _saveRetryCount = 0;
+        }
+        else
+        {
+            _saveRetryCount++;
+            if (_saveRetryCount <= MaxSaveRetries)
+            {
+                _saveQueued = true;
+            }
+            else
+            {
+                Debug.LogError("Failed to save player data to Playgama storage");
+                InvokePersistCallbacks(false);
+            }
+        }
+
+        TryFlushSave();
+
+        if (_saveInFlight == false && _saveQueued == false && success)
+            InvokePersistCallbacks(true);
+    }
+
+    private void InvokePersistCallbacks(bool success)
+    {
+        if (_persistCallbacks.Count == 0)
+            return;
+
+        List<Action<bool>> callbacks = new List<Action<bool>>(_persistCallbacks);
+        _persistCallbacks.Clear();
+        for (int i = 0; i < callbacks.Count; i++)
+            callbacks[i]?.Invoke(success);
+    }
+
     private void OnStorageGetCompleted(bool success, string data)
     {
         if (success == false)
@@ -315,14 +429,17 @@ public class SaveSystem : MonoBehaviour
 
     private void OnLoadDataSuccess(string data)
     {
-        if (string.IsNullOrEmpty(data))
+        if (string.IsNullOrEmpty(data) || data == "null")
         {
             _playerData = new PlayerData();
         }
         else
         {
             _playerData = JsonUtility.FromJson<PlayerData>(data);
-            PersistWeaponUpgradeMigration();
+            if (_playerData == null)
+                _playerData = new PlayerData();
+            else
+                PersistWeaponUpgradeMigration();
         }
         DataLoaded = true;
         RestoreIapPurchases();

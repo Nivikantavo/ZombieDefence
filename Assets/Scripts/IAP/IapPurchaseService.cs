@@ -14,7 +14,12 @@ public class IapPurchaseService : MonoBehaviour
     private bool _initialized;
 
     public IapCatalog Catalog => _catalog;
-    public bool IsSupported => _gateway != null && _gateway.IsSupported;
+    public bool IsSupported =>
+        _gateway != null
+        && _gateway.IsSupported
+        && PlatformContext.IsIapUiAllowed
+        && PlatformServices.Policy.IapEnabled
+        && PlatformContext.IsCrazyGames == false;
     public IReadOnlyDictionary<string, CatalogProduct> CatalogById => _catalogById;
     public string CurrencyIconUrl { get; private set; }
 
@@ -42,7 +47,7 @@ public class IapPurchaseService : MonoBehaviour
     public void LoadCatalog()
     {
         Initialize();
-        if (_gateway == null || _gateway.IsSupported == false)
+        if (IsSupported == false)
             return;
 
         _gateway.GetCatalog(OnCatalogReceived);
@@ -51,7 +56,7 @@ public class IapPurchaseService : MonoBehaviour
     public void RestorePurchases()
     {
         Initialize();
-        if (_gateway == null || _gateway.IsSupported == false)
+        if (IsSupported == false)
             return;
 
         _gateway.GetPurchases(OnPurchasesReceived);
@@ -60,7 +65,7 @@ public class IapPurchaseService : MonoBehaviour
     public void Purchase(string productId)
     {
         Initialize();
-        if (_gateway == null || string.IsNullOrEmpty(productId) || _gateway.IsSupported == false)
+        if (_gateway == null || string.IsNullOrEmpty(productId) || IsSupported == false)
             return;
 
         _gateway.Purchase(productId, (success, purchase) =>
@@ -184,11 +189,18 @@ public class IapPurchaseService : MonoBehaviour
                     productId);
             }
 
-            _gateway.Consume(productId, (consumeSuccess, _) =>
+            if (granted)
             {
-                if (consumeSuccess && IapFulfillment.IsPendingToken(token))
-                    _fulfillment.RemovePendingToken(token);
-            });
+                SaveSystem.Instance.WhenPersisted(success =>
+                {
+                    if (success)
+                        ConsumePurchase(productId, token);
+                });
+            }
+            else if (_fulfillment.HasProcessedToken(token))
+            {
+                ConsumePurchase(productId, token);
+            }
         }
         else if (ownedPermanentIds != null)
         {
@@ -204,6 +216,15 @@ public class IapPurchaseService : MonoBehaviour
 
         if (notify)
             StateChanged?.Invoke();
+    }
+
+    private void ConsumePurchase(string productId, string token)
+    {
+        _gateway.Consume(productId, (consumeSuccess, _) =>
+        {
+            if (consumeSuccess && IapFulfillment.IsPendingToken(token))
+                _fulfillment.RemovePendingToken(token);
+        });
     }
 
     private static bool HasWeapon(PlayerData data, string weaponName)

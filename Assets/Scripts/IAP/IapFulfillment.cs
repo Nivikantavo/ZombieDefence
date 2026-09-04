@@ -124,6 +124,11 @@ public class IapFulfillment
     public static string GetProductId(Dictionary<string, string> purchase, string fallbackId)
     {
         string productId = GetValue(purchase, "id");
+        if (string.IsNullOrEmpty(productId))
+            productId = GetValue(purchase, "productId");
+        if (string.IsNullOrEmpty(productId))
+            productId = GetValue(purchase, "productID");
+
         return string.IsNullOrEmpty(productId) ? fallbackId : productId;
     }
 

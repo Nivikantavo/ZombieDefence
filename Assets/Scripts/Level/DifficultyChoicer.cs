@@ -76,21 +76,19 @@ public class DifficultyChoicer : MonoBehaviour
 
     private void SetCurrentScore()
     {
-#if UNITY_WEBGL && !UNITY_EDITOR
         string leaderboardId = _surviveScorePanel.CurrentLeaderboardName;
-        if (string.IsNullOrEmpty(leaderboardId))
+        if (string.IsNullOrEmpty(leaderboardId) || PlatformServices.Leaderboards == null)
             return;
 
-        Bridge.leaderboards.GetEntries(leaderboardId, OnGetEntriesCompleted);
-#endif
+        PlatformServices.Leaderboards.GetEntries(leaderboardId, OnGetEntriesCompleted);
     }
 
-#if UNITY_WEBGL
     private void OnGetEntriesCompleted(bool success, List<Dictionary<string, string>> entries)
     {
         if (success == false || entries == null)
             return;
 
+#if UNITY_WEBGL
         foreach (var entry in entries)
         {
             bool isCurrentPlayer = false;
@@ -119,6 +117,6 @@ public class DifficultyChoicer : MonoBehaviour
 
             break;
         }
-    }
 #endif
+    }
 }

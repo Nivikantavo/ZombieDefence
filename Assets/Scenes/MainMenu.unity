@@ -5514,7 +5514,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0.0024204, y: 27.5}
-  m_SizeDelta: {x: 164.0969, y: 126.0444}
+  m_SizeDelta: {x: 165, y: 125}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &557068315
 MonoBehaviour:
@@ -8301,7 +8301,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 0.90588236}
+  m_Color: {r: 0, g: 0, b: 0, a: 0.69411767}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -16640,7 +16640,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 0.3137255}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -20856,13 +20856,13 @@ MonoBehaviour:
   data: 0
   entries:
   - Language: Russian
-    Text: "\u0420\u0415\u041A\u041B\u0410\u041C\u0410 \xD72"
+    Text: "\u0420\u0415\u041A\u041B\u0410\u041C\u0410 x2"
     Object: {fileID: 0}
   - Language: English
-    Text: WATCH AD \u00d72
+    Text: WATCH AD x2
     Object: {fileID: 0}
   - Language: Turkish
-    Text: REKLAM \u00d72
+    Text: REKLAM x2
     Object: {fileID: 0}
 --- !u!1 &1797851040
 GameObject:
@@ -23087,7 +23087,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: -8098021087614452432, guid: 1fdb037c27a94ee48a9ce29a2beea848, type: 2}
-  m_audioClip: {fileID: 8300000, guid: 1454fb0d8c0b18a438663ccc5d842dec, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 6d42e8335667b49498a268c8e2eeaadb, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -24276,8 +24276,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.000015259, y: 39.3931}
-  m_SizeDelta: {x: 131.77, y: 101.2138}
+  m_AnchoredPosition: {x: 0.000015259, y: 27.291904}
+  m_SizeDelta: {x: 165, y: 125}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2136054791
 MonoBehaviour:

@@ -5,8 +5,6 @@ using UnityEngine.InputSystem;
 
 public class LevelProgress : MonoBehaviour
 {
-    private const string Level = "level-";
-    private const string Map = "map-";
     public bool LevelEnded { get; private set; }
 
     [SerializeField] private Track _track;
@@ -21,6 +19,7 @@ public class LevelProgress : MonoBehaviour
 
     private DifficultyChoicer _difficultyChoicer;
     private bool _levelComplited = false;
+    private bool _endSequenceStarted;
     private PlayerInput _playerInput;
 
     public event Action<bool> LevelComplited;
@@ -34,10 +33,19 @@ public class LevelProgress : MonoBehaviour
 
     private void Start()
     {
-        if (_difficultyChoicer.CurrentLevelNumber == 0 && SaveSystem.Instance.GetData().TrainingCompleted == false)
+        bool showTraining = _difficultyChoicer != null
+            && _difficultyChoicer.CurrentLevelNumber == 0
+            && SaveSystem.Instance != null
+            && SaveSystem.Instance.GetData() != null
+            && SaveSystem.Instance.GetData().TrainingCompleted == false;
+
+        if (showTraining)
         {
             _educationPanel.gameObject.SetActive(true);
+            return;
         }
+
+        NotifyLevelStarted();
     }
 
     private void OnEnable()
@@ -46,6 +54,8 @@ public class LevelProgress : MonoBehaviour
         _player.TargetDied += PlayerLost;
         _track.TargetDied += PlayerLost;
         _zombieSpawner.AllZombieDied += PlayerWin;
+        if (_educationPanel != null)
+            _educationPanel.Closed += NotifyLevelStarted;
     }
 
     private void OnDisable()
@@ -54,6 +64,8 @@ public class LevelProgress : MonoBehaviour
         _player.TargetDied -= PlayerLost;
         _track.TargetDied -= PlayerLost;
         _zombieSpawner.AllZombieDied -= PlayerWin;
+        if (_educationPanel != null)
+            _educationPanel.Closed -= NotifyLevelStarted;
     }
 
     public void SetCurrentLevel(DifficultyChoicer difficultyChoicer)
@@ -61,24 +73,22 @@ public class LevelProgress : MonoBehaviour
         _difficultyChoicer = difficultyChoicer;
     }
 
+    public void NotifyLevelStarted()
+    {
+        PlatformServices.Lifecycle?.NotifyLevelStarted(
+            world: GetWorldName(),
+            level: GetLevelName());
+        PlatformServices.Banners?.Hide();
+    }
+
     private void LevelEnd()
     {
-        LevelEnded = true;
-        if (_levelComplited)
-        {
-            SaveProgress();
-        }
-        _mobileInput.SetActive(false);
-        _endLevelPanel.gameObject.SetActive(true);
-        _endLevelPanel.Initialize(_levelComplited);
-        _playerInput.enabled = false;
-
-        LevelFinished?.Invoke();
+        BeginEndSequence(completedByExit: true);
     }
 
     private void PlayerWin()
     {
-        if(_difficultyChoicer.SurvivalMode == false)
+        if (_difficultyChoicer.SurvivalMode == false)
         {
             _levelComplited = true;
             _endZone.gameObject.SetActive(true);
@@ -89,17 +99,81 @@ public class LevelProgress : MonoBehaviour
 
     private void PlayerLost()
     {
+        BeginEndSequence(completedByExit: false);
+        LevelComplited?.Invoke(_levelComplited);
+    }
+
+    private void BeginEndSequence(bool completedByExit)
+    {
+        if (_endSequenceStarted)
+            return;
+
+        _endSequenceStarted = true;
+        LevelEnded = true;
+
+        if (completedByExit && _levelComplited)
+            SaveProgress();
+
         _mobileInput.SetActive(false);
+        if (_playerInput != null)
+            _playerInput.enabled = false;
+
+        if (_levelComplited)
+        {
+            PlatformServices.Lifecycle?.NotifyLevelCompleted(GetWorldName(), GetLevelName());
+            TryNotifyStageCompleteAchievement();
+        }
+        else
+        {
+            PlatformServices.Lifecycle?.NotifyLevelFailed(GetWorldName(), GetLevelName());
+        }
+
+        _endLevelPanel.SetPauseBlocked(true);
+        Time.timeScale = 0f;
+
+        if (PlatformServices.Ads != null)
+        {
+            PlatformServices.Ads.ShowInterstitialBeforeEndgame(ShowEndPanel);
+            return;
+        }
+
+        ShowEndPanel();
+    }
+
+    private void ShowEndPanel()
+    {
         _endLevelPanel.gameObject.SetActive(true);
         _endLevelPanel.Initialize(_levelComplited);
-        _playerInput.enabled = false;
+        PlatformServices.Banners?.ShowEndgame(_levelComplited);
+        LevelFinished?.Invoke();
+    }
 
-        LevelComplited?.Invoke(_levelComplited);
+    private void TryNotifyStageCompleteAchievement()
+    {
+        if (_difficultyChoicer == null || _difficultyChoicer.SurvivalMode)
+            return;
+
+        bool lastLevelOfStage = _difficultyChoicer.CurrentLevelNumber + 1 >= Stage.LevelsPerStage;
+        if (lastLevelOfStage)
+            PlatformServices.Lifecycle?.NotifyAchievement();
     }
 
     private void SaveProgress()
     {
         int stageNumber = SaveSystem.Instance.GetData().SelectedStage;
         SaveSystem.Instance.SetProgress(_difficultyChoicer.CurrentLevelNumber + 1, stageNumber);
+    }
+
+    private string GetWorldName()
+    {
+        if (SaveSystem.Instance == null || SaveSystem.Instance.GetData() == null)
+            return null;
+
+        return SaveSystem.Instance.GetData().SelectedStage.ToString();
+    }
+
+    private string GetLevelName()
+    {
+        return _difficultyChoicer != null ? _difficultyChoicer.CurrentLevelNumber.ToString() : null;
     }
 }

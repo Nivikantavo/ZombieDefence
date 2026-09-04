@@ -96,16 +96,19 @@ public class ProductView : MonoBehaviour
         else
         {
             _product = null;
+            bool useGam = PlaygamaPaymentsGateway.IsPlaygamaPlatform;
             if (_priceText != null)
             {
 #if UNITY_WEBGL && !UNITY_EDITOR
-                _priceText.text = string.Empty;
+                _priceText.text = useGam
+                    ? CatalogProduct.ToGamPriceLabel(null, offeredDefinition)
+                    : string.Empty;
 #else
                 _priceText.text = offeredDefinition != null ? offeredDefinition.EditorPriceLabel : string.Empty;
 #endif
             }
 
-            SetCurrencyIconVisible(true);
+            SetCurrencyIconVisible(useGam == false);
         }
 
         Render();
@@ -117,12 +120,14 @@ public class ProductView : MonoBehaviour
         if (_product == null)
             return;
 
-        bool useGam = PlaygamaPaymentsGateway.IsPlaygamaPlatform || product.LooksLikeUsd();
+        bool useGam = PlaygamaPaymentsGateway.IsPlaygamaPlatform;
         if (_priceText != null)
         {
             _priceText.enableWordWrapping = useGam == false;
             _priceText.overflowMode = TextOverflowModes.Overflow;
-            _priceText.text = useGam ? product.ToGamPriceLabel() : FormatPriceLabel(product);
+            _priceText.text = useGam
+                ? CatalogProduct.ToGamPriceLabel(product, definition)
+                : FormatPriceLabel(product);
         }
 
         SetCurrencyIconVisible(useGam == false);
@@ -281,7 +286,7 @@ public class ProductView : MonoBehaviour
         {
             bool showPrice = _soldOut == false;
 #if UNITY_WEBGL && !UNITY_EDITOR
-            showPrice = showPrice && _product != null;
+            showPrice = showPrice && (_product != null || PlaygamaPaymentsGateway.IsPlaygamaPlatform);
 #endif
             _priceLable.SetActive(showPrice);
         }

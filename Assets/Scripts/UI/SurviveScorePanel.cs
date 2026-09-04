@@ -1,9 +1,6 @@
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-#if UNITY_WEBGL
-using Playgama;
-#endif
 
 public class SurviveScorePanel : MonoBehaviour
 {
@@ -24,10 +21,9 @@ public class SurviveScorePanel : MonoBehaviour
         if(_currentRecord < time)
         {
             _currentRecord = Mathf.FloorToInt(time);
-#if UNITY_WEBGL && !UNITY_EDITOR
+            PlatformServices.Lifecycle?.NotifyAchievement();
             if (string.IsNullOrEmpty(_currentLeaderboardName) == false)
-                Bridge.leaderboards.SetScore(_currentLeaderboardName, _currentRecord);
-#endif
+                PlatformServices.Leaderboards?.SetScore(_currentLeaderboardName, _currentRecord);
         }
 
         ViewSurviveResult((float)_currentRecord, _surviveRecord);

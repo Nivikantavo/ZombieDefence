@@ -49,12 +49,25 @@ public class CatalogProduct
             && value != decimal.Truncate(value);
     }
 
-    public string ToGamPriceLabel()
+    public static string ToGamPriceLabel(CatalogProduct product, IapProductDefinition definition)
     {
-        if (TryGetGamAmount(out int gam) == false)
-            return string.IsNullOrEmpty(priceValue) ? price : priceValue;
+        if (TryGetConfiguredGamAmount(definition, out int configuredGam))
+            return FormatGamLabel(configuredGam);
 
-        return gam.ToString(CultureInfo.InvariantCulture) + " Gam";
+        if (product == null || product.TryGetGamAmount(out int gam) == false)
+        {
+            if (product == null)
+                return string.Empty;
+
+            return string.IsNullOrEmpty(product.priceValue) ? product.price : product.priceValue;
+        }
+
+        return FormatGamLabel(gam);
+    }
+
+    public static string FormatGamLabel(int gam)
+    {
+        return gam.ToString(CultureInfo.InvariantCulture) + " " + PlaygamaCurrencyCode;
     }
 
     private bool TryGetGamAmount(out int gam)
@@ -69,15 +82,30 @@ public class CatalogProduct
         if (value <= 0m)
             return false;
 
-        if (ContainsToken(priceCurrencyCode, PlaygamaCurrencyCode)
+        bool labeledGam = ContainsToken(priceCurrencyCode, PlaygamaCurrencyCode)
             || ContainsToken(price, PlaygamaCurrencyCode)
-            || ContainsToken(priceValue, PlaygamaCurrencyCode))
+            || ContainsToken(priceValue, PlaygamaCurrencyCode);
+
+        if (labeledGam || LooksLikeUsd() == false)
         {
             gam = Math.Max(1, (int)decimal.Round(value, 0, MidpointRounding.AwayFromZero));
             return true;
         }
 
         gam = Math.Max(1, (int)decimal.Round(value / UsdPerGam, 0, MidpointRounding.AwayFromZero));
+        return true;
+    }
+
+    private static bool TryGetConfiguredGamAmount(IapProductDefinition definition, out int gam)
+    {
+        gam = 0;
+        if (definition == null || string.IsNullOrEmpty(definition.EditorPriceLabel))
+            return false;
+
+        if (TryParseDecimal(definition.EditorPriceLabel, out decimal value) == false || value <= 0m)
+            return false;
+
+        gam = Math.Max(1, (int)decimal.Round(value, 0, MidpointRounding.AwayFromZero));
         return true;
     }
 

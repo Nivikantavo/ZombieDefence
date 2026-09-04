@@ -10,7 +10,6 @@ namespace InfimaGames.LowPolyShooterPack
     /// </summary>
     public class AudioManagerService : MonoBehaviour, IAudioManagerService
     {
-        private const string Music = "Music";
         private const string Sounds = "Sounds";
         private const string AudioMixer = "AudioMixer";
         
@@ -29,7 +28,34 @@ namespace InfimaGames.LowPolyShooterPack
 
         private void Start()
         {
-            SetStartSoundsSettings();
+            StartCoroutine(ApplySavedVolume());
+        }
+
+        private IEnumerator ApplySavedVolume()
+        {
+            yield return AudioSettingsApplier.ApplyWhenReady(_audioMixer);
+            if (SaveSystem.Instance != null)
+            {
+                SaveSystem.Instance.DataUpdated -= OnDataUpdated;
+                SaveSystem.Instance.DataUpdated += OnDataUpdated;
+            }
+        }
+
+        private void OnEnable()
+        {
+            if (SaveSystem.Instance != null)
+                SaveSystem.Instance.DataUpdated += OnDataUpdated;
+        }
+
+        private void OnDisable()
+        {
+            if (SaveSystem.Instance != null)
+                SaveSystem.Instance.DataUpdated -= OnDataUpdated;
+        }
+
+        private void OnDataUpdated()
+        {
+            AudioSettingsApplier.Apply(_audioMixer);
         }
 
         private readonly struct OneShotCoroutine
@@ -59,15 +85,6 @@ namespace InfimaGames.LowPolyShooterPack
                 //Delay.
                 Delay = delay;
             }
-        }
-        private void SetStartSoundsSettings()
-        {
-            PlayerData data = SaveSystem.Instance.GetData();
-            float musicVolume = data.MusicVolume;
-            float soundVolume = data.SoundsVolume;
-
-            _audioMixer.SetFloat(Music, musicVolume);
-            _audioMixer.SetFloat(Sounds, soundVolume);
         }
         /// <summary>
         /// Checks if an AudioSource is valid, and playing!

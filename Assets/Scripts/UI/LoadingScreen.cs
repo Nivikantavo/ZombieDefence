@@ -13,6 +13,7 @@ public class LoadingScreen : MonoBehaviour, ISceneLoader
     public void LoadScene(int sceneId) 
     {
         Time.timeScale = 1f;
+        PlatformServices.Lifecycle?.NotifyLoadingStarted();
         StartCoroutine(LoadSceneAsync(sceneId));
     }
 

@@ -14,22 +14,7 @@ public class PlaygamaPaymentsGateway : IPaymentsGateway
         _catalog = catalog;
     }
 
-    public static bool IsPlaygamaPlatform
-    {
-        get
-        {
-#if UNITY_WEBGL && !UNITY_EDITOR
-            if (Bridge.instance == null)
-                return false;
-
-            string platformId = Bridge.platform.id;
-            return string.IsNullOrEmpty(platformId) == false
-                && platformId.IndexOf("playgama", StringComparison.OrdinalIgnoreCase) >= 0;
-#else
-            return false;
-#endif
-        }
-    }
+    public static bool IsPlaygamaPlatform => PlatformContext.UsesGamCurrency;
 
     public bool IsSupported
     {

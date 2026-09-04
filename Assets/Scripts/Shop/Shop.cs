@@ -22,6 +22,7 @@ public class Shop : MonoBehaviour
     private PlayerData _playerData;
     private IapPurchaseService _iap;
     private bool _currencyViewsCreated;
+    private string _pendingProductId;
     private int _startTruckHealth = 300;
     private int _startGranadeCount = 1;
     private float _checkDataDelay = 0.25f;
@@ -45,6 +46,11 @@ public class Shop : MonoBehaviour
         {
             productView.PoductViewClick += TrySellProduct;
         }
+        if (PlatformServices.Auth != null)
+            PlatformServices.Auth.Authorized += OnAuthorized;
+        if (SaveSystem.Instance != null)
+            SaveSystem.Instance.DataUpdated += OnSaveDataUpdated;
+        PlatformServices.Banners?.ShowMainMenu();
         if (SaveSystem.Instance != null && SaveSystem.Instance.DataLoaded)
         {
             UpdateData();
@@ -61,6 +67,10 @@ public class Shop : MonoBehaviour
         {
             productView.PoductViewClick -= TrySellProduct;
         }
+        if (PlatformServices.Auth != null)
+            PlatformServices.Auth.Authorized -= OnAuthorized;
+        if (SaveSystem.Instance != null)
+            SaveSystem.Instance.DataUpdated -= OnSaveDataUpdated;
     }
 
     private IEnumerator Start()
@@ -69,7 +79,23 @@ public class Shop : MonoBehaviour
         {
             yield return new WaitForSecondsRealtime(_checkDataDelay);
         }
-        UpdateData();
+
+        if (isActiveAndEnabled)
+        {
+            SaveSystem.Instance.DataUpdated -= OnSaveDataUpdated;
+            SaveSystem.Instance.DataUpdated += OnSaveDataUpdated;
+            UpdateData();
+        }
+    }
+
+    private void OnSaveDataUpdated()
+    {
+        if (SaveSystem.Instance == null || SaveSystem.Instance.DataLoaded == false)
+            return;
+
+        _playerData = SaveSystem.Instance.GetData();
+        MarkAllBoughtItem();
+        RefreshIapViews();
     }
 
     private void UpdateData()
@@ -125,7 +151,30 @@ public class Shop : MonoBehaviour
         if (_iap == null)
             return;
 
+        if (PlatformServices.Auth != null
+            && PlatformServices.Auth.RequiresAuthForIap
+            && PlatformServices.Auth.IsAuthorized == false)
+        {
+            _pendingProductId = id;
+            if (_authorizePanel != null)
+                _authorizePanel.SetActive(true);
+            return;
+        }
+
         _iap.Purchase(id);
+    }
+
+    private void OnAuthorized()
+    {
+        if (_authorizePanel != null)
+            _authorizePanel.SetActive(false);
+
+        if (string.IsNullOrEmpty(_pendingProductId) || _iap == null)
+            return;
+
+        string productId = _pendingProductId;
+        _pendingProductId = null;
+        _iap.Purchase(productId);
     }
 
     private void RefreshIapViews()
@@ -149,13 +198,13 @@ public class Shop : MonoBehaviour
     {
         if (weapon.Purchases == 0)
         {
-            if (_moneyCollecter.TrySpendMoney(weapon.SellingPrice))
+            if (_moneyCollecter.TrySpendMoney(weapon.SellingPrice, false))
             {
                 weapon.Sell();
                 AddBoughtWeapon(weapon);
             }
         }
-        else if(weapon.CanUpgrade && weapon.Purchases < weapon.NumberOfItems && _moneyCollecter.TrySpendMoney(weapon.SellingPrice))
+        else if(weapon.CanUpgrade && weapon.Purchases < weapon.NumberOfItems && _moneyCollecter.TrySpendMoney(weapon.SellingPrice, false))
         {
             weapon.Sell();
             AddWeaponUpgrade(weapon);
@@ -164,7 +213,7 @@ public class Shop : MonoBehaviour
 
     private void TrySellImprovment(ImproveItem improvment)
     {
-        if (_moneyCollecter.TrySpendMoney(improvment.SellingPrice))
+        if (_moneyCollecter.TrySpendMoney(improvment.SellingPrice, false))
         {
             improvment.Sell();
             AddBoughtImprovement(improvment);
@@ -173,7 +222,7 @@ public class Shop : MonoBehaviour
 
     private void TrySellForce(ForceItem force)
     {
-        if (_moneyCollecter.TrySpendMoney(force.SellingPrice))
+        if (_moneyCollecter.TrySpendMoney(force.SellingPrice, false))
         {
             force.Sell();
             AddBoughtForce(force);

@@ -7,6 +7,7 @@ public static class GameAnalyticsAds
 
     public static class Placement
     {
+        public const string LevelEnd = "level_end";
         public const string LevelEndRestart = "level_end_restart";
         public const string LevelEndNext = "level_end_next";
         public const string LevelEndMenu = "level_end_menu";

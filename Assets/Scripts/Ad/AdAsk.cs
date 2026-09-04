@@ -10,8 +10,21 @@ public class AdAsk : MonoBehaviour
 
     private void OnEnable()
     {
-        _adStartButton.interactable = true;
+        bool supported = PlatformServices.Ads != null
+            ? PlatformServices.Ads.IsRewardedSupported
+            : PlaygamaAds.IsRewardedSupported || Application.isEditor;
+        _adStartButton.gameObject.SetActive(supported);
+        _adStartButton.interactable = supported;
         _adStartButton.onClick.AddListener(ShowVideoAd);
+
+        if (supported)
+        {
+            PlaygamaAds.CheckAdBlock(blocked =>
+            {
+                if (blocked && _adStartButton != null)
+                    _adStartButton.gameObject.SetActive(false);
+            });
+        }
     }
 
     private void OnDisable()
@@ -22,6 +35,16 @@ public class AdAsk : MonoBehaviour
     private void ShowVideoAd()
     {
         _adStartButton.interactable = false;
+        if (PlatformServices.Ads != null)
+        {
+            PlatformServices.Ads.ShowRewarded(
+                OnRewardCallback,
+                OnVideoAdClose,
+                OnErrorCallback,
+                GameAnalyticsAds.Placement.AdAskMoney);
+            return;
+        }
+
         PlaygamaAds.ShowRewarded(null, OnRewardCallback, OnVideoAdClose, OnErrorCallback, GameAnalyticsAds.Placement.AdAskMoney);
     }
 

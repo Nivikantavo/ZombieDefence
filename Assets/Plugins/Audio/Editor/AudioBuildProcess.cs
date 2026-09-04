@@ -34,6 +34,12 @@ namespace Plugins.Audio.Editor
                     continue;
                 }
 
+                if (AudioUsageScanner.IsEditorOnlyPath(data.FolderPath) ||
+                    AudioUsageScanner.IsEditorOnlyPath(data.Name))
+                {
+                    continue;
+                }
+
                 CreateFolder(rootPath, data.FolderPath);
 
                 string assetDataPath = "Assets/" + data.FolderPath + "/" + data.Name;

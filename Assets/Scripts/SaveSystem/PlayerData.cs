@@ -1,3 +1,4 @@
+[System.Serializable]
 public class PlayerData
 {
     public const int StagesCount = 4;
@@ -54,6 +55,15 @@ public class PlayerData
         {
             CompletedLevelsPerStage = new int[StagesCount];
         }
+
+        if (Weapons == null || Weapons.Length == 0)
+            Weapons = new[] { "SMG 01" };
+
+        if (Forces == null)
+            Forces = new string[0];
+
+        if (UpgradeWeapons == null)
+            UpgradeWeapons = new string[0];
 
         MigrateWeaponUpgradesIfNeeded();
         EnsureIapArrays();

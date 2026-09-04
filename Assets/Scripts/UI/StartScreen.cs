@@ -27,6 +27,9 @@ public class StartScreen : MonoBehaviour
         while (Bridge.instance == null)
             yield return null;
 
+        if (PlatformServices.Instance != null)
+            PlatformServices.Instance.NotifyInitialLoadComplete();
+
         Bridge.platform.SendMessage(PlatformMessage.GameReady);
 #endif
         gameObject.SetActive(false);

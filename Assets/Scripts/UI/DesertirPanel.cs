@@ -1,3 +1,4 @@
+using System;
 using InfimaGames.LowPolyShooterPack.Interface;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -10,12 +11,16 @@ public class DesertirPanel : Element
     [SerializeField] private LoadingScreen _loadingScreen;
     [SerializeField] private InBackgroundCheker _backgroundCheker;
 
+    private bool _interstitialRequested;
+
     private void OnEnable()
     {
         Time.timeScale = 0;
         characterBehaviour.LockCursor(false);
         _inMenuButton.onClick.AddListener(OnInMenuButtonClick);
         _restartButton.onClick.AddListener(OnRestartLevelButtonClick);
+        SetButtonsInteractable(false);
+        RequestBreakInterstitial();
     }
 
     private void OnDisable()
@@ -24,46 +29,65 @@ public class DesertirPanel : Element
         _restartButton.onClick.RemoveListener(OnRestartLevelButtonClick);
     }
 
+    private void RequestBreakInterstitial()
+    {
+        if (_interstitialRequested)
+        {
+            SetButtonsInteractable(true);
+            return;
+        }
+
+        _interstitialRequested = true;
+        PlatformServices.Lifecycle?.NotifyLevelFailed();
+        if (PlatformServices.Ads != null)
+        {
+            PlatformServices.Ads.ShowInterstitialBeforeEndgame(OnBreakAdFinished);
+            return;
+        }
+
+        OnBreakAdFinished();
+    }
+
+    private void OnBreakAdFinished()
+    {
+        SetButtonsInteractable(true);
+        PlatformServices.Banners?.ShowEndgame(false);
+    }
+
     private void OnRestartLevelButtonClick()
     {
-#if UNITY_WEBGL && !UNITY_EDITOR
-        PlaygamaAds.ShowInterstitial(null, OnRestartAdClose, OnRestartAdError, GameAnalyticsAds.Placement.DesertirRestart);
-#else
-        _loadingScreen.LoadScene(SceneManager.GetActiveScene().buildIndex);
-#endif
+        RunAfterNavigationAd(
+            GameAnalyticsAds.Placement.DesertirRestart,
+            () => _loadingScreen.LoadScene(SceneManager.GetActiveScene().buildIndex));
     }
 
     private void OnInMenuButtonClick()
     {
-#if UNITY_WEBGL && !UNITY_EDITOR
-        PlaygamaAds.ShowInterstitial(null, OnMenuAdClose, OnMenuAdError, GameAnalyticsAds.Placement.DesertirMenu);
-#else
-        LoadMainMenu();
-#endif
+        RunAfterNavigationAd(GameAnalyticsAds.Placement.DesertirMenu, LoadMainMenu);
     }
 
-    private void OnRestartAdClose(bool wasShown = true)
+    private void RunAfterNavigationAd(string placement, Action onComplete)
     {
-        _loadingScreen.LoadScene(SceneManager.GetActiveScene().buildIndex);
-    }
+        SetButtonsInteractable(false);
+        if (PlatformServices.Ads == null)
+        {
+            onComplete?.Invoke();
+            return;
+        }
 
-    private void OnRestartAdError(string error)
-    {
-        _loadingScreen.LoadScene(SceneManager.GetActiveScene().buildIndex);
-    }
-
-    private void OnMenuAdClose(bool wasShown = true)
-    {
-        LoadMainMenu();
-    }
-
-    private void OnMenuAdError(string error)
-    {
-        LoadMainMenu();
+        PlatformServices.Ads.ShowInterstitialOnNavigation(onComplete, placement);
     }
 
     private void LoadMainMenu()
     {
         _loadingScreen.LoadScene(0);
+    }
+
+    private void SetButtonsInteractable(bool interactable)
+    {
+        if (_inMenuButton != null)
+            _inMenuButton.interactable = interactable;
+        if (_restartButton != null)
+            _restartButton.interactable = interactable;
     }
 }

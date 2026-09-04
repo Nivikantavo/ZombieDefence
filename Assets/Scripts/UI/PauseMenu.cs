@@ -26,6 +26,11 @@ public class PauseMenu : MonoBehaviour
         _pauseMenu.SetActive(false);
         Time.timeScale = 1f;
         PauseGame = false;
+        if (PlatformServices.Lifecycle != null && PlatformServices.Lifecycle.IsGameplayActive)
+        {
+            PlatformServices.Lifecycle.NotifyLevelResumed();
+            PlatformServices.Banners?.Hide();
+        }
     }
 
     public void Pause() 
@@ -33,11 +38,14 @@ public class PauseMenu : MonoBehaviour
         _pauseMenu.SetActive(true);
         Time.timeScale = 0f;
         PauseGame = true;
+        PlatformServices.Lifecycle?.NotifyLevelPaused();
+        PlatformServices.Banners?.ShowPause();
     }
 
     public void LoadMainMenu() 
     {
         Time.timeScale = 1f;
+        PlatformServices.Lifecycle?.NotifyLoadingStarted();
         SceneManager.LoadScene("MainMenu");
     }
 }

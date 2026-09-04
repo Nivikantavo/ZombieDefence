@@ -2,9 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-#if UNITY_WEBGL
-using Playgama;
-#endif
 
 public class Leaderboards : MonoBehaviour
 {
@@ -16,36 +13,62 @@ public class Leaderboards : MonoBehaviour
     [SerializeField] private Image _background;
 
     private Coroutine _loadRoutine;
+    private bool _openAfterAuth;
     private const float LoadTimeoutSeconds = 8f;
+
+    private IEnumerator Start()
+    {
+        while (PlatformServices.Instance == null)
+            yield return null;
+#if UNITY_WEBGL && !UNITY_EDITOR
+        while (Playgama.Bridge.instance == null)
+            yield return null;
+#endif
+
+        bool available = PlatformServices.Leaderboards != null && PlatformServices.Leaderboards.IsAvailable;
+        if (_showButton != null)
+            _showButton.SetActive(available);
+        if (available == false && _hideButton != null)
+            _hideButton.SetActive(false);
+    }
 
     public void ShowLeaderboards()
     {
-#if UNITY_WEBGL
-        if (Bridge.player.isAuthorized == false)
+        if (PlatformServices.Leaderboards == null || PlatformServices.Leaderboards.IsAvailable == false)
+            return;
+
+        if (PlatformServices.Auth != null && PlatformServices.Auth.IsAuthorized == false)
         {
-            _authorizePanel.SetActive(true);
+            _openAfterAuth = true;
+            if (_authorizePanel != null)
+                _authorizePanel.SetActive(true);
             return;
         }
-#endif
+
         ShowLevelLeaderbord();
     }
 
     public void Authorize()
     {
-#if UNITY_WEBGL
-        Bridge.player.Authorize(new Dictionary<string, object>(), success =>
-        {
-            if (success)
-                OnAuthotizeSuccess();
-        });
-#endif
-    }
+        if (PlatformServices.Auth == null)
+            return;
 
-    private void OnAuthotizeSuccess()
-    {
-        _authorizePanel.SetActive(false);
-        SaveSystem.Instance.Load();
-        ShowLevelLeaderbord();
+        PlatformServices.Auth.ShowAuthPrompt(success =>
+        {
+            if (success == false)
+                return;
+
+            if (_authorizePanel != null)
+                _authorizePanel.SetActive(false);
+            if (SaveSystem.Instance != null)
+                SaveSystem.Instance.Save();
+
+            if (_openAfterAuth == false)
+                return;
+
+            _openAfterAuth = false;
+            ShowLevelLeaderbord();
+        });
     }
 
     public void HideLeaderboards()
@@ -119,8 +142,13 @@ public class Leaderboards : MonoBehaviour
     private void FillLeaderboard(LevelLeaderboard leaderboard)
     {
         leaderboard.gameObject.SetActive(true);
-#if UNITY_WEBGL
-        Bridge.leaderboards.GetEntries(leaderboard.Name, (success, entries) =>
+        if (PlatformServices.Leaderboards == null)
+        {
+            leaderboard.MarkEntriesFailed();
+            return;
+        }
+
+        PlatformServices.Leaderboards.GetEntries(leaderboard.Name, (success, entries) =>
         {
             if (success == false || entries == null)
             {
@@ -131,9 +159,6 @@ public class Leaderboards : MonoBehaviour
 
             leaderboard.FillEntryesData(entries, _leaderboardsLenth);
         });
-#else
-        leaderboard.MarkEntriesFailed();
-#endif
     }
 
     private void OnGetEntriesError(string error)

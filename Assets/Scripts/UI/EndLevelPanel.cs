@@ -1,3 +1,4 @@
+using System;
 using InfimaGames.LowPolyShooterPack.Interface;
 using Lean.Localization;
 using UnityEngine;
@@ -31,10 +32,21 @@ public class EndLevelPanel : Element
     private DifficultyChoicer _difficultyChoicer;
     private NextLevelLauncher _nextLevelLauncher;
     private int _levelBonus;
-    private bool _wasRewarded = false;
-    
+    private bool _wasRewarded;
+
+    public bool BlocksPause { get; private set; }
 
     public event UnityAction RewardAdClose;
+
+    public void SetPauseBlocked(bool blocked)
+    {
+        BlocksPause = blocked;
+        if (blocked == false)
+            return;
+
+        UIInput uiInput = GetComponentInParent<UIInput>();
+        uiInput?.ForceClosePause();
+    }
 
     protected override void Awake()
     {
@@ -73,6 +85,10 @@ public class EndLevelPanel : Element
             _labelText.TranslationName = levelComplited ? WinText : LostText;
             OpenScorePanel(levelComplited);
         }
+
+        bool rewardedSupported = PlatformServices.Ads == null || PlatformServices.Ads.IsRewardedSupported;
+        if (_rewardButton != null && _difficultyChoicer.SurvivalMode == false)
+            _rewardButton.gameObject.SetActive(rewardedSupported);
     }
 
     public void SetCurrentLevel(DifficultyChoicer difficultyChoicer)
@@ -124,44 +140,33 @@ public class EndLevelPanel : Element
 
     private void OnRestartLevelButtonClick()
     {
-        if(_wasRewarded == false)
-        {
-            PlaygamaAds.ShowInterstitial(null, OnRestartAdClose, OnRestartAdError, GameAnalyticsAds.Placement.LevelEndRestart);
-        }
-        else
-        {
-            _loadingScreen.LoadScene(SceneManager.GetActiveScene().buildIndex);
-        }
+        RunAfterNavigationAd(GameAnalyticsAds.Placement.LevelEndRestart, LoadRestart);
     }
 
     private void OnNextLevelButtonClick()
     {
         _nextLevelButton.interactable = false;
-
-        if (_wasRewarded == false)
-        {
-            PlaygamaAds.ShowInterstitial(null, OnNextLevelAdClose, OnNextLevelAdError, GameAnalyticsAds.Placement.LevelEndNext);
-        }
-        else
-        {
-            LoadNextLevel();
-        }
+        RunAfterNavigationAd(GameAnalyticsAds.Placement.LevelEndNext, LoadNextLevel);
     }
 
     private void OnInMenuButtonClick()
     {
-        if(_wasRewarded == false)
-        {
-            PlaygamaAds.ShowInterstitial(null, OnMenuAdClose, OnMenuAdError, GameAnalyticsAds.Placement.LevelEndMenu);
-            return;
-        }
-
-        LoadMainMenu();
+        RunAfterNavigationAd(GameAnalyticsAds.Placement.LevelEndMenu, LoadMainMenu);
     }
 
     private void OnRewardButtonClick()
     {
         _rewardButton.interactable = false;
+        if (PlatformServices.Ads != null)
+        {
+            PlatformServices.Ads.ShowRewarded(
+                OnRewardCallback,
+                OnRewardAdClose,
+                OnRewardAdError,
+                GameAnalyticsAds.Placement.LevelEndDoubleReward);
+            return;
+        }
+
         PlaygamaAds.ShowRewarded(null, OnRewardCallback, OnRewardAdClose, OnRewardAdError, GameAnalyticsAds.Placement.LevelEndDoubleReward);
     }
 
@@ -172,34 +177,20 @@ public class EndLevelPanel : Element
         _wasRewarded = true;
     }
 
-    private void OnRestartAdClose(bool wasShown = true)
+    private void RunAfterNavigationAd(string placement, Action onComplete)
+    {
+        if (_wasRewarded || PlatformServices.Ads == null)
+        {
+            onComplete?.Invoke();
+            return;
+        }
+
+        PlatformServices.Ads.ShowInterstitialOnNavigation(onComplete, placement);
+    }
+
+    private void LoadRestart()
     {
         _loadingScreen.LoadScene(SceneManager.GetActiveScene().buildIndex);
-    }
-
-    private void OnRestartAdError(string error)
-    {
-        _loadingScreen.LoadScene(SceneManager.GetActiveScene().buildIndex);
-    }
-
-    private void OnNextLevelAdClose(bool wasShown = true)
-    {
-        LoadNextLevel();
-    }
-
-    private void OnNextLevelAdError(string error)
-    {
-        LoadNextLevel();
-    }
-
-    private void OnMenuAdClose(bool wasShown = true)
-    {
-        LoadMainMenu();
-    }
-
-    private void OnMenuAdError(string error)
-    {
-        LoadMainMenu();
     }
 
     private void LoadMainMenu()

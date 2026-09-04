@@ -8,6 +8,42 @@ using Playgama.Modules.Advertisement;
 
 public static class PlaygamaAds
 {
+    public static bool IsInterstitialSupported
+    {
+        get
+        {
+#if UNITY_WEBGL
+            return Bridge.instance != null && Bridge.advertisement.isInterstitialSupported;
+#else
+            return false;
+#endif
+        }
+    }
+
+    public static bool IsRewardedSupported
+    {
+        get
+        {
+#if UNITY_WEBGL
+            return Bridge.instance != null && Bridge.advertisement.isRewardedSupported;
+#else
+            return false;
+#endif
+        }
+    }
+
+    public static bool IsBannerSupported
+    {
+        get
+        {
+#if UNITY_WEBGL
+            return Bridge.instance != null && Bridge.advertisement.isBannerSupported;
+#else
+            return false;
+#endif
+        }
+    }
+
     public static void ShowInterstitial(
         Action onOpen = null,
         Action<bool> onClose = null,
@@ -15,6 +51,12 @@ public static class PlaygamaAds
         string placement = null)
     {
 #if UNITY_WEBGL
+        if (Bridge.instance == null || Bridge.advertisement.isInterstitialSupported == false)
+        {
+            onClose?.Invoke(false);
+            return;
+        }
+
         GameAnalyticsAds.Request(GAAdType.Interstitial, placement);
         Action<InterstitialState> handler = null;
         handler = state =>
@@ -35,6 +77,7 @@ public static class PlaygamaAds
                     Bridge.advertisement.interstitialStateChanged -= handler;
                     GameAnalyticsAds.FailedShow(GAAdType.Interstitial, placement);
                     PlaygamaAdPause.End();
+                    onClose?.Invoke(false);
                     onError?.Invoke("Interstitial ad failed");
                     break;
             }
@@ -43,9 +86,6 @@ public static class PlaygamaAds
         Bridge.advertisement.interstitialStateChanged += handler;
         Bridge.advertisement.ShowInterstitial(placement);
 #else
-        PlaygamaAdPause.Begin();
-        onOpen?.Invoke();
-        PlaygamaAdPause.End();
         onClose?.Invoke(false);
 #endif
     }
@@ -58,6 +98,12 @@ public static class PlaygamaAds
         string placement = null)
     {
 #if UNITY_WEBGL
+        if (Bridge.instance == null || Bridge.advertisement.isRewardedSupported == false)
+        {
+            onError?.Invoke("Rewarded ad is not supported");
+            return;
+        }
+
         GameAnalyticsAds.Request(GAAdType.RewardedVideo, placement);
         bool rewarded = false;
         Action<RewardedState> handler = null;
@@ -99,11 +145,24 @@ public static class PlaygamaAds
         Bridge.advertisement.rewardedStateChanged += handler;
         Bridge.advertisement.ShowRewarded(placement);
 #else
-        PlaygamaAdPause.Begin();
         onOpen?.Invoke();
         onRewarded?.Invoke();
-        PlaygamaAdPause.End();
         onClose?.Invoke();
+#endif
+    }
+
+    public static void CheckAdBlock(Action<bool> onComplete)
+    {
+#if UNITY_WEBGL && !UNITY_EDITOR
+        if (Bridge.instance == null)
+        {
+            onComplete?.Invoke(false);
+            return;
+        }
+
+        Bridge.advertisement.CheckAdBlock(blocked => onComplete?.Invoke(blocked));
+#else
+        onComplete?.Invoke(false);
 #endif
     }
 
